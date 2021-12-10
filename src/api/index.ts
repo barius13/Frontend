@@ -45,4 +45,23 @@ export default class API {
       }
     });
   }
+
+  public static async login(username: string, password: string): Promise<any> {
+    return new Promise(async (resolve,reject) => {
+      try {
+        const response = await this.request("/auth/login", "POST", {
+          body: {
+            username,
+            password,
+          },
+        });
+
+        resolve(response.data);
+      } catch (err) {
+        const jsonErr = err.toJSON();
+        err.response?.data ? jsonErr.data = err.response.data : null;
+        reject(jsonErr)
+      }
+    })
+  }
 }

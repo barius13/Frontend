@@ -1,11 +1,13 @@
 import API from "../api";
 import * as React from "react";
 import { NextSeo } from "next-seo";
+import { useRouter } from "next/router";
 import "focus-visible/dist/focus-visible";
 import { BsImages } from "react-icons/bs";
 import { GiPartyHat } from "react-icons/gi";
 import { SiSpeedtest } from "react-icons/si";
 import { SiMaildotru } from "react-icons/si";
+import { useUser } from "../components/user";
 import { BiUserCircle } from "react-icons/bi";
 import styles from "../styles/index.module.css";
 import { RiFingerprint2Line } from "react-icons/ri";
@@ -64,9 +66,11 @@ export default function Homepage() {
     email: "",
     invite: "",
   });
+  const toast = useToast();
+  const router = useRouter();
+  const { setUser } = useUser();
   const RegPassword = () => setShow(!show);
   const [show, setShow] = React.useState(false);
-  const toast = useToast();
   const modals = useColorModeValue("white", "#2E3440");
 
   const handleRegisterChange = (e) => {
@@ -160,6 +164,61 @@ export default function Homepage() {
         return toast({
           title: "You seemed to have encountered an error!",
           description: err.data.message,
+          status: "error",
+          position: "top-right",
+          duration: 9000,
+          isClosable: true,
+          variant: "left-accent",
+        });
+      });
+  }
+
+  function loginSubmit() {
+    API.login(loginInfo.username, loginInfo.password)
+      .then((data) => {
+        setLoginInfo({
+          username: "",
+          password: "",
+        });
+
+        setUser(data.user);
+
+        toast({
+          title: "Success!",
+          description: data.message,
+          status: "success",
+          position: "top-right",
+          duration: 9000,
+          isClosable: true,
+          variant: "left-accent",
+        });
+
+        setTimeout(() => {
+          router.push("/dashboard");
+        }, 2000)
+      })
+      .catch((err) => {
+        if (err.message === "Network Error") {
+          return toast({
+            title: "You seemed to have encountered an error!",
+            description:
+              "The API is unfortunately down please check back later.",
+            status: "error",
+            position: "top-right",
+            duration: 9000,
+            isClosable: true,
+            variant: "left-accent",
+          });
+        }
+
+        console.log(err);
+
+        return toast({
+          title: "You seemed to have encountered an error!",
+          description:
+            err.data === "Unauthorized"
+              ? "Invalid Credentials"
+              : err.data.message,
           status: "error",
           position: "top-right",
           duration: 9000,
@@ -456,7 +515,7 @@ export default function Homepage() {
                     h="35px"
                     rounded="5px"
                     variant="outline"
-                    onClick={function () {}}
+                    onClick={loginSubmit}
                   >
                     Login
                   </Button>
