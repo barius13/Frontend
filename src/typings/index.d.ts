@@ -20,9 +20,3 @@ export interface User {
     invitedBy: string;
   };
 }
-
-export interface IUserContext {
-  user: User;
-
-  setUser(user: User): void;
-}
