@@ -218,7 +218,7 @@ export default function Homepage() {
               mb={2}
               alignContent="center"
             >
-              {"Personalized digital services for You."}
+              {"Personalized digital services for you."}
             </Text>
           </Center>
           <Divider mb={5} />
