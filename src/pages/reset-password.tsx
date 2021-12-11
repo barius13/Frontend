@@ -6,21 +6,6 @@ import { Input, Button, Flex, Center, Stack } from '@chakra-ui/react';
 export default function ResetPassword() {
   return (
     <>
-      <NextSeo
-        title="Kythi.com | Reset Password"
-        description="Reset-Password page for Kythi.com"
-        additionalMetaTags={[
-          {
-            property: "theme-color",
-            content: "#2E3440",
-          },
-        ]}
-        openGraph={{
-          title: "Kythi.com | Reset Password",
-          description:
-            "Reset-Password page for Kythi.com",
-        }}
-      />
       <Center>
         <Flex h="90vh" alignItems="center" justifyContent="center">
           <Flex

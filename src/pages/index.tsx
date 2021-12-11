@@ -1,6 +1,5 @@
 import API from "../api";
 import * as React from "react";
-import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 import "focus-visible/dist/focus-visible";
 import { BsImages } from "react-icons/bs";
@@ -230,20 +229,6 @@ export default function Homepage() {
 
   return (
     <>
-      <NextSeo
-        title="Kythi.com"
-        description="Kythi.com is a new service currently being made."
-        additionalMetaTags={[
-          {
-            property: "theme-color",
-            content: "#2E3440",
-          },
-        ]}
-        openGraph={{
-          title: "",
-          description: "Kythi.com is a new service currently being made.",
-        }}
-      />
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
           fill="#434C5E"

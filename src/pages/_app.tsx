@@ -1,6 +1,7 @@
 import API from "../api";
 import "../styles/globals.css";
 import { User } from "../typings";
+import { NextSeo } from "next-seo";
 import theme from "../styles/theme";
 import Loading from "../components/load";
 import { useEffect, useState } from "react";
@@ -25,15 +26,32 @@ function App({ Component, pageProps }) {
   }, []);
 
   return (
-    <ChakraProvider theme={theme}>
-      {user === undefined ? (
-        <Loading />
-      ) : (
-        <UserProvider value={{ user, setUser }}>
-          <Component {...pageProps} />
-        </UserProvider>
-      )}
-    </ChakraProvider>
+    <>
+      <NextSeo
+        title="Kythi"
+        description="Kythi is a new service currently being made."
+        additionalMetaTags={[
+          {
+            property: "theme-color",
+            content: "#b00af7",
+          },
+        ]}
+        openGraph={{
+          title: "",
+          description: "Kythi.com is a new service currently being made.",
+        }}
+      />
+
+      <ChakraProvider theme={theme}>
+        {user === undefined ? (
+          <Loading />
+        ) : (
+          <UserProvider value={{ user, setUser }}>
+            <Component {...pageProps} />
+          </UserProvider>
+        )}
+      </ChakraProvider>
+    </>
   );
 }
 
