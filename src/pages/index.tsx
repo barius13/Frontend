@@ -690,7 +690,7 @@ export default function Homepage() {
 
             <Heading as="h4" size="sm" mt="2" fontWeight="medium">
               {
-                "We allow you to customise your Files, embeds, profile and more, so get started!"
+                "We allow you to customise your Files, Discord embeds, your own Kythi profile and more so get started!"
               }
             </Heading>
           </Box>
@@ -720,7 +720,7 @@ export default function Homepage() {
 
             <Heading as="h4" size="sm" mt="2" fontWeight="medium">
               {
-                "When making our host, we strived to make it as user-accessible and a great experience to use! That is why we focused on the upload speed first."
+                "When making our host, we strived to make it as user-accessible as possible along with making it a great experience to use! That is why we focused on optimising the upload speed first."
               }
             </Heading>
           </Box>
@@ -750,7 +750,7 @@ export default function Homepage() {
 
             <Heading as="h4" size="sm" mt="2" fontWeight="medium">
               {
-                "We, support many File Types, for example we allow .mp4, .mp3, .png, .jpg and more!"
+                "Kythi supports many File Types, for example we allow .mp4, .mp3, .png, .jpg and more!"
               }
             </Heading>
           </Box>
