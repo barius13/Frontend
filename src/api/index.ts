@@ -40,14 +40,14 @@ export default class API {
         resolve(response.data);
       } catch (err) {
         const jsonErr = err.toJSON();
-        err.response?.data ? jsonErr.data = err.response.data : null;
-        reject(jsonErr)
+        err.response?.data ? (jsonErr.data = err.response.data) : null;
+        reject(jsonErr);
       }
     });
   }
 
   public static async login(username: string, password: string): Promise<any> {
-    return new Promise(async (resolve,reject) => {
+    return new Promise(async (resolve, reject) => {
       try {
         const response = await this.request("/auth/login", "POST", {
           body: {
@@ -59,9 +59,23 @@ export default class API {
         resolve(response.data);
       } catch (err) {
         const jsonErr = err.toJSON();
-        err.response?.data ? jsonErr.data = err.response.data : null;
-        reject(jsonErr)
+        err.response?.data ? (jsonErr.data = err.response.data) : null;
+        reject(jsonErr);
       }
-    })
+    });
+  }
+
+  public static async getSession(): Promise<any> {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const response = await this.request("/auth/session", "GET", {});
+
+        resolve(response.data);
+      } catch (err) {
+        const jsonErr = err.toJSON();
+        err.response?.data ? (jsonErr.data = err.response.data) : null;
+        reject(jsonErr);
+      }
+    });
   }
 }
