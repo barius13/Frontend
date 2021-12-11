@@ -13,22 +13,26 @@ function App({ Component, pageProps }) {
   useEffect(() => {
     API.getSession()
       .then((data) => {
-        setUser(data.user);
+        setTimeout(() => {
+          setUser(data.user);
+        }, 1000);
       })
       .catch(() => {
         setTimeout(() => {
           setUser(null);
-        }, 1000)
+        }, 1000);
       });
   }, []);
 
-  return user === undefined ? (
-    <Loading></Loading>
-  ) : (
+  return (
     <ChakraProvider theme={theme}>
-      <UserProvider value={{ user, setUser }}>
-        <Component {...pageProps} />
-      </UserProvider>
+      {user === undefined ? (
+        <Loading />
+      ) : (
+        <UserProvider value={{ user, setUser }}>
+          <Component {...pageProps} />
+        </UserProvider>
+      )}
     </ChakraProvider>
   );
 }
