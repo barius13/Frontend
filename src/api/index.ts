@@ -78,4 +78,18 @@ export default class API {
       }
     });
   }
+
+  public static async getStats(): Promise<any> {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const response = await this.request("/stats", "GET", {});
+
+        resolve(response.data);
+      } catch (err) {
+        const jsonErr = err.toJSON();
+        err.response?.data ? (jsonErr.data = err.response.data) : null;
+        reject(jsonErr);
+      }
+    });
+  }
 }

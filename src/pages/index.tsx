@@ -10,7 +10,6 @@ import { useUser } from "../components/user";
 import { BiUserCircle } from "react-icons/bi";
 import styles from "../styles/index.module.css";
 import { RiFingerprint2Line } from "react-icons/ri";
-import { BsFillArrowRightCircleFill } from "react-icons/bs";
 import { FaUserAltSlash, FaUserAlt, FaLock, FaLockOpen } from "react-icons/fa";
 import {
   MdSettingsInputComposite,
@@ -28,7 +27,6 @@ import {
   Center,
   Spinner,
   HStack,
-  chakra,
   Button,
   Heading,
   Divider,
@@ -71,8 +69,24 @@ export default function Homepage() {
   const router = useRouter();
   const { setUser } = useUser();
   const RegPassword = () => setShow(!show);
+  const [stats, setStats] = React.useState(undefined);
   const [show, setShow] = React.useState(false);
   const modals = useColorModeValue("white", "#2E3440");
+
+  React.useEffect(() => {
+    API.getStats()
+      .then((stats) => {
+        Object.keys(stats).forEach(key => {
+          if (stats[key] === null) {
+            stats[key] = "0";
+          }
+        })
+        setStats(stats);
+      })
+      .catch(() => {
+        setStats(null);
+      });
+  }, []);
 
   const handleRegisterChange = (e) => {
     switch (e.target.placeholder) {
@@ -173,7 +187,6 @@ export default function Homepage() {
         });
       });
   }
-
   function loginSubmit() {
     API.login(loginInfo.username, loginInfo.password)
       .then((data) => {
@@ -560,7 +573,13 @@ export default function Homepage() {
                 Total Uploads
               </Heading>
             </HStack>
-            <Spinner h="20px" w="20px" mt="3" />
+            {stats === undefined ? (
+              <Spinner h="20px" w="20px" mt="3" />
+            ) : (
+              <Heading as="h4" size="sm" mt="2" fontWeight="medium">
+                {stats.fileCount}
+              </Heading>
+            )}
           </Box>
           <Box
             __css={{ cursor: "default" }}
@@ -586,8 +605,13 @@ export default function Homepage() {
                 Total Users.
               </Heading>
             </HStack>
-
-            <Spinner h="20px" w="20px" mt="3" />
+            {stats === undefined ? (
+              <Spinner h="20px" w="20px" mt="3" />
+            ) : (
+              <Heading as="h4" size="sm" mt="2" fontWeight="medium">
+                {stats.userCount}
+              </Heading>
+            )}
           </Box>
         </Stack>
       </Flex>
@@ -614,8 +638,13 @@ export default function Homepage() {
                 Banned Users
               </Heading>
             </HStack>
-
-            <Spinner h="20px" w="20px" mt="3" />
+            {stats === undefined ? (
+              <Spinner h="20px" w="20px" mt="3" />
+            ) : (
+              <Heading as="h4" size="sm" mt="2" fontWeight="medium">
+                {stats.bannedCount}
+              </Heading>
+            )}
           </Box>
           <Box
             __css={{ cursor: "default" }}
@@ -639,8 +668,13 @@ export default function Homepage() {
                 Total Domains.
               </Heading>
             </HStack>
-
-            <Spinner h="20px" w="20px" mt="3" />
+            {stats === undefined ? (
+              <Spinner h="20px" w="20px" mt="3" />
+            ) : (
+              <Heading as="h4" size="sm" mt="2" fontWeight="medium">
+                {stats.domainCount}
+              </Heading>
+            )}
           </Box>
         </Stack>
       </Flex>
