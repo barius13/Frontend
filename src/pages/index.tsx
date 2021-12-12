@@ -10,6 +10,7 @@ import { useUser } from "../components/user";
 import { BiUserCircle } from "react-icons/bi";
 import styles from "../styles/index.module.css";
 import { RiFingerprint2Line } from "react-icons/ri";
+import { BsFillArrowRightCircleFill } from "react-icons/bs";
 import { FaUserAltSlash, FaUserAlt, FaLock, FaLockOpen } from "react-icons/fa";
 import {
   MdSettingsInputComposite,
@@ -25,6 +26,7 @@ import {
   Input,
   Stack,
   Center,
+  Spinner,
   HStack,
   chakra,
   Button,
@@ -194,7 +196,7 @@ export default function Homepage() {
 
         setTimeout(() => {
           router.push("/dashboard");
-        }, 2000)
+        }, 2000);
       })
       .catch((err) => {
         if (err.message === "Network Error") {
@@ -265,7 +267,7 @@ export default function Homepage() {
               {"Personalized digital services for you."}
             </Text>
           </Center>
-          <Divider mb={5} />
+          <Divider mb={4} />
           <Stack justify="true" direction="row" spacing={2}>
             <Button
               w="100%"
@@ -429,7 +431,7 @@ export default function Homepage() {
             >
               <ModalHeader>
                 {" "}
-                <Flex>{"Login"} </Flex>
+                <Text fontWeight={650}>{"Login to start."} </Text>
               </ModalHeader>
               <Center>
                 <Divider borderColor="#81A1C1" w="90%" mb={3} />
@@ -484,17 +486,18 @@ export default function Homepage() {
                 </InputGroup>
               </ModalBody>
               <ModalFooter>
-                <Stack align="center" justify="true" direction="column">
+                <Stack align="center" direction="column">
                   <Link
                     href="/reset-password"
                     color="gray.400"
                     cursor="default"
                     mt="-15px"
-                    _hover={{ color: "gray.200" }}
+                    _hover={{ color: "gray.300" }}
                   >
                     Forgotten your password?
                   </Link>
                   <Button
+                    justifyContent="flex-start"
                     colorScheme="blue"
                     width={["300px", "300px", "400px", "400px"]}
                     h="35px"
@@ -504,17 +507,20 @@ export default function Homepage() {
                   >
                     Login
                   </Button>
-                  <chakra.button
-                    __css={{ cursor: "default" }}
+                  <Button
                     width={["300px", "300px", "400px", "400px"]}
                     h="35px"
                     bg="#5865F2"
                     rounded="5px"
                     _hover={{ bg: "#7289da" }}
-                    onClick={function () {}}
+                    __css={{ transition: ".4s" }}
+                    onClick={function () {
+                      location.href =
+                        "https://www.youtube.com/watch?v=CrU1yJ9QIP4";
+                    }}
                   >
-                    Login with Discord
-                  </chakra.button>
+                    Login via Discord
+                  </Button>
                 </Stack>
               </ModalFooter>
             </ModalContent>
@@ -554,10 +560,7 @@ export default function Homepage() {
                 Total Uploads
               </Heading>
             </HStack>
-
-            <Heading as="h4" size="sm" mt="2" fontWeight="medium">
-              Loading...
-            </Heading>
+            <Spinner h="20px" w="20px" mt="3" />
           </Box>
           <Box
             __css={{ cursor: "default" }}
@@ -584,9 +587,7 @@ export default function Homepage() {
               </Heading>
             </HStack>
 
-            <Heading as="h4" size="sm" mt="2" fontWeight="medium">
-              Loading...
-            </Heading>
+            <Spinner h="20px" w="20px" mt="3" />
           </Box>
         </Stack>
       </Flex>
@@ -614,9 +615,7 @@ export default function Homepage() {
               </Heading>
             </HStack>
 
-            <Heading as="h4" size="sm" mt="2" fontWeight="medium">
-              Loading...
-            </Heading>
+            <Spinner h="20px" w="20px" mt="3" />
           </Box>
           <Box
             __css={{ cursor: "default" }}
@@ -641,9 +640,7 @@ export default function Homepage() {
               </Heading>
             </HStack>
 
-            <Heading as="h4" size="sm" mt="2" fontWeight="medium">
-              Loading...
-            </Heading>
+            <Spinner h="20px" w="20px" mt="3" />
           </Box>
         </Stack>
       </Flex>
