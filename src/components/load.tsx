@@ -10,7 +10,6 @@ export default function load() {
           <Flex>
             <Box
               __css={{ cursor: "default" }}
-              width={["300px", "300px", "300px", "300px", "300px", "300px"]}
               transition="1s"
               px="20px"
               bg=""
@@ -19,18 +18,13 @@ export default function load() {
             >
               <Center>
                 <Flex>
-                  <Heading
-                    fontSize={["30px", "20px", "30px", "30px"]}
-                    alignContent="center"
-                  >
                     <Spinner />
-                  </Heading>
                 </Flex>
               </Center>
               <Center>
                 <Text mt="20px" mb="10px">
-                  {" "}
-                  Loading...
+                  {"If you are experiencing any network related issues please check our discord server."}
+                  
                 </Text>
               </Center>
             </Box>
