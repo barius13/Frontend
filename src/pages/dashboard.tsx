@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { Flex } from "@chakra-ui/react";
 import "focus-visible/dist/focus-visible";
 import { useUser } from "../components/user";
+import { Flex, Button } from "@chakra-ui/react";
 import { useRouter } from "next/dist/client/router";
 
 
@@ -18,6 +18,9 @@ export default function Dashboard() {
   return user ? (
     <Flex align="center" justify="center" direction="column">
       {`Hi ${user.username}!`}
+      <Button onClick={function() {
+        location.href = `${process.env.BACKEND_URL}/discord/link`
+      }}>Link Discord</Button>
     </Flex>
   ) : null;
 }

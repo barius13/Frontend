@@ -529,7 +529,7 @@ export default function Homepage() {
                     __css={{ transition: ".4s" }}
                     onClick={function () {
                       location.href =
-                        "https://www.youtube.com/watch?v=CrU1yJ9QIP4";
+                        `${process.env.BACKEND_URL}/discord/login`;
                     }}
                   >
                     Login via Discord
