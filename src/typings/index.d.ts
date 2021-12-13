@@ -19,4 +19,14 @@ export interface User {
     invited: string[];
     invitedBy: string;
   };
+  discord: {
+    id: string | null;
+    username: string | null;
+    tag: string | null;
+    discriminator: string | null;
+    avatar: string | null;
+    banner: string | null;
+    bannerColor: string | null;
+    nitroType: 'classic' | 'nitro' | null;
+  };
 }

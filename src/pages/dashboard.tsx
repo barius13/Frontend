@@ -20,7 +20,7 @@ export default function Dashboard() {
       {`Hi ${user.username}!`}
       <Button onClick={function() {
         location.href = `${process.env.BACKEND_URL}/discord/link`
-      }}>Link Discord</Button>
+      }}>{user.discord.id ? "Relink" : "Link"} Discord</Button>
     </Flex>
   ) : null;
 }
