@@ -13,6 +13,7 @@
     "dev": "next dev -p 1338",
     "build": "next build",
     "start": "next start -p 1337",
+    "docker": "yarn build && yarn start",
     "type-check": "tsc"
   },
   "dependencies": {
