@@ -12,7 +12,7 @@ export default class API {
     { body, headers }: requestParams
   ): Promise<any> {
     return axios({
-      url: `${process.env.BACKEND_URL}${url}`,
+      url: `https://api.kythi.com${url}`,
       method,
       headers,
       data: body,
