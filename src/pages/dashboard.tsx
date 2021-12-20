@@ -19,7 +19,7 @@ export default function Dashboard() {
     <Flex align="center" justify="center" direction="column">
       {`Hi ${user.username}!`}
       <Button onClick={function() {
-        location.href = `${process.env.BACKEND_URL}/discord/link`
+        location.href = `https://api.kythi.com/discord/link`
       }}>{user.discord.id ? "Relink" : "Link"} Discord</Button>
     </Flex>
   ) : null;
