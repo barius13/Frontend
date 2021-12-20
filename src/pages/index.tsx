@@ -3,17 +3,18 @@ import * as React from "react";
 import { useRef } from "react";
 import { useRouter } from "next/router";
 import "focus-visible/dist/focus-visible";
-import { BsImages } from "react-icons/bs";
+import StatsBox from "../components/stats";
 import { GiPartyHat } from "react-icons/gi";
 import { SiSpeedtest } from "react-icons/si";
 import { SiMaildotru } from "react-icons/si";
 import { useUser } from "../components/user";
 import { BiUserCircle } from "react-icons/bi";
+import FeatureBox from "../components/feature";
 import styles from "../styles/index.module.css";
-import { RiFingerprint2Line } from "react-icons/ri";
-import { FaUserAltSlash, FaUserAlt, FaLock, FaLockOpen } from "react-icons/fa";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
-import { BsFillArrowDownCircleFill } from "react-icons/bs";
+import { RiFingerprint2Line } from "react-icons/ri";
+import { BsFillArrowDownCircleFill, BsImages } from "react-icons/bs";
+import { FaUserAltSlash, FaUserAlt, FaLock, FaLockOpen } from "react-icons/fa";
 
 import {
   MdSettingsInputComposite,
@@ -21,7 +22,6 @@ import {
   MdSystemUpdateAlt,
 } from "react-icons/md";
 import {
-  Box,
   Text,
   Link,
   Flex,
@@ -29,14 +29,11 @@ import {
   Input,
   Stack,
   Center,
-  Spinner,
-  HStack,
   Button,
   Heading,
   Divider,
   useToast,
   ModalBody,
-  IconButton,
   InputGroup,
   ModalFooter,
   ModalHeader,
@@ -567,135 +564,17 @@ export default function Homepage() {
       </Flex>
       <Flex mb="15px" alignItems="center" justifyContent="center">
         <Stack direction={["column", "row"]}>
-          <Box
-            __css={{ cursor: "default" }}
-            transition="1s"
-            _hover={{
-              transform: "translateY(-4px)",
-              transition: ".5s",
-              bg: "#4C566A",
-            }}
-            bg={"#3B4252"}
-            width={["350px", "230px", "350px", "350px"]}
-            px="20px"
-            py="30px"
-            shadow="xl"
-            rounded="13px"
-          >
-            <HStack>
-              <BsImages size="23px" />
-              <Heading size="md" fontWeight="medium" color={"gray.400"}>
-                Total Uploads
-              </Heading>
-            </HStack>
-            {stats === undefined ? (
-              <Spinner h="20px" w="20px" mt="3" />
-            ) : (
-              <Heading as="h4" size="sm" mt="2" fontWeight="medium">
-                {stats.fileCount}
-              </Heading>
-            )}
-          </Box>
-          <Box
-            __css={{ cursor: "default" }}
-            w="350px"
-            transition="1s"
-            _hover={{
-              transform: "translateY(-4px)",
-              transition: ".8s",
-              bg: "#4C566A",
-            }}
-            width={["350px", "230px", "350px", "350px"]}
-            bg={"#3B4252"}
-            px="20px"
-            py="30px"
-            shadow="xl"
-            rounded="13px"
-          >
-            <HStack>
-              <BiUserCircle size="25px">
-                <Box />
-              </BiUserCircle>
-              <Heading size="md" fontWeight="medium" color={"gray.400"}>
-                Total Users.
-              </Heading>
-            </HStack>
-            {stats === undefined ? (
-              <Spinner h="20px" w="20px" mt="3" />
-            ) : (
-              <Heading as="h4" size="sm" mt="2" fontWeight="medium">
-                {stats.userCount}
-              </Heading>
-            )}
-          </Box>
+          <StatsBox name={"Total Uploads"} value={stats?.fileCount} icon={BsImages} />
+          <StatsBox name={"Total Users"} value={stats?.userCount} icon={BiUserCircle} />
         </Stack>
       </Flex>
       <Flex mb="150px" alignItems="center" justifyContent="center">
         <Stack direction={["column", "row"]}>
-          <Box
-            __css={{ cursor: "default" }}
-            transition="1s"
-            _hover={{
-              transform: "translateY(-4px)",
-              transition: ".5s",
-              bg: "#4C566A",
-            }}
-            bg={"#3B4252"}
-            width={["350px", "230px", "350px", "350px"]}
-            px="20px"
-            py="30px"
-            shadow="xl"
-            rounded="13px"
-          >
-            <HStack>
-              <FaUserAltSlash size="25px" />
-              <Heading size="md" fontWeight="medium" color={"gray.400"}>
-                Banned Users
-              </Heading>
-            </HStack>
-            {stats === undefined ? (
-              <Spinner h="20px" w="20px" mt="3" />
-            ) : (
-              <Heading as="h4" size="sm" mt="2" fontWeight="medium">
-                {stats.bannedCount}
-              </Heading>
-            )}
-          </Box>
-          <Box
-            __css={{ cursor: "default" }}
-            w="350px"
-            transition="1s"
-            _hover={{
-              transform: "translateY(-4px)",
-              transition: ".8s",
-              bg: "#4C566A",
-            }}
-            width={["350px", "230px", "350px", "350px"]}
-            bg={"#3B4252"}
-            px="20px"
-            py="30px"
-            shadow="xl"
-            rounded="13px"
-          >
-            <HStack>
-              <MdSettingsInputComposite size="25px" />
-              <Heading size="md" fontWeight="medium" color={"gray.400"}>
-                Total Domains.
-              </Heading>
-            </HStack>
-            {stats === undefined ? (
-              <Spinner h="20px" w="20px" mt="3" />
-            ) : (
-              <Heading as="h4" size="sm" mt="2" fontWeight="medium">
-                {stats.domainCount}
-              </Heading>
-            )}
-          </Box>
+        <StatsBox name={"Banned Users"} value={stats?.bannedCount} icon={FaUserAltSlash} />
+        <StatsBox name={"Total Domains"} value={stats?.domainCount} icon={MdSettingsInputComposite} />
         </Stack>
       </Flex>
       <Center mt="-100px"> <BsFillArrowDownCircleFill className={styles.arrow} onClick={() => {location.href = "/#About";}} size="30px"/></Center>
-
-
       <Flex mt="150px"className={styles.center}>
         <Text
           id="About"
@@ -707,102 +586,14 @@ export default function Homepage() {
           {"Features"}
         </Text>
       </Flex>
-
       <Flex mb="50px" alignItems="center" justifyContent="center">
         <Stack
           spacing={["4", "4", "4", "2", "2"]}
           direction={["column", "column", "column", "row", "row"]}
         >
-          <Box
-            __css={{ cursor: "default" }}
-            width={["350px", "320px", "720px", "300px", "350px", "450px"]}
-            transition="1s"
-            _hover={{
-              transform: "translateY(-10px)",
-              transition: ".5s",
-              bg: "#4C566A",
-            }}
-            bg={"#3B4252"}
-            px="20px"
-            py="30px"
-            shadow="xl"
-            rounded="10px"
-          >
-            <HStack>
-              <MdSystemUpdateAlt size="25">
-                <Box />
-              </MdSystemUpdateAlt>
-              <Heading size="md" fontWeight="medium" color={"gray.400"}>
-                Personalisation.
-              </Heading>
-            </HStack>
-
-            <Heading as="h4" size="sm" mt="2" fontWeight="medium">
-              {
-                "We allow you to customise your Files, Discord embeds, your own Kythi profile and more so get started!"
-              }
-            </Heading>
-          </Box>
-          <Box
-            __css={{ cursor: "default" }}
-            width={["350px", "320px", "720px", "300px", "350px", "450px"]}
-            transition="1s"
-            _hover={{
-              transform: "translateY(-10px)",
-              transition: ".8s",
-              bg: "#4C566A",
-            }}
-            bg={"#3B4252"}
-            px="20px"
-            py="30px"
-            shadow="xl"
-            rounded="13px"
-          >
-            <HStack>
-              <SiSpeedtest size="24px">
-                <Box />
-              </SiSpeedtest>
-              <Heading size="md" fontWeight="medium" color={"gray.400"}>
-                Fast Uploads.
-              </Heading>
-            </HStack>
-
-            <Heading as="h4" size="sm" mt="2" fontWeight="medium">
-              {
-                "When making our host, we strived to make it as user-accessible as possible along with making it a great experience to use! That is why we focused on optimising the upload speed first."
-              }
-            </Heading>
-          </Box>
-          <Box
-            __css={{ cursor: "default" }}
-            width={["350px", "320px", "720px", "300px", "350px", "450px"]}
-            transition="1s"
-            _hover={{
-              transform: "translateY(-10px)",
-              transition: ".5s",
-              bg: "#4C566A",
-            }}
-            bg={"#3B4252"}
-            px="20px"
-            py="30px"
-            shadow="xl"
-            rounded="13px"
-          >
-            <HStack>
-              <MdOutlineSlowMotionVideo size="25px">
-                <Box />
-              </MdOutlineSlowMotionVideo>
-              <Heading size="md" fontWeight="medium" color={"gray.400"}>
-                Various File-Types.
-              </Heading>
-            </HStack>
-
-            <Heading as="h4" size="sm" mt="2" fontWeight="medium">
-              {
-                "Kythi supports many File Types, for example we allow .mp4, .mp3, .png, .jpg and more!"
-              }
-            </Heading>
-          </Box>
+          <FeatureBox name={"Personalization"} value={"We allow you to customise your Files, Discord embeds, your own Kythi profile and more so get started!"} icon={MdSystemUpdateAlt}/>
+          <FeatureBox name={"Fast Uploads"} value={"When making our host, we strived to make it as user-accessible as possible along with making it a great experience to use! That is why we focused on optimising the upload speed first."} icon={SiSpeedtest}/>
+          <FeatureBox name={"Various File Types"} value={"Kythi supports many File Types, for example we allow .mp4, .mp3, .png, .jpg and more!"} icon={MdOutlineSlowMotionVideo}/>
         </Stack>
       </Flex>
     </>
