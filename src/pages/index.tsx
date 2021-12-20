@@ -2,6 +2,7 @@ import API from "../api";
 import * as React from "react";
 import { useRef } from "react";
 import { useRouter } from "next/router";
+import Footer from "../components/footer";
 import "focus-visible/dist/focus-visible";
 import StatsBox from "../components/stats";
 import { GiPartyHat } from "react-icons/gi";
@@ -73,7 +74,6 @@ export default function Homepage() {
   const RegPassword = () => setShow(!show);
   const [stats, setStats] = React.useState(undefined);
   const [show, setShow] = React.useState(false);
-  const modals = useColorModeValue("white", "#2E3440");
 
   React.useEffect(() => {
     API.getStats()
@@ -141,7 +141,7 @@ export default function Homepage() {
   const captchaRef = useRef(null);
 
   function registerSubmit() {
-  captchaRef.current.execute();
+    captchaRef.current.execute();
 
     API.register(
       registerInfo.username,
@@ -247,7 +247,6 @@ export default function Homepage() {
       });
   }
 
-
   return (
     <>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
@@ -310,7 +309,7 @@ export default function Homepage() {
           <Modal isCentered isOpen={registerOpened} onClose={registerClose}>
             <ModalOverlay />
             <ModalContent
-              bg={modals}
+              bg="#2E3440"
               width={["350px", "350px", "450px", "500px"]}
             >
               <ModalHeader> {"Register"} </ModalHeader>
@@ -441,7 +440,6 @@ export default function Homepage() {
               <Center>
                 <HCaptcha
                   size="invisible"
-                  theme="dark"
                   sitekey="c0103fd5-be5e-4d12-9fef-8fe706061b6b"
                   ref={captchaRef}
                 />
@@ -454,7 +452,7 @@ export default function Homepage() {
             <ModalContent
               boxShadow="0px"
               width={["350px", "350px", "auto", "500px"]}
-              bg={modals}
+              bg="#2E3440"
             >
               <ModalHeader>
                 {" "}
@@ -564,18 +562,43 @@ export default function Homepage() {
       </Flex>
       <Flex mb="15px" alignItems="center" justifyContent="center">
         <Stack direction={["column", "row"]}>
-          <StatsBox name={"Total Uploads"} value={stats?.fileCount} icon={BsImages} />
-          <StatsBox name={"Total Users"} value={stats?.userCount} icon={BiUserCircle} />
+          <StatsBox
+            name={"Total Uploads"}
+            value={stats?.fileCount}
+            icon={BsImages}
+          />
+          <StatsBox
+            name={"Total Users"}
+            value={stats?.userCount}
+            icon={BiUserCircle}
+          />
         </Stack>
       </Flex>
       <Flex mb="150px" alignItems="center" justifyContent="center">
         <Stack direction={["column", "row"]}>
-        <StatsBox name={"Banned Users"} value={stats?.bannedCount} icon={FaUserAltSlash} />
-        <StatsBox name={"Total Domains"} value={stats?.domainCount} icon={MdSettingsInputComposite} />
+          <StatsBox
+            name={"Banned Users"}
+            value={stats?.bannedCount}
+            icon={FaUserAltSlash}
+          />
+          <StatsBox
+            name={"Total Domains"}
+            value={stats?.domainCount}
+            icon={MdSettingsInputComposite}
+          />
         </Stack>
       </Flex>
-      <Center mt="-100px"> <BsFillArrowDownCircleFill className={styles.arrow} onClick={() => {location.href = "/#About";}} size="30px"/></Center>
-      <Flex mt="150px"className={styles.center}>
+      <Center mt="-100px">
+        {" "}
+        <BsFillArrowDownCircleFill
+          className={styles.arrow}
+          onClick={() => {
+            location.href = "/#About";
+          }}
+          size="30px"
+        />
+      </Center>
+      <Flex mt="150px" className={styles.center}>
         <Text
           id="About"
           fontSize={["37px", "43px", "60px", "60px"]}
@@ -591,11 +614,30 @@ export default function Homepage() {
           spacing={["4", "4", "4", "2", "2"]}
           direction={["column", "column", "column", "row", "row"]}
         >
-          <FeatureBox name={"Personalization"} value={"We allow you to customise your Files, Discord embeds, your own Kythi profile and more so get started!"} icon={MdSystemUpdateAlt}/>
-          <FeatureBox name={"Fast Uploads"} value={"When making our host, we strived to make it as user-accessible as possible along with making it a great experience to use! That is why we focused on optimising the upload speed first."} icon={SiSpeedtest}/>
-          <FeatureBox name={"Various File Types"} value={"Kythi supports many File Types, for example we allow .mp4, .mp3, .png, .jpg and more!"} icon={MdOutlineSlowMotionVideo}/>
+          <FeatureBox
+            name={"Personalization"}
+            value={
+              "We allow you to customise your Files, Discord embeds, your Kythi profile and more so get started!"
+            }
+            icon={MdSystemUpdateAlt}
+          />
+          <FeatureBox
+            name={"Fast Uploads"}
+            value={
+              "When making our host, we strived to make it as user-accessible as possible along with making it a great experience to use! That is why we focused on optimising the upload speed first."
+            }
+            icon={SiSpeedtest}
+          />
+          <FeatureBox
+            name={"Various File Types"}
+            value={
+              "Kythi supports many File Types, for example we allow .mp4, .mp3, .png, .jpg and more!"
+            }
+            icon={MdOutlineSlowMotionVideo}
+          />
         </Stack>
       </Flex>
-    </>
+    <Footer/>
+  </>
   );
 }
