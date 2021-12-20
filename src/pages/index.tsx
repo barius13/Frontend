@@ -13,6 +13,7 @@ import styles from "../styles/index.module.css";
 import { RiFingerprint2Line } from "react-icons/ri";
 import { FaUserAltSlash, FaUserAlt, FaLock, FaLockOpen } from "react-icons/fa";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
+import { BsFillArrowDownCircleFill } from "react-icons/bs";
 
 import {
   MdSettingsInputComposite,
@@ -35,6 +36,7 @@ import {
   Divider,
   useToast,
   ModalBody,
+  IconButton,
   InputGroup,
   ModalFooter,
   ModalHeader,
@@ -691,9 +693,12 @@ export default function Homepage() {
           </Box>
         </Stack>
       </Flex>
+      <Center mt="-100px"> <BsFillArrowDownCircleFill className={styles.arrow} onClick={() => {location.href = "/#About";}} size="30px"/></Center>
 
-      <Flex className={styles.center}>
+
+      <Flex mt="150px"className={styles.center}>
         <Text
+          id="About"
           fontSize={["37px", "43px", "60px", "60px"]}
           mb={3}
           color="#d8dee9"
