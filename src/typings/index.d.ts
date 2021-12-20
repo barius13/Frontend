@@ -11,7 +11,7 @@ export interface User {
     count: number;
     key: string;
     settings: {
-      embeds: [];
+      embeds: Embed[];
     };
   };
   invite: {
@@ -28,5 +28,19 @@ export interface User {
     banner: string | null;
     bannerColor: string | null;
     nitroType: 'classic' | 'nitro' | null;
+  };
+}
+
+interface Embed {
+  color: string;
+  title: string;
+  description: string;
+  author: {
+    text: string;
+    url: string;
+  };
+  site: {
+    text: string;
+    url: string;
   };
 }
