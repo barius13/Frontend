@@ -1,5 +1,6 @@
 import API from "../api";
 import * as React from "react";
+import { useRef } from "react";
 import { useRouter } from "next/router";
 import "focus-visible/dist/focus-visible";
 import { BsImages } from "react-icons/bs";
@@ -11,6 +12,8 @@ import { BiUserCircle } from "react-icons/bi";
 import styles from "../styles/index.module.css";
 import { RiFingerprint2Line } from "react-icons/ri";
 import { FaUserAltSlash, FaUserAlt, FaLock, FaLockOpen } from "react-icons/fa";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
+
 import {
   MdSettingsInputComposite,
   MdOutlineSlowMotionVideo,
@@ -76,11 +79,11 @@ export default function Homepage() {
   React.useEffect(() => {
     API.getStats()
       .then((stats) => {
-        Object.keys(stats).forEach(key => {
+        Object.keys(stats).forEach((key) => {
           if (stats[key] === null) {
             stats[key] = "0";
           }
-        })
+        });
         setStats(stats);
       })
       .catch(() => {
@@ -136,8 +139,11 @@ export default function Homepage() {
         return;
     }
   };
+  const captchaRef = useRef(null);
 
   function registerSubmit() {
+  captchaRef.current.execute();
+
     API.register(
       registerInfo.username,
       registerInfo.email,
@@ -241,6 +247,7 @@ export default function Homepage() {
         });
       });
   }
+
 
   return (
     <>
@@ -432,6 +439,14 @@ export default function Homepage() {
                   Register
                 </Button>
               </ModalFooter>
+              <Center>
+                <HCaptcha
+                  size="invisible"
+                  theme="dark"
+                  sitekey="c0103fd5-be5e-4d12-9fef-8fe706061b6b"
+                  ref={captchaRef}
+                />
+              </Center>
             </ModalContent>
           </Modal>
 
@@ -510,7 +525,6 @@ export default function Homepage() {
                     Forgotten your password?
                   </Link>
                   <Button
-                    justifyContent="flex-start"
                     colorScheme="blue"
                     width={["300px", "300px", "400px", "400px"]}
                     h="35px"
@@ -528,8 +542,7 @@ export default function Homepage() {
                     _hover={{ bg: "#7289da" }}
                     __css={{ transition: ".4s" }}
                     onClick={function () {
-                      location.href =
-                        `${process.env.BACKEND_URL}/discord/login`;
+                      location.href = `${process.env.BACKEND_URL}/discord/login`;
                     }}
                   >
                     Login via Discord

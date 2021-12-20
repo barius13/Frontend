@@ -20,6 +20,7 @@
     "@chakra-ui/react": "^1.6.10",
     "@emotion/react": "^11.7.0",
     "@emotion/styled": "^11.6.0",
+    "@hcaptcha/react-hcaptcha": "^0.3.9",
     "axios": "^0.24.0",
     "focus-visible": "^5.2.0",
     "framer-motion": "^5.4.5",
