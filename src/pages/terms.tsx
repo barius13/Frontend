@@ -1,12 +1,14 @@
 import { NextSeo } from "next-seo";
 import "focus-visible/dist/focus-visible";
-import { Heading } from "@chakra-ui/react";
+import { Heading, HStack } from "@chakra-ui/react";
+import styles from "../styles/terms.module.css";
 import {
   Divider,
   Center,
   Code,
   ListItem,
   UnorderedList,
+  Text,
 } from "@chakra-ui/react";
 
 export default function Policy() {
@@ -26,13 +28,13 @@ export default function Policy() {
           </Heading>
           <UnorderedList mt="15px">
             <ListItem>We (Kythi) reserve the right to edit the terms of services and privacy policy at any given time.</ListItem>
-            <ListItem>You are NOT allowed to perform a vulnerability test unless given explicit permission to by the following people (NahSahh, Kurp/Neko, Brook).</ListItem>
+            <ListItem><Text>You are NOT allowed to perform a vulnerability test unless given explicit permissions by an <span className={styles.red}>Administrator or Higher.</span></Text></ListItem>
           </UnorderedList>
           <Heading mt="15px" fontSize="20px">
             You CANNOT upload the following files:
           </Heading>
           <UnorderedList mt="15px">
-            <ListItem>Any type of illegal content such as (CP/Gore/etc)</ListItem>
+            <ListItem>Any type of illegal content such as (Child Pornography/Gore/etc)</ListItem>
             <ListItem>Upon finding any sensitive information (Such as gore/illicit content/etc), we (Kythi) are allowed full permission to contact the respected authorities.</ListItem>
           </UnorderedList>
           <Heading mt="15px" fontSize="20px">
