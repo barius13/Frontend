@@ -1,7 +1,7 @@
-import * as React from "react";
-import { IconType } from "react-icons";
-import "focus-visible/dist/focus-visible";
-import { Spinner, Box, Heading, HStack } from "@chakra-ui/react";
+import * as React from 'react';
+import {IconType} from 'react-icons';
+import 'focus-visible/dist/focus-visible';
+import {Spinner, Box, Heading, HStack} from '@chakra-ui/react';
 
 interface StatsProps {
   name: string;
@@ -13,15 +13,15 @@ const StatsBox: React.FC<StatsProps> = (props) => {
   return (
     <>
       <Box
-        __css={{ cursor: "default" }}
+        __css={{cursor: 'default'}}
         transition="1s"
         _hover={{
-          transform: "translateY(-4px)",
-          transition: ".5s",
-          bg: "#4C566A",
+          transform: 'translateY(-4px)',
+          transition: '.5s',
+          bg: '#4C566A',
         }}
-        bg={"#3B4252"}
-        width={["350px", "230px", "350px", "350px"]}
+        bg={'#3B4252'}
+        width={['350px', '230px', '350px', '350px']}
         px="20px"
         py="30px"
         shadow="md"
@@ -29,7 +29,7 @@ const StatsBox: React.FC<StatsProps> = (props) => {
       >
         <HStack>
           <props.icon size="23px" />
-          <Heading size="md" fontWeight="medium" color={"#E5E9F0"}>
+          <Heading size="md" fontWeight="medium" color={'#E5E9F0'}>
             {props.name}
           </Heading>
         </HStack>

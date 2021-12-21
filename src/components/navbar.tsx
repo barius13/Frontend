@@ -1,6 +1,6 @@
-import API from "../api";
-import * as React from "react";
-import "focus-visible/dist/focus-visible";
+import API from '../api';
+import * as React from 'react';
+import 'focus-visible/dist/focus-visible';
 import {
   Flex,
   Center,
@@ -14,11 +14,11 @@ import {
   MenuList,
   MenuItem,
   useToast,
-} from "@chakra-ui/react";
-import { useUser } from "../components/user";
+} from '@chakra-ui/react';
+import {useUser} from '../components/user';
 
 interface NavBarProps {
-  page: "dash" | "config" | "gallery";
+  page: 'dash' | 'config' | 'gallery';
 }
 
 interface ButtonProps {
@@ -27,16 +27,21 @@ interface ButtonProps {
   isHighlighted: boolean;
 }
 
+/**
+ * Its a NavBar Button!
+ * @param {React.PropsWithChildren<ButtonProps>} props Props
+ * @return {React.FunctionComponent}
+*/
 const NavBarButton: React.FC<ButtonProps> = (props) => {
   return (
     <Button
       ml="10px"
       size="sm"
-      bg={props.isHighlighted ? "#5E81AC" : "#4C566A"}
+      bg={props.isHighlighted ? '#5E81AC' : '#4C566A'}
       _hover={
-        props.isHighlighted
-          ? { background: "#81A1C1" }
-          : { background: "#3B4252" }
+        props.isHighlighted ?
+          {background: '#81A1C1'} :
+          {background: '#3B4252'}
       }
       onClick={props.onClick}
     >
@@ -45,51 +50,60 @@ const NavBarButton: React.FC<ButtonProps> = (props) => {
   );
 };
 
+/**
+ * Its a NavBar!
+ * @param {React.PropsWithChildren<NavBarProps>} props Props
+ * @return {React.FunctionComponent}
+*/
 const NavBar: React.FC<NavBarProps> = (props) => {
   const toast = useToast();
-  const { user } = useUser();
+  const {user} = useUser();
 
+  /**
+    * LogOut Function
+    * @return {void}
+  */
   function logOut() {
     API.logOut()
-    .then((data) => {
-      toast({
-        title: "Success!",
-        description: data.message,
-        status: "success",
-        position: "top-right",
-        duration: 9000,
-        isClosable: true,
-        variant: "left-accent",
-      });
+        .then((data) => {
+          toast({
+            title: 'Success!',
+            description: data.message,
+            status: 'success',
+            position: 'top-right',
+            duration: 9000,
+            isClosable: true,
+            variant: 'left-accent',
+          });
 
-      setTimeout(() => {
-        window.location.reload();
-      }, 2000)
-    })
-    .catch((err) => {
-      if (err.message === "Network Error") {
-        return toast({
-          title: "You seemed to have encountered an error!",
-          description:
-            "The API is unfortunately down please check back later.",
-          status: "error",
-          position: "top-right",
-          duration: 9000,
-          isClosable: true,
-          variant: "left-accent",
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
+        })
+        .catch((err) => {
+          if (err.message === 'Network Error') {
+            return toast({
+              title: 'You seemed to have encountered an error!',
+              description:
+            'The API is unfortunately down please check back later.',
+              status: 'error',
+              position: 'top-right',
+              duration: 9000,
+              isClosable: true,
+              variant: 'left-accent',
+            });
+          }
+
+          return toast({
+            title: 'You seemed to have encountered an error!',
+            description: err.data.message,
+            status: 'error',
+            position: 'top-right',
+            duration: 9000,
+            isClosable: true,
+            variant: 'left-accent',
+          });
         });
-      }
-
-      return toast({
-        title: "You seemed to have encountered an error!",
-        description: err.data.message,
-        status: "error",
-        position: "top-right",
-        duration: 9000,
-        isClosable: true,
-        variant: "left-accent",
-      });
-    });
   }
 
   return (
@@ -114,23 +128,23 @@ const NavBar: React.FC<NavBarProps> = (props) => {
           />
           <NavBarButton
             name="Dashboard"
-            isHighlighted={props.page === "dash"}
+            isHighlighted={props.page === 'dash'}
             onClick={() => {
-              window.location.href = "/dashboard";
+              window.location.href = '/dashboard';
             }}
           />
           <NavBarButton
             name="Configuration"
-            isHighlighted={props.page === "config"}
+            isHighlighted={props.page === 'config'}
             onClick={() => {
-              window.location.href = "/config";
+              window.location.href = '/config';
             }}
           />
           <NavBarButton
             name="Gallery"
-            isHighlighted={props.page === "gallery"}
+            isHighlighted={props.page === 'gallery'}
             onClick={() => {
-              window.location.href = "/gallery";
+              window.location.href = '/gallery';
             }}
           />
           <Flex mr="5" position="absolute" right="0">

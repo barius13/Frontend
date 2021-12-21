@@ -1,5 +1,4 @@
-import { NextSeo } from "next-seo";
-import "focus-visible/dist/focus-visible";
+import 'focus-visible/dist/focus-visible';
 import {
   Divider,
   Heading,
@@ -8,7 +7,7 @@ import {
   Code,
   ListItem,
   UnorderedList,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 
 export default function Policy() {
   return (

@@ -1,7 +1,7 @@
-import * as React from "react";
-import { IconType } from "react-icons";
-import "focus-visible/dist/focus-visible";
-import { Box, Heading, HStack } from "@chakra-ui/react";
+import * as React from 'react';
+import {IconType} from 'react-icons';
+import 'focus-visible/dist/focus-visible';
+import {Box, Heading, HStack} from '@chakra-ui/react';
 
 interface FeatureProps {
   name: string;
@@ -9,19 +9,24 @@ interface FeatureProps {
   icon: IconType;
 }
 
+/**
+ * Its a feature box!
+ * @param {React.PropsWithChildren<FeatureProps>} props Props
+ * @return {React.FunctionComponent}
+*/
 const FeatureBox: React.FC<FeatureProps> = (props) => {
   return (
     <>
       <Box
-        __css={{ cursor: "default" }}
-        width={["350px", "320px", "720px", "300px", "350px", "450px"]}
+        __css={{cursor: 'default'}}
+        width={['350px', '320px', '720px', '300px', '350px', '450px']}
         transition="1s"
         _hover={{
-          transform: "translateY(-10px)",
-          transition: ".5s",
-          bg: "#4C566A",
+          transform: 'translateY(-10px)',
+          transition: '.5s',
+          bg: '#4C566A',
         }}
-        bg={"#3B4252"}
+        bg={'#3B4252'}
         px="20px"
         py="30px"
         shadow="md"
@@ -29,7 +34,7 @@ const FeatureBox: React.FC<FeatureProps> = (props) => {
       >
         <HStack>
           <props.icon size="25" />
-          <Heading size="md" fontWeight="medium" color={"gray.400"}>
+          <Heading size="md" fontWeight="medium" color={'gray.400'}>
             {props.name}
           </Heading>
         </HStack>

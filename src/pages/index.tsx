@@ -1,27 +1,27 @@
-import API from "../api";
-import * as React from "react";
-import { useRef } from "react";
-import { useRouter } from "next/router";
-import Footer from "../components/footer";
-import "focus-visible/dist/focus-visible";
-import StatsBox from "../components/stats";
-import { GiPartyHat } from "react-icons/gi";
-import { SiSpeedtest } from "react-icons/si";
-import { SiMaildotru } from "react-icons/si";
-import { useUser } from "../components/user";
-import { BiUserCircle } from "react-icons/bi";
-import FeatureBox from "../components/feature";
-import styles from "../styles/index.module.css";
-import HCaptcha from "@hcaptcha/react-hcaptcha";
-import { RiFingerprint2Line } from "react-icons/ri";
-import { BsFillArrowDownCircleFill, BsImages } from "react-icons/bs";
-import { FaUserAltSlash, FaUserAlt, FaLock, FaLockOpen } from "react-icons/fa";
+import API from '../api';
+import * as React from 'react';
+import {useRef} from 'react';
+import {useRouter} from 'next/router';
+import Footer from '../components/footer';
+import 'focus-visible/dist/focus-visible';
+import StatsBox from '../components/stats';
+import {GiPartyHat} from 'react-icons/gi';
+import {SiSpeedtest} from 'react-icons/si';
+import {SiMaildotru} from 'react-icons/si';
+import {useUser} from '../components/user';
+import {BiUserCircle} from 'react-icons/bi';
+import FeatureBox from '../components/feature';
+import styles from '../styles/index.module.css';
+import HCaptcha from '@hcaptcha/react-hcaptcha';
+import {RiFingerprint2Line} from 'react-icons/ri';
+import {BsFillArrowDownCircleFill, BsImages} from 'react-icons/bs';
+import {FaUserAltSlash, FaUserAlt, FaLock, FaLockOpen} from 'react-icons/fa';
 
 import {
   MdSettingsInputComposite,
   MdOutlineSlowMotionVideo,
   MdSystemUpdateAlt,
-} from "react-icons/md";
+} from 'react-icons/md';
 import {
   Text,
   Link,
@@ -44,7 +44,7 @@ import {
   ModalCloseButton,
   InputLeftElement,
   InputRightElement,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 
 export default function Homepage() {
   const {
@@ -58,18 +58,18 @@ export default function Homepage() {
     onOpen: loginOpen,
   } = useDisclosure();
   const [loginInfo, setLoginInfo] = React.useState({
-    username: "",
-    password: "",
+    username: '',
+    password: '',
   });
   const [registerInfo, setRegisterInfo] = React.useState({
-    username: "",
-    password: "",
-    email: "",
-    inviteCode: "",
+    username: '',
+    password: '',
+    email: '',
+    inviteCode: '',
   });
   const toast = useToast();
   const router = useRouter();
-  const { setUser } = useUser();
+  const {setUser} = useUser();
   const captchaRef = useRef(null);
   const RegPassword = () => setShow(!show);
   const [stats, setStats] = React.useState(undefined);
@@ -77,40 +77,40 @@ export default function Homepage() {
 
   React.useEffect(() => {
     API.getStats()
-      .then((stats) => {
-        Object.keys(stats).forEach((key) => {
-          if (stats[key] === null) {
-            stats[key] = "0";
-          }
+        .then((stats) => {
+          Object.keys(stats).forEach((key) => {
+            if (stats[key] === null) {
+              stats[key] = '0';
+            }
+          });
+          setStats(stats);
+        })
+        .catch(() => {
+          setStats(null);
         });
-        setStats(stats);
-      })
-      .catch(() => {
-        setStats(null);
-      });
   }, []);
 
   const handleRegisterChange = (e) => {
     switch (e.target.placeholder) {
-      case "Username":
+      case 'Username':
         setRegisterInfo((prevInfo) => ({
           ...prevInfo,
           username: e.target.value,
         }));
         break;
-      case "Password":
+      case 'Password':
         setRegisterInfo((prevInfo) => ({
           ...prevInfo,
           password: e.target.value,
         }));
         break;
-      case "Email-Address":
+      case 'Email-Address':
         setRegisterInfo((prevInfo) => ({
           ...prevInfo,
           email: e.target.value,
         }));
         break;
-      case "Invite-Code":
+      case 'Invite-Code':
         setRegisterInfo((prevInfo) => ({
           ...prevInfo,
           inviteCode: e.target.value,
@@ -122,13 +122,13 @@ export default function Homepage() {
   };
   const handleLoginChange = (e) => {
     switch (e.target.placeholder) {
-      case "Username/Email":
+      case 'Username/Email':
         setLoginInfo((prevInfo) => ({
           ...prevInfo,
           username: e.target.value,
         }));
         break;
-      case "Password":
+      case 'Password':
         setLoginInfo((prevInfo) => ({
           ...prevInfo,
           password: e.target.value,
@@ -140,142 +140,142 @@ export default function Homepage() {
   };
   function registerClick() {
     API.validateRegisterParams(
-      registerInfo.username,
-      registerInfo.email,
-      registerInfo.password,
-      registerInfo.inviteCode
+        registerInfo.username,
+        registerInfo.email,
+        registerInfo.password,
+        registerInfo.inviteCode
     ).then(() => {
       captchaRef.current.execute();
     })
-    .catch((err) => {
-      if (err.message === "Network Error") {
-        return toast({
-          title: "You seemed to have encountered an error!",
-          description:
-            "The API is unfortunately down please check back later.",
-          status: "error",
-          position: "top-right",
-          duration: 9000,
-          isClosable: true,
-          variant: "left-accent",
-        });
-      }
+        .catch((err) => {
+          if (err.message === 'Network Error') {
+            return toast({
+              title: 'You seemed to have encountered an error!',
+              description:
+            'The API is unfortunately down please check back later.',
+              status: 'error',
+              position: 'top-right',
+              duration: 9000,
+              isClosable: true,
+              variant: 'left-accent',
+            });
+          }
 
-      return toast({
-        title: "You seemed to have encountered an error!",
-        description: err.data.message,
-        status: "error",
-        position: "top-right",
-        duration: 9000,
-        isClosable: true,
-        variant: "left-accent",
-      });
-    });
+          return toast({
+            title: 'You seemed to have encountered an error!',
+            description: err.data.message,
+            status: 'error',
+            position: 'top-right',
+            duration: 9000,
+            isClosable: true,
+            variant: 'left-accent',
+          });
+        });
   }
   function registerSubmit(key: string) {
     API.register(
-      registerInfo.username,
-      registerInfo.email,
-      registerInfo.password,
-      registerInfo.inviteCode,
-      key
+        registerInfo.username,
+        registerInfo.email,
+        registerInfo.password,
+        registerInfo.inviteCode,
+        key
     )
-      .then((data) => {
-        setRegisterInfo({
-          username: "",
-          password: "",
-          email: "",
-          inviteCode: "",
-        });
+        .then((data) => {
+          setRegisterInfo({
+            username: '',
+            password: '',
+            email: '',
+            inviteCode: '',
+          });
 
-        toast({
-          title: "Success!",
-          description: data.message,
-          status: "success",
-          position: "top-right",
-          duration: 9000,
-          isClosable: true,
-          variant: "left-accent",
-        });
-      })
-      .catch((err) => {
-        if (err.message === "Network Error") {
-          return toast({
-            title: "You seemed to have encountered an error!",
-            description:
-              "The API is unfortunately down please check back later.",
-            status: "error",
-            position: "top-right",
+          toast({
+            title: 'Success!',
+            description: data.message,
+            status: 'success',
+            position: 'top-right',
             duration: 9000,
             isClosable: true,
-            variant: "left-accent",
+            variant: 'left-accent',
           });
-        }
+        })
+        .catch((err) => {
+          if (err.message === 'Network Error') {
+            return toast({
+              title: 'You seemed to have encountered an error!',
+              description:
+              'The API is unfortunately down please check back later.',
+              status: 'error',
+              position: 'top-right',
+              duration: 9000,
+              isClosable: true,
+              variant: 'left-accent',
+            });
+          }
 
-        return toast({
-          title: "You seemed to have encountered an error!",
-          description: err.data.message,
-          status: "error",
-          position: "top-right",
-          duration: 9000,
-          isClosable: true,
-          variant: "left-accent",
+          return toast({
+            title: 'You seemed to have encountered an error!',
+            description: err.data.message,
+            status: 'error',
+            position: 'top-right',
+            duration: 9000,
+            isClosable: true,
+            variant: 'left-accent',
+          });
         });
-      });
   }
   function loginSubmit() {
     API.login(loginInfo.username, loginInfo.password)
-      .then((data) => {
-        setLoginInfo({
-          username: "",
-          password: "",
-        });
+        .then((data) => {
+          setLoginInfo({
+            username: '',
+            password: '',
+          });
 
-        setUser(data.user);
+          setUser(data.user);
 
-        toast({
-          title: "Success!",
-          description: data.message,
-          status: "success",
-          position: "top-right",
-          duration: 9000,
-          isClosable: true,
-          variant: "left-accent",
-        });
-
-        setTimeout(() => {
-          router.push("/dashboard");
-        }, 2000);
-      })
-      .catch((err) => {
-        if (err.message === "Network Error") {
-          return toast({
-            title: "You seemed to have encountered an error!",
-            description:
-              "The API is unfortunately down please check back later.",
-            status: "error",
-            position: "top-right",
+          toast({
+            title: 'Success!',
+            description: data.message,
+            status: 'success',
+            position: 'top-right',
             duration: 9000,
             isClosable: true,
-            variant: "left-accent",
+            variant: 'left-accent',
           });
-        }
 
-        console.log(err);
+          setTimeout(() => {
+            router.push('/dashboard');
+          }, 2000);
+        })
+        .catch((err) => {
+          if (err.message === 'Network Error') {
+            return toast({
+              title: 'You seemed to have encountered an error!',
+              description:
+              'The API is unfortunately down please check back later.',
+              status: 'error',
+              position: 'top-right',
+              duration: 9000,
+              isClosable: true,
+              variant: 'left-accent',
+            });
+          }
 
-        return toast({
-          title: "You seemed to have encountered an error!",
-          description:
-            err.data === "Unauthorized"
-              ? "Invalid Credentials"
-              : err.data.message,
-          status: "error",
-          position: "top-right",
-          duration: 9000,
-          isClosable: true,
-          variant: "left-accent",
+          console.log(err);
+
+          return toast({
+            title: 'You seemed to have encountered an error!',
+            description:
+            err.data === 'Unauthorized' ?
+              'Invalid Credentials' :
+              err.data.message,
+            status: 'error',
+            position: 'top-right',
+            duration: 9000,
+            isClosable: true,
+            variant: 'left-accent',
+          });
         });
-      });
   }
 
   return (
@@ -289,17 +289,17 @@ export default function Homepage() {
       </svg>
 
       <Flex
-        mt={["100px", "100px", "28px", "-80px", "-100px", "-160px"]}
+        mt={['100px', '100px', '28px', '-80px', '-100px', '-160px']}
         mb="100px"
         alignItems="center"
         justifyContent="center"
       >
-        <Flex direction="column" width={["360px", "400px", "auto", "auto"]}>
+        <Flex direction="column" width={['360px', '400px', 'auto', 'auto']}>
           <Center>
             <Flex>
               <Heading
                 className={styles.nord}
-                fontSize={["50px", "60px", "50px", "50px"]}
+                fontSize={['50px', '60px', '50px', '50px']}
                 alignContent="center"
               >
                 Kythi.
@@ -309,15 +309,15 @@ export default function Homepage() {
           <Center>
             <Text
               color="gray.400"
-              fontSize={["18px", "18px", "18px", "18px"]}
+              fontSize={['18px', '18px', '18px', '18px']}
               mb={2}
               alignContent="center"
             >
-              {"Personalized digital services for you."}
+              {'Personalized digital services for you.'}
             </Text>
           </Center>
           <Divider mb={4} />
-          <Stack justify="true" direction={["column", "row"]} spacing={2}>
+          <Stack justify="true" direction={['column', 'row']} spacing={2}>
             <Button
               w="100%"
               h="33px"
@@ -341,9 +341,9 @@ export default function Homepage() {
             <ModalOverlay />
             <ModalContent
               bg="#2E3440"
-              width={["350px", "350px", "450px", "500px"]}
+              width={['350px', '350px', '450px', '500px']}
             >
-              <ModalHeader> {"Register"} </ModalHeader>
+              <ModalHeader> {'Register'} </ModalHeader>
               <Center>
                 <Divider borderColor="#81A1C1" w="90%" mb={3} />
               </Center>
@@ -356,10 +356,10 @@ export default function Homepage() {
                   <Input
                     isRequired
                     _hover={{
-                      border: "1px",
-                      borderColor: "#81A1C1",
-                      transition: ".5s",
-                      bg: "#3B4252",
+                      border: '1px',
+                      borderColor: '#81A1C1',
+                      transition: '.5s',
+                      bg: '#3B4252',
                     }}
                     transition="1s"
                     focusBorderColor="blue.300"
@@ -379,13 +379,13 @@ export default function Homepage() {
                   <Input
                     isRequired
                     _hover={{
-                      border: "1px",
-                      borderColor: "#81A1C1",
-                      transition: ".5s",
-                      bg: "#3B4252",
+                      border: '1px',
+                      borderColor: '#81A1C1',
+                      transition: '.5s',
+                      bg: '#3B4252',
                     }}
                     transition="1s"
-                    type={show ? "text" : "password"}
+                    type={show ? 'text' : 'password'}
                     focusBorderColor="blue.300"
                     size="sm"
                     rounded={6}
@@ -402,7 +402,7 @@ export default function Homepage() {
                       h="1.5rem"
                       mb="2"
                       __css={{}}
-                      _hover={{ color: "#D8DEE9" }}
+                      _hover={{color: '#D8DEE9'}}
                       size="sm"
                       onClick={RegPassword}
                     >
@@ -416,10 +416,10 @@ export default function Homepage() {
                   </InputLeftElement>
                   <Input
                     _hover={{
-                      border: "1px",
-                      borderColor: "#81A1C1",
-                      transition: ".5s",
-                      bg: "#3B4252",
+                      border: '1px',
+                      borderColor: '#81A1C1',
+                      transition: '.5s',
+                      bg: '#3B4252',
                     }}
                     transition="1s"
                     isRequired
@@ -439,10 +439,10 @@ export default function Homepage() {
                   </InputLeftElement>
                   <Input
                     _hover={{
-                      border: "1px",
-                      borderColor: "#81A1C1",
-                      transition: ".5s",
-                      bg: "#3B4252",
+                      border: '1px',
+                      borderColor: '#81A1C1',
+                      transition: '.5s',
+                      bg: '#3B4252',
                     }}
                     transition="1s"
                     isRequired
@@ -483,12 +483,12 @@ export default function Homepage() {
             <ModalOverlay />
             <ModalContent
               boxShadow="0px"
-              width={["350px", "350px", "auto", "500px"]}
+              width={['350px', '350px', 'auto', '500px']}
               bg="#2E3440"
             >
               <ModalHeader>
-                {" "}
-                <Text fontWeight={650}>{"Login to start."} </Text>
+                {' '}
+                <Text fontWeight={650}>{'Login to start.'} </Text>
               </ModalHeader>
               <Center>
                 <Divider borderColor="#81A1C1" w="90%" mb={3} />
@@ -502,10 +502,10 @@ export default function Homepage() {
                   <Input
                     isRequired
                     _hover={{
-                      border: "1px",
-                      borderColor: "#81A1C1",
-                      transition: ".5s",
-                      bg: "#3B4252",
+                      border: '1px',
+                      borderColor: '#81A1C1',
+                      transition: '.5s',
+                      bg: '#3B4252',
                     }}
                     transition="1s"
                     focusBorderColor="blue.300"
@@ -525,17 +525,17 @@ export default function Homepage() {
                   <Input
                     isRequired
                     _hover={{
-                      border: "1px",
-                      borderColor: "#81A1C1",
-                      transition: ".5s",
-                      bg: "#3B4252",
+                      border: '1px',
+                      borderColor: '#81A1C1',
+                      transition: '.5s',
+                      bg: '#3B4252',
                     }}
                     transition="1s"
                     focusBorderColor="blue.300"
                     size="sm"
                     rounded={6}
                     variant="filled"
-                    type={show ? "text" : "password"}
+                    type={show ? 'text' : 'password'}
                     onChange={handleLoginChange}
                     value={loginInfo.password}
                     placeholder="Password"
@@ -549,13 +549,13 @@ export default function Homepage() {
                     color="gray.400"
                     cursor="default"
                     mt="-15px"
-                    _hover={{ color: "gray.300" }}
+                    _hover={{color: 'gray.300'}}
                   >
                     Forgotten your password?
                   </Link>
                   <Button
                     colorScheme="blue"
-                    width={["300px", "300px", "400px", "400px"]}
+                    width={['300px', '300px', '400px', '400px']}
                     h="35px"
                     rounded="5px"
                     variant="outline"
@@ -564,13 +564,13 @@ export default function Homepage() {
                     Login
                   </Button>
                   <Button
-                    width={["300px", "300px", "400px", "400px"]}
+                    width={['300px', '300px', '400px', '400px']}
                     h="35px"
                     bg="#5865F2"
                     rounded="5px"
-                    _hover={{ bg: "#7289da" }}
-                    __css={{ transition: ".4s" }}
-                    onClick={function () {
+                    _hover={{bg: '#7289da'}}
+                    __css={{transition: '.4s'}}
+                    onClick={function() {
                       location.href = `https://api.kythi.com/discord/login`;
                     }}
                   >
@@ -584,49 +584,49 @@ export default function Homepage() {
       </Flex>
       <Flex alignItems="center" justifyContent="center">
         <Text
-          fontSize={["37px", "43px", "60px", "50px"]}
+          fontSize={['37px', '43px', '60px', '50px']}
           mb={3}
-          color={"#d8dee9"}
+          color={'#d8dee9'}
           alignContent="center"
         >
-          {"Statistics"}
+          {'Statistics'}
         </Text>
       </Flex>
       <Flex mb="15px" alignItems="center" justifyContent="center">
-        <Stack direction={["column", "row"]}>
+        <Stack direction={['column', 'row']}>
           <StatsBox
-            name={"Total Uploads"}
+            name={'Total Uploads'}
             value={stats?.fileCount}
             icon={BsImages}
           />
           <StatsBox
-            name={"Total Users"}
+            name={'Total Users'}
             value={stats?.userCount}
             icon={BiUserCircle}
           />
         </Stack>
       </Flex>
       <Flex mb="150px" alignItems="center" justifyContent="center">
-        <Stack direction={["column", "row"]}>
+        <Stack direction={['column', 'row']}>
           <StatsBox
-            name={"Banned Users"}
+            name={'Banned Users'}
             value={stats?.bannedCount}
             icon={FaUserAltSlash}
           />
           <StatsBox
-            name={"Total Domains"}
+            name={'Total Domains'}
             value={stats?.domainCount}
             icon={MdSettingsInputComposite}
           />
         </Stack>
       </Flex>
       <Center mt="-100px">
-        {" "}
+        {' '}
         <BsFillArrowDownCircleFill
           className={styles.arrow}
           cursor="pointer"
           onClick={() => {
-            location.href = "/#About";
+            location.href = '/#About';
           }}
           size="30px"
         />
@@ -634,37 +634,37 @@ export default function Homepage() {
       <Flex mt="150px" className={styles.center}>
         <Text
           id="About"
-          fontSize={["37px", "43px", "60px", "60px"]}
+          fontSize={['37px', '43px', '60px', '60px']}
           mb={3}
           color="#d8dee9"
           alignContent="center"
         >
-          {"Features"}
+          {'Features'}
         </Text>
       </Flex>
       <Flex mb="50px" alignItems="center" justifyContent="center">
         <Stack
-          spacing={["4", "4", "4", "2", "2"]}
-          direction={["column", "column", "column", "row", "row"]}
+          spacing={['4', '4', '4', '2', '2']}
+          direction={['column', 'column', 'column', 'row', 'row']}
         >
           <FeatureBox
-            name={"Personalization"}
+            name={'Personalization'}
             value={
-              "We allow you to customise your Files, Discord embeds, your Kythi profile and more so get started!"
+              'We allow you to customise your Files, Discord embeds, your Kythi profile and more so get started!'
             }
             icon={MdSystemUpdateAlt}
           />
           <FeatureBox
-            name={"Fast Uploads"}
+            name={'Fast Uploads'}
             value={
-              "When making our host, we strived to make it as user-accessible as possible along with making it a great experience to use! That is why we focused on optimising the upload speed first."
+              'When making our host, we strived to make it as user-accessible as possible along with making it a great experience to use! That is why we focused on optimising the upload speed first.'
             }
             icon={SiSpeedtest}
           />
           <FeatureBox
-            name={"Various File Types"}
+            name={'Various File Types'}
             value={
-              "Kythi supports many File Types, for example we allow .mp4, .mp3, .png, .jpg and more!"
+              'Kythi supports many File Types, for example we allow .mp4, .mp3, .png, .jpg and more!'
             }
             icon={MdOutlineSlowMotionVideo}
           />

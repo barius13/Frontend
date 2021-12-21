@@ -1,12 +1,16 @@
-import * as React from "react";
-import "focus-visible/dist/focus-visible";
-import { Flex, Stack, Heading, Divider, Link } from "@chakra-ui/react";
+import * as React from 'react';
+import 'focus-visible/dist/focus-visible';
+import {Flex, Stack, Heading, Divider, Link} from '@chakra-ui/react';
 
+/**
+ * Its a footer!
+ * @return {React.FunctionComponent}
+*/
 export default function Footer() {
   return (
     <>
       <Flex h="200px" w="100%" bg="#3B4252">
-        <Flex w={["50px", "300px"]} h="200px" />
+        <Flex w={['50px', '300px']} h="200px" />
         <Flex mt="30px">
           <Stack direction="column">
             <Heading fontSize="30px" fontWeight="400">

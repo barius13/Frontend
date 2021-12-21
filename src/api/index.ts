@@ -1,15 +1,28 @@
-import axios, { AxiosRequestHeaders, Method } from "axios";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+import axios, {AxiosRequestHeaders, Method} from 'axios';
 
 interface requestParams {
   body?: any;
   headers?: AxiosRequestHeaders;
 }
 
+/**
+ * Its the api
+ */
 export default class API {
+  /**
+   * Wrapper for making requests
+   * @param {string} url The url to send the request to
+   * @param {Method} method The method to use for the request
+   * @param {requestParams} params The parameters to send with the request
+   * @return {Promise<any>} Axios Response
+   * @private
+   */
   private static async request(
-    url: string,
-    method: Method,
-    { body, headers }: requestParams
+      url: string,
+      method: Method,
+      {body, headers}: requestParams,
   ): Promise<any> {
     return axios({
       url: `https://api.kythi.com${url}`,
@@ -20,113 +33,172 @@ export default class API {
     });
   }
 
+  /**
+   * Requests to register a new user
+   * @param {string} username The username
+   * @param {string} email The email
+   * @param {string} password The password
+   * @param {string} inviteCode The invite code to use
+   * @param {string} hCaptchaKey The captcha key generated
+   * @return {Promise<any>} Any data returned from api
+   */
   public static async register(
-    username: string,
-    email: string,
-    password: string,
-    inviteCode: string,
-    hCaptchaKey: string
+      username: string,
+      email: string,
+      password: string,
+      inviteCode: string,
+      hCaptchaKey: string,
   ): Promise<any> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const response = await this.request("/auth/register", "POST", {
-          body: {
+    return new Promise((resolve, reject) => {
+      this.request('/auth/register', 'POST', {
+        body: {
+          username,
+          email,
+          password,
+          inviteCode,
+          hCaptchaKey,
+        },
+      })
+          .then((data) => {
+            resolve(data.data);
+          })
+          .catch((err) => {
+            const jsonErr = err.toJSON();
+          err.response?.data ? (jsonErr.data = err.response.data) : null;
+          reject(jsonErr);
+          });
+    });
+  }
+
+  /**
+   * Validates the data is acceptable
+   * @param {string} username The username
+   * @param {string} email The email
+   * @param {string} password The password
+   * @param {string} inviteCode The invite code to use
+   * @return {Promise<any>} Any data returned from api
+   */
+  public static async validateRegisterParams(
+      username: string,
+      email: string,
+      password: string,
+      inviteCode: string,
+  ): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.request(
+          `/validate/register${encodeQueryData({
             username,
             email,
             password,
             inviteCode,
-            hCaptchaKey,
-          },
-        });
-
-        resolve(response.data);
-      } catch (err) {
-        const jsonErr = err.toJSON();
-        err.response?.data ? (jsonErr.data = err.response.data) : null;
-        reject(jsonErr);
-      }
+          })}`,
+          'GET',
+          {},
+      )
+          .then((data) => {
+            resolve(data.data);
+          })
+          .catch((err) => {
+            const jsonErr = err.toJSON();
+          err.response?.data ? (jsonErr.data = err.response.data) : null;
+          reject(jsonErr);
+          });
     });
   }
 
-  public static async validateRegisterParams(username: string, email: string, password: string, inviteCode: string): Promise<any> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const response = await this.request(`/validate/register${encodeQueryData({username, email, password, inviteCode})}`, "GET", {});
-
-        resolve(response.data)
-      } catch (err) {
-        const jsonErr = err.toJSON();
-        err.response?.data ? (jsonErr.data = err.response.data) : null;
-        reject(jsonErr);
-      }
-    });
-  }
-
+  /**
+   * Request api to login
+   * @param {string} username The username
+   * @param {string} password The password
+   * @return {Promise<any>} Any data returned from api
+   */
   public static async login(username: string, password: string): Promise<any> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const response = await this.request("/auth/login", "POST", {
-          body: {
-            username,
-            password,
-          },
-        });
-
-        resolve(response.data);
-      } catch (err) {
-        const jsonErr = err.toJSON();
-        err.response?.data ? (jsonErr.data = err.response.data) : null;
-        reject(jsonErr);
-      }
+    return new Promise((resolve, reject) => {
+      this.request('/auth/login', 'POST', {
+        body: {
+          username,
+          password,
+        },
+      })
+          .then((data) => {
+            resolve(data.data);
+          })
+          .catch((err) => {
+            const jsonErr = err.toJSON();
+          err.response?.data ? (jsonErr.data = err.response.data) : null;
+          reject(jsonErr);
+          });
     });
   }
 
+  /**
+   * Request api to logout
+   * @return {Promise<any>} Any data returned from api
+   */
   public static async logOut(): Promise<any> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const response = await this.request("/auth/logOut", "POST", {});
-
-        resolve(response.data);
-      } catch (err) {
-        const jsonErr = err.toJSON();
-        err.response?.data ? (jsonErr.data = err.response.data) : null;
-        reject(jsonErr);
-      }
+    return new Promise((resolve, reject) => {
+      this.request('/auth/logOut', 'POST', {})
+          .then((data) => {
+            resolve(data.data);
+          })
+          .catch((err) => {
+            const jsonErr = err.toJSON();
+          err.response?.data ? (jsonErr.data = err.response.data) : null;
+          reject(jsonErr);
+          });
     });
   }
 
+  /**
+   * Request api for the current session (if any)
+   * @return {Promise<any>} Any data returned from api
+   */
   public static async getSession(): Promise<any> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const response = await this.request("/auth/session", "GET", {});
-
-        resolve(response.data);
-      } catch (err) {
-        const jsonErr = err.toJSON();
-        err.response?.data ? (jsonErr.data = err.response.data) : null;
-        reject(jsonErr);
-      }
+    return new Promise((resolve, reject) => {
+      this.request('/auth/session', 'GET', {})
+          .then((data) => {
+            resolve(data.data);
+          })
+          .catch((err) => {
+            const jsonErr = err.toJSON();
+          err.response?.data ? (jsonErr.data = err.response.data) : null;
+          reject(jsonErr);
+          });
     });
   }
 
+  /**
+   * Requests api for the current statistics
+   * @return {Promise<any>} Any data returned from api
+   */
   public static async getStats(): Promise<any> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const response = await this.request("/stats", "GET", {});
-
-        resolve(response.data);
-      } catch (err) {
-        const jsonErr = err.toJSON();
-        err.response?.data ? (jsonErr.data = err.response.data) : null;
-        reject(jsonErr);
-      }
+    return new Promise((resolve, reject) => {
+      this.request('/stats', 'GET', {})
+          .then((data) => {
+            resolve(data.data);
+          })
+          .catch((err) => {
+            const jsonErr = err.toJSON();
+          err.response?.data ? (jsonErr.data = err.response.data) : null;
+          reject(jsonErr);
+          });
     });
   }
 }
 
-function encodeQueryData(data) {
-  const ret = [];
-  for (let d in data)
-    ret.push(encodeURIComponent(d) + "=" + encodeURIComponent(data[d]));
-  return "?" + ret.join("&");
+/**
+ * Transforms an object with data into a query string
+ * @param {object} data The data to transform
+ * @return {string} The encoded query string
+ */
+export function encodeQueryData(data: object): string {
+  return (
+    '?' +
+    Object.keys(data).map(
+        (key) =>
+          `${encodeURIComponent(key)}=${encodeURIComponent(
+              data[key as keyof object],
+          )}`,
+    ).join('&')
+  );
 }

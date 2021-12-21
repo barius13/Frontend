@@ -1,5 +1,5 @@
-import { useContext, createContext } from "react";
-import { User } from "../typings";
+import {useContext, createContext} from 'react';
+import {User} from '../typings';
 
 export interface UserCtx {
   user: User;
@@ -9,7 +9,7 @@ export interface UserCtx {
 
 const UserContext = createContext(null);
 
-export const UserProvider = ({ value, children }) => {
+export const UserProvider = ({value, children}) => {
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
 

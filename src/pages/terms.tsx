@@ -1,6 +1,5 @@
-import { NextSeo } from "next-seo";
-import "focus-visible/dist/focus-visible";
-import styles from "../styles/terms.module.css";
+import 'focus-visible/dist/focus-visible';
+import styles from '../styles/terms.module.css';
 import {
   Divider,
   Center,
@@ -10,7 +9,7 @@ import {
   Text,
   Flex,
   Heading,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 
 export default function Policy() {
   return (
@@ -36,7 +35,7 @@ export default function Policy() {
             <ListItem>
               <Text>
                 {
-                  "You are NOT allowed to perform a vulnerability test unless given explicit permissions by an"
+                  'You are NOT allowed to perform a vulnerability test unless given explicit permissions by an'
                 }
                 <span className={styles.red}> Administrator or Higher.</span>
               </Text>
