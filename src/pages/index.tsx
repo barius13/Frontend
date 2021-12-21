@@ -571,7 +571,7 @@ export default function Homepage() {
                     _hover={{ bg: "#7289da" }}
                     __css={{ transition: ".4s" }}
                     onClick={function () {
-                      location.href = `${process.env.BACKEND_URL}/discord/login`;
+                      location.href = `https://api.kythi.com/discord/login`;
                     }}
                   >
                     Login via Discord
