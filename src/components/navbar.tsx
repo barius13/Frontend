@@ -7,7 +7,12 @@ import {
   Button,
   Heading,
   Avatar,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
 } from "@chakra-ui/react";
+import { useUser } from "../components/user";
 
 interface NavBarProps {
   page: "dash" | "config" | "gallery";
@@ -38,6 +43,7 @@ const NavBarButton: React.FC<ButtonProps> = (props) => {
 };
 
 const NavBar: React.FC<NavBarProps> = (props) => {
+  const { user } = useUser();
   return (
     <>
       <Flex h="60px" w="100%" boxShadow="xl" bg="#2E3440">
@@ -78,10 +84,17 @@ const NavBar: React.FC<NavBarProps> = (props) => {
             }}
           />
           <Flex mr="5" position="absolute" right="0">
-            <Avatar
-              name="NahSahh"
-              src="https://cdn.discordapp.com/avatars/310088719187050507/2470c78e3a4aee23cfbe36c36bc257c5.webp?size=4096"
-            />
+            <Menu>
+              <MenuButton
+                as={Avatar}
+                name={user.discord.username}
+                src={user.discord.avatar}
+              />
+              <MenuList>
+                <MenuItem>Settings</MenuItem>
+                <MenuItem>Logout</MenuItem>
+              </MenuList>
+            </Menu>
           </Flex>
         </Center>
       </Flex>
