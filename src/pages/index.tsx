@@ -317,7 +317,7 @@ export default function Homepage() {
             </Text>
           </Center>
           <Divider mb={4} />
-          <Stack justify="true" direction="row" spacing={2}>
+          <Stack justify="true" direction={["column", "row"]} spacing={2}>
             <Button
               w="100%"
               h="33px"
@@ -624,6 +624,7 @@ export default function Homepage() {
         {" "}
         <BsFillArrowDownCircleFill
           className={styles.arrow}
+          cursor="pointer"
           onClick={() => {
             location.href = "/#About";
           }}
