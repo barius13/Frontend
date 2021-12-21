@@ -487,7 +487,6 @@ export default function Homepage() {
               bg="#2E3440"
             >
               <ModalHeader>
-                {' '}
                 <Text fontWeight={650}>{'Login to start.'} </Text>
               </ModalHeader>
               <Center>
@@ -621,7 +620,6 @@ export default function Homepage() {
         </Stack>
       </Flex>
       <Center mt="-100px">
-        {' '}
         <BsFillArrowDownCircleFill
           className={styles.arrow}
           cursor="pointer"

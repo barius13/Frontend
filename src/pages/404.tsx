@@ -49,7 +49,7 @@ export default function error() {
                     colorScheme="blue"
                     variant="outline"
                   >
-              Home.
+                    Home.
                   </Button>
                 </Flex>
               </Center>
