@@ -1,3 +1,4 @@
+import API from "../api";
 import * as React from "react";
 import "focus-visible/dist/focus-visible";
 import {
@@ -12,6 +13,7 @@ import {
   Tooltip,
   MenuList,
   MenuItem,
+  useToast,
 } from "@chakra-ui/react";
 import { useUser } from "../components/user";
 
@@ -44,7 +46,52 @@ const NavBarButton: React.FC<ButtonProps> = (props) => {
 };
 
 const NavBar: React.FC<NavBarProps> = (props) => {
+  const toast = useToast();
   const { user } = useUser();
+
+  function logOut() {
+    API.logOut()
+    .then((data) => {
+      toast({
+        title: "Success!",
+        description: data.message,
+        status: "success",
+        position: "top-right",
+        duration: 9000,
+        isClosable: true,
+        variant: "left-accent",
+      });
+
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000)
+    })
+    .catch((err) => {
+      if (err.message === "Network Error") {
+        return toast({
+          title: "You seemed to have encountered an error!",
+          description:
+            "The API is unfortunately down please check back later.",
+          status: "error",
+          position: "top-right",
+          duration: 9000,
+          isClosable: true,
+          variant: "left-accent",
+        });
+      }
+
+      return toast({
+        title: "You seemed to have encountered an error!",
+        description: err.data.message,
+        status: "error",
+        position: "top-right",
+        duration: 9000,
+        isClosable: true,
+        variant: "left-accent",
+      });
+    });
+  }
+
   return (
     <>
       <Flex h="60px" w="100%" boxShadow="xl" bg="#2E3440">
@@ -105,7 +152,7 @@ const NavBar: React.FC<NavBarProps> = (props) => {
 
               <MenuList borderRadius="6px" bg="#3B4252">
                 <MenuItem>Settings</MenuItem>
-                <MenuItem>Logout</MenuItem>
+                <MenuItem onClick={logOut}>Logout</MenuItem>
               </MenuList>
             </Menu>
           </Flex>
