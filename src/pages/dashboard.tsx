@@ -1,3 +1,4 @@
+import API from '../api';
 import * as React from 'react';
 import {useEffect} from 'react';
 import Nav from '../components/navbar';
@@ -12,14 +13,22 @@ import {MdOutlineStorage, MdOutlineAnnouncement} from 'react-icons/md';
 
 export default function Dashboard() {
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-  const [stats, setStats] = React.useState(undefined);
+  const [stats, setStats] = React.useState({
+    UserPing: undefined,
+    UserStorage: undefined,
+    AdminMessages: undefined,
+  });
   const router = useRouter();
   const {user} = useUser();
 
   useEffect(() => {
     if (!user) {
-      router.push('/');
+      return void router.push('/');
     }
+
+    API.getPing().then((ping) => {
+      setStats({...stats, UserPing: ping});
+    });
   }, []);
 
   return user ? (
@@ -48,7 +57,7 @@ export default function Dashboard() {
           <Flex>
             <StatsBox
               name={'Files Uploaded'}
-              value={stats?.UserFiles}
+              value={user.upload.count}
               icon={BsFillFileEarmarkBarGraphFill}
             />
           </Flex>
