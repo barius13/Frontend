@@ -131,6 +131,20 @@ export default class API {
     });
   }
 
+  public static async getPing(): Promise<any> {
+    const startedAt = Date.now();
+
+    return new Promise((resolve, reject) => {
+      this.request('/', 'GET', {})
+          .then(() => {
+            resolve(Date.now() - startedAt);
+          })
+          .catch((err) => {
+            reject(err);
+          });
+    });
+  }
+
   /**
    * Request api to logout
    * @return {Promise<any>} Any data returned from api

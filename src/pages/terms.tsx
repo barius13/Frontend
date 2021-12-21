@@ -6,7 +6,6 @@ import {
   Code,
   ListItem,
   UnorderedList,
-  Text,
   Flex,
   Heading,
   Link,
