@@ -25,7 +25,7 @@ export default function Policy() {
             When using our service you agree to the following conditions:
           </Heading>
           <UnorderedList mt="15px">
-            <ListItem>We (Kythi) can change the terms of services and privacy policy at any given time without mentioning it/informing anyone </ListItem>
+            <ListItem>We (Kythi) reserve the right to edit the terms of services and privacy policy at any given time.</ListItem>
             <ListItem>You are NOT allowed to perform a vulnerability test unless given explicit permission to by the following people (NahSahh, Kurp/Neko, Brook).</ListItem>
           </UnorderedList>
           <Heading mt="15px" fontSize="20px">
