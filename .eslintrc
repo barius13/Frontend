@@ -5,7 +5,8 @@
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "google"
+    "google",
+    "plugin:@next/next/recommended"
   ],
   "rules": {
       "max-len": ["error", {"ignoreStrings": true, "ignoreTemplateLiterals": true, "ignoreComments": true}],
