@@ -175,8 +175,8 @@ export default class API {
           })
           .catch((err) => {
             const jsonErr = err.toJSON();
-          err.response?.data ? (jsonErr.data = err.response.data) : null;
-          reject(jsonErr);
+            err.response?.data ? (jsonErr.data = err.response.data) : null;
+            reject(jsonErr);
           });
     });
   }

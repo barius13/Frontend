@@ -5,7 +5,7 @@ import {Spinner, Box, Heading, HStack} from '@chakra-ui/react';
 
 interface StatsProps {
   name: string;
-  value: number;
+  value: number | string;
   icon: IconType;
 }
 

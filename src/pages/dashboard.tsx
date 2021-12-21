@@ -74,7 +74,7 @@ export default function Dashboard() {
           <Flex>
             <StatsBox
               name={'Your latency'}
-              value={stats?.UserPing}
+              value={`${stats?.UserPing}ms`}
               icon={VscGraphLine}
             />
           </Flex>
