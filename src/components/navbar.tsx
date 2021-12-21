@@ -9,6 +9,7 @@ import {
   Avatar,
   Menu,
   MenuButton,
+  Tooltip,
   MenuList,
   MenuItem,
 } from "@chakra-ui/react";
@@ -49,6 +50,8 @@ const NavBar: React.FC<NavBarProps> = (props) => {
       <Flex h="60px" w="100%" boxShadow="xl" bg="#2E3440">
         <Center>
           <Heading
+            as="button"
+            cursor=""
             ml="20px"
             fontSize="30px"
             textColor="#eceff4"
@@ -85,12 +88,22 @@ const NavBar: React.FC<NavBarProps> = (props) => {
           />
           <Flex mr="5" position="absolute" right="0">
             <Menu>
-              <MenuButton
-                as={Avatar}
-                name={user.discord.username}
-                src={user.discord.avatar}
-              />
-              <MenuList>
+              <Tooltip
+                bg="#434C5E"
+                placement="left"
+                hasArrow
+                textColor="white"
+                label={user.username}
+              >
+                <MenuButton
+                  cursor="pointer"
+                  as={Avatar}
+                  name={user.discord.username}
+                  src={user.discord.avatar}
+                />
+              </Tooltip>
+
+              <MenuList borderRadius="6px" bg="#3B4252">
                 <MenuItem>Settings</MenuItem>
                 <MenuItem>Logout</MenuItem>
               </MenuList>
