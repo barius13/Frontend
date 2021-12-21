@@ -44,7 +44,6 @@ import {
   ModalCloseButton,
   InputLeftElement,
   InputRightElement,
-  useColorModeValue,
 } from "@chakra-ui/react";
 
 export default function Homepage() {
@@ -66,11 +65,12 @@ export default function Homepage() {
     username: "",
     password: "",
     email: "",
-    invite: "",
+    inviteCode: "",
   });
   const toast = useToast();
   const router = useRouter();
   const { setUser } = useUser();
+  const captchaRef = useRef(null);
   const RegPassword = () => setShow(!show);
   const [stats, setStats] = React.useState(undefined);
   const [show, setShow] = React.useState(false);
@@ -113,7 +113,7 @@ export default function Homepage() {
       case "Invite-Code":
         setRegisterInfo((prevInfo) => ({
           ...prevInfo,
-          invite: e.target.value,
+          inviteCode: e.target.value,
         }));
         break;
       default:
@@ -138,23 +138,54 @@ export default function Homepage() {
         return;
     }
   };
-  const captchaRef = useRef(null);
+  function registerClick() {
+    API.validateRegisterParams(
+      registerInfo.username,
+      registerInfo.email,
+      registerInfo.password,
+      registerInfo.inviteCode
+    ).then(() => {
+      captchaRef.current.execute();
+    })
+    .catch((err) => {
+      if (err.message === "Network Error") {
+        return toast({
+          title: "You seemed to have encountered an error!",
+          description:
+            "The API is unfortunately down please check back later.",
+          status: "error",
+          position: "top-right",
+          duration: 9000,
+          isClosable: true,
+          variant: "left-accent",
+        });
+      }
 
-  function registerSubmit() {
-    captchaRef.current.execute();
-
+      return toast({
+        title: "You seemed to have encountered an error!",
+        description: err.data.message,
+        status: "error",
+        position: "top-right",
+        duration: 9000,
+        isClosable: true,
+        variant: "left-accent",
+      });
+    });
+  }
+  function registerSubmit(key: string) {
     API.register(
       registerInfo.username,
       registerInfo.email,
       registerInfo.password,
-      registerInfo.invite
+      registerInfo.inviteCode,
+      key
     )
       .then((data) => {
         setRegisterInfo({
           username: "",
           password: "",
           email: "",
-          invite: "",
+          inviteCode: "",
         });
 
         toast({
@@ -421,7 +452,7 @@ export default function Homepage() {
                     rounded={6}
                     variant="filled"
                     onChange={handleRegisterChange}
-                    value={registerInfo.invite}
+                    value={registerInfo.inviteCode}
                     placeholder="Invite-Code"
                   />
                 </InputGroup>
@@ -432,7 +463,7 @@ export default function Homepage() {
                   width="100%"
                   colorScheme="blue"
                   variant="outline"
-                  onClick={registerSubmit}
+                  onClick={registerClick}
                 >
                   Register
                 </Button>
@@ -442,6 +473,7 @@ export default function Homepage() {
                   size="invisible"
                   sitekey="c0103fd5-be5e-4d12-9fef-8fe706061b6b"
                   ref={captchaRef}
+                  onVerify={registerSubmit}
                 />
               </Center>
             </ModalContent>
@@ -637,7 +669,7 @@ export default function Homepage() {
           />
         </Stack>
       </Flex>
-    <Footer/>
-  </>
+      <Footer />
+    </>
   );
 }
