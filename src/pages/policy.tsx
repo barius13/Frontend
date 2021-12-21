@@ -1,9 +1,10 @@
 import { NextSeo } from "next-seo";
 import "focus-visible/dist/focus-visible";
-import { Heading } from "@chakra-ui/react";
 import {
   Divider,
+  Heading,
   Center,
+  Flex,
   Code,
   ListItem,
   UnorderedList,
@@ -12,6 +13,7 @@ import {
 export default function Policy() {
   return (
     <>
+      <Flex h="150px " w="100%" />
       <Center>
         <Code mt="50px" w="80%" px="30px" py="30px" borderRadius="10px">
           <Center>
@@ -53,8 +55,8 @@ export default function Policy() {
           </Center>
           <Center>
             <Heading mt="20px" fontSize="24px">
-              We (Kythi) do not knowingly collect any data of users under the age of 13
-              years old.
+              We (Kythi) do not knowingly collect any data of users under the
+              age of 13 years old.
             </Heading>
           </Center>
         </Code>
