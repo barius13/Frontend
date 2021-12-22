@@ -14,23 +14,23 @@ function App({Component, pageProps}: AppProps) {
 
   useEffect(() => {
     API.getSession()
-        .then((data) => {
-          setTimeout(() => {
-            setUser(data.user);
-          }, 1000);
-        })
-        .catch(() => {
-          setTimeout(() => {
-            setUser(null);
-          }, 1000);
-        });
+      .then((data) => {
+        setTimeout(() => {
+          setUser(data.user);
+        }, 1000);
+      })
+      .catch(() => {
+        setTimeout(() => {
+          setUser(null);
+        }, 1000);
+      });
   }, []);
 
   return (
     <>
       <NextSeo
-        title="Kythi"
-        description="Kythi is a new service currently being made."
+        title="Image Host"
+        description="Kythi is a new Image host that is currently being made."
         additionalMetaTags={[
           {
             property: 'theme-color',
@@ -38,8 +38,9 @@ function App({Component, pageProps}: AppProps) {
           },
         ]}
         openGraph={{
-          title: '',
-          description: 'Kythi.com is a new service currently being made.',
+          title: 'Image Host',
+          description:
+            'Kythi is a new Image host that is currently being made.',
         }}
       />
 
