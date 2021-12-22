@@ -1,6 +1,8 @@
 import 'focus-visible/dist/focus-visible';
 import {Box, Heading, Text} from '@chakra-ui/react';
-import {Button, Flex, Center} from '@chakra-ui/react';
+import {Button, Flex, Center, Divider} from '@chakra-ui/react';
+import {BiErrorAlt} from 'react-icons/bi';
+import Footer from '../components/footer';
 
 export default function error() {
   return (
@@ -8,48 +10,48 @@ export default function error() {
       <Center>
         <Flex h="90vh" alignItems="center" justifyContent="center">
           <Flex direction="column" width={['360px', '400px', 'auto', 'auto']}>
-            <Box
-              boxShadow="2xl"
-              __css={{bg: '#3B4252', cursor: 'default'}}
-              width={['320px', '320px', '320px', '320px', '320px', '450px']}
-              transition="1s"
-              px="20px"
-              py="30px"
-              rounded="10px"
-            >
+            <Box px="20px" py="30px">
               <Center>
-                <Flex>
-                  <Heading
-                    fontSize={['30px', '20px', '30px', '30px']}
-                    alignContent="center"
-                  >
-                    404
-                  </Heading>
-                </Flex>
+                <Heading
+                  fontSize={['50px', '50px', '60px', '80px']}
+                  alignContent="center"
+                >
+                  404!
+                </Heading>
               </Center>
               <Center>
-                <Flex>
-                  <Text
-                    fontSize={['18px', '18px', '18px', '18px']}
-                    alignContent="center"
-                  >
-                    This page isn't available.
-                  </Text>
-                </Flex>
+                <Divider mb="10px" bg="#5E81AC" w="100%" />
               </Center>
+              <Center>
+                <Text
+                  fontSize={['15px', '18px', '18px', '18px']}
+                  alignContent="center"
+                >
+                  This page isn't available at this moment in time.
+                </Text>
+              </Center>
+              <Center>
+                <Text
+                  fontSize={['15px', '18px', '18px', '18px']}
+                  alignContent="center"
+                >
+                  Check back later.
+                </Text>
+              </Center>
+
               <Center>
                 <Flex>
                   <Button
+                    leftIcon={<BiErrorAlt />}
                     onClick={() => {
                       location.href = '/';
                     }}
-                    mt="5px"
-                    w="100%"
-                    h="33px"
-                    colorScheme="blue"
-                    variant="outline"
+                    mt="15px"
+                    size="md"
+                    bg="#5E81AC"
+                    _hover={{background: '#81A1C1'}}
                   >
-                    Home.
+                    Return home.
                   </Button>
                 </Flex>
               </Center>
@@ -57,6 +59,9 @@ export default function error() {
           </Flex>
         </Flex>
       </Center>
+      <Flex mt="93px">
+        <Footer />
+      </Flex>
     </>
   );
 }
