@@ -6,7 +6,6 @@ import 'focus-visible/dist/focus-visible';
 import StatsBox from '../components/stats';
 import {useUser} from '../components/user';
 import {VscGraphLine} from 'react-icons/vsc';
-import {FaLinux} from 'react-icons/fa';
 import {
   Flex,
   Stack,
@@ -16,11 +15,9 @@ import {
   Tooltip,
   Code,
   Box,
-  IconButton,
   Avatar,
   Divider,
   Image,
-  VStack,
 } from '@chakra-ui/react';
 import {useRouter} from 'next/dist/client/router';
 import {BsFillFileEarmarkBarGraphFill} from 'react-icons/bs';

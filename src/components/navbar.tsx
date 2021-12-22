@@ -63,45 +63,45 @@ const NavBar: React.FC<NavBarProps> = (props) => {
    */
   function logOut() {
     API.logOut()
-      .then((data) => {
-        toast({
-          title: 'Success!',
-          description: data.message,
-          status: 'success',
-          position: 'top-right',
-          duration: 9000,
-          isClosable: true,
-          variant: 'left-accent',
-        });
+        .then((data) => {
+          toast({
+            title: 'Success!',
+            description: data.message,
+            status: 'success',
+            position: 'top-right',
+            duration: 9000,
+            isClosable: true,
+            variant: 'left-accent',
+          });
 
-        setTimeout(() => {
-          window.location.reload();
-        }, 2000);
-      })
-      .catch((err) => {
-        if (err.message === 'Network Error') {
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
+        })
+        .catch((err) => {
+          if (err.message === 'Network Error') {
+            return toast({
+              title: 'You seemed to have encountered an error!',
+              description:
+              'The API is unfortunately down please check back later.',
+              status: 'error',
+              position: 'top-right',
+              duration: 9000,
+              isClosable: true,
+              variant: 'left-accent',
+            });
+          }
+
           return toast({
             title: 'You seemed to have encountered an error!',
-            description:
-              'The API is unfortunately down please check back later.',
+            description: err.data.message,
             status: 'error',
             position: 'top-right',
             duration: 9000,
             isClosable: true,
             variant: 'left-accent',
           });
-        }
-
-        return toast({
-          title: 'You seemed to have encountered an error!',
-          description: err.data.message,
-          status: 'error',
-          position: 'top-right',
-          duration: 9000,
-          isClosable: true,
-          variant: 'left-accent',
         });
-      });
   }
 
   return (

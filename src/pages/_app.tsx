@@ -14,16 +14,16 @@ function App({Component, pageProps}: AppProps) {
 
   useEffect(() => {
     API.getSession()
-      .then((data) => {
-        setTimeout(() => {
-          setUser(data.user);
-        }, 1000);
-      })
-      .catch(() => {
-        setTimeout(() => {
-          setUser(null);
-        }, 1000);
-      });
+        .then((data) => {
+          setTimeout(() => {
+            setUser(data.user);
+          }, 1000);
+        })
+        .catch(() => {
+          setTimeout(() => {
+            setUser(null);
+          }, 1000);
+        });
   }, []);
 
   return (
