@@ -1,10 +1,10 @@
 import 'focus-visible/dist/focus-visible';
 import {
+  Code,
+  Flex,
+  Center,
   Divider,
   Heading,
-  Center,
-  Flex,
-  Code,
   ListItem,
   UnorderedList,
 } from '@chakra-ui/react';

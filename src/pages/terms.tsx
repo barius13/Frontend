@@ -1,14 +1,14 @@
 import 'focus-visible/dist/focus-visible';
 import styles from '../styles/terms.module.css';
 import {
-  Divider,
-  Center,
+  Link,
   Code,
+  Flex,
+  Center,
+  Divider,
+  Heading,
   ListItem,
   UnorderedList,
-  Flex,
-  Heading,
-  Link,
 } from '@chakra-ui/react';
 
 export default function Policy() {

@@ -1,5 +1,5 @@
-import {useContext, createContext} from 'react';
 import {User} from '../typings';
+import {useContext, createContext} from 'react';
 
 export interface UserCtx {
   user: User;

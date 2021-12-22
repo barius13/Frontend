@@ -1,11 +1,11 @@
 import API from '../api';
-import {useRef} from 'react';
 import * as React from 'react';
 import {useRouter} from 'next/router';
 import Footer from '../components/footer';
 import 'focus-visible/dist/focus-visible';
-import StatsBox from '../components/stats';
 import {GiPartyHat} from 'react-icons/gi';
+import {MdMoneyOff} from 'react-icons/md';
+import StatsBox from '../components/stats';
 import {SiSpeedtest} from 'react-icons/si';
 import {SiMaildotru} from 'react-icons/si';
 import {useUser} from '../components/user';
@@ -13,21 +13,19 @@ import {BiUserCircle} from 'react-icons/bi';
 import FeatureBox from '../components/feature';
 import styles from '../styles/index.module.css';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
-import {MdMoneyOff} from 'react-icons/md';
 import {RiFingerprint2Line} from 'react-icons/ri';
+import {FaUserAltSlash, FaUserAlt, FaLock, FaLockOpen} from 'react-icons/fa';
+import {
+  MdSettingsInputComposite,
+  MdOutlineSlowMotionVideo,
+  MdSystemUpdateAlt,
+} from 'react-icons/md';
 import {
   BsFillArrowDownCircleFill,
   BsImages,
   BsHeadset,
   BsGithub,
 } from 'react-icons/bs';
-import {FaUserAltSlash, FaUserAlt, FaLock, FaLockOpen} from 'react-icons/fa';
-
-import {
-  MdSettingsInputComposite,
-  MdOutlineSlowMotionVideo,
-  MdSystemUpdateAlt,
-} from 'react-icons/md';
 import {
   Text,
   Link,
@@ -76,7 +74,7 @@ export default function Homepage() {
   const toast = useToast();
   const router = useRouter();
   const {setUser} = useUser();
-  const captchaRef = useRef(null);
+  const captchaRef = React.useRef(null);
   const RegPassword = () => setShow(!show);
   const [stats, setStats] = React.useState(undefined);
   const [show, setShow] = React.useState(false);
@@ -676,7 +674,6 @@ export default function Homepage() {
         </Stack>
       </Center>
       <Center mb="50px">
-        {' '}
         <Stack
           spacing={['4', '4', '4', '2', '2']}
           direction={['column', 'column', 'column', 'row', 'row']}

@@ -7,32 +7,31 @@ import StatsBox from '../components/stats';
 import {useUser} from '../components/user';
 import {VscGraphLine} from 'react-icons/vsc';
 import {
-  Flex,
-  Stack,
-  Heading,
-  Center,
-  Button,
-  Tooltip,
-  Code,
   Box,
-  Avatar,
+  Code,
+  Flex,
   Text,
-  Divider,
   Modal,
+  Stack,
+  Image,
+  Center,
+  Avatar,
+  Button,
+  Heading,
+  Tooltip,
+  Divider,
   ModalContent,
   ModalFooter,
   ModalHeader,
   ModalOverlay,
   ModalCloseButton,
-  Image,
 } from '@chakra-ui/react';
+import {useDisclosure} from '@chakra-ui/react';
 import {useRouter} from 'next/dist/client/router';
 import {BsFillFileEarmarkBarGraphFill} from 'react-icons/bs';
 import {MdOutlineStorage, MdOutlineAnnouncement} from 'react-icons/md';
-import {useDisclosure} from '@chakra-ui/react';
 
 export default function Dashboard() {
-  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   const [stats, setStats] = React.useState({
     UserPing: undefined,
     UserStorage: undefined,
@@ -62,7 +61,6 @@ export default function Dashboard() {
       <Nav page={'dash'} />
       <Divider bg="#5E81AC" />
       <Center>
-        {' '}
         <Center
           borderRadius="6px"
           w={['93.5%', '88.4%']}
@@ -162,7 +160,6 @@ export default function Dashboard() {
           bg="#3B4252"
         >
           <Center>
-            {' '}
             <Heading size="lg" fontWeight="sm" color={'#E5E9F0'}>
               Latest Upload
             </Heading>
@@ -198,7 +195,6 @@ export default function Dashboard() {
         </Box>
         <Box borderRadius="6px" bg="#3B4252" w="350px" h="365px">
           <Center>
-            {' '}
             <Heading mt="15px" size="lg" fontWeight="sm" color={'#E5E9F0'}>
               Downloadable Config(s)
             </Heading>
@@ -263,7 +259,6 @@ export default function Dashboard() {
               _hover={{background: '#BF616A'}}
               bg="#5E81AC"
             >
-              {' '}
               Delete
             </Button>
           </ModalFooter>

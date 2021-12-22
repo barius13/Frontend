@@ -1,8 +1,8 @@
 import 'focus-visible/dist/focus-visible';
+import Footer from '../components/footer';
+import {BiErrorAlt} from 'react-icons/bi';
 import {Box, Heading, Text} from '@chakra-ui/react';
 import {Button, Flex, Center, Divider} from '@chakra-ui/react';
-import {BiErrorAlt} from 'react-icons/bi';
-import Footer from '../components/footer';
 
 export default function error() {
   return (
