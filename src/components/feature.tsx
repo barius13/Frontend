@@ -5,7 +5,8 @@ import {Box, Heading, HStack} from '@chakra-ui/react';
 
 interface FeatureProps {
   name: string;
-  value: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  value: any[];
   icon: IconType;
 }
 

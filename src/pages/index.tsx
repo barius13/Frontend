@@ -1,6 +1,6 @@
 import API from '../api';
-import * as React from 'react';
 import {useRef} from 'react';
+import * as React from 'react';
 import {useRouter} from 'next/router';
 import Footer from '../components/footer';
 import 'focus-visible/dist/focus-visible';
@@ -15,7 +15,12 @@ import styles from '../styles/index.module.css';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
 import {MdMoneyOff} from 'react-icons/md';
 import {RiFingerprint2Line} from 'react-icons/ri';
-import {BsFillArrowDownCircleFill, BsImages, BsHeadset, BsGithub} from 'react-icons/bs';
+import {
+  BsFillArrowDownCircleFill,
+  BsImages,
+  BsHeadset,
+  BsGithub,
+} from 'react-icons/bs';
 import {FaUserAltSlash, FaUserAlt, FaLock, FaLockOpen} from 'react-icons/fa';
 
 import {
@@ -24,14 +29,12 @@ import {
   MdSystemUpdateAlt,
 } from 'react-icons/md';
 import {
-  Box,
   Text,
   Link,
   Flex,
   Modal,
   Input,
   Stack,
-  HStack,
   Center,
   Button,
   Heading,
@@ -651,23 +654,23 @@ export default function Homepage() {
         >
           <FeatureBox
             name={'Personalization'}
-            value={
-              'We allow you to customise your Files, Discord embeds, your Kythi profile and more so get started!'
-            }
+            value={[
+              'We allow you to customise your Files, Discord embeds, your Kythi profile and more so get started!',
+            ]}
             icon={MdSystemUpdateAlt}
           />
           <FeatureBox
             name={'Fast Uploads'}
-            value={
-              'When making our host, we strived to make it as user-accessible as possible along with making it a great experience to use! That is why we focused on optimising the upload speed first.'
-            }
+            value={[
+              'When making our host, we strived to make it as user-accessible as possible along with making it a great experience to use! That is why we focused on optimising the upload speed first.',
+            ]}
             icon={SiSpeedtest}
           />
           <FeatureBox
             name={'Various File Types'}
-            value={
-              'Kythi supports many File Types, for example we allow .mp4, .mp3, .png, .jpg and more!'
-            }
+            value={[
+              'Kythi supports many File Types, for example we allow .mp4, .mp3, .png, .jpg and more!',
+            ]}
             icon={MdOutlineSlowMotionVideo}
           />
         </Stack>
@@ -680,44 +683,27 @@ export default function Homepage() {
         >
           <FeatureBox
             name={'24/7 Support'}
-            value={
-              'Kythi provides fast support with simple answers, with a wide range of staff that are always happy to help.'
-            }
+            value={[
+              'Kythi provides fast support with simple answers, with a wide range of staff that are always happy to help.',
+            ]}
             icon={BsHeadset}
           />
           <FeatureBox
             name={'100% free'}
-            value={
-              'Devs at kythi looked at what they could do to make your experience immersive, and thats why we are glad to announce that we are 100% free to use, and we will never charge you for anything.'
-            }
+            value={[
+              'Devs at kythi looked at what they could do to make your experience immersive, and thats why we are glad to announce that we are 100% free to use, and we will never charge you for anything.',
+            ]}
             icon={MdMoneyOff}
           />
-          <Box
-            __css={{cursor: 'default'}}
-            width={['350px', '320px', '720px', '300px', '350px', '450px']}
-            transition="1s"
-            _hover={{
-              transform: 'translateY(-10px)',
-              transition: '.5s',
-              bg: '#4C566A',
-            }}
-            bg={'#3B4252'}
-            px="20px"
-            py="30px"
-            shadow="md"
-            rounded="6px"
-          >
-            <HStack>
-              <BsGithub size="25" />
-              <Heading size="md" fontWeight="medium" color={'gray.400'}>
-          Open Source'
-              </Heading>
-            </HStack>
-
-            <Heading as="h4" size="sm" mt="2" fontWeight="medium">
-        The source of Kythi is on our <Link href="https://github.com/kythix">Github!</Link> this is free to use for everyone, and we will always be open to any suggestions you have
-            </Heading>
-          </Box>
+          <FeatureBox
+            name="Open Source"
+            icon={BsGithub}
+            value={[
+              'The source of Kythi is on our ',
+              <Link href="https://github.com/kythix">Github!</Link>,
+              ' this is free to use for everyone, and we will always be open to any suggestions you have',
+            ]}
+          />
         </Stack>
       </Center>
       <Footer />
