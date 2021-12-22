@@ -697,7 +697,7 @@ export default function Homepage() {
             icon={BsGithub}
             value={[
               'The source of Kythi is on our ',
-              <Link href="https://github.com/kythix">Github!</Link>,
+              <span className={styles.nordblue}><Link href="https://github.com/kythix">Github!</Link></span>,
               ' this is free to use for everyone, and we will always be open to any suggestions you have',
             ]}
           />

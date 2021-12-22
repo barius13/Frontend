@@ -3,6 +3,11 @@
 .nord {
   color: #d8dee9;
 }
+
+.nordblue {
+  color: #5E81AC;
+}
+
 .center {
     align-items: center;
     justify-content: center;
