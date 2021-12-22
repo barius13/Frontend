@@ -29,12 +29,12 @@ function App({Component, pageProps}: AppProps) {
   return (
     <>
       <NextSeo
-        title="Image Host"
+        title="Kythi File Host"
         description="Kythi is a new Image host that is currently being made."
         additionalMetaTags={[
           {
             property: 'theme-color',
-            content: '#b00af7',
+            content: '#5E81AC',
           },
         ]}
         openGraph={{
