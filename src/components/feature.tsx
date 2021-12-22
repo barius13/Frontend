@@ -13,7 +13,7 @@ interface FeatureProps {
  * Its a feature box!
  * @param {React.PropsWithChildren<FeatureProps>} props Props
  * @return {React.FunctionComponent}
-*/
+ */
 const FeatureBox: React.FC<FeatureProps> = (props) => {
   return (
     <>

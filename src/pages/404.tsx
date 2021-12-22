@@ -7,16 +7,16 @@ export default function error() {
     <>
       <Center>
         <Flex h="90vh" alignItems="center" justifyContent="center">
-          <Flex
-            direction="column"
-            width={['360px', '400px', 'auto', 'auto']}
-          >
-            <Box boxShadow="2xl" __css={{bg: '#3B4252', cursor: 'default'}}
+          <Flex direction="column" width={['360px', '400px', 'auto', 'auto']}>
+            <Box
+              boxShadow="2xl"
+              __css={{bg: '#3B4252', cursor: 'default'}}
               width={['320px', '320px', '320px', '320px', '320px', '450px']}
               transition="1s"
               px="20px"
               py="30px"
-              rounded="10px" >
+              rounded="10px"
+            >
               <Center>
                 <Flex>
                   <Heading

@@ -5,7 +5,7 @@ import {Flex, Spinner, Text, Box, Center} from '@chakra-ui/react';
 /**
  * Its a loading page!
  * @return {React.FunctionComponent}
-*/
+ */
 export default function load() {
   return (
     <>
@@ -27,8 +27,9 @@ export default function load() {
               </Center>
               <Center>
                 <Text mt="20px" mb="10px">
-                  {'If you are experiencing any network related issues please check our discord server.'}
-
+                  {
+                    'If you are experiencing any network related issues please check our discord server.'
+                  }
                 </Text>
               </Center>
             </Box>

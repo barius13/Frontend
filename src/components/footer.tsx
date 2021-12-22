@@ -5,7 +5,7 @@ import {Flex, Stack, Heading, Divider, Link} from '@chakra-ui/react';
 /**
  * Its a footer!
  * @return {React.FunctionComponent}
-*/
+ */
 export default function Footer() {
   return (
     <>

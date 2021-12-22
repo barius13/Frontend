@@ -7,16 +7,16 @@ export default function ResetPassword() {
     <>
       <Center>
         <Flex h="90vh" alignItems="center" justifyContent="center">
-          <Flex
-            direction="column"
-            width={['360px', '400px', 'auto', 'auto']}
-          >
-            <Box boxShadow="2xl" __css={{bg: '#3B4252', cursor: 'default'}}
+          <Flex direction="column" width={['360px', '400px', 'auto', 'auto']}>
+            <Box
+              boxShadow="2xl"
+              __css={{bg: '#3B4252', cursor: 'default'}}
               width={['350px', '320px', '720px', '300px', '350px', '450px']}
               transition="1s"
               px="20px"
               py="30px"
-              rounded="10px" >
+              rounded="10px"
+            >
               <Center>
                 <Flex>
                   <Heading
@@ -28,8 +28,17 @@ export default function ResetPassword() {
                 </Flex>
               </Center>
               <Center>
-                <Input transition='.8s' focusBorderColor="#81A1C1" _hover={{transition: '.6s', borderColor: '#D8DEE9'}} rounded="8px" placeholder="Email-Address" w="400px" mt="20px" mb="10px" size="sm" />
-
+                <Input
+                  transition=".8s"
+                  focusBorderColor="#81A1C1"
+                  _hover={{transition: '.6s', borderColor: '#D8DEE9'}}
+                  rounded="8px"
+                  placeholder="Email-Address"
+                  w="400px"
+                  mt="20px"
+                  mb="10px"
+                  size="sm"
+                />
               </Center>
               <Center>
                 <Button
@@ -48,7 +57,6 @@ export default function ResetPassword() {
                   Send Request!
                 </Button>
               </Center>
-
             </Box>
           </Flex>
         </Flex>
