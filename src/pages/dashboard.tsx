@@ -16,12 +16,20 @@ import {
   Code,
   Box,
   Avatar,
+  Text,
   Divider,
+  Modal,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  ModalCloseButton,
   Image,
 } from '@chakra-ui/react';
 import {useRouter} from 'next/dist/client/router';
 import {BsFillFileEarmarkBarGraphFill} from 'react-icons/bs';
 import {MdOutlineStorage, MdOutlineAnnouncement} from 'react-icons/md';
+import {useDisclosure} from '@chakra-ui/react';
 
 export default function Dashboard() {
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
@@ -42,14 +50,32 @@ export default function Dashboard() {
       setStats({...stats, UserPing: ping});
     });
   }, []);
+  const {
+    isOpen: WipeOpened,
+    onClose: WipeClose,
+    onOpen: WipeOpen,
+  } = useDisclosure();
 
   return user ? (
     <>
       <Nav page={'dash'} />
       <Divider bg="#5E81AC" />
+      <Center>
+        {' '}
+        <Center
+          borderRadius="6px"
+          w={['93.5%', '88.4%']}
+          bg="#3B4252"
+          mt="3%"
+          mb={['10px', '']}
+        >
+          <Heading>{`Welcome ${user.username}!`}</Heading>
+        </Center>
+      </Center>
+
       <Flex
         ml={['3%', '5.9%']}
-        mt="3%"
+        mt="1.5%"
         w={['365px', '750px']}
         direction={['column', 'row', 'row']}
       >
@@ -130,37 +156,6 @@ export default function Dashboard() {
           </Box>
         </Box>
       </Flex>
-      <Stack spacing={'25px'} mt={['15px', '']} direction={'row'}>
-        {' '}
-        <Heading
-          bg="#3B4252"
-          borderRadius={'6px'}
-          w="350px"
-          px="8px"
-          py="3px"
-          mb="20px"
-          ml={['3%', '5.9%']}
-          size="lg"
-          fontWeight="md"
-          color={'#E5E9F0'}
-        >
-          Most Recent Upload
-        </Heading>
-        <Heading
-          bg="#3B4252"
-          borderRadius={'6px'}
-          w="350px"
-          h="43px"
-          px="8px"
-          py="3px"
-          ml={['3%', '5.9%']}
-          size="lg"
-          fontWeight="md"
-          color={'#E5E9F0'}
-        >
-          Downloadable file(s)
-        </Heading>
-      </Stack>
       <Stack ml={['3%', '5.9%']} direction={['column', 'row']} spacing={'25px'}>
         <Box
           mb={['30px', '']}
@@ -173,6 +168,17 @@ export default function Dashboard() {
         >
           <Box mt="5px" borderRadius="6px">
             <Center>
+              {' '}
+              <Heading size="lg" fontWeight="sm" color={'#E5E9F0'}>
+                Latest Upload
+              </Heading>
+            </Center>
+
+            <Center>
+              <Divider bg="#5E81AC" mt="8px" w="80%" />
+            </Center>
+
+            <Center>
               <Heading
                 color={'#E5E9F0'}
                 fontWeight="medium"
@@ -181,9 +187,6 @@ export default function Dashboard() {
               >
                 Minecraft-2019.png
               </Heading>
-            </Center>
-            <Center>
-              <Divider bg="#5E81AC" mt="8px" w="80%" />
             </Center>
 
             <Center mt="20px">
@@ -195,11 +198,33 @@ export default function Dashboard() {
                 src="https://nyc3.digitaloceanspaces.com/kythi.pics/dfa6659b-46f9-5521-9452-6e08f897e59e/a4e7xIi5jo.png"
               />
             </Center>
+            <Center>
+              <Divider bg="#5E81AC" mt="25px" w="80%" />
+            </Center>
+            <Center>
+              <Heading
+                color={'#E5E9F0'}
+                fontWeight="medium"
+                size="md"
+                mt="10px"
+              >
+                Upload Date: 01/01/2019
+              </Heading>
+            </Center>
           </Box>
         </Box>
         <Box borderRadius="6px" bg="#3B4252" w="350px" h="365px">
           <Center>
-            <Stack w="320px" mt="100px" direction="column" spacing={4}>
+            {' '}
+            <Heading mt="15px" size="lg" fontWeight="sm" color={'#E5E9F0'}>
+              Downloadable Config(s)
+            </Heading>
+          </Center>
+          <Center>
+            <Divider bg="#5E81AC" mt="8px" w="80%" />
+          </Center>
+          <Center>
+            <Stack w="320px" mt="30px" direction="column" spacing={4}>
               <Button _hover={{background: '#81A1C1'}} bg="#5E81AC">
                 ShareX (Windows)
               </Button>
@@ -212,10 +237,55 @@ export default function Dashboard() {
               >
                 Magic-Cap (Linux & Mac)
               </Button>
+              <Center>
+                <Divider bg="#5E81AC" mt="8px" w="100%" />
+              </Center>
+              <Flex w="100%" h="8px" />
+              <Button
+                bg="#BF616A"
+                _hover={{background: '#D08770'}}
+                onClick={WipeOpen}
+              >
+                Wipe-Files
+              </Button>
             </Stack>
           </Center>
         </Box>
       </Stack>
+
+      <Modal isOpen={WipeOpened} onClose={WipeClose}>
+        <ModalOverlay />
+        <ModalContent
+          mt="120px"
+          boxShadow="0px"
+          width={['350px', '350px', 'auto', '500px']}
+          bg="#2E3440"
+        >
+          <ModalCloseButton mr="20px" />
+          <ModalHeader ml="20px">Wipe files.</ModalHeader>
+          <Center>
+            <Divider bg="#5E81AC" w="80%" />
+          </Center>
+          <Center mt="5px">
+            <Text fontWeight="600" fontSize="13px">
+              Doing this will result in all of your file(s) being permanently
+              deleted
+            </Text>
+          </Center>
+
+          <ModalFooter>
+            <Button
+              mr="20px"
+              size="sm"
+              _hover={{background: '#BF616A'}}
+              bg="#5E81AC"
+            >
+              {' '}
+              Delete
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </>
   ) : null;
 }
