@@ -11,11 +11,21 @@ import {
   Menu,
   MenuButton,
   Tooltip,
+  Stack,
+  IconButton,
   MenuList,
   MenuItem,
+  Drawer,
+  DrawerHeader,
+  DrawerContent,
+  DrawerBody,
+  DrawerFooter,
+  useDisclosure,
   useToast,
 } from '@chakra-ui/react';
 import {useUser} from '../components/user';
+import {GiHamburgerMenu} from 'react-icons/gi';
+import styles from '../styles/navbar.module.css';
 
 interface NavBarProps {
   page: 'dash' | 'config' | 'gallery';
@@ -35,6 +45,7 @@ interface ButtonProps {
 const NavBarButton: React.FC<ButtonProps> = (props) => {
   return (
     <Button
+      className={styles.navbarButton}
       ml="10px"
       size="sm"
       bg={props.isHighlighted ? '#5E81AC' : '#4C566A'}
@@ -63,46 +74,51 @@ const NavBar: React.FC<NavBarProps> = (props) => {
    */
   function logOut() {
     API.logOut()
-        .then((data) => {
-          toast({
-            title: 'Success!',
-            description: data.message,
-            status: 'success',
-            position: 'top-right',
-            duration: 9000,
-            isClosable: true,
-            variant: 'left-accent',
-          });
+      .then((data) => {
+        toast({
+          title: 'Success!',
+          description: data.message,
+          status: 'success',
+          position: 'top-right',
+          duration: 9000,
+          isClosable: true,
+          variant: 'left-accent',
+        });
 
-          setTimeout(() => {
-            window.location.reload();
-          }, 2000);
-        })
-        .catch((err) => {
-          if (err.message === 'Network Error') {
-            return toast({
-              title: 'Whoops! You have encountered an error!',
-              description:
-              'The API is unfortunately down please check back later.',
-              status: 'error',
-              position: 'top-right',
-              duration: 9000,
-              isClosable: true,
-              variant: 'left-accent',
-            });
-          }
-
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+      })
+      .catch((err) => {
+        if (err.message === 'Network Error') {
           return toast({
             title: 'Whoops! You have encountered an error!',
-            description: err.data.message,
+            description:
+              'The API is unfortunately down please check back later.',
             status: 'error',
             position: 'top-right',
             duration: 9000,
             isClosable: true,
             variant: 'left-accent',
           });
+        }
+
+        return toast({
+          title: 'Whoops! You have encountered an error!',
+          description: err.data.message,
+          status: 'error',
+          position: 'top-right',
+          duration: 9000,
+          isClosable: true,
+          variant: 'left-accent',
         });
+      });
   }
+  const {
+    isOpen: NavOpened,
+    onClose: NavClosed,
+    onOpen: NavOpen,
+  } = useDisclosure();
 
   return (
     <>
@@ -126,6 +142,14 @@ const NavBar: React.FC<NavBarProps> = (props) => {
             h="40px"
             ml="20px"
             orientation="vertical"
+          />
+          <IconButton
+            onClick={NavOpen}
+            aria-label="Toggle menu"
+            className={styles.mobileMenuButton}
+            bg="#5E81AC"
+            _hover={{background: '#81A1C1'}}
+            icon={<GiHamburgerMenu />}
           />
           <NavBarButton
             name="Dashboard"
@@ -174,6 +198,51 @@ const NavBar: React.FC<NavBarProps> = (props) => {
           </Menu>
         </Center>
       </Flex>
+      <Drawer
+        blockScrollOnMount={false}
+        placement={'top'}
+        onClose={NavClosed}
+        isOpen={NavOpened}
+      >
+        <DrawerContent boxShadow={'xl'} bg="#434C5E">
+          <DrawerHeader borderBottomWidth="1px">Kythi.</DrawerHeader>
+          <DrawerBody>
+            <Stack>
+              <Button
+                onClick={() => {
+                  window.location.href = '/dashboard';
+                }}
+                _hover={{background: '#5E81AC'}}
+                bg="#81A1C1"
+                w="100%"
+              >
+                Dashboard
+              </Button>
+              <Button
+                onClick={() => {
+                  window.location.href = '/config';
+                }}
+                _hover={{background: '#5E81AC'}}
+                bg="#81A1C1"
+                w="100%"
+              >
+                Configuration
+              </Button>
+              <Button
+                onClick={() => {
+                  window.location.href = '/gallery';
+                }}
+                _hover={{background: '#5E81AC'}}
+                bg="#81A1C1"
+                w="100%"
+              >
+                Gallery
+              </Button>
+            </Stack>
+          </DrawerBody>
+          <DrawerFooter>Kythi 2021</DrawerFooter>
+        </DrawerContent>
+      </Drawer>
     </>
   );
 };

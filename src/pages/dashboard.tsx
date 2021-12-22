@@ -50,6 +50,7 @@ export default function Dashboard() {
       setStats({...stats, UserPing: ping});
     });
   }, []);
+
   const {
     isOpen: WipeOpened,
     onClose: WipeClose,
@@ -73,47 +74,36 @@ export default function Dashboard() {
         </Center>
       </Center>
 
-      <Flex
-        ml={['3%', '5.9%']}
+      <Stack
         mt="1.5%"
-        w={['365px', '750px']}
-        direction={['column', 'row', 'row']}
+        ml={['3%', '5.9%']}
+        direction={['column', 'column', 'column', 'row', 'row']}
       >
-        <Stack direction={['column', 'column', 'column', 'row', 'row']}>
-          <Stack mb="10px" mr="15px" spacing="4">
-            <Flex>
-              <StatsBox
-                name={'Storage Used'}
-                value={user.upload.count}
-                icon={MdOutlineStorage}
-              />
-            </Flex>
+        <Stack mb="10px" mr="15px" spacing="4">
+          <StatsBox
+            name={'Storage Used'}
+            value={user.upload.count}
+            icon={MdOutlineStorage}
+          />
 
-            <Flex>
-              <StatsBox
-                name={'Files Uploaded'}
-                value={user.upload.count}
-                icon={BsFillFileEarmarkBarGraphFill}
-              />
-            </Flex>
-          </Stack>
+          <StatsBox
+            name={'Files Uploaded'}
+            value={user.upload.count}
+            icon={BsFillFileEarmarkBarGraphFill}
+          />
+        </Stack>
 
-          <Stack spacing="4">
-            <Flex>
-              <StatsBox
-                name={'Leaderboard Position'}
-                value={stats?.UserPing}
-                icon={MdOutlineAnnouncement}
-              />
-            </Flex>
-            <Flex>
-              <StatsBox
-                name={'Your latency'}
-                value={`${stats?.UserPing}ms`}
-                icon={VscGraphLine}
-              />
-            </Flex>
-          </Stack>
+        <Stack spacing="4">
+          <StatsBox
+            name={'Leaderboard Position'}
+            value={stats?.UserPing}
+            icon={MdOutlineAnnouncement}
+          />
+          <StatsBox
+            name={'Your latency'}
+            value={`${stats?.UserPing}ms`}
+            icon={VscGraphLine}
+          />
         </Stack>
         <Box
           mt={['15px', '1px']}
@@ -155,8 +145,13 @@ export default function Dashboard() {
             </Center>
           </Box>
         </Box>
-      </Flex>
-      <Stack ml={['3%', '5.9%']} direction={['column', 'row']} spacing={'25px'}>
+      </Stack>
+      <Stack
+        ml={['3%', '5.9%']}
+        mt="15px"
+        direction={['column', 'column', 'column', 'row', 'row']}
+        spacing={'25px'}
+      >
         <Box
           mb={['30px', '']}
           px="30px"
@@ -166,52 +161,40 @@ export default function Dashboard() {
           borderRadius="6px"
           bg="#3B4252"
         >
-          <Box mt="5px" borderRadius="6px">
-            <Center>
-              {' '}
-              <Heading size="lg" fontWeight="sm" color={'#E5E9F0'}>
-                Latest Upload
-              </Heading>
-            </Center>
+          <Center>
+            {' '}
+            <Heading size="lg" fontWeight="sm" color={'#E5E9F0'}>
+              Latest Upload
+            </Heading>
+          </Center>
 
-            <Center>
-              <Divider bg="#5E81AC" mt="8px" w="80%" />
-            </Center>
+          <Center>
+            <Divider bg="#5E81AC" mt="8px" w="80%" />
+          </Center>
 
-            <Center>
-              <Heading
-                color={'#E5E9F0'}
-                fontWeight="medium"
-                size="md"
-                mt="10px"
-              >
-                Minecraft-2019.png
-              </Heading>
-            </Center>
+          <Center>
+            <Heading color={'#E5E9F0'} fontWeight="medium" size="md" mt="10px">
+              Minecraft-2019.png
+            </Heading>
+          </Center>
 
-            <Center mt="20px">
-              <Image
-                h="180px"
-                w="500px"
-                borderRadius="6px"
-                border="2px solid white"
-                src="https://nyc3.digitaloceanspaces.com/kythi.pics/dfa6659b-46f9-5521-9452-6e08f897e59e/a4e7xIi5jo.png"
-              />
-            </Center>
-            <Center>
-              <Divider bg="#5E81AC" mt="25px" w="80%" />
-            </Center>
-            <Center>
-              <Heading
-                color={'#E5E9F0'}
-                fontWeight="medium"
-                size="md"
-                mt="10px"
-              >
-                Upload Date: 01/01/2019
-              </Heading>
-            </Center>
-          </Box>
+          <Center mt="20px">
+            <Image
+              h="180px"
+              w="500px"
+              borderRadius="6px"
+              border="2px solid white"
+              src="https://nyc3.digitaloceanspaces.com/kythi.pics/dfa6659b-46f9-5521-9452-6e08f897e59e/a4e7xIi5jo.png"
+            />
+          </Center>
+          <Center>
+            <Divider bg="#5E81AC" mt="25px" w="80%" />
+          </Center>
+          <Center>
+            <Heading color={'#E5E9F0'} fontWeight="medium" size="md" mt="10px">
+              Upload Date: 01/01/2019
+            </Heading>
+          </Center>
         </Box>
         <Box borderRadius="6px" bg="#3B4252" w="350px" h="365px">
           <Center>

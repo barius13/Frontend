@@ -1,0 +1,15 @@
+
+.mobileMenuButton {
+  visibility: hidden;
+}
+
+@media (max-width: 800px) {
+    .navbarButton {
+        visibility: hidden;
+        margin-right: -100px;
+    }
+    .mobileMenuButton {
+        margin-left: 15px;
+        visibility: visible;
+    }
+}
