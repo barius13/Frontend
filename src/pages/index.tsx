@@ -77,17 +77,17 @@ export default function Homepage() {
 
   React.useEffect(() => {
     API.getStats()
-        .then((stats) => {
-          Object.keys(stats).forEach((key) => {
-            if (stats[key] === null) {
-              stats[key] = '0';
-            }
-          });
-          setStats(stats);
-        })
-        .catch(() => {
-          setStats(null);
+      .then((stats) => {
+        Object.keys(stats).forEach((key) => {
+          if (stats[key] === null) {
+            stats[key] = '0';
+          }
         });
+        setStats(stats);
+      })
+      .catch(() => {
+        setStats(null);
+      });
   }, []);
 
   const handleRegisterChange = (e) => {
@@ -140,142 +140,143 @@ export default function Homepage() {
   };
   function registerClick() {
     API.validateRegisterParams(
-        registerInfo.username,
-        registerInfo.email,
-        registerInfo.password,
-        registerInfo.inviteCode
-    ).then(() => {
-      captchaRef.current.execute();
-    })
-        .catch((err) => {
-          if (err.message === 'Network Error') {
-            return toast({
-              title: 'You seemed to have encountered an error!',
-              description:
-            'The API is unfortunately down please check back later.',
-              status: 'error',
-              position: 'top-right',
-              duration: 9000,
-              isClosable: true,
-              variant: 'left-accent',
-            });
-          }
-
+      registerInfo.username,
+      registerInfo.email,
+      registerInfo.password,
+      registerInfo.inviteCode,
+    )
+      .then(() => {
+        captchaRef.current.execute();
+      })
+      .catch((err) => {
+        if (err.message === 'Network Error') {
           return toast({
-            title: 'You seemed to have encountered an error!',
-            description: err.data.message,
+            title: 'Whoops! You have encountered an error!',
+            description:
+              'The API is unfortunately down please check back later.',
             status: 'error',
             position: 'top-right',
             duration: 9000,
             isClosable: true,
             variant: 'left-accent',
           });
+        }
+
+        return toast({
+          title: 'Whoops! You have encountered an error!',
+          description: err.data.message,
+          status: 'error',
+          position: 'top-right',
+          duration: 9000,
+          isClosable: true,
+          variant: 'left-accent',
         });
+      });
   }
   function registerSubmit(key: string) {
     API.register(
-        registerInfo.username,
-        registerInfo.email,
-        registerInfo.password,
-        registerInfo.inviteCode,
-        key
+      registerInfo.username,
+      registerInfo.email,
+      registerInfo.password,
+      registerInfo.inviteCode,
+      key,
     )
-        .then((data) => {
-          setRegisterInfo({
-            username: '',
-            password: '',
-            email: '',
-            inviteCode: '',
-          });
+      .then((data) => {
+        setRegisterInfo({
+          username: '',
+          password: '',
+          email: '',
+          inviteCode: '',
+        });
 
-          toast({
-            title: 'Success!',
-            description: data.message,
-            status: 'success',
-            position: 'top-right',
-            duration: 9000,
-            isClosable: true,
-            variant: 'left-accent',
-          });
-        })
-        .catch((err) => {
-          if (err.message === 'Network Error') {
-            return toast({
-              title: 'You seemed to have encountered an error!',
-              description:
-              'The API is unfortunately down please check back later.',
-              status: 'error',
-              position: 'top-right',
-              duration: 9000,
-              isClosable: true,
-              variant: 'left-accent',
-            });
-          }
-
+        toast({
+          title: 'Success!',
+          description: data.message,
+          status: 'success',
+          position: 'top-right',
+          duration: 9000,
+          isClosable: true,
+          variant: 'left-accent',
+        });
+      })
+      .catch((err) => {
+        if (err.message === 'Network Error') {
           return toast({
-            title: 'You seemed to have encountered an error!',
-            description: err.data.message,
+            title: 'Whoops! You have encountered an error!',
+            description:
+              'The API is unfortunately down please check back later.',
             status: 'error',
             position: 'top-right',
             duration: 9000,
             isClosable: true,
             variant: 'left-accent',
           });
+        }
+
+        return toast({
+          title: 'Whoops! You have encountered an error!',
+          description: err.data.message,
+          status: 'error',
+          position: 'top-right',
+          duration: 9000,
+          isClosable: true,
+          variant: 'left-accent',
         });
+      });
   }
   function loginSubmit() {
     API.login(loginInfo.username, loginInfo.password)
-        .then((data) => {
-          setLoginInfo({
-            username: '',
-            password: '',
-          });
+      .then((data) => {
+        setLoginInfo({
+          username: '',
+          password: '',
+        });
 
-          setUser(data.user);
+        setUser(data.user);
 
-          toast({
-            title: 'Success!',
-            description: data.message,
-            status: 'success',
-            position: 'top-right',
-            duration: 9000,
-            isClosable: true,
-            variant: 'left-accent',
-          });
+        toast({
+          title: 'Success!',
+          description: data.message,
+          status: 'success',
+          position: 'top-right',
+          duration: 9000,
+          isClosable: true,
+          variant: 'left-accent',
+        });
 
-          setTimeout(() => {
-            router.push('/dashboard');
-          }, 2000);
-        })
-        .catch((err) => {
-          if (err.message === 'Network Error') {
-            return toast({
-              title: 'You seemed to have encountered an error!',
-              description:
-              'The API is unfortunately down please check back later.',
-              status: 'error',
-              position: 'top-right',
-              duration: 9000,
-              isClosable: true,
-              variant: 'left-accent',
-            });
-          }
-
-          console.log(err);
-
+        setTimeout(() => {
+          router.push('/dashboard');
+        }, 2000);
+      })
+      .catch((err) => {
+        if (err.message === 'Network Error') {
           return toast({
-            title: 'You seemed to have encountered an error!',
+            title: 'Whoops! You have encountered an error!',
             description:
-            err.data === 'Unauthorized' ?
-              'Invalid Credentials' :
-              err.data.message,
+              'The API is unfortunately down please check back later.',
             status: 'error',
             position: 'top-right',
             duration: 9000,
             isClosable: true,
             variant: 'left-accent',
           });
+        }
+
+        console.log(err);
+
+        return toast({
+          title: 'Whoops! You have encountered an error!',
+          description:
+            err.data === 'Unauthorized'
+              ? 'Invalid Credentials'
+              : err.data.message,
+          status: 'error',
+          position: 'top-right',
+          duration: 9000,
+          isClosable: true,
+          variant: 'left-accent',
         });
+      });
   }
 
   return (
@@ -569,7 +570,7 @@ export default function Homepage() {
                     rounded="5px"
                     _hover={{bg: '#7289da'}}
                     __css={{transition: '.4s'}}
-                    onClick={function() {
+                    onClick={function () {
                       location.href = `https://api.kythi.com/discord/login`;
                     }}
                   >
