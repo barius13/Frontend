@@ -1,6 +1,6 @@
 import * as React from 'react';
 import 'focus-visible/dist/focus-visible';
-import {Flex, Spinner, Text, Box, Center} from '@chakra-ui/react';
+import {Flex, Spinner, Text, Box, Center, Link} from '@chakra-ui/react';
 
 /**
  * Its a loading page!
@@ -26,11 +26,16 @@ export default function load() {
                 </Flex>
               </Center>
               <Center>
-                <Text mt="20px" mb="10px">
+                <Text mt="20px">
                   {
-                    'If you are experiencing any network related issues please check our discord server.'
+                    'Hey! Have you tried bios? It might be a good idea to check it out.'
                   }
                 </Text>
+              </Center>
+              <Center>
+                <Link color="#81A1C1" href="https://kythi.bio/">
+                  Kythi bios
+                </Link>
               </Center>
             </Box>
           </Flex>
