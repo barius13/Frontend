@@ -31,7 +31,7 @@ interface ButtonProps {
  * Its a NavBar Button!
  * @param {React.PropsWithChildren<ButtonProps>} props Props
  * @return {React.FunctionComponent}
-*/
+ */
 const NavBarButton: React.FC<ButtonProps> = (props) => {
   return (
     <Button
@@ -39,9 +39,7 @@ const NavBarButton: React.FC<ButtonProps> = (props) => {
       size="sm"
       bg={props.isHighlighted ? '#5E81AC' : '#4C566A'}
       _hover={
-        props.isHighlighted ?
-          {background: '#81A1C1'} :
-          {background: '#3B4252'}
+        props.isHighlighted ? {background: '#81A1C1'} : {background: '#3B4252'}
       }
       onClick={props.onClick}
     >
@@ -54,15 +52,15 @@ const NavBarButton: React.FC<ButtonProps> = (props) => {
  * Its a NavBar!
  * @param {React.PropsWithChildren<NavBarProps>} props Props
  * @return {React.FunctionComponent}
-*/
+ */
 const NavBar: React.FC<NavBarProps> = (props) => {
   const toast = useToast();
   const {user} = useUser();
 
   /**
-    * LogOut Function
-    * @return {void}
-  */
+   * LogOut Function
+   * @return {void}
+   */
   function logOut() {
     API.logOut()
         .then((data) => {
@@ -85,7 +83,7 @@ const NavBar: React.FC<NavBarProps> = (props) => {
             return toast({
               title: 'You seemed to have encountered an error!',
               description:
-            'The API is unfortunately down please check back later.',
+              'The API is unfortunately down please check back later.',
               status: 'error',
               position: 'top-right',
               duration: 9000,
@@ -108,11 +106,14 @@ const NavBar: React.FC<NavBarProps> = (props) => {
 
   return (
     <>
-      <Flex h="60px" w="100%" boxShadow="xl" bg="#2E3440">
+      <Flex h="70px" w="100%" boxShadow="xl" bg="#2E3440">
         <Center>
           <Heading
             as="button"
-            cursor=""
+            cursor="default"
+            onClick={() => {
+              location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+            }}
             ml="20px"
             fontSize="30px"
             textColor="#eceff4"
@@ -147,29 +148,30 @@ const NavBar: React.FC<NavBarProps> = (props) => {
               window.location.href = '/gallery';
             }}
           />
-          <Flex mr="5" position="absolute" right="0">
-            <Menu>
-              <Tooltip
-                bg="#434C5E"
-                placement="left"
-                hasArrow
-                textColor="white"
-                label={user.username}
-              >
-                <MenuButton
-                  cursor="pointer"
-                  as={Avatar}
-                  name={user.discord.username}
-                  src={user.discord.avatar}
-                />
-              </Tooltip>
 
-              <MenuList borderRadius="6px" bg="#3B4252">
-                <MenuItem>Settings</MenuItem>
-                <MenuItem onClick={logOut}>Logout</MenuItem>
-              </MenuList>
-            </Menu>
-          </Flex>
+          <Menu>
+            <Tooltip
+              bg="#434C5E"
+              placement="left"
+              hasArrow
+              textColor="white"
+              label={user.username}
+            >
+              <MenuButton
+                position="absolute"
+                right="10"
+                cursor="pointer"
+                as={Avatar}
+                name={user.discord.username}
+                src={user.discord.avatar}
+              />
+            </Tooltip>
+
+            <MenuList borderRadius="6px" bg="#3B4252">
+              <MenuItem>Settings</MenuItem>
+              <MenuItem onClick={logOut}>Logout</MenuItem>
+            </MenuList>
+          </Menu>
         </Center>
       </Flex>
     </>
