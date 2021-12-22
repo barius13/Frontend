@@ -13,8 +13,9 @@ import {BiUserCircle} from 'react-icons/bi';
 import FeatureBox from '../components/feature';
 import styles from '../styles/index.module.css';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
+import {MdMoneyOff} from 'react-icons/md';
 import {RiFingerprint2Line} from 'react-icons/ri';
-import {BsFillArrowDownCircleFill, BsImages} from 'react-icons/bs';
+import {BsFillArrowDownCircleFill, BsImages, BsHeadset, BsGithub} from 'react-icons/bs';
 import {FaUserAltSlash, FaUserAlt, FaLock, FaLockOpen} from 'react-icons/fa';
 
 import {
@@ -23,12 +24,14 @@ import {
   MdSystemUpdateAlt,
 } from 'react-icons/md';
 import {
+  Box,
   Text,
   Link,
   Flex,
   Modal,
   Input,
   Stack,
+  HStack,
   Center,
   Button,
   Heading,
@@ -641,7 +644,7 @@ export default function Homepage() {
           {'Features'}
         </Text>
       </Flex>
-      <Flex mb="50px" alignItems="center" justifyContent="center">
+      <Center mb="20px">
         <Stack
           spacing={['4', '4', '4', '2', '2']}
           direction={['column', 'column', 'column', 'row', 'row']}
@@ -668,7 +671,55 @@ export default function Homepage() {
             icon={MdOutlineSlowMotionVideo}
           />
         </Stack>
-      </Flex>
+      </Center>
+      <Center mb="50px">
+        {' '}
+        <Stack
+          spacing={['4', '4', '4', '2', '2']}
+          direction={['column', 'column', 'column', 'row', 'row']}
+        >
+          <FeatureBox
+            name={'24/7 Support'}
+            value={
+              'Kythi provides fast support with simple answers, with a wide range of staff that are always happy to help.'
+            }
+            icon={BsHeadset}
+          />
+          <FeatureBox
+            name={'100% free'}
+            value={
+              'Devs at kythi looked at what they could do to make your experience immersive, and thats why we are glad to announce that we are 100% free to use, and we will never charge you for anything.'
+            }
+            icon={MdMoneyOff}
+          />
+          <Box
+            __css={{cursor: 'default'}}
+            width={['350px', '320px', '720px', '300px', '350px', '450px']}
+            transition="1s"
+            _hover={{
+              transform: 'translateY(-10px)',
+              transition: '.5s',
+              bg: '#4C566A',
+            }}
+            bg={'#3B4252'}
+            px="20px"
+            py="30px"
+            shadow="md"
+            rounded="6px"
+          >
+            <HStack>
+              <BsGithub size="25" />
+              <Heading size="md" fontWeight="medium" color={'gray.400'}>
+          Open Source'
+              </Heading>
+            </HStack>
+
+            <Heading as="h4" size="sm" mt="2" fontWeight="medium">
+        The source of Kythi is on our <Link href="https://github.com/kythix">Github!</Link> this is free to use for everyone, and we will always be open to any suggestions you have
+            </Heading>
+          </Box>
+        </Stack>
+      </Center>
       <Footer />
     </>
   );
