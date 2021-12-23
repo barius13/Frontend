@@ -37,7 +37,7 @@ export default function Footer() {
             <nav className='mt-4'>
               <ul className='space-y-2'>
                 <li>
-                  <a href='https://kythi.com' className='text-base hover:text-gray-300'>Kythi Portfolio's</a>
+                  <a href='https://kythi.com' className='text-base hover:text-gray-300'>Kythi Portfolio&apos;s</a>
                 </li>
                 <li>
                   <a href='https://github.com/KythiX' className='text-base hover:text-gray-300'>Our GitHub</a>
