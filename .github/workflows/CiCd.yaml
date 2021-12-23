@@ -3,7 +3,7 @@ name: CiCd
 on:
   push:
     branches:
-      - main
+      - tailwind
 
 jobs:
   Build-and-Push-to-GHCR:
