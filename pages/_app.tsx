@@ -11,12 +11,12 @@ function Bios({Component, pageProps}: AppProps) {
         additionalMetaTags={[
           {
             property: 'theme-color',
-            content: '#b00af7',
+            content: '#5E81AC',
           },
         ]}
         openGraph={{
           title: 'Hosting',
-          description: 'Kythi File host is a new service currently being made.',
+          description: 'Kythi. File Host is a new service currently being made.',
         }}
       />
         <Component {...pageProps} />
