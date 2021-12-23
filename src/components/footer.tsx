@@ -1,4 +1,6 @@
-export default function Footer() {
+import { FC } from "react";
+
+const Footer: FC = () => {
     return (
         <footer className='py-7 text-gray-200 bg-polar-100 xl:pb-10'>
         <div className='grid max-w-screen-xl gap-6 px-6 mx-auto lg:px-8 xl:px-4 md:grid-cols-2 lg:grid-cols-4 lg:gap-x-8'>
@@ -56,3 +58,5 @@ export default function Footer() {
       </footer>
     )
 }
+
+export default Footer
