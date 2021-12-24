@@ -158,7 +158,7 @@ export default function Register() {
                   type="button"
                   className="w-full py-2 px-4 text-sm font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg transition duration-700"
                 >
-                  Sign in
+                  Register
                 </button>
               </span>
             </div>
