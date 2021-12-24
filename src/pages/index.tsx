@@ -15,10 +15,16 @@ export default function Index() {
               Upload files seamlessly with custom links & customisable embeds.
             </p>
             <div className="flex mb-6 space-x-4 mt-5">
-              <button className="inline-block w-40 px-5 py-2 font-semibold text-white rounded-md bg-frost-400 hover:bg-frost-300 shadow-lg">
+              <button
+                onClick={() => (location.href = "/login")}
+                className="inline-block w-40 px-5 py-2 font-semibold text-white rounded-md bg-frost-400 hover:bg-frost-300 shadow-lg"
+              >
                 Login
               </button>
-              <button className="inline-blockpx-5 py-2 w-40 font-semibold text-white rounded-md bg-aurora-red-200 hover:bg-aurora-red-100 shadow-lg">
+              <button
+                onClick={() => (location.href = "/register")}
+                className="inline-blockpx-5 py-2 w-40 font-semibold text-white rounded-md bg-aurora-red-200 hover:bg-aurora-red-100 shadow-lg"
+              >
                 Sign Up
               </button>
             </div>
@@ -37,7 +43,6 @@ export default function Index() {
           </div>
 
           <div className="grid items-stretch md:grid-cols-3 gap-3">
-
             <FeatureBox
               title="Personalization."
               content="We allow you to customise your Files, Discord embeds, your Kythi profile and more!"
@@ -91,7 +96,7 @@ export default function Index() {
                 </p>
               }
               isSvg={true}
-              svgData={{stroke: "#BF616A"}}
+              svgData={{ stroke: "#BF616A" }}
               icon={
                 <path
                   strokeLinecap="round"
@@ -104,15 +109,15 @@ export default function Index() {
 
             <FeatureBox
               title="Custom Domains"
-              content="You can add a variety of custom domains."
+              content="There is a variety of domains you can use to host your files, this allows you to personalise your file-hosting experience. You can also add your own domain."
               isSvg={true}
               icon={
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
-                  />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+                />
               }
             />
 
@@ -122,7 +127,6 @@ export default function Index() {
               always being available."
               icon={<BsHeadset className="text-2xl" />}
             />
-            
           </div>
         </div>
       </div>
