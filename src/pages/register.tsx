@@ -1,7 +1,7 @@
 export default function Register() {
   return (
     <div className="bg-polar-100 mx-auto sm:px-6">
-      <div className="flex justify-center items-center h-90vh">
+      <div className="flex justify-center items-center h-screen">
         <form className="w-full max-w-md">
           <div className="rounded-lg bg-polar-200 px-8 py-8">
             <div className="divide-y-2 divide-frost-300">
