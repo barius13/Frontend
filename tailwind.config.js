@@ -6,6 +6,10 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      height: {
+        '90vh': "90vh",
+        '30vh': "30vh",
+      },
       colors: {
         'polar': {
           100:'#2E3440',
