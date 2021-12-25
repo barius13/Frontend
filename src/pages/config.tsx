@@ -14,8 +14,7 @@ export default function Dashboard() {
 
   return user ? (
     <div className="flex justify-center items-center text-white">
-      Hi {user.username}!
-      <button onClick={() => router.push("/config")}>Press Me!</button>
+      If you see this without a loading page it means that your user saved!
     </div>
   ) : null;
 }
