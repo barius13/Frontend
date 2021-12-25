@@ -1,8 +1,13 @@
-import { BsShieldLockFill, BsHeadset } from "react-icons/bs";
-import FeatureBox from "../components/feature";
+import { useRouter } from "next/router";
 import Footer from "../components/footer";
+import { useUser } from "../components/user";
+import FeatureBox from "../components/feature";
+import { BsShieldLockFill, BsHeadset } from "react-icons/bs";
 
 export default function Index() {
+  const {user} = useUser();
+  const router = useRouter();
+
   return (
     <main className="font-medium text-gray-200">
       <div className="py-12 md:py-24 bg-polar-100 shadow-inner">
@@ -16,13 +21,13 @@ export default function Index() {
             </p>
             <div className="flex mb-6 space-x-4 mt-5">
               <button
-                onClick={() => (location.href = "/login")}
+                onClick={() => {user ? router.push("/dashboard") : router.push("/login")}}
                 className="inline-block w-40 px-5 py-2 font-semibold text-white rounded-md bg-frost-400 hover:bg-frost-300 shadow-lg"
               >
-                Login
+                {!user ? "Login" : "Dashboard"}
               </button>
               <button
-                onClick={() => (location.href = "/register")}
+                onClick={() => (router.push("/register"))}
                 className="inline-blockpx-5 py-2 w-40 font-semibold text-white rounded-md bg-aurora-red-200 hover:bg-aurora-red-100 shadow-lg"
               >
                 Sign Up
