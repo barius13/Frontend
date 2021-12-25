@@ -13,11 +13,11 @@ function Host({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     API.getCurrentSession()
-      .then((user: User) => {
+      .then((data: { user: User}) => {
         setTimeout(() => {
           setStatus("User Data Loaded!");
           setTimeout(() => {
-            setUser(user);
+            setUser(data.user);
           }, 1250)
         }, 1000);
       })

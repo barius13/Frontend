@@ -10,7 +10,6 @@ export default function Dashboard() {
     if (!user) {
       router.push("/");
     }
-    console.log(user)
   }, [router, user]);
 
   return user ? (
