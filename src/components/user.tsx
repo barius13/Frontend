@@ -9,8 +9,9 @@ export interface UserCtx {
 
 const UserContext = createContext(null);
 
-export const UserProvider = ({ value, children }: { value: any, children: any }) => {
+export const UserProvider = ({ value, children }: any) => {
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
 
-export const useUser = () => useContext(UserContext);
+// @ts-expect-error I don't know how to type this
+export const useUser = () => useContext<UserCtx>(UserContext);

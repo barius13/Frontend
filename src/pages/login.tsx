@@ -1,8 +1,23 @@
+import API from "../api";
 import * as React from "react";
+import { useRouter } from "next/router";
+import { useUser } from "../components/user";
+
+export interface loginState {
+  username: string | null;
+  password: string | null;
+}
 
 export default function Login() {
+  const router = useRouter();
+  const { setUser } = useUser();
   const loginShow = () => setShow(!show);
   const [show, setShow] = React.useState(false);
+  const [login, setLogin] = React.useState<loginState>({
+    username: null,
+    password: null,
+  });
+
   return (
     <div className="bg-polar-100 mx-auto sm:px-6">
       <div className="flex justify-center items-center h-screen">
@@ -29,9 +44,16 @@ export default function Login() {
               </span>
               <input
                 className="placeholder:text-gray-400 block bg-polar-300 hover:bg-polar-400 caret-white text-white transition duration-700 delay-50 w-full h-8 rounded-md py-2 pl-10 shadow-sm focus:outline-none hover:border-frost-300 hover:ring-frost-300 focus:border-frost-400 focus:ring-frost-400 focus:ring-2 hover:ring-2 sm:text-sm"
-                placeholder="Username"
+                placeholder={login.username ?? "Username"}
                 type="text"
                 name="username"
+                onChange={(comp) =>
+                  setLogin({
+                    ...login,
+                    username:
+                      comp.target.value === "" ? null : comp.target.value,
+                  })
+                }
               />
             </label>
 
@@ -53,9 +75,16 @@ export default function Login() {
                 </span>
                 <input
                   className="placeholder:text-gray-400 block bg-polar-300 hover:bg-polar-400 caret-white text-white transition duration-700 delay-50 w-full h-8 rounded-md py-2 pl-10 shadow-sm focus:outline-none hover:border-frost-300 hover:ring-frost-300 focus:border-frost-400 focus:ring-frost-400 focus:ring-2 hover:ring-2 sm:text-sm"
-                  placeholder="Password"
+                  placeholder={login.password ?? "Password"}
                   type={show ? "text" : "password"}
                   name="Password"
+                  onChange={(comp) =>
+                    setLogin({
+                      ...login,
+                      password:
+                        comp.target.value === "" ? null : comp.target.value,
+                    })
+                  }
                 />
                 <a
                   onClick={loginShow}
@@ -108,6 +137,19 @@ export default function Login() {
                 <button
                   type="button"
                   className="w-full py-2 px-4 text-sm font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg transition duration-700"
+                  onClick={() =>
+                    API.login(login)
+                      .then((data) => {
+                        console.log("Successfully logged in", data);
+                        setUser(data.user)
+                        setTimeout(() => {
+                          router.push('/dashboard');
+                        }, 2000);
+                      })
+                      .catch((err) => {
+                        console.log("Error logging in", err);
+                      })
+                  }
                 >
                   Sign in
                 </button>

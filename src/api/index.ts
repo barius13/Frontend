@@ -1,5 +1,6 @@
-import axios, { AxiosRequestHeaders, Method } from "axios";
+import { loginState} from "../pages/login"
 import { registerState } from "../pages/register"
+import axios, { AxiosRequestHeaders, Method } from "axios";
 
 interface requestParams {
   body?: object;
@@ -51,6 +52,18 @@ export default class API {
 
   static validateRegister(data: registerState) {
     return this.request(`/validate/register?${API.encodeQueryString(data as {})}`, "GET", {});
+  }
+
+  static login(data: loginState) {
+    for (const key in data) {
+      if (data[key as keyof object] === null) {
+        (data[key as keyof object] as string) = "";
+      }
+    }
+
+    return this.request("/auth/login", "POST", {
+      body: data 
+    })
   }
 }
 
