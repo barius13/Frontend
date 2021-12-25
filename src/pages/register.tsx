@@ -1,8 +1,25 @@
+import API from "../api";
 import * as React from "react";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
+
+export interface registerState {
+  username: string | null;
+  password: string | null;
+  email: string | null;
+  inviteCode: string | null;
+}
 
 export default function Register() {
   const loginShow = () => setShow(!show);
   const [show, setShow] = React.useState(false);
+  const captchaRef = React.useRef<HCaptcha>(null);
+  const [register, setRegister] = React.useState<registerState>({
+    username: null,
+    password: null,
+    email: null,
+    inviteCode: null,
+  });
+
   return (
     <div className="bg-polar-100 mx-auto sm:px-6">
       <div className="flex justify-center items-center h-screen">
@@ -29,9 +46,16 @@ export default function Register() {
               </span>
               <input
                 className="placeholder:text-gray-400 block bg-polar-300 hover:bg-polar-400 transition duration-700 text-white delay-50 h-8 w-full caret-white rounded-md py-2 pl-10 shadow-sm focus:outline-none hover:border-frost-300 hover:ring-frost-300 focus:border-frost-400 focus:ring-frost-400 focus:ring-2 hover:ring-2 sm:text-sm"
-                placeholder="Username"
+                placeholder={register.username ?? "Username"}
                 type="text"
                 name="username"
+                onChange={(comp) =>
+                  setRegister({
+                    ...register,
+                    username:
+                      comp.target.value === "" ? null : comp.target.value,
+                  })
+                }
               />
             </label>
 
@@ -53,9 +77,16 @@ export default function Register() {
                 </span>
                 <input
                   className="placeholder:text-gray-400 block bg-polar-300 hover:bg-polar-400 caret-white text-white transition duration-700 delay-50 w-full h-8 rounded-md py-2 pl-10 shadow-sm focus:outline-none hover:border-frost-300 hover:ring-frost-300 focus:border-frost-400 focus:ring-frost-400 focus:ring-2 hover:ring-2 sm:text-sm"
-                  placeholder="Password"
+                  placeholder={register.password ?? "Password"}
                   type={show ? "text" : "password"}
                   name="Password"
+                  onChange={(comp) =>
+                    setRegister({
+                      ...register,
+                      password:
+                        comp.target.value === "" ? null : comp.target.value,
+                    })
+                  }
                 />
                 <a
                   onClick={loginShow}
@@ -118,9 +149,16 @@ export default function Register() {
                 </span>
                 <input
                   className="placeholder:text-gray-400 block bg-polar-300 hover:bg-polar-400 text-white transition duration-700 delay-50 w-full h-8 caret-white rounded-md py-2 pl-10 shadow-sm focus:outline-none hover:border-frost-300 hover:ring-frost-300 focus:border-frost-400 focus:ring-frost-400 focus:ring-2 hover:ring-2 sm:text-sm"
-                  placeholder="Email-Address"
+                  placeholder={register.email ?? "Email-Address"}
                   type="text"
                   name="Email"
+                  onChange={(comp) =>
+                    setRegister({
+                      ...register,
+                      email:
+                        comp.target.value === "" ? null : comp.target.value,
+                    })
+                  }
                 />
               </label>
             </div>
@@ -145,9 +183,16 @@ export default function Register() {
                 </span>
                 <input
                   className="placeholder:text-gray-400 block bg-polar-300 hover:bg-polar-400 transition duration-700 caret-white text-white delay-50 w-full h-8 rounded-md py-2 pl-10 shadow-sm focus:outline-none hover:border-frost-300 hover:ring-frost-300 focus:border-frost-400 focus:ring-frost-400 focus:ring-2 hover:ring-2 sm:text-sm"
-                  placeholder="Invite-Code"
+                  placeholder={register.inviteCode ?? "Invite-Code"}
                   type="text"
                   name="Invite-code"
+                  onChange={(comp) =>
+                    setRegister({
+                      ...register,
+                      inviteCode:
+                        comp.target.value === "" ? null : comp.target.value,
+                    })
+                  }
                 />
               </label>
             </div>
@@ -157,9 +202,39 @@ export default function Register() {
                 <button
                   type="button"
                   className="w-full py-2 px-4 text-sm font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg transition duration-700"
+                  onClick={() => {
+                    API.validateRegister(register)
+                      .then(() => captchaRef.current?.execute())
+                      .catch((err) =>
+                        console.error(
+                          "If you see this it means toasts arent implemented!",
+                          err
+                        )
+                      );
+                  }}
                 >
                   Register
                 </button>
+                <div>
+                  <HCaptcha
+                    sitekey="c0103fd5-be5e-4d12-9fef-8fe706061b6b"
+                    theme="dark"
+                    ref={captchaRef}
+                    size="invisible"
+                    onVerify={(token) =>
+                      API.register({ ...register, hCaptchaKey: token })
+                        .then((data) => {
+                          console.log("Successfully Registered!", data);
+                        })
+                        .catch((err) =>
+                          console.error(
+                            "If you see this it means toasts arent implemented!",
+                            err
+                          )
+                        )
+                    }
+                  />
+                </div>
               </span>
             </div>
           </div>

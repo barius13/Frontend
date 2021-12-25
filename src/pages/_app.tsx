@@ -1,4 +1,4 @@
-import { API } from "../api";
+import API from "../api";
 import "../styles/globals.css";
 import { User } from "../typings";
 import { NextSeo } from "next-seo";
