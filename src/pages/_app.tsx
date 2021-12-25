@@ -12,8 +12,9 @@ function Host({ Component, pageProps }: AppProps) {
   const [user, setUser] = useState<User | null | undefined>(undefined);
 
   useEffect(() => {
-    API.getCurrentSession()
-      .then((data: { user: User}) => {
+    function getSession() {
+      API.getCurrentSession()
+      .then((data: { user: User }) => {
         setTimeout(() => {
           setStatus("User Data Loaded!");
           setTimeout(() => {
@@ -29,7 +30,10 @@ function Host({ Component, pageProps }: AppProps) {
           }, 1250)
         }, 1000);
       });
-  }, []);
+    }
+
+    if (!user) getSession();
+  }, [user]);
 
   return (
     <>
