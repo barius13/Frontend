@@ -224,6 +224,13 @@ export default function Register() {
                     onVerify={(token) =>
                       API.register({ ...register, hCaptchaKey: token })
                         .then((data) => {
+                          setRegister({
+                            username: null,
+                            password: null,
+                            email: null,
+                            inviteCode: null,
+                          })
+
                           console.log("Successfully Registered!", data);
                         })
                         .catch((err) =>
