@@ -2,6 +2,7 @@ import API from "../api";
 import * as React from "react";
 import { useRouter } from "next/router";
 import { useUser } from "../components/user";
+import Link from "next/link";
 
 export interface loginState {
   username: string | null;
@@ -126,12 +127,11 @@ export default function Login() {
                 </a>
               </label>
             </div>
-            <a
-              href="/reset-password"
-              className="flex ml-1 mt-3 font-medium text-snow-200 hover:text-snow-100 text-sm"
-            >
-              Forgotten your password?
-            </a>
+            <Link href="/reset-password">
+              <a className="flex ml-1 mt-3 font-medium text-snow-200 hover:text-snow-100 text-sm">
+                Forgotten your password?
+              </a>
+            </Link>
             <div className="mt-3">
               <span className="block w-full rounded-md shadow-sm">
                 <button
@@ -141,9 +141,9 @@ export default function Login() {
                     API.login(login)
                       .then((data) => {
                         console.log("Successfully logged in", data);
-                        setUser(data.user)
+                        setUser(data.user);
                         setTimeout(() => {
-                          router.push('/dashboard');
+                          router.push("/dashboard");
                         }, 2000);
                       })
                       .catch((err) => {

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function policy() {
   return (
     <div className="grid place-items-center md:grid-cols-1 h-screen">
@@ -40,12 +42,14 @@ export default function policy() {
           </li>
           <li>
             Following the{" "}
-            <a
-              className=" text-frost-300 hover:text-frost-400 underline underline-offset-2"
-              href="https://www.ftc.gov/enforcement/rules/rulemaking-regulatory-reform-proceedings/childrens-online-privacy-protection-rule"
-            >
-              {"Children's Online Privacy Protection Act"}
-            </a>
+            <Link href="https://www.ftc.gov/enforcement/rules/rulemaking-regulatory-reform-proceedings/childrens-online-privacy-protection-rule">
+              <a
+                className=" text-frost-300 hover:text-frost-400 underline underline-offset-2"
+                target="_blank"
+              >
+                Childre&apos;s Online Privacy Protection Act
+              </a>
+            </Link>
             , you must be over the age of 13 to use our service. You will be
             terminated if you are found to be under the age of 13.
           </li>

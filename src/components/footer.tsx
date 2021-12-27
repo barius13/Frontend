@@ -1,4 +1,5 @@
 import { FC } from "react";
+import Link from "next/link";
 
 const Footer: FC = () => {
   return (
@@ -9,20 +10,18 @@ const Footer: FC = () => {
           <nav className="mt-4">
             <ul className="space-y-2">
               <li>
-                <a
-                  href="https://kythi.com/terms"
-                  className="text-base hover:text-gray-300"
-                >
-                  Terms of Service
-                </a>
+                <Link href="/terms">
+                  <a className="text-base hover:text-gray-300">
+                    Terms of Service
+                  </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="https://kythi.com/privacy"
-                  className="text-base hover:text-gray-300"
-                >
-                  Privacy Policy
-                </a>
+                <Link href="/privacy">
+                  <a className="text-base hover:text-gray-300">
+                    Privacy Policy
+                  </a>
+                </Link>
               </li>
             </ul>
           </nav>
@@ -43,12 +42,11 @@ const Footer: FC = () => {
                 </a>
               </li>
               <li>
-                <a
-                  href="https://discord.gg/B82cvdZWem"
-                  className="text-base hover:text-gray-300"
-                >
-                  Discord Server
-                </a>
+                <Link href="https://discord.gg/B82cvdZWem">
+                  <a className="text-base hover:text-gray-300">
+                    Discord Server
+                  </a>
+                </Link>
               </li>
             </ul>
           </nav>
@@ -58,20 +56,18 @@ const Footer: FC = () => {
           <nav className="mt-4">
             <ul className="space-y-2">
               <li>
-                <a
-                  href="https://kythi.com"
-                  className="text-base hover:text-gray-300"
-                >
-                  Kythi Portfolio&apos;s
-                </a>
+                <Link href="https://kythi.bio/">
+                  <a className="text-base hover:text-gray-300" target="_blank">
+                    Kythi Portfolio&apos;s
+                  </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="https://github.com/KythiX"
-                  className="text-base hover:text-gray-300"
-                >
-                  GitHub
-                </a>
+                <Link href="https://github.com/KythiX">
+                  <a className="text-base hover:text-gray-300" target="_blank">
+                    GitHub
+                  </a>
+                </Link>
               </li>
             </ul>
           </nav>
@@ -82,12 +78,11 @@ const Footer: FC = () => {
         <div className="space-y-4 text-sm text-center md:space-y-1 md:text-left">
           <p>
             &copy;2021{" "}
-            <a
-              href="https://github.com/KythiX"
-              className="text-gray-400 hover:text-gray-300"
-            >
-              Kythi
-            </a>{" "}
+            <Link href="https://github.com/KythiX">
+              <a className="text-gray-400 hover:text-gray-300" target="_blank">
+                Kythi
+              </a>
+            </Link>{" "}
             | All rights reserved
           </p>
           <p>Designed and maintained by KythiX</p>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
 import Footer from "../components/footer";
 import { useUser } from "../components/user";
@@ -5,7 +6,7 @@ import FeatureBox from "../components/feature";
 import { BsShieldLockFill, BsHeadset } from "react-icons/bs";
 
 export default function Index() {
-  const {user} = useUser();
+  const { user } = useUser();
   const router = useRouter();
 
   return (
@@ -20,18 +21,20 @@ export default function Index() {
               Upload files seamlessly with custom links & customisable embeds.
             </p>
             <div className="flex mb-6 space-x-4 mt-5">
-              <button
-                onClick={() => {user ? router.push("/dashboard") : router.push("/login")}}
-                className="inline-block w-40 px-5 py-2 font-semibold text-white rounded-md bg-frost-400 hover:bg-frost-300 shadow-lg"
-              >
-                {!user ? "Login" : "Dashboard"}
-              </button>
-              <button
-                onClick={() => (router.push("/register"))}
-                className="inline-blockpx-5 py-2 w-40 font-semibold text-white rounded-md bg-aurora-red-200 hover:bg-aurora-red-100 shadow-lg"
-              >
-                Sign Up
-              </button>
+              <Link href={user ? "/dashboard" : "/login"} passHref>
+                <button
+                  className={`inline-block w-${
+                    user ? 50 : 40
+                  } px-5 py-2 font-semibold text-white rounded-md bg-frost-400 hover:bg-frost-300 shadow-lg`}
+                >
+                  {user ? "Go To Dashboard" : "Login"}
+                </button>
+              </Link>
+              <Link href="/register" passHref>
+                <button className={`inline-block px-5 py-2 w-40 font-semibold text-white rounded-md bg-aurora-red-200 hover:bg-aurora-red-100 shadow-lg ${user ? "invisible" : ""}`}>
+                  Sign Up
+                </button>
+              </Link>
             </div>
             <p className="text-sm text-gray-400">
               100% Free, invitation code required upon signing up.
@@ -89,12 +92,14 @@ export default function Index() {
               content={
                 <p className="mb-6 text-lg text-gray-200">
                   You can view our code on{" "}
-                  <a
-                    className="text-frost-300 hover:underline"
-                    href="https://github.com/KythiX"
-                  >
-                    GitHub!
-                  </a>{" "}
+                  <Link href="https://github.com/KythiX">
+                    <a
+                      className="text-frost-300 hover:underline"
+                      target="_blank"
+                    >
+                      GitHub!
+                    </a>
+                  </Link>{" "}
                   This gives you access to host this yourself as well as
                   ensuring you know what happens with your data & how its
                   handled.

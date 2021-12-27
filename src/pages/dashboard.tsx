@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import { useUser } from "../components/user";
 
 export default function Dashboard() {
