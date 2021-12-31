@@ -127,7 +127,7 @@ export default function Login() {
                 </a>
               </label>
             </div>
-            <Link href="/reset-password">
+            <Link href="/reset">
               <a className="flex ml-1 mt-3 font-medium text-snow-200 hover:text-snow-100 text-sm">
                 Forgotten your password?
               </a>
