@@ -1,6 +1,7 @@
 ![logo](https://avatars.githubusercontent.com/u/96139570?s=200&v=4)
 # Kythi Frontend
 
+* Now uses tailwind
 
 ### Install yarn
 ```
