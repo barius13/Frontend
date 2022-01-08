@@ -177,9 +177,9 @@ export default function Index() {
           </div>
         </div>
       </div>
-      <div className="bg-polar-300 pt-20 ">
+      <div className="bg-polar-300">
         <div className="max-w-screen-xl px-6 pb-12 mx-auto lg:px-8 xl:px-4 lg:pb-16 xl:pb-24">
-          <div className="mb-6 text-center md:mb-8">
+          <div className="text-center md:mb-8">
             <h2 className="mb-2 text-3xl font-bold text-white md:text-4xl lg:text-5xl md:mb-4">
               Testimonials
             </h2>

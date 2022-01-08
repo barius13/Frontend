@@ -29,12 +29,9 @@ export default function policy() {
         </div>
         <div className="divide-y-2 divide-frost-300">
           <div />
-          <h2 className="font-bold text-snow-300 lg:text-2xl text-center">
-            We (Kythi) do not knowingly collect any data of users under the age
-            of 13 years old.
-          </h2>
+          <div />
         </div>
-        <div className="text-center">
+        <div className="text-center lg:mt-5">
           {'This privacy policy was last updated on the: "24th December 2021"'}
         </div>
       </div>

@@ -47,7 +47,7 @@ export default function policy() {
                 className=" text-frost-300 hover:text-frost-400 underline underline-offset-2"
                 target="_blank"
               >
-                Childre&apos;s Online Privacy Protection Act
+                Children&apos;s Online Privacy Protection Act
               </a>
             </Link>
             , you must be over the age of 13 to use our service. You will be
