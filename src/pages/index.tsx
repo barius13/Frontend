@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Footer from "../components/footer";
 import { useUser } from "../components/user";
 import FeatureBox from "../components/feature";
+import TestimonialBox from "../components/testimonial";
 import { BsShieldLockFill, BsHeadset } from "react-icons/bs";
 
 export default function Index() {
@@ -23,18 +24,16 @@ export default function Index() {
             <div className="flex mb-6 space-x-4 mt-5">
               <Link href={user ? "/dashboard" : "/login"} passHref>
                 <button
-                  className={`inline-block w-${
-                    user ? 50 : 40
-                  } px-5 py-2 font-semibold text-white rounded-md bg-frost-400 hover:bg-frost-300 shadow-lg`}
+                  className={`inline-block w-${user ? 50 : 40
+                    } px-5 py-2 font-semibold text-white rounded-md bg-frost-400 hover:bg-frost-300 shadow-lg`}
                 >
                   {user ? "Go To Dashboard" : "Login"}
                 </button>
               </Link>
               <Link href="/register" passHref>
                 <button
-                  className={`inline-block px-5 py-2 w-40 font-semibold text-white rounded-md bg-aurora-red-200 hover:bg-aurora-red-100 shadow-lg ${
-                    user ? "invisible" : ""
-                  }`}
+                  className={`inline-block px-5 py-2 w-40 font-semibold text-white rounded-md bg-aurora-red-200 hover:bg-aurora-red-100 shadow-lg ${user ? "invisible" : ""
+                    }`}
                 >
                   Sign Up
                 </button>
@@ -54,7 +53,7 @@ export default function Index() {
             </h2>
           </div>
 
-          <div className="grid items-stretch md:grid-cols-3 gap-3">
+          <div className="grid items-stretch md:grid-cols-2 gap-3">
             <FeatureBox
               title="Personalization."
               content="Kythi allows you to personalise your files with your own customised embeds, domains and many more features to choose from to allow you to truly customise."
@@ -138,6 +137,36 @@ export default function Index() {
               title="Unlimited Storage"
               content="You can upload as many files as you want, as we don't have a limit on how many files you produce! This allows you to express yourself in a way that is not limited by usage caps."
               icon={<BsHeadset className="text-2xl" />}
+            />
+          </div>
+        </div>
+
+      </div>
+      <div className="bg-polar-300 pt-20 ">
+        <div className="max-w-screen-xl px-6 pb-12 mx-auto lg:px-8 xl:px-4 lg:pb-16 xl:pb-24">
+          <div className="mb-6 text-center md:mb-8">
+            <h2 className="mb-2 text-3xl font-bold text-white md:text-4xl lg:text-5xl md:mb-4">
+              Testimonials
+            </h2>
+          </div>
+          <div className="grid items-stretch content-center md:grid-cols-3 gap-3">
+            <TestimonialBox
+              user="Placeholder"
+              content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales mollis eleifend. Donec a consequat."
+              avatar="https://cdn.discordapp.com/avatars/659876122183335966/27e73488ca8820bc80ec53f34d0c6ada.webp?size=128"
+
+            />
+            <TestimonialBox
+              user="Placeholder"
+              content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales mollis eleifend. Donec a consequat."
+              avatar="https://cdn.discordapp.com/avatars/731728644837343275/a_961a1e136addd8b4fc2bb0c24e413aca.webp?size=128"
+
+            />
+            <TestimonialBox
+              user="Placeholder"
+              content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales mollis eleifend. Donec a consequat."
+              avatar="https://cdn.discordapp.com/avatars/287628873309618176/b62a52f3637028a13b665fee6f9de2bc.webp?size=128"
+
             />
           </div>
         </div>
