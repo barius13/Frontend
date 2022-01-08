@@ -31,7 +31,11 @@ export default function Index() {
                 </button>
               </Link>
               <Link href="/register" passHref>
-                <button className={`inline-block px-5 py-2 w-40 font-semibold text-white rounded-md bg-aurora-red-200 hover:bg-aurora-red-100 shadow-lg ${user ? "invisible" : ""}`}>
+                <button
+                  className={`inline-block px-5 py-2 w-40 font-semibold text-white rounded-md bg-aurora-red-200 hover:bg-aurora-red-100 shadow-lg ${
+                    user ? "invisible" : ""
+                  }`}
+                >
                   Sign Up
                 </button>
               </Link>
@@ -53,7 +57,7 @@ export default function Index() {
           <div className="grid items-stretch md:grid-cols-3 gap-3">
             <FeatureBox
               title="Personalization."
-              content="We allow you to customise your Files, Discord embeds, your Kythi profile and more!"
+              content="Kythi allows you to personalise your files with your own customised embeds, domains and many more features to choose from to allow you to truly customise."
               icon={
                 <path
                   strokeLinecap="round"
@@ -67,15 +71,14 @@ export default function Index() {
 
             <FeatureBox
               title="Secure."
-              content="All passwords are hashed using argon2i. This prevents any
-              attackers from taking your account"
+              content="All passwords are hashed using argon2i. This prevents any users or attackers from accessing your account without your permission keeping you & your data safe."
               icon={<BsShieldLockFill className="w-6 h-6" />}
             />
 
             <FeatureBox
               title="Various File-Types"
-              content="Kythi supports many File Types, for example we allow .mp4, .mp3,
-              .png, .jpg and more!"
+              content="Kythi supports multiple file types, for example we allow .mp4, .mp3,
+              .png, .jpg and more. This allows you to express your creativity!"
               isSvg={true}
               svgData={{ stroke: "#EBCB8B" }}
               icon={
@@ -119,7 +122,7 @@ export default function Index() {
 
             <FeatureBox
               title="Custom Domains"
-              content="There is a variety of domains you can use to host your files, this allows you to personalise your file-hosting experience. You can also add your own domain."
+              content="There is a variety of domains that you can choose from you to host your files on, this allows you to personalise your file-hosting experience. You can also add your own domain(s)."
               isSvg={true}
               icon={
                 <path
@@ -132,9 +135,8 @@ export default function Index() {
             />
 
             <FeatureBox
-              title="24/7 Support"
-              content="We provide fast support and answers, with a member of staff
-              always being available."
+              title="Unlimited Storage"
+              content="You can upload as many files as you want, as we don't have a limit on how many files you produce! This allows you to express yourself in a way that is not limited by usage caps."
               icon={<BsHeadset className="text-2xl" />}
             />
           </div>
