@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useUser } from "../components/user";
+import StatsBox from "../components/userstats";
+import Nav from "../components/navbar";
 
 export default function Dashboard() {
   const router = useRouter();
@@ -14,9 +16,174 @@ export default function Dashboard() {
   }, [router, user]);
 
   return user ? (
-    <div className="flex justify-center items-center text-white">
-      Hi {user.username}!
-      <button onClick={() => router.push("/config")}>Press Me!</button>
-    </div>
+    <>
+      <Nav page={"dash"} />
+      <div className="flex flex-col items-center justify-center mt-10 px-10">
+        <div className="grid items-stretch md:grid-cols-3 gap-3 text-white w-11/12">
+          <div>
+            <StatsBox
+              title="Uploads."
+              content="600"
+              icon={
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="#EBCB8B"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                  />
+                </svg>
+              }
+            />
+          </div>
+          <div>
+            <StatsBox
+              title="Storage."
+              content="350mb"
+              icon={
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="#BF616A"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
+                  />
+                </svg>
+              }
+            />
+          </div>
+          <div>
+            <StatsBox
+              title="Latency."
+              content="69ms"
+              icon={
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="#B48EAD"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  />
+                </svg>
+              }
+            />
+          </div>
+          <div className="p-6 bg-polar-200 rounded-md md:p-6 shadow-lg mt-10 lg:h-auto md:h-auto w-auto">
+            <div className="flex items-baseline justify-between ">
+              <h4 className="text-xl font-bold lg:text-2xl text-snow-100 mt-1">
+                Quick Links
+              </h4>
+            </div>
+            <div className="divide-y-2 divide-frost-300 mb-2 mt-3">
+              <div />
+              <div />
+            </div>
+            <Link href="/config">
+              <button className="w-full py-2 px-4 text-sm font-medium rounded-md text-white bg-aurora-red-200 hover:bg-aurora-red-300 shadow-lg transition duration-700 mt-2">
+                {"Config Downloads"}
+              </button>
+            </Link>
+            <Link href="/config">
+              <button className="w-full py-2 px-4 text-sm font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg transition duration-700 mt-4">
+                {"Embed Customisations"}
+              </button>
+            </Link>
+            <Link href="/config">
+              <button className="w-full py-2 px-4 text-sm font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg transition duration-700 mt-4">
+                {"Config Downloads"}
+              </button>
+            </Link>
+          </div>
+          <div className="p-6 bg-polar-200 rounded-md md:p-6 shadow-lg mt-10 lg:h-auto md:h-auto w-auto">
+            <div className="flex items-baseline justify-between ">
+              <h4 className="text-xl font-bold lg:text-2xl text-snow-100 mt-1">
+                Recently uploaded File.
+              </h4>
+            </div>
+            <div className="divide-y-2 divide-frost-300 mb-2 mt-3">
+              <div />
+              <div />
+            </div>
+            <div className="w-full mt-3 hover:shadow-xl duration-700">
+              <img src="https://nyc3.digitaloceanspaces.com/kythi.pics/dfa6659b-46f9-5521-9452-6e08f897e59e/6bIAOKVh0b.png" />
+              <div className="divide-y-2 divide-aurora-red-300">
+                <div />
+                <div />
+              </div>
+            </div>
+            <div className="flex items-center justify-between mt-2">
+              <div className="flex items-center">
+                <img
+                  className="w-8 h-8 rounded-full mr-2"
+                  src={user.discord.avatar as string}
+                />
+                <div className="flex flex-col">
+                  <span className="text-sm font-medium text-snow-100">
+                    You, {user.username}
+                  </span>
+                  <span className="text-xs font-medium text-frost-300">
+                    2 hours ago
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="p-6 bg-polar-200 rounded-md md:p-6 shadow-lg mt-10 lg:h-auto md:h-auto w-auto">
+            <div className="flex items-baseline justify-between ">
+              <h4 className="text-xl font-bold lg:text-2xl text-snow-100 mt-1">
+                Updates, News, and Announcements.
+              </h4>
+            </div>
+            <div className="divide-y-2 divide-frost-300 mb-2 mt-3">
+              <div />
+              <div />
+            </div>
+            <p className="bg-polar-400 py-2 px-2 rounded-md border-l-frost-300 border-l-2 mt-8">
+              Welcome to kythi we thank you for taking an interest in our
+              service! We are currently in beta and we are working on a lot of
+              features and bug fixes. We will be adding more features and bug
+              fixes in the future. We hope you enjoy your stay!
+            </p>
+            <div className="flex items-center justify-between mt-2">
+              <div className="flex items-center mb-4 mt-3">
+                <img
+                  className="w-12 h-12 rounded-full mr-2"
+                  src={user.discord.avatar as string}
+                />
+                <div className="flex flex-col">
+                  <span className="text-lg font-medium text-snow-300">
+                    {user.username} - Admin
+                  </span>
+                  <span className="text-md font-medium text-snow-100">
+                    2 hours ago
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="w-11/12 mt-10 bg-polar-200 px-4 rounded-sm h-44">
+          fucking
+        </div>
+      </div>
+    </>
   ) : null;
 }

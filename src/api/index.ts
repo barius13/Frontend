@@ -1,5 +1,5 @@
-import { loginState} from "../pages/login"
-import { registerState } from "../pages/register"
+import { loginState } from "../pages/login";
+import { registerState } from "../pages/register";
 import axios, { AxiosRequestHeaders, Method } from "axios";
 
 interface requestParams {
@@ -37,7 +37,12 @@ export default class API {
   }
 
   private static encodeQueryString(data: { [key: string]: string }) {
-    return Object.keys(data).map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key] ?? "")}`).join("&");
+    return Object.keys(data)
+      .map(
+        (key) =>
+          `${encodeURIComponent(key)}=${encodeURIComponent(data[key] ?? "")}`
+      )
+      .join("&");
   }
 
   static getCurrentSession() {
@@ -46,12 +51,16 @@ export default class API {
 
   static register(data: registerParams) {
     return this.request("/auth/register", "POST", {
-      body: data
+      body: data,
     });
   }
 
   static validateRegister(data: registerState) {
-    return this.request(`/validate/register?${API.encodeQueryString(data as {})}`, "GET", {});
+    return this.request(
+      `/validate/register?${API.encodeQueryString(data as {})}`,
+      "GET",
+      {}
+    );
   }
 
   static login(data: loginState) {
@@ -62,8 +71,7 @@ export default class API {
     }
 
     return this.request("/auth/login", "POST", {
-      body: data 
-    })
+      body: data,
+    });
   }
 }
-
