@@ -9,7 +9,13 @@ interface FeatureProps {
   svgData?: object | string;
 }
 
-const FeatureBox: FC<FeatureProps> = ({ title, content, icon, isSvg, svgData }) => {
+const FeatureBox: FC<FeatureProps> = ({
+  title,
+  content,
+  icon,
+  isSvg,
+  svgData,
+}) => {
   return (
     <div className="p-6 bg-polar-100 hover:bg-polar-400 lg:duration-700 border-none rounded-md w-full md:p-8 lg:py-10 md:shadow-lg md:hover:shadow-lg md:transition-all md:duration-500 lg:h-64">
       <div className="flex items-baseline justify-between mb-4">
@@ -20,7 +26,7 @@ const FeatureBox: FC<FeatureProps> = ({ title, content, icon, isSvg, svgData }) 
             className="h-8 w-8"
             fill="none"
             viewBox="0 0 24 24"
-            stroke="#81A1C1"
+            stroke="#BF616A"
             {...svgData}
           >
             {icon}
