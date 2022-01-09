@@ -6,8 +6,6 @@ import FeatureBox from "../components/feature";
 import TestimonialBox from "../components/testimonial";
 import MainFeat from "../components/main_feat";
 
-
-
 export default function Index() {
   const { user } = useUser();
   const router = useRouter();
@@ -15,7 +13,6 @@ export default function Index() {
   return (
     <main className="font-medium bg-polar-300 text-gray-200">
       <div className="py-12 md:py-24 bg-polar-100 shadow-inner">
-        
         <div className="grid max-w-screen-xl px-6 mx-auto lg:px-8 xl:px-4 md:grid-cols-4 xl:grid-cols-5 gap-x-12 lg:gap-x-20">
           <div className="self-center order-2 col-span-2 mt-12 md:order-1 md:mt-0">
             <h1 className=" text-3xl font-bold text-white md:text-4xl lg:text-5xl md:mb-4 lg:mb-2">
@@ -24,19 +21,19 @@ export default function Index() {
             <p className="text-lg text-gray-200 xl:text-xl lg:mb-8 xl:mb-10">
               Upload files seamlessly with custom links & customisable embeds.
             </p>
-            <div className="flex mb-6 space-x-4 mt-5">
+            <div className="flex mb-6 space-x-3 mt-5">
               <Link href={user ? "/dashboard" : "/login"} passHref>
                 <button
                   className={`inline-block w-${
-                    user ? 50 : 40
-                  } px-5 py-2 font-semibold text-white rounded-md bg-frost-400 hover:bg-frost-300 shadow-lg`}
+                    user ? 50 : 36
+                  } py-2 font-semibold text-white rounded-md bg-frost-400 hover:bg-frost-300 shadow-lg`}
                 >
-                  {user ? "Go To Dashboard" : "Login"}
+                  {user ? "Dashboard" : "Login"}
                 </button>
               </Link>
               <Link href="/register" passHref>
                 <button
-                  className={`inline-block px-5 py-2 w-40 font-semibold text-white rounded-md bg-aurora-red-200 hover:bg-aurora-red-100 shadow-lg ${
+                  className={`inline-block py-2 w-36 font-semibold text-white rounded-md bg-aurora-red-200 hover:bg-aurora-red-100 shadow-lg ${
                     user ? "invisible" : ""
                   }`}
                 >
@@ -79,14 +76,20 @@ export default function Index() {
               title="Fast Speeds."
               content={
                 <p className="mb-6 text-lg text-gray-200">
-                  We have servers around America ensuring our upload speeds are as fast as possible, and your files will be uploaded in seconds.
+                  We have servers around America ensuring our upload speeds are
+                  as fast as possible, and your files will be uploaded in
+                  seconds.
                 </p>
               }
               isSvg={true}
               svgData={{ stroke: "#BF616A" }}
               icon={
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
               }
             />
             <FeatureBox
