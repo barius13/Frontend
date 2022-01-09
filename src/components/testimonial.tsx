@@ -8,7 +8,7 @@ interface TestimonialBox {
 
 const TestimonialBox: FC<TestimonialBox> = ({ user, content, avatar }) => {
   return (
-    <div className="p-6 hover:drop-shadow-2xl bg-polar-100 hover:bg-polar-400 lg:duration-700 border-none rounded-md w-full md:p-8 lg:py-10 md:shadow-lg md:hover:shadow-lg md:transition-all md:duration-5004">
+    <div className="p-6 rounded-md w-full md:p-8 lg:py-10">
       <img
         src={avatar}
         alt=""

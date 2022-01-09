@@ -4,15 +4,18 @@ import Footer from "../components/footer";
 import { useUser } from "../components/user";
 import FeatureBox from "../components/feature";
 import TestimonialBox from "../components/testimonial";
-import { BsShieldLockFill } from "react-icons/bs";
+import MainFeat from "../components/main_feat";
+import { Main } from "next/document";
+
 
 export default function Index() {
   const { user } = useUser();
   const router = useRouter();
 
   return (
-    <main className="font-medium text-gray-200">
+    <main className="font-medium bg-polar-300 text-gray-200">
       <div className="py-12 md:py-24 bg-polar-100 shadow-inner">
+        
         <div className="grid max-w-screen-xl px-6 mx-auto lg:px-8 xl:px-4 md:grid-cols-4 xl:grid-cols-5 gap-x-12 lg:gap-x-20">
           <div className="self-center order-2 col-span-2 mt-12 md:order-1 md:mt-0">
             <h1 className=" text-3xl font-bold text-white md:text-4xl lg:text-5xl md:mb-4 lg:mb-2">
@@ -47,19 +50,17 @@ export default function Index() {
           </div>
         </div>
       </div>
-      <div className="divide-y-2 divide-white">
-        <div />
-        <div />
-      </div>
+
       <div className="bg-polar-300 pt-20 shadow-inner">
-        <div className="max-w-screen-xl px-6 pb-12 mx-auto lg:px-8 xl:px-4 lg:pb-16 xl:pb-24">
+        <MainFeat />
+        <div className="max-w-screen-xl px-6 pb-12 md:mt-20 mx-auto lg:px-8 xl:px-4 lg:pb-16 xl:pb-24">
           <div className="mb-6 text-center md:mb-8">
             <h2 className="mb-2 text-3xl font-bold text-white md:text-4xl lg:text-5xl md:mb-4">
               Features
             </h2>
           </div>
 
-          <div className="grid items-stretch md:grid-cols-2 gap-3">
+          <div className="grid items-stretch md:grid-cols-1 gap-3">
             <FeatureBox
               title="Personalization."
               content="Kythi allows you to personalise your files with your own customised embeds, domains and many more features to choose from to allow you to truly customise."
@@ -140,45 +141,11 @@ export default function Index() {
               }
             />
 
-            <FeatureBox
-              title="Custom Domains"
-              content="There is a variety of domains that you can choose from you to host your files on, this allows you to personalise your file-hosting experience. You can also add your own domain(s)."
-              isSvg={true}
-              icon={
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
-                />
-              }
-            />
-
-            <FeatureBox
-              title="Unlimited Storage"
-              content="You can upload as many files as you want, as we don't have a limit on how many files you produce! This allows you to express yourself in a way that is not limited by usage caps."
-              icon={
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="#EBCB8B"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
-                  />
-                </svg>
-              }
-            />
           </div>
         </div>
       </div>
       <div className="bg-polar-300">
-        <div className="max-w-screen-xl px-6 pb-12 mx-auto lg:px-8 xl:px-4 lg:pb-16 xl:pb-24">
+        <div className="max-w-screen-xl px-6 pb-12 md:mt-20 mx-auto lg:px-8 xl:px-4 lg:pb-16 xl:pb-24">
           <div className="text-center md:mb-8">
             <h2 className="mb-2 text-3xl font-bold text-white md:text-4xl lg:text-5xl md:mb-4">
               Testimonials
