@@ -6,7 +6,7 @@ const MainFeat = () => {
                 <div className="flex flex-row-reverse flex-wrap items-center">
                     <div className="w-10/12 md:w-6/12 lg:w-4/12 px-12 md:px-4 mr-auto ml-auto -mt-78">
                         <div className="relative flex flex-col min-w-0 break-words  w-full mb-6 shadow-lg rounded-lg bg-polar-100">
-                        <img alt="discord embed" src="/images/embed.png" className="w-full align-middle rounded-t-lg" />
+                        <img alt="discord embed" src="https://cdn.discordapp.com/attachments/853691527800029205/929751884351275018/Screenshot_2022-01-09_134825.png" className="w-full align-middle rounded-t-lg" />
                         <div className="divide-y-2 divide-frost-200">
                             <div />
                             <div />
@@ -15,7 +15,7 @@ const MainFeat = () => {
                                 <h4 className="text-xl font-bold text-white">
                                     Express Yourself
                                 </h4>
-                                <p className="text-md font-light mt-2 text-white">
+                                <p className="text-md font-normal mt-2 text-white">
                                     Share images with custom branding and personal expression. At Kythi we encourage users to express their identity online and have full customisation over everything, even as little as sharing images!
                                 </p>
                             </blockquote>
@@ -121,8 +121,7 @@ const MainFeat = () => {
                                         </div>
                                         <h6 className="text-xl mb-1 font-semibold">Custom Domains</h6>
                                         <p className="mb-4 text-blueGray-500">
-                                            Built by developers for developers. You will love how easy
-                                            is to to work with Notus JS.
+                                            Use any custom domain for your image sharing links
                                         </p>
                                     </div>
                                 </div>

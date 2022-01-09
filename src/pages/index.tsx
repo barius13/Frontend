@@ -53,7 +53,7 @@ export default function Index() {
 
       <div className="bg-polar-300 pt-20 shadow-inner">
         <MainFeat />
-        <div className="max-w-screen-xl px-6 pb-12 md:mt-20 mx-auto lg:px-8 xl:px-4 lg:pb-16 xl:pb-24">
+        <div className="max-w-screen-lg px-6 pb-12 md:mt-20 mx-auto lg:px-8 xl:px-4 lg:pb-16 xl:pb-24">
           <div className="mb-6 text-center md:mb-8">
             <h2 className="mb-2 text-3xl font-bold text-white md:text-4xl lg:text-5xl md:mb-4">
               Features
@@ -76,43 +76,21 @@ export default function Index() {
             />
 
             <FeatureBox
-              title="Secure."
-              content="All passwords are hashed using argon2i. This prevents any users or attackers from accessing your account without your permission keeping you & your data safe."
-              icon={
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="#EBCB8B"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016zM12 9v2m0 4h.01"
-                  />
-                </svg>
+              title="Fast Speeds."
+              content={
+                <p className="mb-6 text-lg text-gray-200">
+                  We have servers around America ensuring our upload speeds are as fast as possible, and your files will be uploaded in seconds.
+                </p>
               }
-            />
-
-            <FeatureBox
-              title="Various File-Types"
-              content="Kythi supports multiple file types, for example we allow .mp4, .mp3,
-              .png, .jpg and more. This allows you to express your creativity!"
               isSvg={true}
-              svgData={{ stroke: "#EBCB8B" }}
+              svgData={{ stroke: "#BF616A" }}
               icon={
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
-                />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+
               }
             />
             <FeatureBox
-              title="Open Source"
+              title="Open Source."
               content={
                 <p className="mb-6 text-lg text-gray-200">
                   You can view our code on{" "}
@@ -140,7 +118,6 @@ export default function Index() {
                 />
               }
             />
-
           </div>
         </div>
       </div>
