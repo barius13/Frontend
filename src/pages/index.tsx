@@ -26,7 +26,7 @@ export default function Index() {
                 <button
                   className={`inline-block w-${
                     user ? 50 : 36
-                  } py-2 font-semibold text-white rounded-md bg-frost-400 hover:bg-frost-300 shadow-lg`}
+                  } px-6 py-2 font-semibold text-white rounded-md bg-frost-400 hover:bg-frost-300 shadow-lg`}
                 >
                   {user ? "Dashboard" : "Login"}
                 </button>
