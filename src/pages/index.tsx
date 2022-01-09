@@ -5,7 +5,7 @@ import { useUser } from "../components/user";
 import FeatureBox from "../components/feature";
 import TestimonialBox from "../components/testimonial";
 import MainFeat from "../components/main_feat";
-import { Main } from "next/document";
+
 
 
 export default function Index() {

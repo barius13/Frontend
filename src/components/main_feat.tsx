@@ -1,11 +1,12 @@
 
+
 const MainFeat = () => {
     return (
             <div className="container max-w-screen-xl mx-auto">
                 <div className="flex flex-row-reverse flex-wrap items-center">
                     <div className="w-10/12 md:w-6/12 lg:w-4/12 px-12 md:px-4 mr-auto ml-auto -mt-78">
                         <div className="relative flex flex-col min-w-0 break-words  w-full mb-6 shadow-lg rounded-lg bg-polar-100">
-                            <img alt="..." src="/images/embed.png" className="w-full align-middle rounded-t-lg" />
+                        <img alt="discord embed" src="/images/embed.png" className="w-full align-middle rounded-t-lg" />
                         <div className="divide-y-2 divide-frost-200">
                             <div />
                             <div />
@@ -96,7 +97,7 @@ const MainFeat = () => {
                                         </div>
                                         <h6 className="text-xl mb-1 font-semibold">Unlimited Storage</h6>
                                         <p className="mb-4 text-blueGray-500">
-                                        We don't have a limit on how many files you produce, upload as many as you want!
+                                        We don&apos;t have a limit on how many files you produce, upload as many as you want!
                                         </p>
                                     </div>
                                 </div>
