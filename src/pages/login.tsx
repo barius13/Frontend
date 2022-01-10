@@ -25,7 +25,9 @@ export default function Login() {
         <form className="w-full max-w-md">
           <div className="rounded-lg bg-polar-200 px-8 py-8">
             <div className="divide-y-2 divide-frost-300">
-              <div className="text-white font-bold text-xl mb-2">Login</div>
+              <div className="text-white font-bold text-xl mb-2">
+                Login to Kythi.
+              </div>
               <div />
             </div>
             <label className="relative block mt-5">
@@ -152,6 +154,17 @@ export default function Login() {
                   }
                 >
                   Sign in
+                </button>
+              </span>
+              <span className="block w-full rounded-md shadow-sm mt-3">
+                <button
+                  type="button"
+                  className="w-full py-2 px-4 text-sm font-medium rounded-md text-white bg-[#5865F2] hover:bg-[#7289DA] shadow-lg transition duration-700"
+                  onClick={() => {
+                    router.push("https://api.kythi.com/discord/link");
+                  }}
+                >
+                  Login via discord.
                 </button>
               </span>
             </div>

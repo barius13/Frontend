@@ -26,7 +26,9 @@ export default function Register() {
         <form className="w-full max-w-md">
           <div className="rounded-lg bg-polar-200 px-8 py-8">
             <div className="divide-y-2 divide-frost-300">
-              <div className="text-white font-bold text-xl mb-2">Register</div>
+              <div className="text-white font-bold text-xl mb-2">
+                Register to Kythi.
+              </div>
               <div />
             </div>
             <label className="relative block mt-5">
@@ -229,7 +231,7 @@ export default function Register() {
                             password: null,
                             email: null,
                             inviteCode: null,
-                          })
+                          });
 
                           console.log("Successfully Registered!", data);
                         })
