@@ -160,9 +160,9 @@ export default function Login() {
                 <button
                   type="button"
                   className="w-full py-2 px-4 text-sm font-medium rounded-md text-white bg-[#5865F2] hover:bg-[#7289DA] shadow-lg transition duration-700"
-                  onClick={() => {
-                    router.push("https://api.kythi.com/discord/link");
-                  }}
+                  onClick={() =>
+                    (location.href = "https://api.kythi.com/discord/login")
+                  }
                 >
                   Login via discord.
                 </button>
