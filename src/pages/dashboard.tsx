@@ -31,7 +31,7 @@ export default function Dashboard() {
           <div className="grid items-stretch lg:grid-cols-3 gap-3 text-white w-11/12">
             <div>
               <StatsBox
-                title="Uploads."
+                title="Uploads"
                 content="600"
                 icon={
                   <svg
@@ -53,7 +53,7 @@ export default function Dashboard() {
             </div>
             <div>
               <StatsBox
-                title="Storage."
+                title="Storage"
                 content="350mb"
                 icon={
                   <svg
@@ -75,7 +75,7 @@ export default function Dashboard() {
             </div>
             <div>
               <StatsBox
-                title="Latency."
+                title="Latency"
                 content="69ms"
                 icon={
                   <svg
@@ -174,24 +174,24 @@ export default function Dashboard() {
                   id="Delete-Image"
                   className="modal-toggle"
                 />
-                <div className="modal ">
-                  <div className="modal-box rounded-md bg-polar-200">
+                <div className="modal px-16 lg:h-auto md:h-auto h-2/4 bg-black bg-opacity-25">
+                  <div className="modal-box py-6 px-8 rounded-md bg-polar-100 shadow-2xl lg:w-1/3">
                     <h1 className="font-semibold text-xl mb-2">Delete Image</h1>
-                    <span className="text-snow-300">
+                    <span className="text-snow-200">
                       Are you sure you want to delete this File? This action is
                       not reversible. This will permanently delete the File from
                       our servers. This action is irreversible!
                     </span>
-                    <div className="modal-action">
+                    <div className="modal-action space-x-2">
                       <label
                         htmlFor="Delete-Image"
-                        className="bg-aurora-red-400 hover:bg-aurora-red-100 w-24 h-11 rounded-md cursor-pointer text-center text-white font-medium py-2 px-4 mt-4 transition duration-500"
+                        className="ml-auto bg-aurora-red-400 hover:bg-aurora-red-100 w-24 h-11 rounded-md cursor-pointer text-center text-white font-medium py-2 px-4 mt-4 transition duration-500"
                       >
                         Delete
                       </label>
                       <label
                         htmlFor="Delete-Image"
-                        className="bg-polar-100 hover:bg-polar-400 w-24 h-11 rounded-md cursor-pointer text-center text-white font-medium py-2 px-4 mt-4 transition duration-500"
+                        className="bg-polar-200 hover:bg-polar-400 w-24 h-11 rounded-md cursor-pointer text-center text-white font-medium py-2 px-4 mt-4 transition duration-500"
                       >
                         Close
                       </label>

@@ -82,16 +82,22 @@ const NavBar: React.FC<NavBarProps> = (props) => {
 
           <ul
             tabIndex={0}
-            className="p-2 shadow-2xl menu dropdown-content bg-polar-200 rounded-md w-52 mt-14"
+            className="p-2 py-4 px-4 shadow-2xl menu dropdown-content bg-polar-200 rounded-md w-52 mt-14"
           >
             <li>
-              <a>Settings</a>
+              <a className="mb-1 font-semibold text-snow-200 hover:bg-polar-300 rounded-md py-2 px-2">
+                Settings
+              </a>
             </li>
             <li>
-              <a>Logout</a>
+              <a className="mb-1 font-semibold text-snow-200 hover:bg-polar-300 rounded-md py-2 px-2">
+                Logout
+              </a>
             </li>
             <li>
-              <a>Copy Upload Key</a>
+              <a className="font-semibold text-snow-200 hover:bg-polar-300 rounded-md py-2 px-2">
+                Copy Upload Key
+              </a>
             </li>
           </ul>
         </div>

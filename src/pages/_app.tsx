@@ -24,7 +24,7 @@ function Host({ Component, pageProps }: AppProps) {
         })
         .catch(() => {
           setTimeout(() => {
-            setStatus("Unable to get user data!");
+            setStatus("Unable To Acquire User data!");
             setTimeout(() => {
               setUser(null);
             }, 1250);

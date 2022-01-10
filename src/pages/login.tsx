@@ -14,6 +14,9 @@ export default function Login() {
   const { setUser } = useUser();
   const loginShow = () => setShow(!show);
   const [show, setShow] = React.useState(false);
+  const [LoginClicked, LoginSetClicked] = React.useState(false);
+  const [DiscordClicked, DiscordSetClicked] = React.useState(false);
+
   const [login, setLogin] = React.useState<loginState>({
     username: null,
     password: null,
@@ -138,8 +141,11 @@ export default function Login() {
               <span className="block w-full rounded-md shadow-sm">
                 <button
                   type="button"
-                  className="w-full py-2 px-4 text-sm font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg transition duration-700"
-                  onClick={() =>
+                  className={`btn border-0 w-full btn-sm h-9 text-sm font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg transition duration-700 ${
+                    LoginClicked ? "loading" : ""
+                  }`}
+                  onClick={() => {
+                    LoginSetClicked(true);
                     API.login(login)
                       .then((data) => {
                         console.log("Successfully logged in", data);
@@ -150,21 +156,26 @@ export default function Login() {
                       })
                       .catch((err) => {
                         console.log("Error logging in", err);
-                      })
-                  }
+                        LoginSetClicked(false);
+                      });
+                  }}
                 >
-                  Sign in
+                  {"Sign in"}
                 </button>
               </span>
               <span className="block w-full rounded-md shadow-sm mt-3">
                 <button
                   type="button"
-                  className="w-full py-2 px-4 text-sm font-medium rounded-md text-white bg-[#5865F2] hover:bg-[#7289DA] shadow-lg transition duration-700"
-                  onClick={() =>
-                    (location.href = "https://api.kythi.com/discord/login")
-                  }
+                  className={`btn border-0 w-full btn-sm h-9 font-medium rounded-md transform-lowercase bg-[#5865F2] hover:bg-[#7289DA] shadow-lg transition duration-700 ${
+                    DiscordClicked ? "loading" : ""
+                  }`}
+                  onClick={() => {
+                    DiscordSetClicked(true);
+
+                    location.href = "https://api.kythi.com/discord/login";
+                  }}
                 >
-                  Login via discord.
+                  Login with discord.
                 </button>
               </span>
             </div>
