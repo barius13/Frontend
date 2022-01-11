@@ -143,7 +143,10 @@ export default function Dashboard() {
                 <div />
               </div>
               <div className="w-full mt-3 hover:shadow-xl duration-700">
-                <Image src="https://nyc3.digitaloceanspaces.com/kythi.pics/dfa6659b-46f9-5521-9452-6e08f897e59e/6bIAOKVh0b.png" alt="Recently Uploaded Image" />
+                <Image
+                  src="https://nyc3.digitaloceanspaces.com/kythi.pics/dfa6659b-46f9-5521-9452-6e08f897e59e/6bIAOKVh0b.png"
+                  alt="Recently Uploaded Image"
+                />
                 <div className="divide-y-2 divide-aurora-red-300">
                   <div />
                   <div />
@@ -154,7 +157,7 @@ export default function Dashboard() {
                   <Image
                     className="w-8 h-8 rounded-full mr-2"
                     alt="User Avatar"
-                    src={user.discord.avatar as string}
+                    src={user.discord?.avatar as string}
                   />
                   <div className="flex flex-col">
                     <span className="text-sm font-medium text-snow-300">
@@ -223,7 +226,7 @@ export default function Dashboard() {
                   <Image
                     className="w-10 h-10 rounded-full mr-2"
                     alt="User Avatar"
-                    src={user.discord.avatar as string}
+                    src={user.discord?.avatar as string}
                   />
                   <div className="flex flex-col">
                     <span className="font-medium text-snow-300">

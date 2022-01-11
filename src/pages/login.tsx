@@ -179,7 +179,8 @@ export default function Login() {
                     type="button"
                     className="btn border-0 w-full btn-sm h-9 font-medium rounded-md transform-lowercase bg-[#5865F2] hover:bg-[#7289DA] shadow-lg transition duration-700"
                     onClick={() => {
-                      location.href = "https://api.kythi.com/discord/login";
+                      location.href =
+                        "https://api.kythi.com/auth/discord/login";
                     }}
                   >
                     <svg
@@ -193,7 +194,7 @@ export default function Login() {
                         fill="#ffffff"
                       />
                     </svg>
-                    Login with Discord
+                    Login With Discord
                   </button>
                 </span>
               </div>
