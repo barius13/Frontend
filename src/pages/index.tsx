@@ -1,14 +1,12 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
 import Footer from "../components/footer";
 import { useUser } from "../components/user";
 import FeatureBox from "../components/feature";
-import TestimonialBox from "../components/testimonial";
 import MainFeat from "../components/main_feat";
+import TestimonialBox from "../components/testimonial";
 
 export default function Index() {
   const { user } = useUser();
-  const router = useRouter();
 
   return (
     <main className="font-medium bg-polar-300 text-gray-200">
