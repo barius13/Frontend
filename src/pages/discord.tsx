@@ -16,7 +16,7 @@ export default function Discord() {
     }
   }, [router, user]);
 
-  return (user && !user.discordId) ? (
+  return user && !user.discordId ? (
     <>
       <div className="bg-polar-100">
         <div className="flex justify-center items-center h-screen grid-rows-1 px-4">
@@ -24,12 +24,12 @@ export default function Discord() {
             <h1 className="lg:text-4xl text-3xl font-bold text-snow-200">
               Kythi • Discord Link
             </h1>
-            <p className="text-xl text-snow-100 mt-3">
+            <p className="text-xl text-snow-100 mt-4">
               Welcome to Kythi! Thank you for signing up to our service. To use
               our service you need to link your discord
             </p>
 
-            <span className="block w-full rounded-md shadow-sm mt-6">
+            <span className="block w-full rounded-md shadow-sm mt-12">
               <Link href="https://api.kythi.com/discord/link" passHref>
                 <button
                   type="button"
