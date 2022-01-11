@@ -5,7 +5,7 @@ export const sendToast = (content: string, toastType: "success" | "error") =>
   toast.custom(
     (t) => (
       <div
-        className={`flex flex-row items-center justify-between bg-polar-200 px-4 py-4 text-white shadow-2xl hover:shadow-none transform-gpu translate-y-0 hover:translate-y-1 rounded-xl relative transition-all duration-500 ease-in-out lg:w-auto  ${
+        className={`flex flex-row items-center justify-between bg-polar-200 px-4 py-4 text-white shadow-2xl hover:shadow-none transform-gpu translate-y-0 hover:translate-y-1 rounded-xl relative transition-all duration-500 ease-in-out lg:w-auto ${
           t.visible ? "top-0" : "-top-96"
         }`}
         onClick={() => {
