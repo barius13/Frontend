@@ -1,8 +1,22 @@
 import Link from "next/link";
-import Footer from "../components/footer";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+import { useUser } from "../components/user";
+import API from "../api";
 
-export default function Page404() {
-  return (
+export default function Discord() {
+  const router = useRouter();
+  const { user } = useUser();
+
+  useEffect(() => {
+    if (!user) {
+      router.push("/");
+    } else if (user.discordId) {
+      router.push("/dashboard");
+    }
+  }, [router, user]);
+
+  return (user && !user.discordId) ? (
     <>
       <div className="bg-polar-100">
         <div className="flex justify-center items-center h-screen grid-rows-1 px-4">
@@ -12,7 +26,7 @@ export default function Page404() {
             </h1>
             <p className="text-xl text-snow-100 mt-3">
               Welcome to Kythi! Thank you for signing up to our service. To use
-              our service you need to link authorize your discord
+              our service you need to link your discord
             </p>
 
             <span className="block w-full rounded-md shadow-sm mt-6">
@@ -41,7 +55,9 @@ export default function Page404() {
                 type="button"
                 className="btn border-0 w-full btn-sm h-9 font-medium rounded-md transform-lowercase bg-aurora-red-300 hover:bg-aurora-red-400 shadow-lg transition duration-700"
                 onClick={() => {
-                  location.href = "/";
+                  API.logOut()
+                    .then(() => router.push("/"))
+                    .catch(() => router.push("/"));
                 }}
               >
                 <svg
@@ -65,5 +81,5 @@ export default function Page404() {
         </div>
       </div>
     </>
-  );
+  ) : null;
 }

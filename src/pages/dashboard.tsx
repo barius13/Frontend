@@ -13,10 +13,12 @@ export default function Dashboard() {
   useEffect(() => {
     if (!user) {
       router.push("/");
+    } else if (!user.discordId) {
+      router.push("/discord");
     }
   }, [router, user]);
 
-  return user ? (
+  return (user && user.discordId) ? (
     <>
       <Nav page={"dash"} />
       <body className="bg-polar-100 h-max">

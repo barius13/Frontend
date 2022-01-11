@@ -36,6 +36,10 @@ export default class API {
     return this.request("/auth/session", "GET", {});
   }
 
+  static logOut() {
+    return this.request("/auth/logOut", "POST", {});
+  }
+
   static register(data: registerState) {
     const dataClone = Object.assign({}, data);
 
