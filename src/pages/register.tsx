@@ -52,6 +52,7 @@ export default function Register() {
                 <input
                   className="placeholder:text-gray-400 block bg-polar-300 hover:bg-polar-400 transition duration-700 text-white delay-50 h-8 w-full caret-white rounded-md py-2 pl-10 shadow-sm focus:outline-none hover:border-frost-300 hover:ring-frost-300 focus:border-frost-400 focus:ring-frost-400 focus:ring-2 hover:ring-2 sm:text-sm"
                   placeholder={register.username ?? "Username"}
+                  value={register.username ?? ""}
                   type="text"
                   name="username"
                   onChange={(comp) =>
@@ -83,6 +84,7 @@ export default function Register() {
                   <input
                     className="placeholder:text-gray-400 block bg-polar-300 hover:bg-polar-400 caret-white text-white transition duration-700 delay-50 w-full h-8 rounded-md py-2 pl-10 shadow-sm focus:outline-none hover:border-frost-300 hover:ring-frost-300 focus:border-frost-400 focus:ring-frost-400 focus:ring-2 hover:ring-2 sm:text-sm"
                     placeholder={register.password ?? "Password"}
+                    value={register.password ?? ""}
                     type={show ? "text" : "password"}
                     name="Password"
                     onChange={(comp) =>
@@ -155,6 +157,7 @@ export default function Register() {
                   <input
                     className="placeholder:text-gray-400 block bg-polar-300 hover:bg-polar-400 text-white transition duration-700 delay-50 w-full h-8 caret-white rounded-md py-2 pl-10 shadow-sm focus:outline-none hover:border-frost-300 hover:ring-frost-300 focus:border-frost-400 focus:ring-frost-400 focus:ring-2 hover:ring-2 sm:text-sm"
                     placeholder={register.email ?? "Email-Address"}
+                    value={register.email ?? ""}
                     type="text"
                     name="Email"
                     onChange={(comp) =>
@@ -189,6 +192,7 @@ export default function Register() {
                   <input
                     className="placeholder:text-gray-400 block bg-polar-300 hover:bg-polar-400 transition duration-700 caret-white text-white delay-50 w-full h-8 rounded-md py-2 pl-10 shadow-sm focus:outline-none hover:border-frost-300 hover:ring-frost-300 focus:border-frost-400 focus:ring-frost-400 focus:ring-2 hover:ring-2 sm:text-sm"
                     placeholder={register.inviteCode ?? "Invite-Code"}
+                    value={register.inviteCode ?? ""}
                     type="text"
                     name="Invite-code"
                     onChange={(comp) =>
@@ -210,6 +214,8 @@ export default function Register() {
                       registerClicked ? "loading" : ""
                     }`}
                     onClick={() => {
+                      return sendToast("Successfully registered! Check your email for verification.", "success");
+
                       setRegisterClicked(true);
 
                       API.register(register)
