@@ -36,15 +36,11 @@ const Footer: FC = () => {
             <nav className="mt-4">
               <ul className="space-y-2">
                 <li>
-                  <a
-                    href="#"
-                    className="text-base hover:text-gray-300"
-                    onClick={() => {
-                      location.href = "mailto:support@kythi.com";
-                    }}
-                  >
-                    <span>Email Us</span>
-                  </a>
+                  <Link href="mailto:support@kythi.com" passHref>
+                    <a href="#" className="text-base hover:text-gray-300">
+                      <span>Email Us</span>
+                    </a>
+                  </Link>
                 </li>
                 <li>
                   <Link href="https://discord.gg/B82cvdZWem">
