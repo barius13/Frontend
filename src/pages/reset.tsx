@@ -30,7 +30,7 @@ export default function PasswordReset() {
                 </span>
                 <input
                   className="placeholder:text-gray-400 block bg-polar-300 hover:bg-polar-400 caret-white text-white transition duration-700 delay-50 w-full h-8 rounded-md py-2 pl-10 shadow-sm focus:outline-none hover:border-frost-300 hover:ring-frost-300 focus:border-frost-400 focus:ring-frost-400 focus:ring-2 hover:ring-2 sm:text-sm"
-                  placeholder={"Email Address"}
+                  placeholder="Email Address"
                   type="text"
                   name="email"
                 />

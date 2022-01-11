@@ -1,8 +1,8 @@
 import API from "../api";
+import Link from "next/link";
 import * as React from "react";
 import { useRouter } from "next/router";
 import { useUser } from "../components/user";
-import Link from "next/link";
 
 export interface loginState {
   username: string | null;
@@ -160,7 +160,7 @@ export default function Login() {
                       });
                   }}
                 >
-                  {"Sign in"}
+                  Sign in
                 </button>
               </span>
               <span className="block w-full rounded-md shadow-sm mt-3">

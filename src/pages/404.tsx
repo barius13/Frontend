@@ -1,10 +1,7 @@
-import { useRouter } from "next/router";
-import { useUser } from "../components/user";
+import Link from "next/link";
 import Footer from "../components/footer";
 
 export default function Page404() {
-  const { user } = useUser();
-  const router = useRouter();
   return (
     <>
       <div className="bg-polar-200">
@@ -17,14 +14,11 @@ export default function Page404() {
               The page you are looking for does not exist.
             </p>
 
-            <button
-              onClick={() => {
-                user ? router.push("/dashboard") : router.push("/");
-              }}
-              className="py-2 w-40 font-semibold text-white rounded-md bg-aurora-red-200 hover:bg-aurora-red-100 shadow-lg mt-3"
-            >
-              Home
-            </button>
+            <Link href="/" passHref>
+              <button className="py-2 w-40 font-semibold text-white rounded-md bg-aurora-red-200 hover:bg-aurora-red-100 shadow-lg mt-3">
+                Home
+              </button>
+            </Link>
           </div>
         </div>
       </div>

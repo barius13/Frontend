@@ -32,7 +32,7 @@ export default function policy() {
           <div />
         </div>
         <div className="text-center lg:mt-5">
-          {'This privacy policy was last updated on the: "24th December 2021"'}
+          This privacy policy was last updated on the: &quot;24th December 2021&quot;
         </div>
       </div>
     </div>

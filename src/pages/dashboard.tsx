@@ -1,9 +1,10 @@
-import { useEffect } from "react";
-import { useRouter } from "next/router";
 import Link from "next/link";
+import Image from "next/image";
+import { useEffect } from "react";
+import Nav from "../components/navbar";
+import { useRouter } from "next/router";
 import { useUser } from "../components/user";
 import StatsBox from "../components/userstats";
-import Nav from "../components/navbar";
 
 export default function Dashboard() {
   const router = useRouter();
@@ -105,29 +106,29 @@ export default function Dashboard() {
                 <div />
                 <div />
               </div>
-              <Link href="/config">
+              <Link href="/config" passHref>
                 <button className="w-full py-2 px-4 text-sm font-medium rounded-md text-white bg-aurora-red-200 hover:bg-aurora-red-300 shadow-lg transition duration-700 mt-6">
-                  {"Embed Customisations"}
+                  Embed Customisations
                 </button>
               </Link>
-              <Link href="/config">
+              <Link href="/config" passHref>
                 <button className="w-full py-2 px-4 text-sm font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg transition duration-700 mt-4">
-                  {"Config Downloads"}
+                  Config Downloads
                 </button>
               </Link>
-              <Link href="/config">
+              <Link href="/config" passHref>
                 <button className="w-full py-2 px-4 text-sm font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg transition duration-700 mt-4">
-                  {"Submit a Testimonal"}
+                  Submit a Testimonal
                 </button>
               </Link>
-              <Link href="/config">
+              <Link href="/config" passHref>
                 <button className="w-full py-2 px-4 text-sm font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg transition duration-700 mt-4">
-                  {"Suggest a feature"}
+                  Suggest a feature
                 </button>
               </Link>
-              <Link href="/config">
+              <Link href="/config" passHref>
                 <button className="w-full py-2 px-4 text-sm font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg transition duration-700 mt-4">
-                  {"Report a bug"}
+                  Report a bug
                 </button>
               </Link>
             </div>
@@ -142,7 +143,7 @@ export default function Dashboard() {
                 <div />
               </div>
               <div className="w-full mt-3 hover:shadow-xl duration-700">
-                <img src="https://nyc3.digitaloceanspaces.com/kythi.pics/dfa6659b-46f9-5521-9452-6e08f897e59e/6bIAOKVh0b.png" />
+                <Image src="https://nyc3.digitaloceanspaces.com/kythi.pics/dfa6659b-46f9-5521-9452-6e08f897e59e/6bIAOKVh0b.png" alt="Recently Uploaded Image" />
                 <div className="divide-y-2 divide-aurora-red-300">
                   <div />
                   <div />
@@ -150,8 +151,9 @@ export default function Dashboard() {
               </div>
               <div className="flex items-center justify-between mt-2 bg-polar-400 rounded-md px-4 border-l-frost-300 border-l-2 py-4 ">
                 <div className="flex items-center">
-                  <img
+                  <Image
                     className="w-8 h-8 rounded-full mr-2"
+                    alt="User Avatar"
                     src={user.discord.avatar as string}
                   />
                   <div className="flex flex-col">
@@ -218,8 +220,9 @@ export default function Dashboard() {
               </p>
               <div className="flex items-center justify-between mt-2 bg-polar-400 rounded-md px-2 border-l-frost-300 border-l-2">
                 <div className="flex items-center mb-4 mt-3">
-                  <img
+                  <Image
                     className="w-10 h-10 rounded-full mr-2"
+                    alt="User Avatar"
                     src={user.discord.avatar as string}
                   />
                   <div className="flex flex-col">
