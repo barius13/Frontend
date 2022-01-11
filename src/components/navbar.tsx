@@ -71,7 +71,7 @@ const NavBar: React.FC<NavBarProps> = (props) => {
         <div className="flex ml-auto dropdown dropdown-end">
           <button tabIndex={0} className="flex ml-auto">
             <img
-              src={user.discord.avatar as string}
+              src={user.discord?.avatar as string}
               className="rounded-full h-8 w-8"
             />
             <div className="ml-2">
