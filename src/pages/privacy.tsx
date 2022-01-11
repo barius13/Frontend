@@ -18,7 +18,7 @@ export default function policy() {
           <li>Unique verification code</li>
         </div>
         <span className="font-bold text-snow-200 lg:text-xl">
-          If you decide to link your Discord we will collect the following:
+          Upon linking your Discord we will collect the following:
         </span>
         <div className="text-snow-100 ml-8 mt-3 mb-8">
           <li>Your Discord ID</li>
@@ -32,7 +32,8 @@ export default function policy() {
           <div />
         </div>
         <div className="text-center lg:mt-5">
-          This privacy policy was last updated on the: &quot;24th December 2021&quot;
+          This privacy policy was last updated on the: &quot;11th January
+          2022&quot;
         </div>
       </div>
     </div>
