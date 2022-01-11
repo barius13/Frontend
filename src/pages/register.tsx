@@ -26,7 +26,7 @@ export default function Register() {
       <Toaster />
       <div className="bg-polar-100 mx-auto sm:px-6">
         <div className="flex justify-center items-center h-screen">
-          <form className="w-full max-w-md">
+          <form className="w-full max-w-md lg:px-0 px-4">
             <div className="rounded-lg bg-polar-200 px-8 py-8">
               <div className="divide-y-2 divide-frost-300">
                 <div className="text-white font-bold text-xl mb-2">
@@ -214,8 +214,6 @@ export default function Register() {
                       registerClicked ? "loading" : ""
                     }`}
                     onClick={() => {
-                      return sendToast("Successfully registered! Check your email for verification.", "success");
-
                       setRegisterClicked(true);
 
                       API.register(register)
