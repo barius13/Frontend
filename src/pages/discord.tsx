@@ -5,8 +5,8 @@ export default function Page404() {
   return (
     <>
       <div className="bg-polar-100">
-        <div className="flex justify-center items-center h-screen grid-rows-1text-white">
-          <div className="text-center p-8 lg:w-1/3">
+        <div className="flex justify-center items-center h-screen grid-rows-1 px-4">
+          <div className="text-center p-10 lg:w-1/3 bg-polar-200 rounded-lg shadow-2xl">
             <h1 className="lg:text-4xl text-3xl font-bold text-snow-200">
               Kythi • Discord Link
             </h1>
