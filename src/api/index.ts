@@ -7,10 +7,6 @@ interface requestParams {
   headers?: AxiosRequestHeaders;
 }
 
-interface registerParams extends registerState {
-  hCaptchaKey: string;
-}
-
 export default class API {
   private static async request(
     url: string,
@@ -36,31 +32,22 @@ export default class API {
     });
   }
 
-  private static encodeQueryString(data: { [key: string]: string }) {
-    return Object.keys(data)
-      .map(
-        (key) =>
-          `${encodeURIComponent(key)}=${encodeURIComponent(data[key] ?? "")}`
-      )
-      .join("&");
-  }
-
   static getCurrentSession() {
     return this.request("/auth/session", "GET", {});
   }
 
-  static register(data: registerParams) {
-    return this.request("/auth/register", "POST", {
-      body: data,
-    });
-  }
+  static register(data: registerState) {
+    const dataClone = Object.assign({}, data);
 
-  static validateRegister(data: registerState) {
-    return this.request(
-      `/validate/register?${API.encodeQueryString(data as {})}`,
-      "GET",
-      {}
-    );
+    for (const value of Object.keys(dataClone)) {
+      const v = value as keyof typeof dataClone;
+
+      dataClone[v] = !dataClone[v] ? "" : dataClone[v];
+    }
+
+    return this.request("/auth/register", "POST", {
+      body: dataClone,
+    });
   }
 
   static login(data: loginState) {

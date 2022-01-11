@@ -1,6 +1,5 @@
 import API from "../api";
 import * as React from "react";
-import HCaptcha from "@hcaptcha/react-hcaptcha";
 
 export interface registerState {
   username: string | null;
@@ -12,7 +11,6 @@ export interface registerState {
 export default function Register() {
   const loginShow = () => setShow(!show);
   const [show, setShow] = React.useState(false);
-  const captchaRef = React.useRef<HCaptcha>(null);
   const [register, setRegister] = React.useState<registerState>({
     username: null,
     password: null,
@@ -205,45 +203,27 @@ export default function Register() {
                   type="button"
                   className="w-full py-2 px-4 text-sm font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg transition duration-700"
                   onClick={() => {
-                    API.validateRegister(register)
-                      .then(() => captchaRef.current?.execute())
-                      .catch((err) =>
-                        console.error(
-                          "If you see this it means toasts arent implemented!",
-                          err
-                        )
-                      );
+                    API.register(register)
+                    .then((data) => {
+                      setRegister({
+                        username: null,
+                        password: null,
+                        email: null,
+                        inviteCode: null,
+                      });
+
+                      console.log("Successfully Registered!", data);
+                    })
+                    .catch((err) =>
+                      console.error(
+                        "If you see this it means toasts arent implemented!",
+                        err
+                      )
+                    )
                   }}
                 >
                   Register
                 </button>
-                <div>
-                  <HCaptcha
-                    sitekey="c0103fd5-be5e-4d12-9fef-8fe706061b6b"
-                    theme="dark"
-                    ref={captchaRef}
-                    size="invisible"
-                    onVerify={(token) =>
-                      API.register({ ...register, hCaptchaKey: token })
-                        .then((data) => {
-                          setRegister({
-                            username: null,
-                            password: null,
-                            email: null,
-                            inviteCode: null,
-                          });
-
-                          console.log("Successfully Registered!", data);
-                        })
-                        .catch((err) =>
-                          console.error(
-                            "If you see this it means toasts arent implemented!",
-                            err
-                          )
-                        )
-                    }
-                  />
-                </div>
               </span>
             </div>
           </div>
