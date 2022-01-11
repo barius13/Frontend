@@ -64,14 +64,16 @@ export default class API {
   }
 
   static login(data: loginState) {
-    for (const key in data) {
-      if (data[key as keyof object] === null) {
-        (data[key as keyof object] as string) = "";
-      }
+    const dataClone = Object.assign({}, data);
+
+    for (const value of Object.keys(dataClone)) {
+      const v = value as keyof typeof dataClone;
+
+      dataClone[v] = !dataClone[v] ? "" : dataClone[v];
     }
 
     return this.request("/auth/login", "POST", {
-      body: data,
+      body: dataClone,
     });
   }
 }
