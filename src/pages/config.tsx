@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import Nav from "../components/navbar";
 import { useUser } from "../components/user";
 
 export default function Dashboard() {
@@ -13,8 +14,11 @@ export default function Dashboard() {
   }, [router, user]);
 
   return user ? (
-    <div className="flex justify-center items-center text-white">
-      If you see this without a loading page it means that your user saved!
-    </div>
+    <>
+      <Nav page="config" />
+      <div className="flex justify-center items-center text-white">
+        If you see this without a loading page it means that your user saved!
+      </div>
+    </>
   ) : null;
 }

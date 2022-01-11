@@ -20,7 +20,7 @@ interface ButtonProps {
 const NavBarButton: React.FC<ButtonProps> = (props) => {
   return (
     <button
-      className={`ml-4 py-1.5 px-4 text-sm font-medium rounded-md text-white transition duration-700 mb-1 bg-${
+      className={`ml-4 py-1.5 px-4 text-sm font-medium rounded-md text-white transition duration-300 mb-1 bg-${
         props.isHighlighted ? "frost-400" : "polar-400"
       } hover:bg-${props.isHighlighted ? "frost-300" : "polar-300"} `}
       onClick={props.onClick}

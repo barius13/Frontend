@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { useEffect } from "react";
 import Nav from "../components/navbar";
 import { useRouter } from "next/router";
@@ -18,7 +17,7 @@ export default function Dashboard() {
     }
   }, [router, user]);
 
-  return (user && user.discordId) ? (
+  return user && user.discordId ? (
     <>
       <Nav page={"dash"} />
       <body className="bg-polar-100 h-max">
@@ -145,7 +144,7 @@ export default function Dashboard() {
                 <div />
               </div>
               <div className="w-full mt-3 hover:shadow-xl duration-700">
-                <Image
+                <img
                   src="https://nyc3.digitaloceanspaces.com/kythi.pics/dfa6659b-46f9-5521-9452-6e08f897e59e/6bIAOKVh0b.png"
                   alt="Recently Uploaded Image"
                 />
@@ -156,10 +155,10 @@ export default function Dashboard() {
               </div>
               <div className="flex items-center justify-between mt-2 bg-polar-400 rounded-md px-4 border-l-frost-300 border-l-2 py-4 ">
                 <div className="flex items-center">
-                  <Image
+                  <img
+                    src={user.discord?.avatar as string}
                     className="w-8 h-8 rounded-full mr-2"
                     alt="User Avatar"
-                    src={user.discord?.avatar as string}
                   />
                   <div className="flex flex-col">
                     <span className="text-sm font-medium text-snow-300">
@@ -181,7 +180,7 @@ export default function Dashboard() {
                   id="Delete-Image"
                   className="modal-toggle"
                 />
-                <div className="modal px-16 lg:h-auto md:h-auto h-2/4 bg-black bg-opacity-25">
+                <div className="modal px-16 lg:h-auto md:h-auto h-2/4 bg-black bg-opacity-25 transition duration-200">
                   <div className="modal-box py-6 px-8 rounded-md bg-polar-100 shadow-2xl lg:w-1/3">
                     <h1 className="font-semibold text-xl mb-2">Delete Image</h1>
                     <span className="text-snow-200">
@@ -217,7 +216,7 @@ export default function Dashboard() {
                 <div />
                 <div />
               </div>
-              <p className="bg-polar-400 py-2 px-2 rounded-md border-l-frost-300 border-l-2 mt-8">
+              <p className="bg-polar-400 py-2 px-2 rounded-md border-l-frost-300 border-l-2 mt-8 text-snow-200">
                 Welcome to kythi we thank you for taking an interest in our
                 service! We are currently in beta and we are working on a lot of
                 features and bug fixes. We will be adding more features and bug
@@ -225,10 +224,10 @@ export default function Dashboard() {
               </p>
               <div className="flex items-center justify-between mt-2 bg-polar-400 rounded-md px-2 border-l-frost-300 border-l-2">
                 <div className="flex items-center mb-4 mt-3">
-                  <Image
+                  <img
                     className="w-10 h-10 rounded-full mr-2"
                     alt="User Avatar"
-                    src={user.discord?.avatar as string}
+                    src={user.discord?.avatar}
                   />
                   <div className="flex flex-col">
                     <span className="font-medium text-snow-300">
