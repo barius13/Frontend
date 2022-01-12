@@ -22,7 +22,7 @@ export default function Dashboard() {
       <Nav page="config" />
 
       <div className="flex justify-center text-white p-4 lg:flex-row md:flex-row flex-col bg-polar-100">
-        <div className="bg-polar-300 mt-10 p-6 rounded lg:mr-6 md:mr-6 lg:w-3/12">
+        <div className="bg-polar-200 mt-10 p-6 rounded lg:mr-6 md:mr-6 lg:w-3/12">
           <h1 className="text-2xl text-snow-300">Config Downloads</h1>
           <div className="divide-y-2 divide-white mt-3">
             <div />
@@ -33,16 +33,18 @@ export default function Dashboard() {
             it allows a user to quickly take images & videos aswell as upload
             them through the use of a keybind.
           </div>
-          <button className="btn w-full mt-6 normal-case bg-frost-400 hover:bg-frost-300 duration-300 ">
+          <button className="btn w-full border-0 btn-sm h-10 mt-6 normal-case bg-frost-400 hover:bg-frost-300 duration-300 ">
             Sharex (Windows)
           </button>
-          <button className="btn w-full mt-3 normal-case bg-amber-500 hover:bg-amber-400 duration-300">
+          <button className="btn w-full border-0 btn-sm h-10 mt-3 normal-case bg-amber-500 hover:bg-amber-400 duration-300">
             Linux/MacOS
           </button>
-          <button className="btn w-full mt-3 normal-case bg-green-500 hover:bg-green-600 duration-300">
+          <button className="btn w-full border-0 btn-sm h-10 mt-3 normal-case bg-green-500 hover:bg-green-600 duration-300">
             Android
           </button>
-          <button className="btn w-full mt-3 normal-case glass">iOS</button>
+          <button className="btn w-full border-0 btn-sm h-10 mt-3 normal-case bg-aurora-red-300 hover:bg-aurora-red-400">
+            iOS
+          </button>
         </div>
         <div>
           <div className="discord-embed shadow-md border-l-discord-light_blue border-l-4 rounded-sm bg-discord-base mt-10 mb-3">
@@ -129,7 +131,7 @@ export default function Dashboard() {
                   https://
                 </span>
                 <input
-                  placeholder="Sitename Url"
+                  placeholder="SiteName Url"
                   className="bg-polar-300 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
                 />
               </label>

@@ -117,17 +117,17 @@ export default function Dashboard() {
                   Config Downloads
                 </button>
               </Link>
-              <Link href="/config" passHref>
+              <Link href="/submit" passHref>
                 <button className="w-full py-2 px-4 text-sm font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg transition duration-700 mt-4">
                   Submit a Testimonal
                 </button>
               </Link>
-              <Link href="/config" passHref>
+              <Link href="/suggest" passHref>
                 <button className="w-full py-2 px-4 text-sm font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg transition duration-700 mt-4">
                   Suggest a feature
                 </button>
               </Link>
-              <Link href="/config" passHref>
+              <Link href="/report" passHref>
                 <button className="w-full py-2 px-4 text-sm font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg transition duration-700 mt-4">
                   Report a bug
                 </button>

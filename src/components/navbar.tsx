@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { useUser } from "../components/user";
 
 interface NavBarProps {
-  page: "dash" | "config" | "gallery";
+  page: "dash" | "config" | "gallery" | "";
 }
 
 interface ButtonProps {
@@ -88,9 +88,11 @@ const NavBar: React.FC<NavBarProps> = (props) => {
             className="p-2 py-4 px-4 shadow-2xl menu dropdown-content bg-polar-200 rounded-md w-52 mt-14"
           >
             <li>
-              <a className="mb-1 font-semibold text-snow-200 hover:bg-polar-300 rounded-md py-2 px-2">
-                Settings
-              </a>
+              <Link href="/settings" passHref>
+                <a className="mb-1 font-semibold text-snow-200 hover:bg-polar-300 rounded-md py-2 px-2">
+                  Settings
+                </a>
+              </Link>
             </li>
             <li>
               <a
