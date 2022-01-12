@@ -1,6 +1,7 @@
-import * as React from "react";
-import { useUser } from "../components/user";
 import Link from "next/link";
+import * as React from "react";
+import { useRouter } from "next/router";
+import { useUser } from "../components/user";
 
 interface NavBarProps {
   page: "dash" | "config" | "gallery";
@@ -37,6 +38,7 @@ const NavBarButton: React.FC<ButtonProps> = (props) => {
  */
 const NavBar: React.FC<NavBarProps> = (props) => {
   const { user } = useUser();
+  const router = useRouter();
 
   return (
     <>
@@ -50,21 +52,21 @@ const NavBar: React.FC<NavBarProps> = (props) => {
             name="Dashboard"
             isHighlighted={props.page === "dash"}
             onClick={() => {
-              window.location.href = "/dashboard";
+              router.push("/dashboard");
             }}
           />
           <NavBarButton
             name="Configuration"
             isHighlighted={props.page === "config"}
             onClick={() => {
-              window.location.href = "/config";
+              router.push("/config")
             }}
           />
           <NavBarButton
             name="Gallery"
             isHighlighted={props.page === "gallery"}
             onClick={() => {
-              window.location.href = "/gallery";
+              router.push("/gallery")
             }}
           />
         </div>
