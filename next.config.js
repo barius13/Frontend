@@ -4,4 +4,7 @@ module.exports = {
     images: {
         domains: ["cdn.discord.com"],
     },
+    env: {
+        BACKEND_URL: process.env.BACKEND_URL,
+    }
 };

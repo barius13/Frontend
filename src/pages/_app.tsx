@@ -1,6 +1,5 @@
 import API from "../api";
 import "../styles/globals.css";
-import { User } from "../typings";
 import { NextSeo } from "next-seo";
 import type { AppProps } from "next/app";
 import Loading from "../components/load";

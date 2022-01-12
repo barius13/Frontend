@@ -1,4 +1,9 @@
-export interface User {
+namespace NodeJS {
+  interface ProcessEnv {
+    BACKEND_URL: string;
+  }
+}
+interface User {
   id: string;
   uid: Number;
   username: string;

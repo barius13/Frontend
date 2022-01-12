@@ -1,4 +1,3 @@
-import { User } from "../typings/index";
 import { useContext, createContext } from "react";
 
 export interface UserCtx {

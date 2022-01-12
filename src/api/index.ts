@@ -15,7 +15,7 @@ export default class API {
   ): Promise<any> {
     return new Promise((resolve, reject) => {
       axios({
-        url: `https://api.kythi.com${url}`,
+        url: `${process.env.BACKEND_URL}${url}`,
         method,
         headers,
         data: body,
