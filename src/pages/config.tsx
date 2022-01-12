@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { useRouter } from "next/router";
 import Nav from "../components/navbar";
+import { useRouter } from "next/router";
 import { useUser } from "../components/user";
 
 export default function Dashboard() {

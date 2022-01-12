@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  @font-face {
+    font-family: 'Whitney';
+    font-style: normal;
+    font-weight: normal;
+    src: url('/fonts/whitney-medium.woff') format('woff');
+  }
+}
+
 html,
 body {
   padding: 0;

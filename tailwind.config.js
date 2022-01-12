@@ -5,12 +5,8 @@ module.exports = {
         "./src/utils/**/*.{js,ts,jsx,tsx}",
     ],
     theme: {
-
-        fontFamily: {
-            'whitney':['Whitney']
-        },
         extend: {
-            height: {
+            height: {   
                 "90vh": "90vh",
                 "30vh": "30vh",
                 "img": "225px"
