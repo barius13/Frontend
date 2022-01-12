@@ -6,6 +6,9 @@ module.exports = {
     ],
     theme: {
         extend: {
+            fontFamily: {
+                whitney: ["Whitney"],
+            },
             height: {   
                 "90vh": "90vh",
                 "30vh": "30vh",
