@@ -9,17 +9,17 @@ module.exports = {
             fontFamily: {
                 whitney: ["Whitney"],
             },
-            height: {   
+            height: {
                 "90vh": "90vh",
                 "30vh": "30vh",
-                "img": "225px"
+                img: "225px",
             },
-            fontSize:{
-            site:".75rem",
-            author:".875rem",
-            title:"1rem",
-            desc:"1rem"
-             },
+            fontSize: {
+                site: ".75rem",
+                author: ".875rem",
+                title: "1rem",
+                desc: "1rem",
+            },
             colors: {
                 polar: {
                     100: "#2E3440",
@@ -53,17 +53,15 @@ module.exports = {
                 },
                 discord: {
                     base: "#36393e",
-                    site:"#dcddde",
-                    light_blue:"#019dd8",
-                    author:"#fff",
-                    blue:"#00b0f4",
-                    gray:"#36393e"
-                }
+                    site: "#dcddde",
+                    light_blue: "#019dd8",
+                    author: "#fff",
+                    blue: "#00b0f4",
+                    gray: "#36393e",
+                },
             },
         },
     },
     plugins: [require("daisyui")],
-    daisyui: {
-        styled: false,
-    },
+    daisyui: {},
 };

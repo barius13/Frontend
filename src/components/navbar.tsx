@@ -1,3 +1,4 @@
+import API from "../api";
 import Link from "next/link";
 import * as React from "react";
 import { useRouter } from "next/router";
@@ -59,14 +60,14 @@ const NavBar: React.FC<NavBarProps> = (props) => {
             name="Configuration"
             isHighlighted={props.page === "config"}
             onClick={() => {
-              router.push("/config")
+              router.push("/config");
             }}
           />
           <NavBarButton
             name="Gallery"
             isHighlighted={props.page === "gallery"}
             onClick={() => {
-              router.push("/gallery")
+              router.push("/gallery");
             }}
           />
         </div>
@@ -92,7 +93,14 @@ const NavBar: React.FC<NavBarProps> = (props) => {
               </a>
             </li>
             <li>
-              <a className="mb-1 font-semibold text-snow-200 hover:bg-polar-300 rounded-md py-2 px-2">
+              <a
+                onClick={() => {
+                  API.logOut()
+                    .then(() => router.push("/"))
+                    .catch(() => router.push("/"));
+                }}
+                className="mb-1 font-semibold text-snow-200 hover:bg-polar-300 rounded-md py-2 px-2"
+              >
                 Logout
               </a>
             </li>

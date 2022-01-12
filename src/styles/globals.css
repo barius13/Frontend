@@ -1,46 +1,44 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 @layer base {
-  @font-face {
-    font-family: 'Whitney';
-    font-style: normal;
-    font-weight: normal;
-    src: url('/fonts/whitney-medium.woff') format('woff');
-  }
+    @font-face {
+        font-family: "Whitney";
+        font-style: normal;
+        font-weight: normal;
+        src: url("/fonts/whitney-medium.woff") format("woff");
+    }
 }
 
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 ::-webkit-scrollbar {
-  width: 4px;
+    width: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 20px #3b4252;
-  background: #2e3440;
+    box-shadow: inset 0 0 20px #3b4252;
+    background: #2e3440;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #5e81ac;
+    background: #5e81ac;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #81a1c1;
+    background: #81a1c1;
 }
