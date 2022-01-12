@@ -2,7 +2,9 @@ import Link from "next/link";
 import { useEffect } from "react";
 import Nav from "../components/navbar";
 import { useRouter } from "next/router";
+import { Toaster } from "react-hot-toast";
 import { useUser } from "../components/user";
+import { sendToast } from "../utils/sendToast";
 import StatsBox from "../components/userstats";
 
 export default function Dashboard() {
@@ -19,6 +21,7 @@ export default function Dashboard() {
 
   return user && user.discordId ? (
     <>
+      <Toaster />
       <Nav page={"dash"} />
       <body className="bg-polar-100 h-max">
         <div className="flex flex-col items-center justify-center mt-10 px-10">
@@ -108,30 +111,33 @@ export default function Dashboard() {
                 <div />
               </div>
               <Link href="/config" passHref>
-                <button className="w-full py-2 px-4 text-sm font-medium rounded-md text-white bg-aurora-red-200 hover:bg-aurora-red-300 shadow-lg transition duration-700 mt-6">
+                <button className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-aurora-red-200 hover:bg-aurora-red-300 shadow-lg transition duration-700 mt-6">
                   Embed Customisations
                 </button>
               </Link>
               <Link href="/config" passHref>
-                <button className="w-full py-2 px-4 text-sm font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg transition duration-700 mt-4">
+                <button className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg transition duration-700 mt-4">
                   Config Downloads
                 </button>
               </Link>
-              <Link href="/submit" passHref>
-                <button className="w-full py-2 px-4 text-sm font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg transition duration-700 mt-4">
-                  Submit a Testimonal
-                </button>
-              </Link>
-              <Link href="/suggest" passHref>
-                <button className="w-full py-2 px-4 text-sm font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg transition duration-700 mt-4">
-                  Suggest a feature
-                </button>
-              </Link>
-              <Link href="/report" passHref>
-                <button className="w-full py-2 px-4 text-sm font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg transition duration-700 mt-4">
-                  Report a bug
-                </button>
-              </Link>
+              <label
+                htmlFor="Submit-Review"
+                className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg transition duration-700 mt-4"
+              >
+                Submit a Testimonal
+              </label>
+              <label
+                htmlFor="Suggest-Feature"
+                className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg transition duration-700 mt-4"
+              >
+                Suggest a Feature
+              </label>
+              <label
+                htmlFor="Bug-Report"
+                className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg transition duration-700 mt-4"
+              >
+                Report a bug
+              </label>
             </div>
             <div className="p-6 bg-polar-200 rounded-md md:p-6 shadow-lg mt-10 lg:h-auto md:h-auto w-auto">
               <div className="flex items-baseline justify-between ">
@@ -201,6 +207,137 @@ export default function Dashboard() {
                       >
                         Close
                       </label>
+                    </div>
+                  </div>
+                </div>
+                <input
+                  type="checkbox"
+                  id="Submit-Review"
+                  className="modal-toggle"
+                />
+                <div className="modal px-16 lg:h-auto md:h-auto h-2/4 bg-black bg-opacity-25 transition duration-200">
+                  <div className="modal-box py-6 px-8 rounded-md bg-polar-200 shadow-2xl lg:w-1/3">
+                    <div>
+                      <div className="flex flex-row justify-between">
+                        <h1 className="text-3xl font-bold text-snow-300">
+                          Testimonial Submission
+                        </h1>
+                        <label
+                          htmlFor="Submit-Review"
+                          className="bg-polar-300 border-0 normal-case hover:bg-polar-400 btn btn-sm rounded-md cursor-pointer text-center text-white font-medium mt-1 transition duration-500"
+                        >
+                          X
+                        </label>
+                      </div>
+                      <h2 className="mt-3 font-semibold text-snow-100">
+                        Thank you for using our service! We are delighted that
+                        you want to submit a Review/Testimonial Please type it
+                        out below and we will add it to our site.
+                      </h2>
+                      <textarea
+                        placeholder="Testimonial Description"
+                        className="bg-polar-300 mt-3 h-32 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
+                      />
+                      <button
+                        onClick={() => {
+                          sendToast(
+                            "Successfully Submitted Testimonial!",
+                            "success"
+                          );
+                        }}
+                        className="bg-polar-300 w-full btn border-0 hover:bg-polar-400 capitalize cursor-pointer text-center text-white font-medium py-2 px-4 mt-4 transition duration-500"
+                      >
+                        Submit Testimonial
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <input
+                  type="checkbox"
+                  id="Suggest-Feature"
+                  className="modal-toggle"
+                />
+                <div className="modal px-16 lg:h-auto md:h-auto h-2/4 bg-black bg-opacity-25 transition duration-200">
+                  <div className="modal-box py-6 px-8 rounded-md bg-polar-200 shadow-2xl lg:w-1/3">
+                    <div>
+                      <div className="flex flex-row justify-between">
+                        <h1 className="text-3xl font-bold text-snow-300">
+                          Suggestion Form
+                        </h1>
+                        <label
+                          htmlFor="Suggest-Feature"
+                          className="bg-polar-300 border-0 normal-case hover:bg-polar-400 btn btn-sm rounded-md cursor-pointer text-center text-white font-medium mt-1 transition duration-500"
+                        >
+                          X
+                        </label>
+                      </div>
+                      <h2 className="mt-3 font-semibold text-snow-100">
+                        Thank you for using our service! We are delighted that
+                        you have a suggestion to make! Please fill out the form
+                        below and we will get back to you as soon as possible!
+                      </h2>
+                      <textarea
+                        placeholder="Suggestion Description"
+                        className="bg-polar-300 mt-3 h-32 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
+                      />
+                      <button
+                        onClick={() => {
+                          sendToast("Successfully Sent Suggestion!", "success");
+                        }}
+                        className="bg-polar-300 w-full btn border-0 hover:bg-polar-400 capitalize cursor-pointer text-center text-white font-medium py-2 px-4 mt-4 transition duration-500"
+                      >
+                        Submit Suggestion
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <input
+                  type="checkbox"
+                  id="Bug-Report"
+                  className="modal-toggle"
+                />
+                <div className="modal px-16 lg:h-auto md:h-auto h-2/4 bg-black bg-opacity-25 transition duration-200">
+                  <div className="modal-box py-6 px-8 rounded-md bg-polar-200 shadow-2xl lg:w-1/3">
+                    <div>
+                      <div className="flex flex-row justify-between">
+                        <h1 className="text-3xl font-bold text-snow-300">
+                          Bug Report
+                        </h1>
+                        <label
+                          htmlFor="Bug-Report"
+                          className="bg-polar-300 border-0 normal-case hover:bg-polar-400 btn btn-sm rounded-md cursor-pointer text-center text-white font-medium mt-1 transition duration-500"
+                        >
+                          X
+                        </label>
+                      </div>
+                      <h2 className="mt-3 font-semibold text-snow-100">
+                        We're sorry you had a bad experience please list exactly
+                        what occured so we can fix it as soon as possible!
+                      </h2>
+                      <textarea
+                        placeholder="Bug Description"
+                        className="bg-polar-300 mt-3 h-10 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
+                      />
+                      <select className="select border-0 w-full bg-polar-300 rounded">
+                        <option disabled={false} selected={true}>
+                          How Severe is this bug?
+                        </option>
+                        <option>Minor</option>
+                        <option>Moderate</option>
+                        <option>Major</option>
+                      </select>
+                      <div className="mt-3 font-semibold text-snow-100">
+                        Before Submitting please check if there is any
+                        announcement of the error being fixed. Thanks!
+                      </div>
+                      <button
+                        onClick={() => {
+                          sendToast("Successfully Sent Bug-Report.", "success");
+                        }}
+                        className="bg-polar-300 w-full btn border-0 hover:bg-polar-400 capitalize cursor-pointer text-center text-white font-medium py-2 px-4 mt-4 transition duration-500"
+                      >
+                        Submit Report
+                      </button>
                     </div>
                   </div>
                 </div>
