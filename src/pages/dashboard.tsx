@@ -162,7 +162,7 @@ export default function Dashboard() {
                   />
                   <div className="flex flex-col">
                     <span className="text-sm font-medium text-snow-300">
-                      You, {user.username}
+                      You, {user.username as boolean}
                     </span>
                     <span className="text-xs font-medium text-snow-100">
                       2 hours ago
