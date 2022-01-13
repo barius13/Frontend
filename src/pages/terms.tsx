@@ -8,7 +8,7 @@ export default function policy() {
           <h2 className=" font-bold text-snow-300 lg:text-4xl md:mb-6 text-center">
             Terms of Service
           </h2>
-          <div className="md:mb-5 " />
+          <div className="md:mb-5" />
         </div>
         <span className="font-bold text-snow-200 lg:text-xl">
           When using our service you agree to the following conditions:
@@ -41,7 +41,7 @@ export default function policy() {
             strictly prohibited and will reuslt in account termination.
           </li>
           <li>
-            Following the{" "}
+            Following the&nbsp;
             <Link href="https://www.ftc.gov/enforcement/rules/rulemaking-regulatory-reform-proceedings/childrens-online-privacy-protection-rule">
               <a
                 className=" text-frost-300 hover:text-frost-400 underline underline-offset-2"
@@ -77,9 +77,7 @@ export default function policy() {
           </li>
         </div>
         <div className="text-center font-bold">
-          {
-            'The Terms of Service were last updated on the: "24th December 2021"'
-          }
+            The Terms of Service were last updated on the: &quot;24th December 2021&quot;
         </div>
       </div>
     </div>

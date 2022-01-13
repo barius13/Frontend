@@ -3,6 +3,7 @@ import Link from "next/link";
 import * as React from "react";
 import { useRouter } from "next/router";
 import { useUser } from "../components/user";
+import { sendToast } from "../utils/sendToast";
 
 interface NavBarProps {
   page: "dash" | "config" | "gallery" | "";
@@ -45,8 +46,9 @@ const NavBar: React.FC<NavBarProps> = (props) => {
     <>
       <div className="flex items-center flex-justify mx-auto px-4 bg-polar-200 shadow-2xl w-full h-14">
         <Link href="/">
-          <a className="text-2xl font-bold text-white mb-2"> Kythi | </a>
+          <a className="text-2xl font-bold text-white mb-2">Kythi&nbsp;</a>
         </Link>
+        <span className="text-2xl font-bold text-white mb-2">|</span>
 
         <div className=" hidden md:flex">
           <NavBarButton
@@ -89,7 +91,7 @@ const NavBar: React.FC<NavBarProps> = (props) => {
           >
             <li>
               {/* copium, any type bc i didnt update types on backend */}
-              <a onClick={() => {navigator.clipboard.writeText((user as any).upload.key);}} className="font-semibold text-snow-200 hover:bg-polar-300 rounded-md py-2 px-2">
+              <a onClick={() =>{ navigator.clipboard.writeText((user as any).upload.key); sendToast("Successfully added your upload key to your clipboard", "success") }} className="font-semibold text-snow-200 hover:bg-polar-300 rounded-md py-2 px-2">
                 Copy Upload Key
               </a>
             </li>

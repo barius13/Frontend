@@ -37,7 +37,7 @@ export default function Dashboard() {
             <div>
               <StatsBox
                 title="Uploads"
-                content="600"
+                content={(user as any).upload.count}
                 icon={
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
