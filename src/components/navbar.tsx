@@ -38,7 +38,7 @@ const NavBarButton: React.FC<ButtonProps> = (props) => {
  * @return {React.FunctionComponent}
  */
 const NavBar: React.FC<NavBarProps> = (props) => {
-  const { user } = useUser();
+  const { user, setUser } = useUser();
   const router = useRouter();
 
   return (
@@ -97,6 +97,8 @@ const NavBar: React.FC<NavBarProps> = (props) => {
             <li>
               <a
                 onClick={() => {
+                  // @ts-expect-error haha
+                  setUser(null);
                   API.logOut()
                     .then(() => router.push("/"))
                     .catch(() => router.push("/"));
