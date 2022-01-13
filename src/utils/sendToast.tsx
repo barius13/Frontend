@@ -19,7 +19,7 @@ export const sendToast = (content: string, toastType: "success" | "error") =>
           <h1 className={`text-base text-gray-200 font-semibold mr-auto w-60`}>
             {toastType === "success" ? "Success" : "Error"}
           </h1>
-          <p className="text-sm text-gray-400 mt-2 ">{content}</p>
+          <p className="text-sm text-gray-400">{content}</p>
         </div>
       </div>
     ),
