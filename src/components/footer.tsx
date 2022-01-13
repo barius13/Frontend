@@ -79,6 +79,43 @@ const Footer: FC = () => {
               </ul>
             </nav>
           </div>
+          <div>
+            <h5 className="text-xl font-bold text-gray-300">Credits</h5>
+            <nav className="mt-4">
+              <ul className="space-y-2">
+                <li>
+                  <Link href="https://github.com/Kurpp">
+                    <a
+                      className="text-base hover:text-gray-300"
+                      target="_blank"
+                    >
+                      Kurp - Backend/CDN/Bot
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="https://github.com/bbrooklyn">
+                    <a
+                      className="text-base hover:text-gray-300"
+                      target="_blank"
+                    >
+                      Brooklyn - Frontend
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="https://github.com/NahSahh">
+                    <a
+                      className="text-base hover:text-gray-300"
+                      target="_blank"
+                    >
+                      NahSahh - Frontend
+                    </a>
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
 
         <div className="flex flex-col items-center justify-between max-w-screen-xl px-6 mx-auto mt-16 space-y-4 lg:px-8 xl:px-4 md:flex-row lg:mt-20">
