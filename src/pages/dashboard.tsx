@@ -4,8 +4,8 @@ import Nav from "../components/navbar";
 import { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";
 import { useUser } from "../components/user";
-import { sendToast } from "../utils/sendToast";
 import StatsBox from "../components/userstats";
+import { sendToast } from "../utils/sendToast";
 
 export default function Dashboard() {
   const router = useRouter();
@@ -111,30 +111,30 @@ export default function Dashboard() {
                 <div />
               </div>
               <Link href="/config" passHref>
-                <button className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-aurora-red-200 hover:bg-aurora-red-300 shadow-lg transition duration-700 mt-6">
+                <button className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-aurora-red-200 hover:bg-aurora-red-300 shadow-lg mt-6">
                   Embed Customisations
                 </button>
               </Link>
               <Link href="/config" passHref>
-                <button className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg transition duration-700 mt-4">
+                <button className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg mt-4">
                   Config Downloads
                 </button>
               </Link>
               <label
                 htmlFor="Submit-Review"
-                className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg transition duration-700 mt-4"
+                className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg mt-4"
               >
                 Submit a Testimonal
               </label>
               <label
                 htmlFor="Suggest-Feature"
-                className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg transition duration-700 mt-4"
+                className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg mt-4"
               >
                 Suggest a Feature
               </label>
               <label
                 htmlFor="Bug-Report"
-                className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg transition duration-700 mt-4"
+                className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg mt-4"
               >
                 Report a bug
               </label>
@@ -177,7 +177,7 @@ export default function Dashboard() {
                 </div>
                 <label
                   htmlFor="Delete-Image"
-                  className="hover:text-white btn-outline hover:bg-aurora-red-100 w-24 h-11 rounded-md cursor-pointer text-center text-white font-medium py-2 px-4 transition duration-500"
+                  className="hover:text-white btn-outline btn border-0 normal-case hover:bg-aurora-red-100 w-24 h-11 rounded-md cursor-pointer text-center text-white font-medium py-2 px-4 transition duration-500"
                 >
                   Delete
                 </label>
@@ -186,9 +186,9 @@ export default function Dashboard() {
                   id="Delete-Image"
                   className="modal-toggle"
                 />
-                <div className="modal px-16 lg:h-auto md:h-auto h-2/4 bg-black bg-opacity-25 transition duration-200">
-                  <div className="modal-box py-6 px-8 rounded-md bg-polar-100 shadow-2xl lg:w-1/3">
-                    <h1 className="font-semibold text-xl mb-2">Delete Image</h1>
+                <div className="modal p-6 transition duration-200">
+                  <div className="modal-box py-6 px-8 rounded-md bg-polar-200 shadow-2xl lg:w-1/3">
+                    <h1 className="font-semibold text-xl mb-2">Delete File</h1>
                     <span className="text-snow-200">
                       Are you sure you want to delete this File? This action is
                       not reversible. This will permanently delete the File from
@@ -196,14 +196,16 @@ export default function Dashboard() {
                     </span>
                     <div className="modal-action space-x-2">
                       <label
-                        htmlFor="Delete-Image"
-                        className="ml-auto bg-aurora-red-400 hover:bg-aurora-red-100 w-24 h-11 rounded-md cursor-pointer text-center text-white font-medium py-2 px-4 mt-4 transition duration-500"
+                        onClick={() => {
+                          sendToast("Successfully deleted File!", "success");
+                        }}
+                        className="btn normal-case bg-aurora-red-400 border-0 hover:bg-aurora-red-100 w-24 cursor-pointer font-medium mt-4"
                       >
                         Delete
                       </label>
                       <label
                         htmlFor="Delete-Image"
-                        className="bg-polar-200 hover:bg-polar-400 w-24 h-11 rounded-md cursor-pointer text-center text-white font-medium py-2 px-4 mt-4 transition duration-500"
+                        className="bg-polar-300 btn normal-case border-0 hover:bg-polar-400 rounded-md cursor-pointer w-24 font-medium mt-4"
                       >
                         Close
                       </label>
@@ -215,7 +217,7 @@ export default function Dashboard() {
                   id="Submit-Review"
                   className="modal-toggle"
                 />
-                <div className="modal px-16 lg:h-auto md:h-auto h-2/4 bg-black bg-opacity-25 transition duration-200">
+                <div className="modal p-6 transition duration-200">
                   <div className="modal-box py-6 px-8 rounded-md bg-polar-200 shadow-2xl lg:w-1/3">
                     <div>
                       <div className="flex flex-row justify-between">
@@ -245,7 +247,7 @@ export default function Dashboard() {
                             "success"
                           );
                         }}
-                        className="bg-polar-300 w-full btn border-0 hover:bg-polar-400 capitalize cursor-pointer text-center text-white font-medium py-2 px-4 mt-4 transition duration-500"
+                        className="bg-polar-300 w-full btn border-0 hover:bg-polar-400 capitalize cursor-pointer text-center text-white font-medium mt-4"
                       >
                         Submit Testimonial
                       </button>
@@ -257,7 +259,7 @@ export default function Dashboard() {
                   id="Suggest-Feature"
                   className="modal-toggle"
                 />
-                <div className="modal px-16 lg:h-auto md:h-auto h-2/4 bg-black bg-opacity-25 transition duration-200">
+                <div className="modal p-6 transition duration-200">
                   <div className="modal-box py-6 px-8 rounded-md bg-polar-200 shadow-2xl lg:w-1/3">
                     <div>
                       <div className="flex flex-row justify-between">
@@ -278,13 +280,13 @@ export default function Dashboard() {
                       </h2>
                       <textarea
                         placeholder="Suggestion Description"
-                        className="bg-polar-300 mt-3 h-32 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
+                        className="bg-polar-300 mt-6 h-32 w-full  rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
                       />
                       <button
                         onClick={() => {
                           sendToast("Successfully Sent Suggestion!", "success");
                         }}
-                        className="bg-polar-300 w-full btn border-0 hover:bg-polar-400 capitalize cursor-pointer text-center text-white font-medium py-2 px-4 mt-4 transition duration-500"
+                        className="bg-polar-300 w-full btn border-0 hover:bg-polar-400 normal-case cursor-pointer text-center text-white mt-3"
                       >
                         Submit Suggestion
                       </button>
@@ -296,7 +298,7 @@ export default function Dashboard() {
                   id="Bug-Report"
                   className="modal-toggle"
                 />
-                <div className="modal px-16 lg:h-auto md:h-auto h-2/4 bg-black bg-opacity-25 transition duration-200">
+                <div className="modal p-6 transition duration-200">
                   <div className="modal-box py-6 px-8 rounded-md bg-polar-200 shadow-2xl lg:w-1/3">
                     <div>
                       <div className="flex flex-row justify-between">
@@ -316,9 +318,9 @@ export default function Dashboard() {
                       </h2>
                       <textarea
                         placeholder="Bug Description"
-                        className="bg-polar-300 mt-3 h-10 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
+                        className="bg-polar-300 mt-6 h-10 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400 "
                       />
-                      <select className="select border-0 w-full bg-polar-300 rounded">
+                      <select className="select border-0 w-full bg-polar-300 rounded mt-3">
                         <option disabled={false} selected={true}>
                           How Severe is this bug?
                         </option>
@@ -334,7 +336,7 @@ export default function Dashboard() {
                         onClick={() => {
                           sendToast("Successfully Sent Bug-Report.", "success");
                         }}
-                        className="bg-polar-300 w-full btn border-0 hover:bg-polar-400 capitalize cursor-pointer text-center text-white font-medium py-2 px-4 mt-4 transition duration-500"
+                        className="bg-polar-300 w-full btn border-0 hover:bg-polar-400 capitalize cursor-pointer text-center text-white mt-6"
                       >
                         Submit Report
                       </button>

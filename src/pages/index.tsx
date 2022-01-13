@@ -24,14 +24,14 @@ export default function Index() {
                 <button
                   className={`inline-block w-${
                     user ? 50 : 36
-                  } px-6 py-2 font-semibold text-white rounded-md bg-frost-400 hover:bg-frost-300 shadow-lg`}
+                  } btn btn-sm h-10 normal-case bg-frost-400 hover:bg-frost-300 shadow-lg`}
                 >
                   {user ? "Dashboard" : "Login"}
                 </button>
               </Link>
               <Link href="/register" passHref>
                 <button
-                  className={`inline-block py-2 w-36 font-semibold text-white rounded-md bg-aurora-red-200 hover:bg-aurora-red-100 shadow-lg ${
+                  className={`inline-block normal-case btn btn-sm h-10 border-0 w-36 bg-aurora-red-200 hover:bg-aurora-red-100 shadow-lg ${
                     user ? "invisible" : ""
                   }`}
                 >

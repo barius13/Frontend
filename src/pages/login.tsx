@@ -144,7 +144,7 @@ export default function Login() {
                 <span className="block w-full rounded-md shadow-sm">
                   <button
                     type="button"
-                    className={`btn border-0 normal-case w-full btn-sm h-9 text-sm font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg transition duration-700 ${
+                    className={`btn border-0 normal-case w-full btn-sm h-9 text-white bg-frost-400 hover:bg-frost-300 shadow-lg ${
                       loginClicked ? "loading" : ""
                     }`}
                     onClick={() => {
