@@ -85,7 +85,7 @@ const NavBar: React.FC<NavBarProps> = (props) => {
 
           <ul
             tabIndex={0}
-            className="p-2 py-4 px-4 shadow-2xl menu dropdown-content bg-polar-200 rounded-md w-52 mt-14"
+            className="p-2 shadow menu dropdown-content bg-polar-200 rounded-box w-52 mt-14"
           >
             <li>
               <Link href="/settings" passHref>
