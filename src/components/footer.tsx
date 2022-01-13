@@ -15,16 +15,16 @@ const Footer: FC = () => {
             <nav className="mt-4">
               <ul className="space-y-2">
                 <li>
-                  <Link href="/terms">
+                  <Link href="/privacy">
                     <a className="text-base hover:text-gray-300">
-                      Terms of Service
+                      Privacy Policy
                     </a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/privacy">
+                  <Link href="/terms">
                     <a className="text-base hover:text-gray-300">
-                      Privacy Policy
+                      Terms of Service
                     </a>
                   </Link>
                 </li>
@@ -57,22 +57,22 @@ const Footer: FC = () => {
             <nav className="mt-4">
               <ul className="space-y-2">
                 <li>
-                  <Link href="https://kythi.bio/">
-                    <a
-                      className="text-base hover:text-gray-300"
-                      target="_blank"
-                    >
-                      Kythi Portfolio&apos;s
-                    </a>
-                  </Link>
-                </li>
-                <li>
                   <Link href="https://github.com/KythiX">
                     <a
                       className="text-base hover:text-gray-300"
                       target="_blank"
                     >
                       GitHub
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="https://kythi.bio/">
+                    <a
+                      className="text-base hover:text-gray-300"
+                      target="_blank"
+                    >
+                      Kythi Portfolio&apos;s
                     </a>
                   </Link>
                 </li>
@@ -83,16 +83,6 @@ const Footer: FC = () => {
             <h5 className="text-xl font-bold text-gray-300">Credits</h5>
             <nav className="mt-4">
               <ul className="space-y-2">
-                <li>
-                  <Link href="https://github.com/Kurpp">
-                    <a
-                      className="text-base hover:text-gray-300"
-                      target="_blank"
-                    >
-                      Kurp - Backend/CDN/Bot
-                    </a>
-                  </Link>
-                </li>
                 <li>
                   <Link href="https://github.com/bbrooklyn">
                     <a
@@ -110,6 +100,16 @@ const Footer: FC = () => {
                       target="_blank"
                     >
                       NahSahh - Frontend
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="https://github.com/Kurpp">
+                    <a
+                      className="text-base hover:text-gray-300"
+                      target="_blank"
+                    >
+                      Kurp - Backend/CDN/Bot
                     </a>
                   </Link>
                 </li>

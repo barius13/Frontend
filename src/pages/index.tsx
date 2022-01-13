@@ -22,9 +22,7 @@ export default function Index() {
             <div className="flex mb-6 space-x-3 mt-5">
               <Link href={user ? "/dashboard" : "/login"} passHref>
                 <button
-                  className={`inline-block w-${
-                    user ? 50 : 36
-                  } btn btn-sm h-10 normal-case bg-frost-400 hover:bg-frost-300 shadow-lg`}
+                  className={`inline-block w-36 btn btn-sm h-10 normal-case bg-frost-400 hover:bg-frost-300 shadow-lg`}
                 >
                   {user ? "Dashboard" : "Login"}
                 </button>

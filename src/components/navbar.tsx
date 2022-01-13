@@ -88,6 +88,12 @@ const NavBar: React.FC<NavBarProps> = (props) => {
             className="p-2 shadow menu dropdown-content bg-polar-200 rounded-box w-52 mt-14"
           >
             <li>
+              {/* copium, any type bc i didnt update types on backend */}
+              <a onClick={() => {navigator.clipboard.writeText((user as any).upload.key);}} className="font-semibold text-snow-200 hover:bg-polar-300 rounded-md py-2 px-2">
+                Copy Upload Key
+              </a>
+            </li>
+            <li>
               <Link href="/settings" passHref>
                 <a className="mb-1 font-semibold text-snow-200 hover:bg-polar-300 rounded-md py-2 px-2">
                   Settings
@@ -106,11 +112,6 @@ const NavBar: React.FC<NavBarProps> = (props) => {
                 className="mb-1 font-semibold text-snow-200 hover:bg-polar-300 rounded-md py-2 px-2"
               >
                 Logout
-              </a>
-            </li>
-            <li>
-              <a className="font-semibold text-snow-200 hover:bg-polar-300 rounded-md py-2 px-2">
-                Copy Upload Key
               </a>
             </li>
           </ul>
