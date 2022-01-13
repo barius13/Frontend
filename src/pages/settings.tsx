@@ -83,7 +83,7 @@ export default function Settings() {
                     "success"
                   );
                 }}
-                className="btn normal-case w-44 border-0 btn-sm font-medium rounded-md transform-lowercase bg-aurora-red-300 hover:bg-aurora-red-400 shadow-lg transition duration-700"
+                className="btn normal-case w-44 border-0 btn-sm font-medium rounded-md bg-aurora-red-300 hover:bg-aurora-red-400 shadow-lg"
               >
                 Delete Account
               </button>
@@ -92,7 +92,7 @@ export default function Settings() {
               onClick={() => {
                 sendToast("Successfully updated Account Settings.", "success");
               }}
-              className="btn normal-case w-full mt-6 border-0 flex ml-auto btn-sm h-9 font-medium rounded-md transform-lowercase bg-[#239d56] hover:bg-[#1f8b4d] shadow-lg transition duration-700"
+              className="btn normal-case w-full mt-6 border-0 btn-sm h-10 font-medium rounded-md bg-[#239d56] hover:bg-[#1f8b4d] shadow-lg"
             >
               Save Changes
             </button>
