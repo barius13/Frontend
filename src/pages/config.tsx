@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import Nav from "../components/navbar";
 import { useRouter } from "next/router";
-import { useUser } from "../components/user";
 import { Toaster } from "react-hot-toast";
+import { useUser } from "../components/user";
 import { sendToast } from "../utils/sendToast";
 
 export default function Dashboard() {
@@ -22,7 +22,7 @@ export default function Dashboard() {
       <Nav page="config" />
 
       <div className="flex justify-center text-white p-4 lg:flex-row md:flex-row flex-col bg-polar-100">
-        <div className="bg-polar-200 mt-10 p-6 rounded lg:mr-6 md:mr-6 lg:w-3/12">
+        <div className="bg-polar-200 mt-10 p-6 rounded lg:mr-6 md:mr-6 lg:w-3/12 shadow-lg">
           <h1 className="text-2xl text-snow-300">Config Downloads</h1>
           <div className="divide-y-2 divide-white mt-3">
             <div />
@@ -76,7 +76,7 @@ export default function Dashboard() {
           <div className="flex justify-center items-center lg:flex-row md:flex-row flex-col rounded-md lg:space-x-2 md:space-x-2">
             <label
               htmlFor="Embed-Editor"
-              className="bg-frost-300 hover:bg-frost-400 duration-300 btn normal-case lg:w-36 md:w-36 w-full"
+              className="bg-frost-300 hover:bg-frost-400 duration-300 btn normal-case lg:w-36 md:w-36 w-full mt-2 border-0"
             >
               Edit Config
             </label>
@@ -84,7 +84,7 @@ export default function Dashboard() {
               onClick={() => {
                 sendToast("Successfully deleted preset!", "success");
               }}
-              className="bg-aurora-red-300 hover:bg-aurora-red-400 duration-300 normal-case btn lg:w-36 md:w-36 w-full"
+              className="bg-aurora-red-300 hover:bg-aurora-red-400 duration-300 normal-case btn lg:w-36 md:w-36 w-full mt-2 border-0"
             >
               Delete Preset
             </label>
@@ -92,7 +92,7 @@ export default function Dashboard() {
               onClick={() => {
                 sendToast("Successfully created preset!", "success");
               }}
-              className="bg-[#239d56] hover:bg-[#1f8b4d] duration-300 btn normal-case lg:w-36 md:w-36 w-full"
+              className="bg-[#239d56] hover:bg-[#1f8b4d] duration-300 btn normal-case lg:w-36 md:w-36 w-full mt-2 border-0"
             >
               Create Preset
             </label>
@@ -101,7 +101,7 @@ export default function Dashboard() {
       </div>
 
       <input type="checkbox" id="Embed-Editor" className="modal-toggle" />
-      <div className="modal p-4 duration-500">
+      <div className="modal p-2 duration-200">
         <div className="modal-box rounded-md bg-polar-100 p-6">
           <h1 className="font-semibold text-2xl mb-4">Embed Editor</h1>
           <div className="divide-y-2 divide-white">
@@ -124,7 +124,7 @@ export default function Dashboard() {
 
               <input
                 placeholder="SiteName"
-                className="bg-polar-300  w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
+                className="bg-polar-300 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
               />
               <label className="input-group mt-3">
                 <span className="bg-gray-700 border-r-2 border-gray-300">
@@ -178,14 +178,16 @@ export default function Dashboard() {
               />
             </label>
             <label
-              htmlFor="Embed-Editor"
-              className="bg-[#239d56] btn hover:bg-[#1f8b4d] capitalize cursor-pointer text-center text-white font-medium py-2 px-4 mt-4 transition duration-500"
+              onClick={() => {
+                sendToast("Successfully Saved Embed!", "success");
+              }}
+              className="bg-[#239d56] btn hover:bg-[#1f8b4d] capitalize cursor-pointer text-center text-white font-medium mt-4 border-0"
             >
               Save Embed
             </label>
             <label
               htmlFor="Embed-Editor"
-              className="bg-polar-300 btn hover:bg-polar-200 capitalize cursor-pointer text-center text-white font-medium py-2 px-4 mt-4 transition duration-500"
+              className="bg-polar-300 btn hover:bg-polar-200 capitalize cursor-pointer text-center text-white font-medium mt-3 border-0"
             >
               Cancel
             </label>
