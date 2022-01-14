@@ -32,6 +32,20 @@ export default class API {
     });
   }
 
+  public static async getPing(): Promise<any> {
+    const startedAt = Date.now();
+
+    return new Promise((resolve, reject) => {
+      this.request("/", "GET", {})
+        .then(() => {
+          resolve(Date.now() - startedAt);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
+
   static getCurrentSession() {
     return this.request("/auth/session", "GET", {});
   }

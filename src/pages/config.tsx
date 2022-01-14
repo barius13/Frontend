@@ -5,7 +5,7 @@ import { Toaster } from "react-hot-toast";
 import { useUser } from "../components/user";
 import { sendToast } from "../utils/sendToast";
 
-export default function Dashboard() {
+export default function Config() {
   const router = useRouter();
   const { user } = useUser();
 
@@ -15,7 +15,7 @@ export default function Dashboard() {
     }
   }, [router, user]);
 
-  return user ? (
+  return user && user.discordId ? (
     <>
       <Toaster />
 

@@ -1,3 +1,5 @@
+import API from "../api";
+import React from "react";
 import Link from "next/link";
 import { useEffect } from "react";
 import Nav from "../components/navbar";
@@ -10,6 +12,20 @@ import { sendToast } from "../utils/sendToast";
 export default function Dashboard() {
   const router = useRouter();
   const { user } = useUser();
+
+  const [stats, setStats] = React.useState({
+    userPing: undefined,
+  });
+
+  useEffect(() => {
+    if (!user) {
+      return void router.push("/");
+    }
+
+    API.getPing().then((ping) => {
+      setStats({ ...stats, userPing: ping });
+    });
+  }, []);
 
   useEffect(() => {
     if (!user) {
@@ -81,7 +97,7 @@ export default function Dashboard() {
             <div>
               <StatsBox
                 title="Latency"
-                content="69ms"
+                content={`${stats.userPing}ms`}
                 icon={
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

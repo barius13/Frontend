@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function policy() {
+export default function Terms() {
   return (
     <div className="grid place-items-center md:grid-cols-1 h-screen">
       <div className="text-white bg-polar-200 lg:px-10 lg:py-10 py-4 px-4 rounded-lg w-4/5">

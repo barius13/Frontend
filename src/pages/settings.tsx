@@ -15,7 +15,7 @@ export default function Settings() {
     }
   }, [router, user]);
 
-  return user ? (
+  return user && user.discordId ? (
     <>
       <Toaster />
 
@@ -26,10 +26,10 @@ export default function Settings() {
             <h1 className="text-lg font-semibold text-snow-300 mt-3 flex">
               Profile Settings
             </h1>
-            <span className="text-snow-100 flex ml-auto lg:text-lg md:text-lg text-sm">
+            <span className="text-snow-100 flex lg:text-lg md:text-lg text-sm mr-auto">
               These settings affect logging in, and how you appear on the site.
             </span>
-            <span className="text-snow-300 flex ml-auto text-sm">
+            <span className="text-snow-300 flex mr-auto text-sm">
               Signed in as&nbsp;
               <strong>{user.username}</strong>, {user.email}
             </span>
@@ -71,10 +71,12 @@ export default function Settings() {
                 name="email"
               />
             </div>
-            <span className="font-semibold flex mt-3">Delete Account</span>
             <div className="flex justify-between lg:flex-row md:flex-row flex-col">
-              <span className="text-snow-100">
-                Upon Deletion you wipe all of your data.
+              <span>
+                <span className="font-semibold flex mt-3">Delete Account</span>
+                <span className="mr-auto flex">
+                  Upon Deletion you wipe all of your data.
+                </span>
               </span>
               <button
                 onClick={() => {
@@ -83,7 +85,7 @@ export default function Settings() {
                     "success"
                   );
                 }}
-                className="btn normal-case w-44 border-0 btn-sm font-medium rounded-md bg-aurora-red-300 hover:bg-aurora-red-400 shadow-lg"
+                className="btn normal-case w-36 border-0 lg:mt-6 md:mt-6 mt-2 btn-sm font-medium rounded-md bg-aurora-red-300 hover:bg-aurora-red-400"
               >
                 Delete Account
               </button>
