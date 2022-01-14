@@ -46,6 +46,30 @@ export default class API {
     });
   }
 
+  static submitTestimonial(content: string) {
+    return this.request("/users/@me/testimonials", "POST", {
+      body: {
+        content,
+      },
+    });
+  }
+
+  static editTestimonial(content: string) {
+    return this.request("/users/@me/testimonials", "PATCH", {
+      body: {
+        content,
+      },
+    });
+  }
+
+  static deleteTestimonial() {
+    return this.request("/users/@me/testimonials", "DELETE", {});
+  }
+
+  static getUserTestimony() {
+    return this.request("/users/@me/testimonials", "GET", {});
+  }
+
   static getCurrentSession() {
     return this.request("/auth/session", "GET", {});
   }

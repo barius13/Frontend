@@ -1,10 +1,10 @@
 import API from "../api";
 import React from "react";
 import Link from "next/link";
-import { useEffect } from "react";
 import Nav from "../components/navbar";
 import { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";
+import { useEffect, useState } from "react";
 import { useUser } from "../components/user";
 import StatsBox from "../components/userstats";
 import { sendToast } from "../utils/sendToast";
@@ -12,6 +12,9 @@ import { sendToast } from "../utils/sendToast";
 export default function Dashboard() {
   const router = useRouter();
   const { user } = useUser();
+  const [testimony, setTestimony] = useState<string | null>(null);
+  const [testimonialClicked, setTestimonialClicked] = useState(false);
+  const [testimonialDeleteClicked, setTestimonialDeleteClicked] = useState(false);
 
   const [stats, setStats] = React.useState({
     userPing: undefined,
@@ -32,6 +35,10 @@ export default function Dashboard() {
       router.push("/");
     } else if (!user.discordId) {
       router.push("/discord");
+    } else {
+      API.getUserTestimony()
+        .then((data) => setTestimony(data.testimony.content))
+        .catch(() => null);
     }
   }, [router, user]);
 
@@ -253,20 +260,88 @@ export default function Dashboard() {
                         out below and we will add it to our site.
                       </h2>
                       <textarea
+                        id="testimonyInput"
                         placeholder="Testimonial Description"
                         className="bg-polar-300 mt-3 h-32 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
-                      />
+                      >
+                        {testimony}
+                      </textarea>
                       <button
                         onClick={() => {
-                          sendToast(
-                            "Successfully Submitted Testimonial!",
-                            "success"
-                          );
+                          const docValue = (document.getElementById("testimonyInput") as any).value
+                          setTestimonialClicked(true);
+
+                          if (!docValue || docValue == "") {
+                            setTimeout(() => {
+                              setTestimonialClicked(false);
+                            }, 1875);
+                            return sendToast("Please enter a Testimonial", "error");
+                          }
+
+                          if (!testimony) {
+                            API.submitTestimonial(docValue).then((data) => {
+                              sendToast(data.message, "success");
+
+                              setTimeout(() => {
+                                setTestimonialClicked(false);
+                                setTestimony(docValue);
+                              }, 1875);
+                            })
+                            .catch((err) => {
+                              sendToast(err.data.message, "error");
+    
+                              setTimeout(() => {
+                                setTestimonialClicked(false);
+                              }, 1875);
+                            });
+                          } else {
+                            API.editTestimonial(docValue).then((data) => {
+                              sendToast(data.message, "success");
+
+                              setTimeout(() => {
+                                setTestimonialClicked(false);
+                                setTestimony(docValue);
+                              }, 1875);
+                            })
+                            .catch((err) => {
+                              sendToast(err.data.message, "error");
+    
+                              setTimeout(() => {
+                                setTestimonialClicked(false);
+                              }, 1875);
+                            });
+                          }
                         }}
-                        className="bg-polar-300 w-full btn border-0 hover:bg-polar-400 capitalize cursor-pointer text-center text-white font-medium mt-4"
+                        className={`bg-polar-300 w-full btn ${testimonialClicked ? "loading" : ""} border-0 hover:bg-polar-400 capitalize cursor-pointer text-center text-white font-medium mt-4`}
                       >
-                        Submit Testimonial
+                        {testimony ? "Edit Testimony" : "Submit Testimonial"}
                       </button>
+                      {testimony ? (<button
+                        onClick={() => {
+                          setTestimonialDeleteClicked(true);
+
+                            API.deleteTestimonial().then((data) => {
+                              sendToast(data.message, "success");
+
+                              setTimeout(() => {
+                                setTestimonialDeleteClicked(false);
+                                setTestimony(null);
+                                (document.getElementById("testimonyInput") as any).value = "";
+                              }, 1875);
+                            })
+                            .catch((err) => {
+                              sendToast(err.data.message, "error");
+    
+                              setTimeout(() => {
+                                setTestimonialDeleteClicked(false);
+                              }, 1875);
+                            });
+                          }
+                        }
+                        className={`bg-aurora-red-400 w-full btn ${testimonialDeleteClicked ? "loading" : ""} border-0 hover:bg-aurora-red-100 capitalize cursor-pointer text-center text-white font-medium mt-4`}
+                      >
+                        Delete Testimonial
+                      </button>) : ""}
                     </div>
                   </div>
                 </div>
