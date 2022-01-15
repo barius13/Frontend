@@ -37,10 +37,13 @@ export default function Dashboard() {
       router.push("/discord");
     } else {
       API.getUserTestimony()
-        .then((data) => setTestimony(data.testimony.content))
+        .then((data) => {
+          setTestimony(data.testimony.content);
+          (document.getElementById("testimonyInput") as any).value = data.testimony.content
+        })
         .catch(() => null);
     }
-  }, [router, user]);
+  }, [document, router, user]);
 
   return user && user.discordId ? (
     <>
