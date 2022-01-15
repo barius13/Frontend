@@ -7,17 +7,25 @@ export interface User {
   createdAt: Date;
   invited: string[];
   invitedBy: string;
-  invites?: Invite[];
+  invites: Invite[];
   verifiedAt: Date | null;
   verificationCode: string | null;
   discordId: string | null;
-  discord?: Discord;
+  discord: Discord;
+  uploadKey: string | null;
+  upload: UploadSettings;
 }
 
 interface Invite {
   code: string;
   createdBy: string;
   createdAt: Date;
+  user?: User;
+}
+
+interface UploadSettings {
+  key: string;
+  count: number;
   user?: User;
 }
 

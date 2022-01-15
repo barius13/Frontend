@@ -90,10 +90,9 @@ const NavBar: React.FC<NavBarProps> = (props) => {
             className="p-2 shadow menu dropdown-content bg-polar-200 rounded-box w-52 mt-14"
           >
             <li>
-              {/* copium, any type bc i didnt update types on backend */}
               <a
                 onClick={() => {
-                  navigator.clipboard.writeText((user as any).upload.key);
+                  navigator.clipboard.writeText(user.upload.key);
                   sendToast(
                     "Successfully added your upload key to your clipboard",
                     "success"
@@ -114,7 +113,7 @@ const NavBar: React.FC<NavBarProps> = (props) => {
             <li>
               <a
                 onClick={() => {
-                  // @ts-expect-error haha
+                  // @ts-expect-error Shouldnt be doing this but id prefer it over location.href
                   setUser(null);
                   API.logOut()
                     .then(() => router.push("/"))
