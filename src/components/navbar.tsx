@@ -87,14 +87,14 @@ const NavBar: React.FC<NavBarProps> = (props) => {
 
           <ul
             tabIndex={0}
-            className="p-2 shadow menu dropdown-content bg-polar-200 rounded-box w-52 mt-14"
+            className="p-2 shadow menu dropdown-content bg-polar-200 rounded-md w-52 mt-14"
           >
             <li>
               <a
                 onClick={() => {
                   navigator.clipboard.writeText(user.upload.key);
                   sendToast(
-                    "Successfully added your upload key to your clipboard",
+                    "Successfully copied your upload key to your clipboard",
                     "success"
                   );
                 }}
