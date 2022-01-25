@@ -315,11 +315,11 @@ export default function Dashboard() {
                             });
                           }
                         }}
-                        className={`bg-polar-300 w-full btn ${testimonialClicked ? "loading" : ""} border-0 hover:bg-polar-400 capitalize cursor-pointer text-center text-white font-medium mt-4`}
+                        className={`bg-polar-300 w-full btn ${testimonialClicked && "loading"} border-0 hover:bg-polar-400 capitalize cursor-pointer text-center text-white font-medium mt-4`}
                       >
                         {testimony ? "Edit Testimony" : "Submit Testimonial"}
                       </button>
-                      {testimony ? (<button
+                      {testimony && (<button
                         onClick={() => {
                           setTestimonialDeleteClicked(true);
 
@@ -341,10 +341,10 @@ export default function Dashboard() {
                             });
                           }
                         }
-                        className={`bg-aurora-red-400 w-full btn ${testimonialDeleteClicked ? "loading" : ""} border-0 hover:bg-aurora-red-100 capitalize cursor-pointer text-center text-white font-medium mt-4`}
+                        className={`bg-aurora-red-400 w-full btn ${testimonialDeleteClicked && "loading"} border-0 hover:bg-aurora-red-100 capitalize cursor-pointer text-center text-white font-medium mt-4`}
                       >
                         Delete Testimonial
-                      </button>) : ""}
+                      </button>)}
                     </div>
                   </div>
                 </div>

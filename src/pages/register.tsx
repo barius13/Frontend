@@ -211,7 +211,7 @@ export default function Register() {
                   <button
                     type="button"
                     className={`btn border-0 normal-case w-full btn-sm h-9 text-white bg-frost-400 hover:bg-frost-300 ${
-                      registerClicked ? "loading" : ""
+                      registerClicked && "loading"
                     }`}
                     onClick={() => {
                       setRegisterClicked(true);

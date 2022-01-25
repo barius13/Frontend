@@ -30,7 +30,7 @@ export default function Index() {
               <Link href="/register" passHref>
                 <button
                   className={`inline-block normal-case btn btn-sm h-10 border-0 w-36 bg-aurora-red-200 hover:bg-aurora-red-100 shadow-lg ${
-                    user ? "invisible" : ""
+                    user && "invisible"
                   }`}
                 >
                   Sign Up

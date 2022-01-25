@@ -78,6 +78,24 @@ export default class API {
     return this.request("/auth/logOut", "POST", {});
   }
 
+  static updateEmbedSettings(
+    id: string,
+    data: {
+      enabled: boolean;
+      title: string | null;
+      description: string | null;
+      color: string;
+      siteText: string | null;
+      siteUrl: string | null;
+      authorText: string | null;
+      authorUrl: string | null;
+    }
+  ) {
+    return this.request("/users/@me/settings/embeds/" + id, "PATCH", {
+      body: data,
+    });
+  }
+
   static register(data: registerState) {
     const dataClone = Object.assign({}, data);
 

@@ -1,13 +1,33 @@
-import { useEffect } from "react";
+import API from "../api";
 import Nav from "../components/navbar";
 import { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";
 import { useUser } from "../components/user";
 import { sendToast } from "../utils/sendToast";
+import { ChangeEvent, useEffect, useState } from "react";
 
 export default function Config() {
   const router = useRouter();
   const { user } = useUser();
+  const [currentPage, setCurrentPage] = useState(0);
+  const [currentEmbedData, setCurrentEmbedData] = useState(user?.embeds[0]);
+
+  function updateEmbedData(event: ChangeEvent<HTMLInputElement>) {
+    console.log(event);
+    setCurrentEmbedData({
+      ...currentEmbedData,
+      [event.target.name]:
+        event.target.name === "enabled"
+          ? event.target.checked
+          : event.target.name === "color"
+          ? event.target.hasOwnProperty("checked")
+            ? event.target.checked
+              ? "RANDOM"
+              : "#FFFFFF"
+            : event.target.value
+          : event.target.value,
+    });
+  }
 
   useEffect(() => {
     if (!user) {
@@ -113,32 +133,59 @@ export default function Config() {
               <span className="text-snow-100">
                 There is many placeholders, to view them type % for options
               </span>
-              <label className="cursor-pointer label mr-auto">
+
+              <label
+                className={`cursor-pointer label mr-auto ${
+                  currentEmbedData.color === "RANDOM" && "invisible"
+                }`}
+              >
                 <span>Embed Color</span>
                 <input
+                  name="color"
                   type="color"
-                  value=""
+                  value={currentEmbedData.color ?? "#FFFFFF"}
+                  onChange={updateEmbedData}
                   className="bg-polar-100 mr-auto ml-2"
                 />
               </label>
 
+              <label className="cursor-pointer label mr-auto">
+                <span>Random Embed Color</span>
+                <input
+                  name="color"
+                  type="checkbox"
+                  className="toggle toggle-md toggle-accent ml-4"
+                  checked={currentEmbedData.color === "RANDOM"}
+                  onChange={updateEmbedData}
+                />
+              </label>
+
               <input
+                name="siteText"
                 placeholder="SiteName"
-                className="bg-polar-300 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
+                className="bg-polar-300 mt-3 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
+                value={currentEmbedData.siteText ?? ""}
+                onChange={updateEmbedData}
               />
               <label className="input-group mt-3">
                 <span className="bg-gray-700 border-r-2 border-gray-300">
                   https://
                 </span>
                 <input
+                  name="siteUrl"
                   placeholder="SiteName Url"
                   className="bg-polar-300 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
+                  value={currentEmbedData.siteUrl ?? ""}
+                  onChange={updateEmbedData}
                 />
               </label>
 
               <input
+                name="authorText"
                 placeholder="Author"
                 className="bg-polar-300 mt-3 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
+                value={currentEmbedData.authorText ?? ""}
+                onChange={updateEmbedData}
               />
 
               <label className="input-group mt-3">
@@ -146,48 +193,84 @@ export default function Config() {
                   https://
                 </span>
                 <input
+                  name="authorUrl"
                   placeholder="Author Url"
                   className="bg-polar-300 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
+                  value={currentEmbedData.authorUrl ?? ""}
+                  onChange={updateEmbedData}
                 />
               </label>
+
               <input
+                name="title"
                 placeholder="Title"
-                className="bg-polar-300 mt-3 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
+                className="bg-polar-300 w-full mt-3 rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
+                value={currentEmbedData.title ?? ""}
+                onChange={updateEmbedData}
               />
-              <textarea
+              <input
+                name="description"
                 placeholder="Description"
                 className="bg-polar-300 mt-3 h-10 rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
+                value={currentEmbedData.description ?? ""}
+                onChange={updateEmbedData}
               />
             </div>
-            <div className="btn-group flex justify-center">
-              <button className="btn normal-case">-</button>
-              <button className="btn bg-frost-400 hover:bg-frost-300">1</button>
-              <button className="btn">2</button>
-              <button className="btn">3</button>
-              <button className="btn">4</button>
-              <button className="btn">5</button>
-              <button className="btn normal-case"> - </button>
-            </div>
-          </div>
-          <div className="modal-action space-x-2 flex flex-col">
             <label className="cursor-pointer label mr-auto">
               <span>Toggle Embed</span>
               <input
+                name="enabled"
                 type="checkbox"
-                className="toggle toggle-sm toggle-accent ml-4"
+                className="toggle toggle-md toggle-accent ml-4"
+                checked={currentEmbedData.enabled}
+                onChange={updateEmbedData}
               />
             </label>
+            <div className="btn-group flex justify-center mb-2">
+              <button className="btn normal-case">-</button>
+              {user.embeds.map((embed, index) => (
+                <button
+                  key={index}
+                  className={`btn ${
+                    currentPage === index && "bg-frost-400 hover:bg-frost-300"
+                  }`}
+                  onClick={() => {
+                    setCurrentPage(index);
+                    setCurrentEmbedData(embed);
+                  }}
+                >
+                  {index + 1}
+                </button>
+              ))}
+              <button className="btn normal-case"> - </button>
+            </div>
+          </div>
+          <div className="space-x-2">
             <label
               onClick={() => {
-                sendToast("Successfully Saved Embed!", "success");
+                API.updateEmbedSettings(currentEmbedData.id, {
+                  enabled: currentEmbedData.enabled,
+                  color: currentEmbedData.color as string,
+                  siteText: currentEmbedData.siteText,
+                  siteUrl: currentEmbedData.siteUrl,
+                  authorText: currentEmbedData.authorText,
+                  authorUrl: currentEmbedData.authorUrl,
+                  title: currentEmbedData.title,
+                  description: currentEmbedData.description,
+                }).then((data) => {
+                  sendToast(data.message, "success");
+                })
+                .catch((err) => {
+                  sendToast(err.data.message, "error");
+                });
               }}
-              className="bg-[#239d56] btn hover:bg-[#1f8b4d] capitalize cursor-pointer text-center text-white font-medium mt-4 border-0"
+              className="bg-[#239d56] btn hover:bg-[#1f8b4d] capitalize cursor-pointer text-center text-white font-medium border-0"
             >
               Save Embed
             </label>
             <label
               htmlFor="Embed-Editor"
-              className="bg-polar-300 btn hover:bg-polar-200 capitalize cursor-pointer text-center text-white font-medium mt-3 border-0"
+              className="bg-polar-300 btn hover:bg-polar-200 capitalize cursor-pointer text-center text-white font-medium mt-2 border-0"
             >
               Cancel
             </label>
