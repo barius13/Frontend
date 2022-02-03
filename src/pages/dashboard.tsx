@@ -23,20 +23,14 @@ export default function Dashboard() {
 
   useEffect(() => {
     if (!user) {
-      return void router.push("/");
-    }
-
-    API.getPing().then((ping) => {
-      setStats({ ...stats, userPing: ping });
-    });
-  }, []);
-
-  useEffect(() => {
-    if (!user) {
       router.push("/");
     } else if (!user.discordId) {
       router.push("/discord");
     } else {
+      API.getPing().then((ping) => {
+        setStats({ ...stats, userPing: ping });
+      });
+
       API.getUserTestimony()
         .then((data) => {
           setTestimony(data.testimony.content);
