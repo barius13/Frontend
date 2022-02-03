@@ -13,7 +13,7 @@ export interface loginState {
 
 export default function Login() {
   const router = useRouter();
-  const { setUser } = useUser();
+  const { user, setUser } = useUser();
   const loginShow = () => setShow(!show);
   const [show, setShow] = React.useState(false);
   const [loginClicked, setLoginClicked] = React.useState(false);
@@ -22,6 +22,12 @@ export default function Login() {
     username: null,
     password: null,
   });
+
+  React.useEffect(() => {
+    if (user) {
+      router.push((router.query.redirect as string) ?? "/dashboard");
+    }
+  }, [user, router])
 
   return (
     <>
@@ -158,7 +164,7 @@ export default function Login() {
                           setTimeout(() => {
                             setLoginClicked(false);
                             setTimeout(() => {
-                              router.push("/dashboard");
+                              router.push((router.query.redirect as string) ?? "/dashboard");
                             }, 250);
                           }, 1875);
                         })
