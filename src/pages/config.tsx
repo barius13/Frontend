@@ -13,7 +13,6 @@ export default function Config() {
   const [currentEmbedData, setCurrentEmbedData] = useState(user?.embeds[0]);
 
   function updateEmbedData(event: ChangeEvent<HTMLInputElement>) {
-    console.log(event);
     setCurrentEmbedData({
       ...currentEmbedData,
       [event.target.name]:
@@ -24,8 +23,8 @@ export default function Config() {
             ? event.target.checked
               ? "RANDOM"
               : "#FFFFFF"
-            : event.target.value
-          : event.target.value,
+            : event.target.value ?? null
+          : event.target.value ?? null,
     });
   }
 
