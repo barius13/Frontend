@@ -25,7 +25,7 @@ export default function Login() {
 
   React.useEffect(() => {
     if (user) {
-      router.push((router.query.redirect as string) ?? "/dashboard");
+      router.push(decodeURIComponent(router.query.redirect as string) ?? "/dashboard");
     }
   }, [user, router])
 
@@ -164,7 +164,7 @@ export default function Login() {
                           setTimeout(() => {
                             setLoginClicked(false);
                             setTimeout(() => {
-                              router.push((router.query.redirect as string) ?? "/dashboard");
+                              router.push(decodeURIComponent(router.query.redirect as string) ?? "/dashboard");
                             }, 250);
                           }, 1875);
                         })
