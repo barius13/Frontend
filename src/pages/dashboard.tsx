@@ -47,7 +47,7 @@ export default function Dashboard() {
       <Nav page={"dash"} />
       <body className="bg-polar-100 h-max">
         <div className="flex flex-col items-center justify-center mt-10 px-10">
-          <div className="w-11/12">
+          <div className="mr-auto">
             <div className="text-3xl font-semibold">
               Welcome, {user.username}
             </div>
@@ -55,7 +55,7 @@ export default function Dashboard() {
               Member since Dec 3, 2021
             </div>
           </div>
-          <div className="text-white w-11/12">
+          <div className="text-white ">
             <div className="grid lg:grid-cols-4 space-y-3 lg:space-y-0 lg:space-x-4 lg:-mb-72">
               <div>
                 <StatsBox
@@ -124,7 +124,7 @@ export default function Dashboard() {
                 />
               </div>
               <div className="p-6 bg-polar-200 rounded-md md:p-6 shadow-lg lg:h-auto md:h-auto w-auto">
-                <div className="flex items-baseline justify-between ">
+                <div className="flex items-baseline justify-between">
                   <h4 className="text-xl font-bold lg:text-2xl text-snow-100 mt-1">
                     Quick Links
                   </h4>
@@ -163,7 +163,7 @@ export default function Dashboard() {
                 </label>
               </div>
             </div>
-            <div className="lg:space-x-2 lg:flex lg:flex-row mb-8">
+            <div className="lg:space-x-4 lg:flex lg:flex-row mb-8">
               <div className="p-6 bg-polar-200 rounded-md md:p-6 shadow-lg mt-10 lg:h-auto md:h-auto w-auto  lg:w-4/12">
                 <div className="flex items-baseline justify-between ">
                   <h4 className="text-xl font-bold lg:text-2xl text-snow-100 mt-1">
@@ -209,7 +209,7 @@ export default function Dashboard() {
                 </div>
               </div>
 
-              <div className="p-6 bg-polar-200 rounded-md md:p-6 shadow-lg mt-10 lg:h-auto md:h-auto w-auto lg:w-5/12 lg:mb-0 md:mb-0">
+              <div className="p-6 bg-polar-200 rounded-md md:p-6 shadow-lg mt-10 lg:h-auto md:h-auto w-auto lg:w-[41%] lg:mb-0 md:mb-0">
                 <div className="flex items-baseline justify-between ">
                   <h4 className="text-xl font-bold lg:text-2xl text-snow-100 mt-1">
                     Updates, News, and Announcements.

@@ -66,32 +66,6 @@ export default function Config() {
           </button>
         </div>
         <div>
-          <div className="discord-embed shadow-md border-l-discord-light_blue border-l-4 rounded-sm bg-discord-base mt-10 mb-3">
-            <div className="embed pt-2 pr-4 pb-4 pl-3 font-discord-site">
-              <div className="embed-site mt-2 antialiased font-light text-site text-discord-site bg-discord-base font-whitney">
-                Site
-              </div>
-              <div className="embed-author mt-2 font-bold antialiased text-author font-whitney">
-                Author
-              </div>
-              <div className="embed-title mt-2 font-semibold subpixel-antialiased text-title font-whitney">
-                <a className="text-discord-blue cursor-pointer hover:underline">
-                  Brooklyn
-                </a>
-              </div>
-              <div className="embed-desc mt-2 font-normal subpixel-antialiased text-desc text-gray-300 max-w-sm font-whitney">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta,
-                fugiat.
-              </div>
-              <div className="image h-img mt-4">
-                <img
-                  className="h-img rounded-sm"
-                  src="https://www.slashgear.com/wp-content/uploads/2021/05/Discord_IAP_KeyVisuals_Header_02-1-1280x720.jpg"
-                  alt=""
-                />
-              </div>
-            </div>
-          </div>
           <div className="flex justify-center items-center lg:flex-row md:flex-row flex-col rounded-md lg:space-x-2 md:space-x-2">
             <label
               htmlFor="Embed-Editor"
@@ -104,8 +78,8 @@ export default function Config() {
       </div>
 
       <input type="checkbox" id="Embed-Editor" className="modal-toggle" />
-      <div className="modal p-2 duration-200">
-        <div className="modal-box rounded-md bg-polar-200 p-6">
+      <div className="modal duration-200">
+        <div className="rounded-md bg-polar-200 p-4 flex">
           <div>
             <div className="flex flex-row justify-between">
               <h1 className="font-semibold text-2xl mb-4">
@@ -260,33 +234,61 @@ export default function Config() {
                 ))}
                 <button className="btn normal-case"> {">"} </button>
               </div>
-              <div>
-                {" "}
-                <label className="cursor-pointer label">
-                  <span>Random Color</span>
-                  <input
-                    name="color"
-                    type="checkbox"
-                    className="toggle border-0 ml-4 bg-polar-200"
-                    checked={currentEmbedData.color === "RANDOM"}
-                    onChange={updateEmbedData}
+            </div>
+          </div>
+          <div>
+            <div className="discord-embed shadow-md border-l-discord-light_blue border-l-4 rounded-sm bg-discord-base mt-10 mb-3 ml-10">
+              <div className="embed pt-2 pr-4 pb-4 pl-3 font-discord-site">
+                <div className="embed-site mt-2 antialiased font-light text-site text-discord-site bg-discord-base font-whitney">
+                  Site
+                </div>
+                <div className="embed-author mt-2 font-bold antialiased text-author font-whitney">
+                  Author
+                </div>
+                <div className="embed-title mt-2 font-semibold subpixel-antialiased text-title font-whitney">
+                  <a className="text-discord-blue cursor-pointer hover:underline">
+                    Brooklyn
+                  </a>
+                </div>
+                <div className="embed-desc mt-2 font-normal subpixel-antialiased text-desc text-gray-300 max-w-sm font-whitney">
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Dicta, fugiat.
+                </div>
+                <div className="image h-img mt-4">
+                  <img
+                    className="h-img rounded-sm"
+                    src="https://www.slashgear.com/wp-content/uploads/2021/05/Discord_IAP_KeyVisuals_Header_02-1-1280x720.jpg"
+                    alt=""
                   />
-                </label>
-                <label
-                  className={`cursor-pointer label ${
-                    currentEmbedData.color === "RANDOM" && "hidden"
-                  }`}
-                >
-                  <span>Embed Color</span>
-                  <input
-                    name="color"
-                    type="color"
-                    value={currentEmbedData.color ?? "#FFFFFF"}
-                    onChange={updateEmbedData}
-                    className="bg-polar-100 ml-auto"
-                  />
-                </label>
+                </div>
               </div>
+            </div>
+            <div className="ml-10">
+              {" "}
+              <label className="cursor-pointer label">
+                <span>Random Color</span>
+                <input
+                  name="color"
+                  type="checkbox"
+                  className="toggle border-0 ml-4 bg-polar-200"
+                  checked={currentEmbedData.color === "RANDOM"}
+                  onChange={updateEmbedData}
+                />
+              </label>
+              <label
+                className={`cursor-pointer label ${
+                  currentEmbedData.color === "RANDOM" && "hidden"
+                }`}
+              >
+                <span>Embed Color</span>
+                <input
+                  name="color"
+                  type="color"
+                  value={currentEmbedData.color ?? "#FFFFFF"}
+                  onChange={updateEmbedData}
+                  className="bg-polar-100 ml-auto"
+                />
+              </label>
             </div>
           </div>
         </div>
