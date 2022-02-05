@@ -72,7 +72,7 @@ export default function Gallery() {
                       />
                     </svg>
                   </button>
-                  <button className="btn btn-sm bg-aurora-red-300 hover:bg-aurora-red-400 border-0">
+                  <button className="btn btn-sm bg-aurora-red-200 hover:bg-aurora-red-400 border-0">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-6 w-6"

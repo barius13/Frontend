@@ -61,7 +61,7 @@ export default function Config() {
           <button className="btn w-full border-0 btn-sm h-10 mt-3 normal-case bg-green-500 hover:bg-green-600 duration-300">
             Android
           </button>
-          <button className="btn w-full border-0 btn-sm h-10 mt-3 normal-case bg-aurora-red-300 hover:bg-aurora-red-400">
+          <button className="btn w-full border-0 btn-sm h-10 mt-3 normal-case bg-aurora-red-200 hover:bg-aurora-red-400">
             iOS
           </button>
         </div>
@@ -105,7 +105,7 @@ export default function Config() {
 
       <input type="checkbox" id="Embed-Editor" className="modal-toggle" />
       <div className="modal p-2 duration-200">
-        <div className="modal-box rounded-md bg-polar-100 p-6">
+        <div className="modal-box rounded-md bg-polar-200 p-6">
           <div>
             <div className="flex flex-row justify-between">
               <h1 className="font-semibold text-2xl mb-4">
@@ -113,7 +113,7 @@ export default function Config() {
               </h1>
               <label
                 htmlFor="Embed-Editor"
-                className="bg-polar-200 border-0 normal-case hover:bg-polar-400 btn btn-sm rounded-md cursor-pointer text-center text-white font-medium mt-1 transition duration-500"
+                className="bg-polar-300 border-0 normal-case hover:bg-polar-400 btn btn-sm rounded-md cursor-pointer text-center text-white font-medium mt-1 transition duration-500"
               >
                 X
               </label>
@@ -129,11 +129,12 @@ export default function Config() {
                 </span>
 
                 <label className="input-group mt-3">
-                  <span className="bg-gray-700 border-r-2 border-gray-300">
+                  <span className="bg-polar-600 border-r-2 border-gray-300">
                     https://
                   </span>
                   <input
                     name="siteUrl"
+                    spellCheck="false"
                     placeholder="SiteName Url"
                     className="bg-polar-300 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
                     value={currentEmbedData.siteUrl ?? ""}
@@ -143,6 +144,7 @@ export default function Config() {
 
                 <input
                   name="siteText"
+                  spellCheck="false"
                   placeholder="SiteName"
                   className="bg-polar-300 mt-3 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
                   value={currentEmbedData.siteText ?? ""}
@@ -150,11 +152,12 @@ export default function Config() {
                 />
 
                 <label className="input-group mt-3">
-                  <span className="bg-gray-700 border-r-2 border-gray-300">
+                  <span className="bg-polar-600 border-r-2 border-gray-300">
                     https://
                   </span>
                   <input
                     name="authorUrl"
+                    spellCheck="false"
                     placeholder="Author Url"
                     className="bg-polar-300 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
                     value={currentEmbedData.authorUrl ?? ""}
@@ -164,6 +167,7 @@ export default function Config() {
 
                 <input
                   name="authorText"
+                  spellCheck="false"
                   placeholder="Author"
                   className="bg-polar-300 mt-3 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
                   value={currentEmbedData.authorText ?? ""}
@@ -172,6 +176,7 @@ export default function Config() {
 
                 <input
                   name="title"
+                  spellCheck="false"
                   placeholder="Title"
                   className="bg-polar-300 w-full mt-3 rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
                   value={currentEmbedData.title ?? ""}
@@ -179,6 +184,7 @@ export default function Config() {
                 />
                 <input
                   name="description"
+                  spellCheck="false"
                   placeholder="Description"
                   className="bg-polar-300 mt-3 mb-2 h-10 rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
                   value={currentEmbedData.description ?? ""}
@@ -214,7 +220,7 @@ export default function Config() {
                 onClick={() => {
                   sendToast("Enabled Embed", "success");
                 }}
-                className="w-full bg-aurora-red-300 hover:bg-aurora-red-400 duration-300 normal-case btn border-0 mt-3"
+                className="w-full bg-aurora-red-200 hover:bg-aurora-red-400 duration-300 normal-case btn border-0 mt-3"
               >
                 Enable Embed
               </label>
@@ -223,7 +229,7 @@ export default function Config() {
                   onClick={() => {
                     sendToast("Successfully deleted preset!", "success");
                   }}
-                  className="bg-aurora-red-300 hover:bg-aurora-red-400 duration-300 normal-case btn border-0 w-56"
+                  className="bg-aurora-red-200 hover:bg-aurora-red-400 duration-300 normal-case btn border-0 w-56"
                 >
                   Delete Preset
                 </label>
@@ -261,7 +267,7 @@ export default function Config() {
                   <input
                     name="color"
                     type="checkbox"
-                    className="toggle toggle-md toggle-accent ml-4"
+                    className="toggle border-0 ml-4 bg-polar-200"
                     checked={currentEmbedData.color === "RANDOM"}
                     onChange={updateEmbedData}
                   />

@@ -85,7 +85,7 @@ export default function Settings() {
                     "success"
                   );
                 }}
-                className="btn normal-case w-36 border-0 lg:mt-6 md:mt-6 mt-2 btn-sm font-medium rounded-md bg-aurora-red-300 hover:bg-aurora-red-400"
+                className="btn normal-case w-36 border-0 lg:mt-6 md:mt-6 mt-2 btn-sm font-medium rounded-md bg-aurora-red-200 hover:bg-aurora-red-400"
               >
                 Delete Account
               </button>

@@ -134,7 +134,7 @@ export default function Dashboard() {
                   <div />
                 </div>
                 <Link href="/config" passHref>
-                  <button className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-aurora-red-200 hover:bg-aurora-red-300 shadow-lg mt-6">
+                  <button className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-aurora-red-200 hover:bg-aurora-red-200 shadow-lg mt-6">
                     Embed Customisations
                   </button>
                 </Link>

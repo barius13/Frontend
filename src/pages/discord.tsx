@@ -53,7 +53,7 @@ export default function Discord() {
             <span className="block w-full rounded-md shadow-sm mt-3">
               <button
                 type="button"
-                className="btn border-0 w-full btn-sm h-9 font-medium rounded-md transform-lowercase bg-aurora-red-300 hover:bg-aurora-red-400 shadow-lg normal-case"
+                className="btn border-0 w-full btn-sm h-9 font-medium rounded-md transform-lowercase bg-aurora-red-200 hover:bg-aurora-red-400 shadow-lg normal-case"
                 onClick={() => {
                   API.logOut()
                     .then(() => router.push("/"))

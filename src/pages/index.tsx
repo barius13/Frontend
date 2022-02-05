@@ -44,7 +44,7 @@ export default function Index() {
         </div>
       </div>
 
-      <div className="bg-polar-300 pt-20 shadow-inner">
+      <div className="bg-polar-200 pt-20 shadow-inner">
         <MainFeat />
         <div className="max-w-screen-lg px-6 pb-12 md:mt-20 mx-auto lg:px-8 xl:px-4 lg:pb-16 xl:pb-24">
           <div className="mb-6 text-center md:mb-8">
