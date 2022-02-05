@@ -50,8 +50,7 @@ export default function Register() {
                   </svg>
                 </span>
                 <input
-                  className="placeholder:text-gray-400 block bg-polar-300 hover:bg-polar-400 transition duration-700 text-white delay-50 h-8 w-full caret-white rounded-md py-2 pl-10 shadow-sm focus:outline-none hover:border-frost-300 hover:ring-frost-300 focus:border-frost-400 focus:ring-frost-400 focus:ring-2 hover:ring-2 sm:text-sm"
-                  placeholder={register.username ?? "Username"}
+                  className="placeholder:text-gray-400 block bg-polar-600 hover:bg-polar-400 text-white transition duration-700 delay-50 w-full h-8 focus:outline-none caret-white rounded-md py-2 pl-10 shadow-sm sm:text-sm" placeholder={register.username ?? "Username"}
                   value={register.username ?? ""}
                   type="text"
                   name="username"
@@ -82,8 +81,7 @@ export default function Register() {
                     </svg>
                   </span>
                   <input
-                    className="placeholder:text-gray-400 block bg-polar-300 hover:bg-polar-400 caret-white text-white transition duration-700 delay-50 w-full h-8 rounded-md py-2 pl-10 shadow-sm focus:outline-none hover:border-frost-300 hover:ring-frost-300 focus:border-frost-400 focus:ring-frost-400 focus:ring-2 hover:ring-2 sm:text-sm"
-                    placeholder={register.password ?? "Password"}
+                    className="placeholder:text-gray-400 block bg-polar-600 hover:bg-polar-400 text-white transition duration-700 delay-50 w-full h-8 focus:outline-none caret-white rounded-md py-2 pl-10 shadow-sm sm:text-sm" placeholder={register.password ?? "Password"}
                     value={register.password ?? ""}
                     type={show ? "text" : "password"}
                     name="Password"
@@ -155,7 +153,7 @@ export default function Register() {
                     </svg>
                   </span>
                   <input
-                    className="placeholder:text-gray-400 block bg-polar-300 hover:bg-polar-400 text-white transition duration-700 delay-50 w-full h-8 caret-white rounded-md py-2 pl-10 shadow-sm focus:outline-none hover:border-frost-300 hover:ring-frost-300 focus:border-frost-400 focus:ring-frost-400 focus:ring-2 hover:ring-2 sm:text-sm"
+                    className="placeholder:text-gray-400 block bg-polar-600 hover:bg-polar-400 text-white transition duration-700 delay-50 w-full h-8 focus:outline-none caret-white rounded-md py-2 pl-10 shadow-sm sm:text-sm"
                     placeholder={register.email ?? "Email-Address"}
                     value={register.email ?? ""}
                     type="text"
@@ -190,7 +188,7 @@ export default function Register() {
                     </svg>
                   </span>
                   <input
-                    className="placeholder:text-gray-400 block bg-polar-300 hover:bg-polar-400 transition duration-700 caret-white text-white delay-50 w-full h-8 rounded-md py-2 pl-10 shadow-sm focus:outline-none hover:border-frost-300 hover:ring-frost-300 focus:border-frost-400 focus:ring-frost-400 focus:ring-2 hover:ring-2 sm:text-sm"
+                    className="placeholder:text-gray-400 block bg-polar-600 hover:bg-polar-400 text-white transition duration-700 delay-50 w-full h-8 focus:outline-none caret-white rounded-md py-2 pl-10 shadow-sm sm:text-sm"
                     placeholder={register.inviteCode ?? "Invite-Code"}
                     value={register.inviteCode ?? ""}
                     type="text"
@@ -210,9 +208,8 @@ export default function Register() {
                 <span className="block w-full rounded-md shadow-sm">
                   <button
                     type="button"
-                    className={`btn border-0 normal-case w-full btn-sm h-9 text-white bg-frost-400 hover:bg-frost-300 ${
-                      registerClicked && "loading"
-                    }`}
+                    className={`btn border-0 normal-case w-full btn-sm h-9 text-white bg-frost-400 hover:bg-frost-300 ${registerClicked && "loading"
+                      }`}
                     onClick={() => {
                       setRegisterClicked(true);
 

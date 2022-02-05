@@ -58,8 +58,7 @@ export default function Login() {
                   </svg>
                 </span>
                 <input
-                  className="placeholder:text-gray-400 block bg-polar-300 hover:bg-polar-400 caret-white text-white transition duration-700 delay-50 w-full h-8 rounded-md py-2 pl-10 shadow-sm focus:outline-none hover:border-frost-300 hover:ring-frost-300 focus:border-frost-400 focus:ring-frost-400 focus:ring-2 hover:ring-2 sm:text-sm"
-                  placeholder={login.username ?? "Username"}
+                  className="placeholder:text-gray-400 block bg-polar-600 hover:bg-polar-400 text-white transition duration-700 delay-50 w-full h-8 focus:outline-none caret-white rounded-md py-2 pl-10 shadow-sm sm:text-sm"                  placeholder={login.username ?? "Username"}
                   type="text"
                   name="username"
                   onChange={(comp) =>
@@ -89,8 +88,7 @@ export default function Login() {
                     </svg>
                   </span>
                   <input
-                    className="placeholder:text-gray-400 block bg-polar-300 hover:bg-polar-400 caret-white text-white transition duration-700 delay-50 w-full h-8 rounded-md py-2 pl-10 shadow-sm focus:outline-none hover:border-frost-300 hover:ring-frost-300 focus:border-frost-400 focus:ring-frost-400 focus:ring-2 hover:ring-2 sm:text-sm"
-                    placeholder={login.password ?? "Password"}
+                    className="placeholder:text-gray-400 block bg-polar-600 hover:bg-polar-400 text-white transition duration-700 delay-50 w-full h-8 focus:outline-none caret-white rounded-md py-2 pl-10 shadow-sm sm:text-sm"                    placeholder={login.password ?? "Password"}
                     type={show ? "text" : "password"}
                     name="Password"
                     onChange={(comp) =>
