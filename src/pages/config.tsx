@@ -307,7 +307,7 @@ export default function Config() {
                 <div className="embed-site mt-2 antialiased font-light text-site text-discord-site bg-discord-base font-whitney">
                   {currentEmbedData.siteUrl ? (
                     <Link href={`https://${currentEmbedData.siteUrl}`} passHref>
-                      <a target="_blank">
+                      <a className="hover:underline" target="_blank">
                         {formatEmbedString(currentEmbedData.siteText ?? "")}
                       </a>
                     </Link>
@@ -321,7 +321,7 @@ export default function Config() {
                       href={`https://${currentEmbedData.authorUrl}`}
                       passHref
                     >
-                      <a target="_blank">
+                      <a className="hover:underline" target="_blank">
                         {formatEmbedString(currentEmbedData.authorText ?? "")}
                       </a>
                     </Link>
