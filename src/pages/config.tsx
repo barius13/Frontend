@@ -40,41 +40,70 @@ export default function Config() {
 
       <Nav page="config" />
 
-      <div className="flex justify-center text-white p-4 lg:flex-row md:flex-row flex-col bg-polar-100">
-        <div className="bg-polar-200 mt-10 p-6 rounded lg:mr-6 md:mr-6 lg:w-3/12 shadow-lg">
-          <h1 className="text-2xl text-snow-300">Config Downloads</h1>
-          <div className="divide-y-2 divide-white mt-3">
-            <div />
-            <div />
+      <div className="bg-polar-100 h-max p-12 flex space-x-4">
+        <div className="bg-polar-200 rounded-md p-6 py-8">
+          <h1 className="text-2xl">Configuration</h1>
+          <div className="lg:w-96 ">
+            <div className="mt-2 text-snow-100">
+              Configs are created for screenshot uploaders such as the ones
+              listed below, it allows a user to quickly take images & videos
+              aswell as upload them through the use of a keybind.
+            </div>
+            <div className="grid grid-cols-2 space-x-2">
+              <button className="btn w-full border-0 btn-sm h-10 mt-2 normal-case bg-frost-400 hover:bg-frost-300 duration-300 ">
+                Sharex
+              </button>
+              <button className="btn w-full border-0 btn-sm h-10 mt-2 normal-case bg-frost-400 hover:bg-frost-300 duration-300">
+                Magic Cap
+              </button>
+            </div>
           </div>
-          <div className="mt-2 text-snow-100">
-            Configs are created for screenshot uploaders such as the ones listed
-            below, it allows a user to quickly take images & videos aswell as
-            upload them through the use of a keybind.
-          </div>
-          <button className="btn w-full border-0 btn-sm h-10 mt-6 normal-case bg-frost-400 hover:bg-frost-300 duration-300 ">
-            Sharex (Windows)
-          </button>
-          <button className="btn w-full border-0 btn-sm h-10 mt-3 normal-case bg-amber-500 hover:bg-amber-400 duration-300">
-            Linux/MacOS
-          </button>
-          <button className="btn w-full border-0 btn-sm h-10 mt-3 normal-case bg-green-500 hover:bg-green-600 duration-300">
-            Android
-          </button>
-          <button className="btn w-full border-0 btn-sm h-10 mt-3 normal-case bg-aurora-red-200 hover:bg-aurora-red-400">
-            iOS
-          </button>
         </div>
-        <div>
-          <div className="flex justify-center items-center lg:flex-row md:flex-row flex-col rounded-md lg:space-x-2 md:space-x-2">
-            <label
-              htmlFor="Embed-Editor"
-              className="bg-frost-300 hover:bg-frost-400 duration-300 btn normal-case lg:w-36 md:w-36 w-full mt-2 border-0"
-            >
-              Edit Config
+        <div className="bg-polar-200 rounded-md p-6 py-8">
+          <h1 className="text-2xl">Domains</h1>
+          <div className="lg:w-auto ">
+            <div className="mt-2 text-snow-100">
+              Domains are perfect for customising your screenshots as they allow
+              you to set a custom domain for your screenshots.
+            </div>
+            <label className="input-group mt-3">
+              <span className="bg-polar-600 border-r-2 border-gray-300">
+                https://
+              </span>
+              <input
+                name="SubDomain"
+                spellCheck="false"
+                placeholder="Subdomain Name"
+                className="bg-polar-300 border-r-2 p-2 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
+                onChange={updateEmbedData}
+              />
+              <input
+                name="Domain"
+                spellCheck="false"
+                placeholder="Domain Name"
+                className="bg-polar-300  p-2 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
+                onChange={updateEmbedData}
+              />
+              <span className="bg-polar-600 border-l-2 border-l-white">/</span>
+              <input
+                name="FilePath"
+                spellCheck="false"
+                placeholder="File Path"
+                className="bg-polar-300  rounded-md p-2 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
+                onChange={updateEmbedData}
+              />
             </label>
+            <div className="text-snow-100 mt-2">
+              Your Selected domain is: Roblox.Kythi.pics/penis
+            </div>
           </div>
         </div>
+        <label
+          htmlFor="Embed-Editor"
+          className="bg-frost-400 hover:bg-frost-300 duration-300 btn normal-case border-0 mt-3 btn-sm h-10"
+        >
+          Edit Embed
+        </label>
       </div>
 
       <input type="checkbox" id="Embed-Editor" className="modal-toggle" />
@@ -190,14 +219,6 @@ export default function Config() {
               >
                 Save Changes
               </label>
-              <label
-                onClick={() => {
-                  sendToast("Enabled Embed", "success");
-                }}
-                className="w-full bg-aurora-red-200 hover:bg-aurora-red-400 duration-300 normal-case btn border-0 mt-3"
-              >
-                Enable Embed
-              </label>
               <div className="mt-3 flex justify-center space-x-4">
                 <label
                   onClick={() => {
@@ -265,6 +286,17 @@ export default function Config() {
             </div>
             <div className="ml-10">
               {" "}
+              <label className="cursor-pointer label">
+                <span>Enable Embed</span>
+                <input
+                  name="color"
+                  type="checkbox"
+                  className="toggle border-0 bg-polar-200"
+                  onChange={() => {
+                    ("");
+                  }}
+                />
+              </label>
               <label className="cursor-pointer label">
                 <span>Random Color</span>
                 <input
