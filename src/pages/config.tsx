@@ -1,4 +1,5 @@
 import API from "../api";
+import Link from "next/link";
 import Nav from "../components/navbar";
 import { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";
@@ -10,7 +11,20 @@ export default function Config() {
   const router = useRouter();
   const { user } = useUser();
   const [currentPage, setCurrentPage] = useState(0);
-  const [currentEmbedData, setCurrentEmbedData] = useState(user?.embeds[0]);
+  const [currentEmbedData, setCurrentEmbedData] = useState(user.embeds[0]);
+
+  useEffect(() => {
+    if (!user) {
+      router.push("/");
+    } else {
+      user.embeds.map((embed) => {
+        embed.siteUrl = embed.siteUrl?.replace(/https?:\/\//i, "") ?? null;
+        embed.authorUrl = embed.authorUrl?.replace(/https?:\/\//i, "") ?? null;
+      });
+
+      setCurrentEmbedData(user.embeds[0]);
+    }
+  }, [router, user]);
 
   function updateEmbedData(event: ChangeEvent<HTMLInputElement>) {
     setCurrentEmbedData({
@@ -19,20 +33,50 @@ export default function Config() {
         event.target.name === "enabled"
           ? event.target.checked
           : event.target.name === "color"
-          ? event.target.hasOwnProperty("checked")
-            ? event.target.checked
-              ? "RANDOM"
-              : "#FFFFFF"
-            : event.target.value ?? null
+          ? event.target.hasOwnProperty("checked") && event.target.checked
+            ? "RANDOM"
+            : "#FFFFFF"
           : event.target.value ?? null,
     });
   }
 
-  useEffect(() => {
-    if (!user) {
-      router.push("/");
+  function formatEmbedString(str: string): string {
+    str = str
+      .replaceAll(/:username:/gi, user.username)
+      .replaceAll(/:filename:/gi, "ilysmbidkhttybikydlmb:(.png")
+      .replaceAll(/:uploadcount:/gi, user.upload.count.toString())
+      .replaceAll(/:filesize:/gi, "420.69 KB")
+      .replaceAll(/:date:/gi, new Date().toLocaleDateString())
+      .replaceAll(/:time:/gi, new Date().toLocaleTimeString())
+      .replaceAll(/:timestamp:/gi, new Date().toLocaleString());
+
+    let data = str.match(/:(time|timestamp|date)-([^}]+):/i);
+
+    while (data && data.length >= 3) {
+      const [match, type, timeZone] = data;
+
+      if (type === "time") {
+        str = str.replace(
+          match,
+          new Date().toLocaleTimeString("en-US", { timeZone })
+        );
+      } else if (type === "timestamp") {
+        str = str.replace(
+          match,
+          new Date().toLocaleString("en-US", { timeZone })
+        );
+      } else if (type === "date") {
+        str = str.replace(
+          match,
+          new Date().toLocaleDateString("en-US", { timeZone })
+        );
+      }
+
+      data = str.match(/:(time|timestamp|date)-([^}]+):/i);
     }
-  }, [router, user]);
+
+    return str;
+  }
 
   return user && user.discordId ? (
     <>
@@ -261,19 +305,45 @@ export default function Config() {
             <div className="discord-embed shadow-md border-l-discord-light_blue border-l-4 rounded-sm bg-discord-base mt-10 mb-3 ml-10">
               <div className="embed pt-2 pr-4 pb-4 pl-3 font-discord-site">
                 <div className="embed-site mt-2 antialiased font-light text-site text-discord-site bg-discord-base font-whitney">
-                  Site
+                  {currentEmbedData.siteUrl ? (
+                    <Link href={`https://${currentEmbedData.siteUrl}`} passHref>
+                      <a target="_blank">
+                        {formatEmbedString(currentEmbedData.siteText ?? "")}
+                      </a>
+                    </Link>
+                  ) : (
+                    formatEmbedString(currentEmbedData.siteText ?? "")
+                  )}
                 </div>
                 <div className="embed-author mt-2 font-bold antialiased text-author font-whitney">
-                  Author
+                  {currentEmbedData.authorUrl ? (
+                    <Link
+                      href={`https://${currentEmbedData.authorUrl}`}
+                      passHref
+                    >
+                      <a target="_blank">
+                        {formatEmbedString(currentEmbedData.authorText ?? "")}
+                      </a>
+                    </Link>
+                  ) : (
+                    formatEmbedString(currentEmbedData.authorText ?? "")
+                  )}
                 </div>
                 <div className="embed-title mt-2 font-semibold subpixel-antialiased text-title font-whitney">
-                  <a className="text-discord-blue cursor-pointer hover:underline">
-                    Brooklyn
-                  </a>
+                  <Link
+                    href="https://kythi.pics/ilysmbidkhttybikydlmb:("
+                    passHref
+                  >
+                    <a
+                      className="text-discord-blue cursor-pointer hover:underline"
+                      target="_blank"
+                    >
+                      {formatEmbedString(currentEmbedData.title ?? "")}
+                    </a>
+                  </Link>
                 </div>
                 <div className="embed-desc mt-2 font-normal subpixel-antialiased text-desc text-gray-300 max-w-sm font-whitney">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Dicta, fugiat.
+                  {formatEmbedString(currentEmbedData.description ?? "")}
                 </div>
                 <div className="image h-img mt-4">
                   <img
@@ -285,16 +355,14 @@ export default function Config() {
               </div>
             </div>
             <div className="ml-10">
-              {" "}
               <label className="cursor-pointer label">
                 <span>Enable Embed</span>
                 <input
-                  name="color"
+                  name="enabled"
                   type="checkbox"
                   className="toggle border-0 bg-polar-200"
-                  onChange={() => {
-                    ("");
-                  }}
+                  checked={currentEmbedData.enabled}
+                  onChange={updateEmbedData}
                 />
               </label>
               <label className="cursor-pointer label">

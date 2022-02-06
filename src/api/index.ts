@@ -1,3 +1,4 @@
+import { UserEmbed } from "../typings";
 import { loginState } from "../pages/login";
 import { registerState } from "../pages/register";
 import axios, { AxiosRequestHeaders, Method } from "axios";
@@ -80,19 +81,20 @@ export default class API {
 
   static updateEmbedSettings(
     id: string,
-    data: {
-      enabled: boolean;
-      title: string | null;
-      description: string | null;
-      color: string;
-      siteText: string | null;
-      siteUrl: string | null;
-      authorText: string | null;
-      authorUrl: string | null;
-    }
+    data: Omit<UserEmbed, "id" | "userId">
   ) {
+    const dataClone = Object.assign({}, data);
+
+    if (!dataClone.authorUrl?.match(/https?:\/\//i)) {
+      dataClone.authorUrl = `https://${dataClone.authorUrl}`;
+    }
+
+    if (!dataClone.siteUrl?.match(/https?:\/\//i)) {
+      dataClone.siteUrl = `https://${dataClone.siteUrl}`;
+    }
+
     return this.request("/users/@me/settings/embeds/" + id, "PATCH", {
-      body: data,
+      body: dataClone,
     });
   }
 
