@@ -45,7 +45,7 @@ export default function Dashboard() {
     <>
       <Toaster />
       <Nav page={"dash"} />
-      <body className="bg-polar-100 h-max">
+      <body className="bg-polar-100 h-max px-8">
         <div className="flex flex-col items-center justify-center mt-10 px-10">
           <div className="mr-auto">
             <div className="text-3xl font-semibold">
@@ -55,9 +55,10 @@ export default function Dashboard() {
               Member since Dec 3, 2021
             </div>
           </div>
-          <div className="text-white ">
-            <div className="grid lg:grid-cols-4 space-y-3 lg:space-y-0 lg:space-x-4 lg:-mb-72">
-              <div>
+          <div className="flex lg:flex-row flex-nowrap lg:space-x-4 lg:space-y-0 space-y-10 md:flex-col flex-col">
+            <div className="text-white flex space-y-4 flex-nowrap w-full flex-col">
+              <div className="flex w-full items-stretch lg:flex-row md:flex-col flex-col lg:space-y-0 space-y-3 lg:space-x-4">
+                <div className="w-full">
                 <StatsBox
                   title="Uploads"
                   content={user.upload.count.toString()}
@@ -78,8 +79,9 @@ export default function Dashboard() {
                     </svg>
                   }
                 />
-              </div>
-              <div>
+                </div>
+
+                <div className="w-full">
                 <StatsBox
                   title="Storage"
                   content="350mb"
@@ -101,7 +103,7 @@ export default function Dashboard() {
                   }
                 />
               </div>
-              <div>
+                <div className="w-full">
                 <StatsBox
                   title="Latency"
                   content={`${stats.userPing}ms`}
@@ -123,48 +125,9 @@ export default function Dashboard() {
                   }
                 />
               </div>
-              <div className="p-6 bg-polar-200 rounded-md md:p-6 shadow-lg lg:h-auto md:h-auto w-auto">
-                <div className="flex items-baseline justify-between">
-                  <h4 className="text-xl font-bold lg:text-2xl text-snow-100 mt-1">
-                    Quick Links
-                  </h4>
-                </div>
-                <div className="divide-y-2 divide-frost-300 mb-2 mt-3">
-                  <div />
-                  <div />
-                </div>
-                <Link href="/config" passHref>
-                  <button className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-aurora-red-200 hover:bg-aurora-red-200 shadow-lg mt-6">
-                    Embed Customisations
-                  </button>
-                </Link>
-                <Link href="/config" passHref>
-                  <button className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg mt-4">
-                    Config Downloads
-                  </button>
-                </Link>
-                <label
-                  htmlFor="Submit-Review"
-                  className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg mt-4"
-                >
-                  Submit a Testimonal
-                </label>
-                <label
-                  htmlFor="Suggest-Feature"
-                  className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg mt-4"
-                >
-                  Suggest a Feature
-                </label>
-                <label
-                  htmlFor="Bug-Report"
-                  className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg mt-4"
-                >
-                  Report a bug
-                </label>
-              </div>
             </div>
-            <div className="lg:space-x-4 lg:flex lg:flex-row mb-8">
-              <div className="p-6 bg-polar-200 rounded-md md:p-6 shadow-lg mt-10 lg:h-auto md:h-auto w-auto  lg:w-4/12">
+            <div className="flex lg:space-y-0 lg:space-x-4 md:space-x-0 space-x-0 md:space-y-10 space-y-10 lg:flex-row w-full md:flex-col flex-col">
+                <div className="p-6 bg-polar-200 rounded-md md:p-6 shadow-lg w-full">
                 <div className="flex items-baseline justify-between ">
                   <h4 className="text-xl font-bold lg:text-2xl text-snow-100 mt-1">
                     Recently uploaded File.
@@ -209,7 +172,7 @@ export default function Dashboard() {
                 </div>
               </div>
 
-              <div className="p-6 bg-polar-200 rounded-md md:p-6 shadow-lg mt-10 lg:h-auto md:h-auto w-auto lg:w-[41%] lg:mb-0 md:mb-0">
+              <div className="p-6 bg-polar-200 rounded-md md:p-6 shadow-lg w-full">
                 <div className="flex items-baseline justify-between ">
                   <h4 className="text-xl font-bold lg:text-2xl text-snow-100 mt-1">
                     Updates, News, and Announcements.
@@ -244,233 +207,273 @@ export default function Dashboard() {
                 </div>
               </div>
             </div>
+            </div>
+          <div className="p-6 bg-polar-200 rounded-md md:p-6 shadow-lg">
+            <div className="flex items-baseline justify-between">
+              <h4 className="text-xl font-bold lg:text-2xl text-snow-100 mt-1">
+                Quick Links
+              </h4>
+            </div>
+            <div className="divide-y-2 divide-frost-300 mb-2 mt-3">
+              <div />
+              <div />
+            </div>
+            <Link href="/config" passHref>
+              <button className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-aurora-red-200 hover:bg-aurora-red-200 shadow-lg mt-6">
+                Embed Customisations
+              </button>
+            </Link>
+            <Link href="/config" passHref>
+              <button className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg mt-4">
+                Config Downloads
+              </button>
+            </Link>
+            <label
+              htmlFor="Submit-Review"
+              className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg mt-4"
+            >
+              Submit a Testimonal
+            </label>
+            <label
+              htmlFor="Suggest-Feature"
+              className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg mt-4"
+            >
+              Suggest a Feature
+            </label>
+            <label
+              htmlFor="Bug-Report"
+              className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg mt-4"
+            >
+              Report a bug
+            </label>
           </div>
         </div>
-        <input type="checkbox" id="Delete-Image" className="modal-toggle" />
-        <div className="modal p-6 transition duration-200">
-          <div className="modal-box py-6 px-8 rounded-md bg-polar-200 shadow-2xl lg:w-1/3">
-            <h1 className="font-semibold text-xl mb-2">Delete File</h1>
-            <span className="text-snow-200">
-              Are you sure you want to delete this File? This action is not
-              reversible. This will permanently delete the File from our
-              servers. This action is irreversible!
-            </span>
-            <div className="modal-action space-x-2">
+
+
+      </div>
+      <input type="checkbox" id="Delete-Image" className="modal-toggle" />
+      <div className="modal p-6 transition duration-200">
+        <div className="modal-box py-6 px-8 rounded-md bg-polar-200 shadow-2xl lg:w-1/3">
+          <h1 className="font-semibold text-xl mb-2">Delete File</h1>
+          <span className="text-snow-200">
+            Are you sure you want to delete this File? This action is not
+            reversible. This will permanently delete the File from our
+            servers. This action is irreversible!
+          </span>
+          <div className="modal-action space-x-2">
+            <label
+              onClick={() => {
+                sendToast("Successfully deleted File!", "success");
+              }}
+              className="btn normal-case bg-aurora-red-400 border-0 hover:bg-aurora-red-100 w-24 cursor-pointer font-medium mt-4"
+            >
+              Delete
+            </label>
+            <label
+              htmlFor="Delete-Image"
+              className="bg-polar-300 btn normal-case border-0 hover:bg-polar-400 rounded-md cursor-pointer w-24 font-medium mt-4"
+            >
+              Close
+            </label>
+          </div>
+        </div>
+      </div>
+      <input type="checkbox" id="Submit-Review" className="modal-toggle" />
+      <div className="modal p-6 transition duration-200">
+        <div className="modal-box py-6 px-8 rounded-md bg-polar-200 shadow-2xl lg:w-1/3">
+          <div>
+            <div className="flex flex-row justify-between">
+              <h1 className="text-3xl font-bold text-snow-300">
+                Testimonial Submission
+              </h1>
               <label
-                onClick={() => {
-                  sendToast("Successfully deleted File!", "success");
-                }}
-                className="btn normal-case bg-aurora-red-400 border-0 hover:bg-aurora-red-100 w-24 cursor-pointer font-medium mt-4"
+                htmlFor="Submit-Review"
+                className="bg-polar-300 border-0 normal-case hover:bg-polar-400 btn btn-sm rounded-md cursor-pointer text-center text-white font-medium mt-1 transition duration-500"
               >
-                Delete
-              </label>
-              <label
-                htmlFor="Delete-Image"
-                className="bg-polar-300 btn normal-case border-0 hover:bg-polar-400 rounded-md cursor-pointer w-24 font-medium mt-4"
-              >
-                Close
+                X
               </label>
             </div>
-          </div>
-        </div>
-        <input type="checkbox" id="Submit-Review" className="modal-toggle" />
-        <div className="modal p-6 transition duration-200">
-          <div className="modal-box py-6 px-8 rounded-md bg-polar-200 shadow-2xl lg:w-1/3">
-            <div>
-              <div className="flex flex-row justify-between">
-                <h1 className="text-3xl font-bold text-snow-300">
-                  Testimonial Submission
-                </h1>
-                <label
-                  htmlFor="Submit-Review"
-                  className="bg-polar-300 border-0 normal-case hover:bg-polar-400 btn btn-sm rounded-md cursor-pointer text-center text-white font-medium mt-1 transition duration-500"
-                >
-                  X
-                </label>
-              </div>
-              <h2 className="mt-3 font-semibold text-snow-100">
-                Thank you for using our service! We are delighted that you want
-                to submit a Review/Testimonial Please type it out below and we
-                will add it to our site.
-              </h2>
-              <textarea
-                id="testimonyInput"
-                placeholder="Testimonial Description"
-                className="bg-polar-300 mt-3 h-32 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
-              >
-                {testimony}
-              </textarea>
-              <button
-                onClick={() => {
-                  const docValue = (
-                    document.getElementById("testimonyInput") as any
-                  ).value;
-                  setTestimonialClicked(true);
+            <h2 className="mt-3 font-semibold text-snow-100">
+              Thank you for using our service! We are delighted that you want
+              to submit a Review/Testimonial Please type it out below and we
+              will add it to our site.
+            </h2>
+            <textarea
+              id="testimonyInput"
+              placeholder="Testimonial Description"
+              className="bg-polar-300 mt-3 h-32 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
+            >
+              {testimony}
+            </textarea>
+            <button
+              onClick={() => {
+                const docValue = (
+                  document.getElementById("testimonyInput") as any
+                ).value;
+                setTestimonialClicked(true);
 
-                  if (!docValue || docValue == "") {
-                    setTimeout(() => {
-                      setTestimonialClicked(false);
-                    }, 1875);
-                    return sendToast("Please enter a Testimonial", "error");
-                  }
+                if (!docValue || docValue == "") {
+                  setTimeout(() => {
+                    setTestimonialClicked(false);
+                  }, 1875);
+                  return sendToast("Please enter a Testimonial", "error");
+                }
 
-                  if (!testimony) {
-                    API.submitTestimonial(docValue)
-                      .then((data) => {
-                        sendToast(data.message, "success");
+                if (!testimony) {
+                  API.submitTestimonial(docValue)
+                    .then((data) => {
+                      sendToast(data.message, "success");
 
-                        setTimeout(() => {
-                          setTestimonialClicked(false);
-                          setTestimony(docValue);
-                        }, 1875);
-                      })
-                      .catch((err) => {
-                        sendToast(err.data.message, "error");
+                      setTimeout(() => {
+                        setTestimonialClicked(false);
+                        setTestimony(docValue);
+                      }, 1875);
+                    })
+                    .catch((err) => {
+                      sendToast(err.data.message, "error");
 
-                        setTimeout(() => {
-                          setTestimonialClicked(false);
-                        }, 1875);
-                      });
-                  } else {
-                    API.editTestimonial(docValue)
-                      .then((data) => {
-                        sendToast(data.message, "success");
+                      setTimeout(() => {
+                        setTestimonialClicked(false);
+                      }, 1875);
+                    });
+                } else {
+                  API.editTestimonial(docValue)
+                    .then((data) => {
+                      sendToast(data.message, "success");
 
-                        setTimeout(() => {
-                          setTestimonialClicked(false);
-                          setTestimony(docValue);
-                        }, 1875);
-                      })
-                      .catch((err) => {
-                        sendToast(err.data.message, "error");
+                      setTimeout(() => {
+                        setTestimonialClicked(false);
+                        setTestimony(docValue);
+                      }, 1875);
+                    })
+                    .catch((err) => {
+                      sendToast(err.data.message, "error");
 
-                        setTimeout(() => {
-                          setTestimonialClicked(false);
-                        }, 1875);
-                      });
-                  }
-                }}
-                className={`bg-polar-300 w-full btn ${
-                  testimonialClicked && "loading"
+                      setTimeout(() => {
+                        setTestimonialClicked(false);
+                      }, 1875);
+                    });
+                }
+              }}
+              className={`bg-polar-300 w-full btn ${testimonialClicked && "loading"
                 } border-0 hover:bg-polar-400 capitalize cursor-pointer text-center text-white font-medium mt-4`}
-              >
-                {testimony ? "Edit Testimony" : "Submit Testimonial"}
-              </button>
-              {testimony && (
-                <button
-                  onClick={() => {
-                    setTestimonialDeleteClicked(true);
+            >
+              {testimony ? "Edit Testimony" : "Submit Testimonial"}
+            </button>
+            {testimony && (
+              <button
+                onClick={() => {
+                  setTestimonialDeleteClicked(true);
 
-                    API.deleteTestimonial()
-                      .then((data) => {
-                        sendToast(data.message, "success");
+                  API.deleteTestimonial()
+                    .then((data) => {
+                      sendToast(data.message, "success");
 
-                        setTimeout(() => {
-                          setTestimonialDeleteClicked(false);
-                          setTestimony(null);
-                          (
-                            document.getElementById("testimonyInput") as any
-                          ).value = "";
-                        }, 1875);
-                      })
-                      .catch((err) => {
-                        sendToast(err.data.message, "error");
+                      setTimeout(() => {
+                        setTestimonialDeleteClicked(false);
+                        setTestimony(null);
+                        (
+                          document.getElementById("testimonyInput") as any
+                        ).value = "";
+                      }, 1875);
+                    })
+                    .catch((err) => {
+                      sendToast(err.data.message, "error");
 
-                        setTimeout(() => {
-                          setTestimonialDeleteClicked(false);
-                        }, 1875);
-                      });
-                  }}
-                  className={`bg-aurora-red-400 w-full btn ${
-                    testimonialDeleteClicked && "loading"
+                      setTimeout(() => {
+                        setTestimonialDeleteClicked(false);
+                      }, 1875);
+                    });
+                }}
+                className={`bg-aurora-red-400 w-full btn ${testimonialDeleteClicked && "loading"
                   } border-0 hover:bg-aurora-red-100 capitalize cursor-pointer text-center text-white font-medium mt-4`}
-                >
-                  Delete Testimonial
-                </button>
-              )}
-            </div>
-          </div>
-        </div>
-        <input type="checkbox" id="Suggest-Feature" className="modal-toggle" />
-        <div className="modal p-6 transition duration-200">
-          <div className="modal-box py-6 px-8 rounded-md bg-polar-200 shadow-2xl lg:w-1/3">
-            <div>
-              <div className="flex flex-row justify-between">
-                <h1 className="text-3xl font-bold text-snow-300">
-                  Suggestion Form
-                </h1>
-                <label
-                  htmlFor="Suggest-Feature"
-                  className="bg-polar-300 border-0 normal-case hover:bg-polar-400 btn btn-sm rounded-md cursor-pointer text-center text-white font-medium mt-1 transition duration-500"
-                >
-                  X
-                </label>
-              </div>
-              <h2 className="mt-3 font-semibold text-snow-100">
-                Thank you for using our service! We are delighted that you have
-                a suggestion to make! Please fill out the form below and we will
-                get back to you as soon as possible!
-              </h2>
-              <textarea
-                placeholder="Suggestion Description"
-                className="bg-polar-300 mt-6 h-32 w-full  rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
-              />
-              <button
-                onClick={() => {
-                  sendToast("Successfully Sent Suggestion!", "success");
-                }}
-                className="bg-polar-300 w-full btn border-0 hover:bg-polar-400 normal-case cursor-pointer text-center text-white mt-3"
               >
-                Submit Suggestion
+                Delete Testimonial
               </button>
-            </div>
+            )}
           </div>
         </div>
-        <input type="checkbox" id="Bug-Report" className="modal-toggle" />
-        <div className="modal p-6 transition duration-200">
-          <div className="modal-box py-6 px-8 rounded-md bg-polar-200 shadow-2xl lg:w-1/3">
-            <div>
-              <div className="flex flex-row justify-between">
-                <h1 className="text-3xl font-bold text-snow-300">Bug Report</h1>
-                <label
-                  htmlFor="Bug-Report"
-                  className="bg-polar-300 border-0 normal-case hover:bg-polar-400 btn btn-sm rounded-md cursor-pointer text-center text-white font-medium mt-1 transition duration-500"
-                >
-                  X
-                </label>
-              </div>
-              <h2 className="mt-3 font-semibold text-snow-100">
-                We're sorry you had a bad experience please list exactly what
-                occured so we can fix it as soon as possible!
-              </h2>
-              <textarea
-                placeholder="Bug Description"
-                className="bg-polar-300 mt-6 h-10 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400 "
-              />
-              <select className="select border-0 w-full bg-polar-300 rounded mt-3">
-                <option disabled={false} selected={true}>
-                  How Severe is this bug?
-                </option>
-                <option>Minor</option>
-                <option>Moderate</option>
-                <option>Major</option>
-              </select>
-              <div className="mt-3 font-semibold text-snow-100">
-                Before Submitting please check if there is any announcement of
-                the error being fixed. Thanks!
-              </div>
-              <button
-                onClick={() => {
-                  sendToast("Successfully Sent Bug-Report.", "success");
-                }}
-                className="bg-polar-300 w-full btn border-0 hover:bg-polar-400 capitalize cursor-pointer text-center text-white mt-6"
+      </div>
+      <input type="checkbox" id="Suggest-Feature" className="modal-toggle" />
+      <div className="modal p-6 transition duration-200">
+        <div className="modal-box py-6 px-8 rounded-md bg-polar-200 shadow-2xl lg:w-1/3">
+          <div>
+            <div className="flex flex-row justify-between">
+              <h1 className="text-3xl font-bold text-snow-300">
+                Suggestion Form
+              </h1>
+              <label
+                htmlFor="Suggest-Feature"
+                className="bg-polar-300 border-0 normal-case hover:bg-polar-400 btn btn-sm rounded-md cursor-pointer text-center text-white font-medium mt-1 transition duration-500"
               >
-                Submit Report
-              </button>
+                X
+              </label>
             </div>
+            <h2 className="mt-3 font-semibold text-snow-100">
+              Thank you for using our service! We are delighted that you have
+              a suggestion to make! Please fill out the form below and we will
+              get back to you as soon as possible!
+            </h2>
+            <textarea
+              placeholder="Suggestion Description"
+              className="bg-polar-300 mt-6 h-32 w-full  rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
+            />
+            <button
+              onClick={() => {
+                sendToast("Successfully Sent Suggestion!", "success");
+              }}
+              className="bg-polar-300 w-full btn border-0 hover:bg-polar-400 normal-case cursor-pointer text-center text-white mt-3"
+            >
+              Submit Suggestion
+            </button>
           </div>
         </div>
-      </body>
+      </div>
+      <input type="checkbox" id="Bug-Report" className="modal-toggle" />
+      <div className="modal p-6 transition duration-200">
+        <div className="modal-box py-6 px-8 rounded-md bg-polar-200 shadow-2xl lg:w-1/3">
+          <div>
+            <div className="flex flex-row justify-between">
+              <h1 className="text-3xl font-bold text-snow-300">Bug Report</h1>
+              <label
+                htmlFor="Bug-Report"
+                className="bg-polar-300 border-0 normal-case hover:bg-polar-400 btn btn-sm rounded-md cursor-pointer text-center text-white font-medium mt-1 transition duration-500"
+              >
+                X
+              </label>
+            </div>
+            <h2 className="mt-3 font-semibold text-snow-100">
+              We're sorry you had a bad experience please list exactly what
+              occured so we can fix it as soon as possible!
+            </h2>
+            <textarea
+              placeholder="Bug Description"
+              className="bg-polar-300 mt-6 h-10 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400 "
+            />
+            <select className="select border-0 w-full bg-polar-300 rounded mt-3">
+              <option disabled={false} selected={true}>
+                How Severe is this bug?
+              </option>
+              <option>Minor</option>
+              <option>Moderate</option>
+              <option>Major</option>
+            </select>
+            <div className="mt-3 font-semibold text-snow-100">
+              Before Submitting please check if there is any announcement of
+              the error being fixed. Thanks!
+            </div>
+            <button
+              onClick={() => {
+                sendToast("Successfully Sent Bug-Report.", "success");
+              }}
+              className="bg-polar-300 w-full btn border-0 hover:bg-polar-400 capitalize cursor-pointer text-center text-white mt-6"
+            >
+              Submit Report
+            </button>
+          </div>
+        </div>
+      </div>
+    </body>
     </>
   ) : null;
 }

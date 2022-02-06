@@ -11,7 +11,7 @@ interface Stats {
 
 const Stats: FC<Stats> = ({ title, content, icon, isSvg, svgData }) => {
   return (
-    <div className="p-6 bg-polar-200 hover:bg-polar-400 lg:duration-700 border-none rounded-md md:p-8 lg:py-4 md:shadow-lg md:hover:shadow-lg md:transition-all md:duration-500 ">
+    <div className="p-6 bg-polar-200 w-full hover:bg-polar-400 lg:duration-700 border-none rounded-md md:p-8 lg:py-4 md:shadow-lg md:hover:shadow-lg md:transition-all md:duration-500 ">
       <div className="flex items-baseline justify-between mb-2">
         <h4 className="text-2xl font-bold lg:text-3xl">{title}</h4>
         {isSvg ? (
