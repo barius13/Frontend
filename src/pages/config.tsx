@@ -49,7 +49,7 @@ export default function Config() {
         <Toaster />
         <Nav page="config" />
 
-        <main className="bg-polar-100 h-max py-2 px-4 pb-80 text-white">
+        <main className="bg-polar-100 h-screen py-2 px-4 pb-80 text-white">
           <div className="text-white">
             <div className="flex flex-col lg:flex-row md:flex-row md:space-x-4 space-y-2 md:space-y-0 lg:space-y-0 lg:space-x-4 px-10 mt-10">
               <div className="bg-polar-200 rounded-md p-6 py-8">
