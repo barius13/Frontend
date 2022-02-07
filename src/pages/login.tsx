@@ -196,7 +196,7 @@ export default function Login() {
                       type="button"
                       className="btn border-0 normal-case w-full btn-sm h-9 font-medium rounded-md transform-lowercase bg-[#5865F2] hover:bg-[#7289DA] shadow-lg transition duration-700"
                     >
-                      <div className="flex justify-center items-center">
+                      <div className="flex justify-center">
                         <svg
                           className="h-6 w-6 pr-2"
                           fill="none"
