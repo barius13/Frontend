@@ -18,7 +18,7 @@ export default function Config() {
   const [currentEmbed, setCurrentEmbed] = useState(user?.embeds[0]);
 
   function updateEmbed(k: keyof UserEmbed, v: string | boolean | null) {
-    if (!!!v) v = null;
+    if (typeof v === "string" && !!!v) v = null;
 
     setCurrentEmbed({ ...currentEmbed, [k]: v });
   }
