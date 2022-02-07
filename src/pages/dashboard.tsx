@@ -38,8 +38,6 @@ export default function Dashboard() {
       API.getUserTestimony()
         .then((data) => {
           setTestimony(data.testimony.content);
-          (document.getElementById("testimonyInput") as any).value =
-            data.testimony.content;
         })
         .catch(() => null);
     }
@@ -320,6 +318,7 @@ export default function Dashboard() {
                     <textarea
                       id="testimonyInput"
                       placeholder="Testimonial Description"
+                      value={testimony ?? ""}
                       className="bg-polar-300 mt-3 h-32 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
                     >
                       {testimony}
@@ -395,11 +394,6 @@ export default function Dashboard() {
                               setTimeout(() => {
                                 setTestimonialDeleteClicked(false);
                                 setTestimony(null);
-                                (
-                                  document.getElementById(
-                                    "testimonyInput"
-                                  ) as any
-                                ).value = "";
                               }, 1875);
                             })
                             .catch((err) => {

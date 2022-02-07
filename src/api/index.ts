@@ -1,7 +1,5 @@
-import { UserEmbed } from "../typings";
-import { loginState } from "../pages/login";
-import { registerState } from "../pages/register";
 import axios, { AxiosRequestHeaders, Method } from "axios";
+import { UserEmbed, loginState, registerState } from "../typings";
 
 interface requestParams {
   body?: object;

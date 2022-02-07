@@ -1,5 +1,5 @@
 import { User } from "../typings/index";
-import { useContext, createContext } from "react";
+import { useContext, createContext, ProviderProps } from "react";
 
 export interface UserCtx {
   user: User;
@@ -7,11 +7,11 @@ export interface UserCtx {
   setUser(user: User): void;
 }
 
-const UserContext = createContext(null);
-
-export const UserProvider = ({ value, children }: any) => {
+export const UserProvider = ({ value, children }: ProviderProps<any>) => {
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
 
-// @ts-expect-error I don't know how to type this
+const UserContext = createContext(null);
+
+// @ts-expect-error It starts off as null
 export const useUser = () => useContext<UserCtx>(UserContext);

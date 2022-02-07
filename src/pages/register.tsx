@@ -2,14 +2,8 @@ import API from "../api";
 import Link from "next/link";
 import * as React from "react";
 import { Toaster } from "react-hot-toast";
+import { registerState } from "../typings";
 import { sendToast } from "../utils/sendToast";
-
-export interface registerState {
-  username: string | null;
-  password: string | null;
-  email: string | null;
-  inviteCode: string | null;
-}
 
 export default function Register() {
   const loginShow = () => setShow(!show);
@@ -21,6 +15,24 @@ export default function Register() {
     email: null,
     inviteCode: null,
   });
+
+  function updateRegister(k: keyof registerState, v: string | boolean | null) {
+    if (typeof v === "string" && !!!v) v = null;
+
+    setRegister({ ...register, [k]: v });
+  }
+
+  document.addEventListener(
+    "keydown",
+    (ctx) => {
+      console.log(ctx);
+
+      if (ctx.code === "Enter") {
+        document.getElementById("submitButton")?.click();
+      }
+    },
+    false
+  );
 
   return (
     <>
@@ -71,17 +83,13 @@ export default function Register() {
                   </svg>
                 </span>
                 <input
-                  className="placeholder:text-gray-400 block bg-polar-600 hover:bg-polar-400 text-white transition duration-700 delay-50 w-full h-8 focus:outline-none caret-white rounded-md py-2 pl-10 shadow-sm sm:text-sm"
-                  placeholder={register.username ?? "Username"}
-                  value={register.username ?? ""}
                   type="text"
                   name="username"
+                  placeholder="Username"
+                  value={register.username ?? ""}
+                  className="placeholder:text-gray-400 block bg-polar-600 hover:bg-polar-400 text-white transition duration-700 delay-50 w-full h-8 focus:outline-none caret-white rounded-md py-2 pl-10 shadow-sm sm:text-sm"
                   onChange={(comp) =>
-                    setRegister({
-                      ...register,
-                      username:
-                        comp.target.value === "" ? null : comp.target.value,
-                    })
+                    updateRegister("username", comp.target.value)
                   }
                 />
               </label>
@@ -103,20 +111,16 @@ export default function Register() {
                     </svg>
                   </span>
                   <input
-                    className="placeholder:text-gray-400 block bg-polar-600 hover:bg-polar-400 text-white transition duration-700 delay-50 w-full h-8 focus:outline-none caret-white rounded-md py-2 pl-10 shadow-sm sm:text-sm"
-                    placeholder={register.password ?? "Password"}
+                    name="password"
+                    placeholder="Password"
                     value={register.password ?? ""}
                     type={show ? "text" : "password"}
-                    name="Password"
+                    className="placeholder:text-gray-400 block bg-polar-600 hover:bg-polar-400 text-white transition duration-700 delay-50 w-full h-8 focus:outline-none caret-white rounded-md py-2 pl-10 shadow-sm sm:text-sm"
                     onChange={(comp) =>
-                      setRegister({
-                        ...register,
-                        password:
-                          comp.target.value === "" ? null : comp.target.value,
-                      })
+                      updateRegister("password", comp.target.value)
                     }
                   />
-                  <a
+                  <button
                     onClick={loginShow}
                     className="absolute inset-y-0 right-0 flex items-center pr-3"
                   >
@@ -153,7 +157,7 @@ export default function Register() {
                         />
                       </svg>
                     )}
-                  </a>
+                  </button>
                 </label>
               </div>
 
@@ -176,17 +180,12 @@ export default function Register() {
                     </svg>
                   </span>
                   <input
-                    className="placeholder:text-gray-400 block bg-polar-600 hover:bg-polar-400 text-white transition duration-700 delay-50 w-full h-8 focus:outline-none caret-white rounded-md py-2 pl-10 shadow-sm sm:text-sm"
-                    placeholder={register.email ?? "Email-Address"}
+                    type="email"
+                    placeholder="Email-Address"
                     value={register.email ?? ""}
-                    type="text"
-                    name="Email"
+                    className="placeholder:text-gray-400 block bg-polar-600 hover:bg-polar-400 text-white transition duration-700 delay-50 w-full h-8 focus:outline-none caret-white rounded-md py-2 pl-10 shadow-sm sm:text-sm"
                     onChange={(comp) =>
-                      setRegister({
-                        ...register,
-                        email:
-                          comp.target.value === "" ? null : comp.target.value,
-                      })
+                      updateRegister("email", comp.target.value)
                     }
                   />
                 </label>
@@ -211,17 +210,12 @@ export default function Register() {
                     </svg>
                   </span>
                   <input
-                    className="placeholder:text-gray-400 block bg-polar-600 hover:bg-polar-400 text-white transition duration-700 delay-50 w-full h-8 focus:outline-none caret-white rounded-md py-2 pl-10 shadow-sm sm:text-sm"
-                    placeholder={register.inviteCode ?? "Invite-Code"}
-                    value={register.inviteCode ?? ""}
                     type="text"
-                    name="Invite-code"
+                    placeholder="Invite-Code"
+                    value={register.inviteCode ?? ""}
+                    className="placeholder:text-gray-400 block bg-polar-600 hover:bg-polar-400 text-white transition duration-700 delay-50 w-full h-8 focus:outline-none caret-white rounded-md py-2 pl-10 shadow-sm sm:text-sm"
                     onChange={(comp) =>
-                      setRegister({
-                        ...register,
-                        inviteCode:
-                          comp.target.value === "" ? null : comp.target.value,
-                      })
+                      updateRegister("inviteCode", comp.target.value)
                     }
                   />
                 </label>
@@ -230,22 +224,15 @@ export default function Register() {
               <div className="mt-6">
                 <span className="block w-full rounded-md shadow-sm">
                   <button
+                    id="submitButton"
                     type="button"
-                    className={`w-full rounded-lg font-medium text-sm h-9 text-white bg-frost-400 hover:bg-frost-300 ${
-                      registerClicked && "loading"
-                    }`}
+                    className="w-full rounded-lg font-medium text-sm h-9 text-white bg-frost-400 hover:bg-frost-300"
                     onClick={() => {
+                      if (registerClicked) return;
                       setRegisterClicked(true);
 
                       API.register(register)
                         .then((data) => {
-                          setRegister({
-                            username: null,
-                            password: null,
-                            email: null,
-                            inviteCode: null,
-                          });
-
                           sendToast(data.message, "success");
 
                           setTimeout(() => {
@@ -261,7 +248,31 @@ export default function Register() {
                         });
                     }}
                   >
-                    Register
+                    <div className="flex justify-center">
+                      {registerClicked && (
+                        <svg
+                          className="animate-spin mt-[2.5px] mr-2 h-4 w-4 text-white"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          ></circle>
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          ></path>
+                        </svg>
+                      )}
+                      Register
+                    </div>
                   </button>
                 </span>
               </div>

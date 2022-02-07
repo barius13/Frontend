@@ -117,7 +117,7 @@ const NavBar: React.FC<NavBarProps> = (props) => {
               enter="transition ease-out duration-100"
               leave="transition ease-in duration-100"
             >
-              <Menu.Items className="absolute right-2 mt-2 w-48 rounded-lg bg-polar-200 shadow-lg">
+              <Menu.Items className="absolute right-2 p-2 mt-2 w-48 rounded-lg bg-polar-200 shadow-lg">
                 <div className="py-1">
                   <Menu.Item>
                     {({ active }) => (
@@ -129,7 +129,7 @@ const NavBar: React.FC<NavBarProps> = (props) => {
                             "success"
                           );
                         }}
-                        className={`text-white p-4 block text-sm font-medium cursor-pointer ${
+                        className={`text-white p-4 block rounded text-sm font-medium cursor-pointer ${
                           active && "bg-polar-300"
                         }`}
                       >
@@ -143,7 +143,7 @@ const NavBar: React.FC<NavBarProps> = (props) => {
                         onClick={() => {
                           router.push("/settings");
                         }}
-                        className={`text-white p-4 block text-sm font-medium cursor-pointer ${
+                        className={`text-white p-4 block rounded text-sm font-medium cursor-pointer ${
                           active && "bg-polar-300"
                         }`}
                       >
@@ -154,14 +154,16 @@ const NavBar: React.FC<NavBarProps> = (props) => {
                   <Menu.Item>
                     {({ active }) => (
                       <a
-                        onClick={() => {
-                          // @ts-expect-error Shouldnt be doing this but id prefer it over location.href
-                          setUser(null);
-                          API.logOut()
-                            .then(() => router.push("/"))
-                            .catch(() => router.push("/"));
+                        onClick={async () => {
+                          try {
+                            await API.logOut();
+                          } finally {
+                            // @ts-expect-error
+                            setUser(null)
+                            router.push("/");
+                          }
                         }}
-                        className={`text-white p-4 block text-sm font-medium cursor-pointer ${
+                        className={`text-white p-4 block rounded text-sm font-medium cursor-pointer ${
                           active && "bg-polar-300"
                         }`}
                       >

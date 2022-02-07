@@ -55,3 +55,15 @@ interface Discord {
   nitroType: "NONE" | "CLASSIC" | "PREMIUM";
   user?: User;
 }
+
+interface loginState {
+  username: string | null;
+  password: string | null;
+}
+
+interface registerState {
+  username: string | null;
+  password: string | null;
+  email: string | null;
+  inviteCode: string | null;
+}

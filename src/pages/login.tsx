@@ -1,35 +1,46 @@
 import API from "../api";
 import Link from "next/link";
-import * as React from "react";
+import { loginState } from "../typings";
 import { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";
+import { useState, useEffect } from "react";
 import { useUser } from "../components/user";
 import { sendToast } from "../utils/sendToast";
-
-export interface loginState {
-  username: string | null;
-  password: string | null;
-}
 
 export default function Login() {
   const router = useRouter();
   const { user, setUser } = useUser();
   const loginShow = () => setShow(!show);
-  const [show, setShow] = React.useState(false);
-  const [loginClicked, setLoginClicked] = React.useState(false);
-
-  const [login, setLogin] = React.useState<loginState>({
+  const [show, setShow] = useState(false);
+  const [loginClicked, setLoginClicked] = useState(false);
+  const [login, setLogin] = useState<loginState>({
     username: null,
     password: null,
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (user) {
       router.push(
         decodeURIComponent((router.query.redirect as string) ?? "/dashboard")
       );
     }
   }, [user, router]);
+
+  function updateLogin(k: keyof loginState, v: string | boolean | null) {
+    if (typeof v === "string" && !!!v) v = null;
+
+    setLogin({ ...login, [k]: v });
+  }
+
+  document.addEventListener(
+    "keydown",
+    (ctx) => {
+      if (ctx.code === "Enter") {
+        document.getElementById("loginButton")?.click();
+      }
+    },
+    false
+  );
 
   return (
     <>
@@ -65,11 +76,7 @@ export default function Login() {
                   type="text"
                   name="username"
                   onChange={(comp) =>
-                    setLogin({
-                      ...login,
-                      username:
-                        comp.target.value === "" ? null : comp.target.value,
-                    })
+                    updateLogin("username", comp.target.value.trim())
                   }
                 />
               </label>
@@ -96,11 +103,7 @@ export default function Login() {
                     type={show ? "text" : "password"}
                     name="Password"
                     onChange={(comp) =>
-                      setLogin({
-                        ...login,
-                        password:
-                          comp.target.value === "" ? null : comp.target.value,
-                      })
+                      updateLogin("password", comp.target.value.trim())
                     }
                   />
                   <a
@@ -143,7 +146,7 @@ export default function Login() {
                   </a>
                 </label>
               </div>
-              <Link href="/reset">
+              <Link href="/reset" passHref>
                 <a className="flex ml-1 mt-3 font-medium text-snow-200 hover:text-snow-100 text-sm">
                   Forgotten your password?
                 </a>
@@ -151,11 +154,11 @@ export default function Login() {
               <div className="mt-3">
                 <span className="block w-full rounded-md shadow-sm">
                   <button
+                    id="loginButton"
                     type="button"
-                    className={` rounded-lg font-medium font-sm w-full text-sm h-9 text-white bg-frost-400 hover:bg-frost-300 shadow-lg ${
-                      loginClicked && "loading"
-                    }`}
+                    className="rounded-lg font-medium font-sm w-full text-sm h-9 text-white bg-frost-400 hover:bg-frost-300 shadow-lg"
                     onClick={() => {
+                      if (loginClicked) return;
                       setLoginClicked(true);
 
                       API.login(login)
@@ -164,15 +167,12 @@ export default function Login() {
                           sendToast(data.message, "success");
 
                           setTimeout(() => {
-                            setLoginClicked(false);
-                            setTimeout(() => {
-                              router.push(
-                                decodeURIComponent(
-                                  (router.query.redirect as string) ??
-                                    "/dashboard"
-                                )
-                              );
-                            }, 250);
+                            router.push(
+                              decodeURIComponent(
+                                (router.query.redirect as string) ??
+                                  "/dashboard"
+                              )
+                            );
                           }, 1875);
                         })
                         .catch((err) => {
@@ -184,7 +184,31 @@ export default function Login() {
                         });
                     }}
                   >
-                    Login{" "}
+                    <div className="flex justify-center">
+                      {loginClicked && (
+                        <svg
+                          className="animate-spin mt-[2.5px] mr-2 h-4 w-4 text-white"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          ></circle>
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          ></path>
+                        </svg>
+                      )}
+                      Login
+                    </div>
                   </button>
                 </span>
                 <span className="block w-full rounded-md shadow-sm mt-3 text-white text-sm">
@@ -198,7 +222,7 @@ export default function Login() {
                     >
                       <div className="flex justify-center">
                         <svg
-                          className="h-6 w-6 pr-2"
+                          className="h-6 w-6 -mt-[2px] pr-2"
                           fill="none"
                           viewBox="0 0 71 55"
                           xmlns="http://www.w3.org/2000/svg"
