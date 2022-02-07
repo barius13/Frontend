@@ -309,11 +309,8 @@ export default function Config() {
                       <div className="discord-embed shadow-md border-l-discord-light_blue border-l-4 rounded-sm bg-discord-base mt-10 mb-3 ml-10">
                         <div className="embed pt-2 pr-4 pb-4 pl-3 font-discord-site">
                           <div className="embed-site mt-2 antialiased font-light text-site text-discord-site bg-discord-base font-whitney">
-                            {formatEmbedString(currentEmbed.siteText ?? "")}
-                          </div>
-                          <div className="embed-author mt-2 font-bold antialiased text-author font-whitney">
-                            {currentEmbed.siteUrl ? (
-                              <Link href={`https://${currentEmbed.siteUrl}`}>
+                          {currentEmbed.siteUrl ? (
+                              <Link href={currentEmbed.siteUrl}>
                                 <a className="hover:underline" target="_blank">
                                   {formatEmbedString(
                                     currentEmbed.siteText ?? ""
@@ -322,6 +319,19 @@ export default function Config() {
                               </Link>
                             ) : (
                               formatEmbedString(currentEmbed.siteText ?? "")
+                            )}
+                          </div>
+                          <div className="embed-author mt-2 font-bold antialiased text-author font-whitney">
+                            {currentEmbed.authorUrl ? (
+                              <Link href={currentEmbed.authorUrl}>
+                                <a className="hover:underline" target="_blank">
+                                  {formatEmbedString(
+                                    currentEmbed.authorText ?? ""
+                                  )}
+                                </a>
+                              </Link>
+                            ) : (
+                              formatEmbedString(currentEmbed.authorText ?? "")
                             )}
                           </div>
                           <div className="embed-title mt-2 font-semibold subpixel-antialiased text-title font-whitney">
