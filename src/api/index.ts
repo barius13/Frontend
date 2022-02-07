@@ -85,11 +85,11 @@ export default class API {
   ) {
     const dataClone = Object.assign({}, data);
 
-    if (!dataClone.authorUrl?.match(/https?:\/\//i)) {
+    if (dataClone.authorUrl && !dataClone.authorUrl?.match(/https?:\/\//i)) {
       dataClone.authorUrl = `https://${dataClone.authorUrl}`;
     }
 
-    if (!dataClone.siteUrl?.match(/https?:\/\//i)) {
+    if (dataClone.siteUrl && !dataClone.siteUrl?.match(/https?:\/\//i)) {
       dataClone.siteUrl = `https://${dataClone.siteUrl}`;
     }
 

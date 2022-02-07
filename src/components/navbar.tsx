@@ -1,9 +1,11 @@
 import API from "../api";
 import Link from "next/link";
+import { Fragment } from "react";
 import * as React from "react";
 import { useRouter } from "next/router";
 import { useUser } from "../components/user";
 import { sendToast } from "../utils/sendToast";
+import { Menu, Transition } from "@headlessui/react";
 
 interface NavBarProps {
   page: "dash" | "config" | "gallery" | "";
@@ -46,7 +48,6 @@ const NavBar: React.FC<NavBarProps> = (props) => {
     <>
       <div className="flex items-center flex-justify mx-auto px-4 bg-polar-200 w-full h-14">
         <label className="flex md:hidden lg:hidden btn btn-sm w-10 normal-case border-0 font-medium rounded-md text-white bg-polar-200 hover:bg-polar-200">
-          {" "}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"
@@ -94,58 +95,84 @@ const NavBar: React.FC<NavBarProps> = (props) => {
             }}
           />
         </div>
-        <div className="flex ml-auto dropdown dropdown-end">
-          <button tabIndex={0} className="flex ml-auto">
-            <img
-              src={user.discord?.avatar as string}
-              className="rounded-full h-8 w-8"
-            />
-            <div className="ml-2">
-              <p className="text-white text-sm font-bold">{user.username}</p>
-              <p className="text-frost-300 text-xs">Admin</p>
+        <div className="flex ml-auto">
+          <Menu className="relative inline-block text-left" as="div">
+            <div>
+              <Menu.Button className="flex shadow-lg px-4 py-2">
+                <img
+                  src={user.discord?.avatar as string}
+                  className="rounded-full h-8 w-8"
+                />
+                <div className="ml-2">
+                  <p className="text-white text-sm font-bold">
+                    {user.username}
+                  </p>
+                  <p className="text-frost-300 text-xs">Admin</p>
+                </div>
+              </Menu.Button>
             </div>
-          </button>
 
-          <ul
-            tabIndex={0}
-            className="p-2 shadow menu dropdown-content bg-polar-200 rounded-md w-52 mt-14"
-          >
-            <li>
-              <a
-                onClick={() => {
-                  navigator.clipboard.writeText(user.upload.key);
-                  sendToast(
-                    "Successfully copied your upload key to your clipboard",
-                    "success"
-                  );
-                }}
-                className="font-semibold text-snow-200 hover:bg-polar-300 rounded-md py-2 px-2"
-              >
-                Copy Upload Key
-              </a>
-            </li>
-            <li>
-              <Link href="/settings" passHref>
-                <a className="mb-1 font-semibold text-snow-200 hover:bg-polar-300 rounded-md py-2 px-2">
-                  Settings
-                </a>
-              </Link>
-            </li>
-            <li>
-              <a
-                onClick={() => {
-                  // @ts-expect-error Shouldnt be doing this but id prefer it over location.href
-                  setUser(null);
-                  API.logOut()
-                    .then(() => router.push("/"))
-                    .catch(() => router.push("/"));
-                }}
-                className="mb-1 font-semibold text-snow-200 hover:bg-polar-300 rounded-md py-2 px-2"
-              >
-                Logout
-              </a>
-            </li>
-          </ul>
+            <Transition
+              as={Fragment}
+              enter="transition ease-out duration-100"
+              leave="transition ease-in duration-100"
+            >
+              <Menu.Items className="absolute right-2 mt-2 w-48 rounded-lg bg-polar-200 shadow-lg">
+                <div className="py-1">
+                  <Menu.Item>
+                    {({ active }) => (
+                      <a
+                        onClick={() => {
+                          navigator.clipboard.writeText(user.upload.key);
+                          sendToast(
+                            "Successfully copied your upload key to your clipboard",
+                            "success"
+                          );
+                        }}
+                        className={`text-white p-4 block text-sm font-medium cursor-pointer ${
+                          active && "bg-polar-300"
+                        }`}
+                      >
+                        Copy Upload Key
+                      </a>
+                    )}
+                  </Menu.Item>
+                  <Menu.Item>
+                    {({ active }) => (
+                      <a
+                        onClick={() => {
+                          router.push("/settings");
+                        }}
+                        className={`text-white p-4 block text-sm font-medium cursor-pointer ${
+                          active && "bg-polar-300"
+                        }`}
+                      >
+                        Settings
+                      </a>
+                    )}
+                  </Menu.Item>
+                  <Menu.Item>
+                    {({ active }) => (
+                      <a
+                        onClick={() => {
+                          // @ts-expect-error Shouldnt be doing this but id prefer it over location.href
+                          setUser(null);
+                          API.logOut()
+                            .then(() => router.push("/"))
+                            .catch(() => router.push("/"));
+                        }}
+                        className={`text-white p-4 block text-sm font-medium cursor-pointer ${
+                          active && "bg-polar-300"
+                        }`}
+                      >
+                        Logout
+                      </a>
+                    )}
+                  </Menu.Item>
+                </div>
+              </Menu.Items>
+            </Transition>
+          </Menu>
         </div>
       </div>
     </>

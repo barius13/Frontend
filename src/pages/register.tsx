@@ -1,4 +1,5 @@
 import API from "../api";
+import Link from "next/link";
 import * as React from "react";
 import { Toaster } from "react-hot-toast";
 import { sendToast } from "../utils/sendToast";
@@ -29,8 +30,28 @@ export default function Register() {
           <form className="w-full max-w-md lg:px-0 px-4">
             <div className="rounded-lg bg-polar-200 px-8 py-8">
               <div className="divide-y-2 divide-frost-300">
-                <div className="text-white font-bold text-xl mb-2">
-                  Register to Kythi.
+                <div className="flex justify-between">
+                  <div className="text-white font-bold text-xl mb-2">
+                    Register to Kythi.
+                  </div>
+                  <Link href="/" passHref>
+                    <button className="text-white">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                        />
+                      </svg>
+                    </button>
+                  </Link>
                 </div>
                 <div />
               </div>
@@ -50,7 +71,8 @@ export default function Register() {
                   </svg>
                 </span>
                 <input
-                  className="placeholder:text-gray-400 block bg-polar-600 hover:bg-polar-400 text-white transition duration-700 delay-50 w-full h-8 focus:outline-none caret-white rounded-md py-2 pl-10 shadow-sm sm:text-sm" placeholder={register.username ?? "Username"}
+                  className="placeholder:text-gray-400 block bg-polar-600 hover:bg-polar-400 text-white transition duration-700 delay-50 w-full h-8 focus:outline-none caret-white rounded-md py-2 pl-10 shadow-sm sm:text-sm"
+                  placeholder={register.username ?? "Username"}
                   value={register.username ?? ""}
                   type="text"
                   name="username"
@@ -81,7 +103,8 @@ export default function Register() {
                     </svg>
                   </span>
                   <input
-                    className="placeholder:text-gray-400 block bg-polar-600 hover:bg-polar-400 text-white transition duration-700 delay-50 w-full h-8 focus:outline-none caret-white rounded-md py-2 pl-10 shadow-sm sm:text-sm" placeholder={register.password ?? "Password"}
+                    className="placeholder:text-gray-400 block bg-polar-600 hover:bg-polar-400 text-white transition duration-700 delay-50 w-full h-8 focus:outline-none caret-white rounded-md py-2 pl-10 shadow-sm sm:text-sm"
+                    placeholder={register.password ?? "Password"}
                     value={register.password ?? ""}
                     type={show ? "text" : "password"}
                     name="Password"
@@ -208,8 +231,9 @@ export default function Register() {
                 <span className="block w-full rounded-md shadow-sm">
                   <button
                     type="button"
-                    className={`btn border-0 normal-case w-full btn-sm h-9 text-white bg-frost-400 hover:bg-frost-300 ${registerClicked && "loading"
-                      }`}
+                    className={`w-full rounded-lg font-medium text-sm h-9 text-white bg-frost-400 hover:bg-frost-300 ${
+                      registerClicked && "loading"
+                    }`}
                     onClick={() => {
                       setRegisterClicked(true);
 

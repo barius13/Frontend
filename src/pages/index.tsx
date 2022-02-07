@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Button from "../components/button";
 import Footer from "../components/footer";
 import { useUser } from "../components/user";
 import FeatureBox from "../components/feature";
@@ -20,21 +21,23 @@ export default function Index() {
               Upload files seamlessly with custom links & customisable embeds.
             </p>
             <div className="flex mb-6 space-x-3 mt-5">
-              <Link href={user ? "/dashboard" : "/login"} passHref>
-                <button
-                  className={`inline-block w-36 btn btn-sm h-10 normal-case bg-frost-400 hover:bg-frost-300 shadow-lg`}
-                >
-                  {user ? "Dashboard" : "Login"}
-                </button>
+              <Link href={user ? "/dashboard" : "/login"}>
+                <a>
+                  <Button variant="primary" size="sm">
+                    {user ? "Dashboard" : "Login"}
+                  </Button>
+                </a>
               </Link>
-              <Link href="/register" passHref>
-                <button
-                  className={`inline-block normal-case btn btn-sm h-10 border-0 w-36 bg-aurora-red-200 hover:bg-aurora-red-100 shadow-lg ${
-                    user && "invisible"
-                  }`}
-                >
-                  Sign Up
-                </button>
+              <Link href="/register">
+                <a>
+                  <Button
+                    variant="primary"
+                    size="sm"
+                    cname={`${user && "invisible"}`}
+                  >
+                    Sign Up
+                  </Button>
+                </a>
               </Link>
             </div>
             <p className="text-sm text-gray-400">
@@ -93,7 +96,7 @@ export default function Index() {
               content={
                 <p className="mb-6 text-lg text-gray-200">
                   You can view our code on{" "}
-                  <Link href="https://github.com/KythiX">
+                  <Link href="https://github.com/KythiX" passHref>
                     <a
                       className="text-frost-300 hover:underline"
                       target="_blank"

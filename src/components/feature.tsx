@@ -35,7 +35,7 @@ const FeatureBox: FC<FeatureProps> = ({
           icon
         )}
       </div>
-      <p className="mb-6 text-lg text-gray-200">{content}</p>
+      <div className="mb-6 text-lg text-gray-200">{content}</div>
     </div>
   );
 };

@@ -36,7 +36,7 @@ const MainFeat = () => {
                       className="h-6 w-6"
                       fill="none"
                       viewBox="0 0 24 24"
-                      stroke="#EBCB8B"
+                      stroke="#3b82f6"
                     >
                       <path
                         strokeLinecap="round"
@@ -61,7 +61,7 @@ const MainFeat = () => {
                       className="h-6 w-6"
                       fill="none"
                       viewBox="0 0 24 24"
-                      stroke="#EBCB8B"
+                      stroke="#3b82f6"
                     >
                       <path
                         strokeLinecap="round"
@@ -88,7 +88,7 @@ const MainFeat = () => {
                       className="h-6 w-6"
                       fill="none"
                       viewBox="0 0 24 24"
-                      stroke="#EBCB8B"
+                      stroke="#3b82f6"
                     >
                       <path
                         strokeLinecap="round"
@@ -115,7 +115,7 @@ const MainFeat = () => {
                       className="h-6 w-6"
                       fill="none"
                       viewBox="0 0 24 24"
-                      stroke="#EBCB8B"
+                      stroke="#3b82f6"
                     >
                       <path
                         strokeLinecap="round"

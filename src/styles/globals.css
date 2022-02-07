@@ -10,12 +10,86 @@
     }
 }
 
-html,
+@layer components {
+    .btn {
+        @apply font-bold py-2 px-4 rounded shadow-lg text-white;
+    }
+    .sm {
+        @apply px-2;
+    }
+    .md {
+        @apply px-4;
+    }
+    .lg {
+        @apply px-8;
+    }
+    .xl {
+        @apply px-16;
+    }
+    /*button colors: default, primary, info, success, warning, danger, dark */
+    .default {
+        @apply inline-block w-36 font-medium text-sm rounded-lg h-10 bg-blue-600;
+    }
+    .default:hover {
+        @apply bg-frost-300;
+    }
+    .primary {
+        @apply inline-block w-36 font-medium text-sm rounded-lg h-10 bg-blue-600;
+    }
+    .primary:hover {
+        @apply bg-blue-700;
+    }
+    .secondary {
+        @apply inline-block text-sm rounded-lg h-10 font-medium border-0 w-36 bg-purple-600;
+    }
+    .secondary:hover {
+        @apply bg-aurora-red-100;
+    }
+    .success {
+        @apply bg-green-500 text-white;
+    }
+    .success:hover {
+        @apply bg-green-600 text-white;
+    }
+    .info {
+        @apply bg-blue-500 text-white;
+    }
+    .info:hover {
+        @apply bg-blue-600 text-white;
+    }
+    .warning {
+        @apply bg-yellow-400 text-white;
+    }
+    .warning:hover {
+        @apply bg-yellow-500 text-white;
+    }
+    .danger {
+        @apply bg-red-500 text-white;
+    }
+    .danger:hover {
+        @apply bg-red-600 text-white;
+    }
+    .dark {
+        @apply bg-gray-800 text-white;
+    }
+    .dark:hover {
+        @apply bg-gray-900 text-white;
+    }
+    .disabled {
+        @apply opacity-50 cursor-not-allowed;
+    }
+    .disabled:hover {
+        @apply opacity-50 cursor-not-allowed;
+    }
+}
+
+html, main,
 body {
     padding: 0;
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
+
 
 a {
     color: inherit;

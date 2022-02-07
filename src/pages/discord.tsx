@@ -8,15 +8,15 @@ export default function Discord() {
   const router = useRouter();
   const { user } = useUser();
 
-  useEffect(() => {
-    if (!user) {
-      router.push("/");
-    } else if (user.discordId) {
-      router.push("/dashboard");
-    }
-  }, [router, user]);
+  // useEffect(() => {
+  //   if (!user) {
+  //     router.push("/");
+  //   } else if (user.discordId) {
+  //     router.push("/dashboard");
+  //   }
+  // }, [router, user]);
 
-  return user && !user.discordId ? (
+  return (
     <>
       <div className="bg-polar-100">
         <div className="flex justify-center items-center h-screen grid-rows-1 px-4">
@@ -81,5 +81,5 @@ export default function Discord() {
         </div>
       </div>
     </>
-  ) : null;
+  )
 }
