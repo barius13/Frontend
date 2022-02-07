@@ -8,6 +8,7 @@ import Toggle from "../components/toggle";
 import { useEffect, useState } from "react";
 import { useUser } from "../components/user";
 import { sendToast } from "../utils/sendToast";
+import InputGroup from "../components/inputgroup";
 
 export default function Config() {
   const router = useRouter();
@@ -15,6 +16,7 @@ export default function Config() {
   const [Embed, setEmbed] = useState(false);
   const [userEmbeds] = useState(user?.embeds);
   const [Faketoggled, setFake] = useState(false);
+  const [invisToggled, setInvis] = useState(false);
   const [currentEmbed, setCurrentEmbed] = useState(user?.embeds[0]);
 
   function updateEmbed(k: keyof UserEmbed, v: string | boolean | null) {
@@ -49,7 +51,7 @@ export default function Config() {
         <Toaster />
         <Nav page="config" />
 
-        <main className="bg-polar-100 h-screen py-2 px-4 pb-80 text-white">
+        <main className="py-2 px-8 pb-80 text-white">
           <div className="text-white">
             <div className="flex flex-col lg:flex-row md:flex-row md:space-x-4 space-y-2 md:space-y-0 lg:space-y-0 lg:space-x-4 px-10 mt-10">
               <div className="bg-polar-200 rounded-md p-6 py-8">
@@ -70,7 +72,7 @@ export default function Config() {
                   </div>
                 </div>
               </div>
-              <div className="bg-polar-200 rounded-md p-6 py-8">
+              <div className="bg-polar-200 rounded-md p-6 py-8 w-full">
                 <h1 className="text-2xl">Domains</h1>
                 <div className="lg:w-auto ">
                   <div className="mt-2 text-snow-100">
@@ -78,23 +80,20 @@ export default function Config() {
                     allow you to set a custom domain for your screenshots.
                   </div>
                   <div className="mt-4 flex rounded-md shadow-sm">
-                    <span className="inline-flex items-center px-3 bg-zinc-700 p-2 text-white text-sm rounded-l">
-                      https://
-                    </span>
-                    <input
-                      className="px-2 bg-polar-300 border-r-polar-400 border-r-2 focus:outline-none w-32 transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
-                      placeholder="Subdomain"
+                    <InputGroup
+                      textOptions={{ roundedLeft: true }}
+                      keepBorder={true}
+                      text="https://"
+                      PlaceHolder="Subdomain"
                     />
                     <input
                       className="px-2 bg-polar-300 focus:outline-none w-28 transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
                       placeholder="domain"
                     />
-                    <span className="inline-flex items-center px-3 bg-zinc-700 p-2 text-white text-sm ">
-                      /
-                    </span>
-                    <input
-                      className="px-2 bg-polar-300 focus:outline-none w-32 transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400 rounded-r"
-                      placeholder="Filepath"
+                    <InputGroup
+                      inputOptions={{ roundedRight: true }}
+                      text="/"
+                      PlaceHolder="FilePath"
                     />
                   </div>
                   <div className="text-snow-100 mt-2">
@@ -111,10 +110,13 @@ export default function Config() {
                         onChange={setFake}
                       />
                     </div>
-                    <span>Fake URL</span>
-                    <span>Fake URL</span>
-                    <span>Fake URL</span>
-                    <span>Fake URL</span>
+                    <div className="space-x-1">
+                      <Toggle
+                        label="Toggle Invis"
+                        checked={invisToggled}
+                        onChange={setInvis}
+                      />
+                    </div>
                     <span>Fake URL</span>
                     <button
                       onClick={() => setEmbed(true)}
@@ -166,7 +168,15 @@ export default function Config() {
                               name="siteUrl"
                               spellCheck="false"
                               placeholder="SiteName Url"
-                              value={currentEmbed.siteUrl && currentEmbed.siteUrl.match(/https?:\/\//i) ? currentEmbed.siteUrl.replace(/https?:\/\//i, "") : currentEmbed.siteUrl ?? ""} 
+                              value={
+                                currentEmbed.siteUrl &&
+                                currentEmbed.siteUrl.match(/https?:\/\//i)
+                                  ? currentEmbed.siteUrl.replace(
+                                      /https?:\/\//i,
+                                      ""
+                                    )
+                                  : currentEmbed.siteUrl ?? ""
+                              }
                               onChange={(ctx) => {
                                 updateEmbed("siteUrl", ctx.target.value);
                               }}
@@ -191,7 +201,15 @@ export default function Config() {
                               name="authorUrl"
                               spellCheck="false"
                               placeholder="Author Url"
-                              value={currentEmbed.authorUrl && currentEmbed.authorUrl.match(/https?:\/\//i) ? currentEmbed.authorUrl.replace(/https?:\/\//i, "") : currentEmbed.authorUrl ?? ""}
+                              value={
+                                currentEmbed.authorUrl &&
+                                currentEmbed.authorUrl.match(/https?:\/\//i)
+                                  ? currentEmbed.authorUrl.replace(
+                                      /https?:\/\//i,
+                                      ""
+                                    )
+                                  : currentEmbed.authorUrl ?? ""
+                              }
                               onChange={(ctx) => {
                                 updateEmbed("authorUrl", ctx.target.value);
                               }}
@@ -242,11 +260,13 @@ export default function Config() {
                               authorUrl: currentEmbed.authorUrl,
                               title: currentEmbed.title,
                               description: currentEmbed.description,
-                            }).then((data) => {
-                              sendToast(data.message, "success");
-                            }).catch((err) => {
-                              sendToast(err.data.message, "error");
-                            });
+                            })
+                              .then((data) => {
+                                sendToast(data.message, "success");
+                              })
+                              .catch((err) => {
+                                sendToast(err.data.message, "error");
+                              });
                           }}
                           className="bg-[#239d56] btn hover:bg-[#1f8b4d] capitalize cursor-pointer text-center text-white font-medium border-0"
                         >
@@ -309,7 +329,7 @@ export default function Config() {
                       <div className="discord-embed shadow-md border-l-discord-light_blue border-l-4 rounded-sm bg-discord-base mt-10 mb-3 ml-10">
                         <div className="embed pt-2 pr-4 pb-4 pl-3 font-discord-site">
                           <div className="embed-site mt-2 antialiased font-light text-site text-discord-site bg-discord-base font-whitney">
-                          {currentEmbed.siteUrl ? (
+                            {currentEmbed.siteUrl ? (
                               <Link href={currentEmbed.siteUrl}>
                                 <a className="hover:underline" target="_blank">
                                   {formatEmbedString(
@@ -377,7 +397,7 @@ export default function Config() {
                           />
                         </div>
                         <div
-                          className={`cursor-pointer label ${
+                          className={`space-x-2 select-none ${
                             currentEmbed.color === "RANDOM" && "hidden"
                           }`}
                         >

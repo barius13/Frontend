@@ -51,14 +51,15 @@ function Host({ Component, pageProps }: AppProps) {
           description: "Kythi File Host is a new service currently being made.",
         }}
       />
-
-      {user === undefined ? (
-        <Loading status={status} />
-      ) : (
-        <UserProvider value={{ user, setUser }}>
-          <Component {...pageProps} />
-        </UserProvider>
-      )}
+      <body className="bg-polar-100">
+        {user === undefined ? (
+          <Loading status={status} />
+        ) : (
+          <UserProvider value={{ user, setUser }}>
+            <Component {...pageProps} />
+          </UserProvider>
+        )}
+      </body>
     </>
   );
 }

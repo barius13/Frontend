@@ -43,479 +43,486 @@ export default function Dashboard() {
     }
   }, [document, router, user]);
 
-  return user && user.discordId && (
-    <>
-      <Toaster />
-      <Nav page={"dash"} />
+  return (
+    user &&
+    user.discordId && (
+      <>
+        <Toaster />
+        <Nav page={"dash"} />
 
-      <main className="bg-polar-100 h-max px-4">
-        <div className="flex flex-col items-center justify-center p-10">
-          <div className="mr-auto">
-            <div className="text-3xl font-semibold text-white">
-              Welcome, {user.username}
-            </div>
-            <div className="text-xl text-snow-300 lg:mb-8 mb-4">
-              Member since Dec 3, 2021
-            </div>
-          </div>
-          <div className="flex lg:flex-row flex-nowrap lg:space-x-4 lg:space-y-0 space-y-10 md:flex-col flex-col">
-            <div className="text-white flex space-y-4 flex-nowrap w-full flex-col">
-              <div className="flex w-full items-stretch lg:flex-row md:flex-col flex-col lg:space-y-0 space-y-3 lg:space-x-4">
-                <div className="w-full">
-                  <StatsBox
-                    title="Uploads"
-                    content={user.upload.count.toString()}
-                    icon={
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="#EBCB8B"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                        />
-                      </svg>
-                    }
-                  />
-                </div>
-
-                <div className="w-full">
-                  <StatsBox
-                    title="Storage"
-                    content="350mb"
-                    icon={
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="#BF616A"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
-                        />
-                      </svg>
-                    }
-                  />
-                </div>
-                <div className="w-full">
-                  <StatsBox
-                    title="Latency"
-                    content={`${stats.userPing}ms`}
-                    icon={
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="#B48EAD"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                        />
-                      </svg>
-                    }
-                  />
-                </div>
+        <main className="px-4">
+          <div className="flex flex-col items-center justify-center p-10">
+            <div className="mr-auto">
+              <div className="text-3xl font-semibold text-white">
+                Welcome, {user.username}
               </div>
-              <div className="flex lg:space-y-0 lg:space-x-4 md:space-x-0 space-x-0 md:space-y-10 space-y-10 lg:flex-row w-full md:flex-col flex-col">
-                <div className="p-6 bg-polar-200 rounded-md md:p-6 shadow-lg w-full">
-                  <div className="flex items-baseline justify-between ">
-                    <h4 className="text-xl font-bold lg:text-2xl text-snow-100 mt-1">
-                      Recently uploaded File.
-                    </h4>
-                  </div>
-                  <div className="divide-y-2 divide-frost-300 mb-2 mt-3">
-                    <div />
-                    <div />
-                  </div>
-                  <div className="w-full mt-3 hover:shadow-xl duration-700">
-                    <img
-                      src="https://nyc3.digitaloceanspaces.com/kythi.pics/dfa6659b-46f9-5521-9452-6e08f897e59e/6bIAOKVh0b.png"
-                      alt="Recently Uploaded Image"
+              <div className="text-xl text-snow-300 lg:mb-8 mb-4">
+                Member since Dec 3, 2021
+              </div>
+            </div>
+            <div className="flex lg:flex-row flex-nowrap lg:space-x-4 lg:space-y-0 space-y-10 md:flex-col flex-col">
+              <div className="text-white flex space-y-4 flex-nowrap w-full flex-col">
+                <div className="flex w-full items-stretch lg:flex-row md:flex-col flex-col lg:space-y-0 space-y-3 lg:space-x-4">
+                  <div className="w-full">
+                    <StatsBox
+                      title="Uploads"
+                      content={user.upload.count.toString()}
+                      icon={
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-6 w-6"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="#EBCB8B"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                          />
+                        </svg>
+                      }
                     />
-                    <div className="divide-y-2 divide-aurora-red-300">
-                      <div />
-                      <div />
-                    </div>
                   </div>
-                  <div className="flex items-center justify-between mt-2 bg-polar-400 rounded-md px-4 border-l-frost-300 border-l-2 py-4 ">
-                    <div className="flex items-center">
-                      <img
-                        src={user.discord?.avatar as string}
-                        className="w-8 h-8 rounded-full mr-2"
-                        alt="User Avatar"
-                      />
-                      <div className="flex flex-col">
-                        <span className="text-sm font-medium text-snow-300">
-                          You, {user.username}
-                        </span>
-                        <span className="text-xs font-medium text-snow-100">
-                          2 hours ago
-                        </span>
-                      </div>
-                    </div>
-                    <button
-                      onClick={() => setDelete(true)}
-                      className="hover:text-white btn-outline btn border-0 normal-case hover:bg-aurora-red-100 w-24 h-11 rounded-md cursor-pointer text-center text-white font-medium py-2 px-4 transition duration-500"
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </div>
 
-                <div className="p-6 bg-polar-200 rounded-md md:p-6 shadow-lg w-full">
-                  <div className="flex items-baseline justify-between ">
-                    <h4 className="text-xl font-bold lg:text-2xl text-snow-100 mt-1">
-                      Updates, News, and Announcements.
-                    </h4>
+                  <div className="w-full">
+                    <StatsBox
+                      title="Storage"
+                      content="350mb"
+                      icon={
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-6 w-6"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="#BF616A"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
+                          />
+                        </svg>
+                      }
+                    />
                   </div>
-                  <div className="divide-y-2 divide-frost-300 mb-2 mt-3">
-                    <div />
-                    <div />
+                  <div className="w-full">
+                    <StatsBox
+                      title="Latency"
+                      content={`${stats.userPing}ms`}
+                      icon={
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-6 w-6"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="#B48EAD"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                          />
+                        </svg>
+                      }
+                    />
                   </div>
-                  <p className="bg-polar-400 py-2 px-2 rounded-md border-l-frost-300 border-l-2 mt-8 text-snow-200">
-                    Welcome to kythi we thank you for taking an interest in our
-                    service! We are currently in beta and we are working on a
-                    lot of features and bug fixes. We will be adding more
-                    features and bug fixes in the future. We hope you enjoy your
-                    stay!
-                  </p>
-                  <div className="flex items-center justify-between mt-2 bg-polar-400 rounded-md px-2 border-l-frost-300 border-l-2">
-                    <div className="flex items-center mb-4 mt-3">
+                </div>
+                <div className="flex lg:space-y-0 lg:space-x-4 md:space-x-0 space-x-0 md:space-y-10 space-y-10 lg:flex-row w-full md:flex-col flex-col">
+                  <div className="p-6 bg-polar-200 rounded-md md:p-6 shadow-lg w-full">
+                    <div className="flex items-baseline justify-between ">
+                      <h4 className="text-xl font-bold lg:text-2xl text-snow-100 mt-1">
+                        Recently uploaded File.
+                      </h4>
+                    </div>
+                    <div className="divide-y-2 divide-frost-300 mb-2 mt-3">
+                      <div />
+                      <div />
+                    </div>
+                    <div className="w-full mt-3 hover:shadow-xl duration-700">
                       <img
-                        className="w-10 h-10 rounded-full mr-2"
-                        alt="User Avatar"
-                        src={user.discord?.avatar}
+                        src="https://nyc3.digitaloceanspaces.com/kythi.pics/dfa6659b-46f9-5521-9452-6e08f897e59e/6bIAOKVh0b.png"
+                        alt="Recently Uploaded Image"
                       />
-                      <div className="flex flex-col">
-                        <span className="font-medium text-snow-300">
-                          {user.username} - Admin
-                        </span>
-                        <span className="text-sm font-medium text-snow-100">
-                          2 hours ago
-                        </span>
+                      <div className="divide-y-2 divide-aurora-red-300">
+                        <div />
+                        <div />
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between mt-2 bg-polar-400 rounded-md px-4 border-l-frost-300 border-l-2 py-4 ">
+                      <div className="flex items-center">
+                        <img
+                          src={user.discord?.avatar as string}
+                          className="w-8 h-8 rounded-full mr-2"
+                          alt="User Avatar"
+                        />
+                        <div className="flex flex-col">
+                          <span className="text-sm font-medium text-snow-300">
+                            You, {user.username}
+                          </span>
+                          <span className="text-xs font-medium text-snow-100">
+                            2 hours ago
+                          </span>
+                        </div>
+                      </div>
+                      <button
+                        onClick={() => setDelete(true)}
+                        className="hover:text-white btn-outline btn border-0 normal-case hover:bg-aurora-red-100 w-24 h-11 rounded-md cursor-pointer text-center text-white font-medium py-2 px-4 transition duration-500"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="p-6 bg-polar-200 rounded-md md:p-6 shadow-lg w-full">
+                    <div className="flex items-baseline justify-between ">
+                      <h4 className="text-xl font-bold lg:text-2xl text-snow-100 mt-1">
+                        Updates, News, and Announcements.
+                      </h4>
+                    </div>
+                    <div className="divide-y-2 divide-frost-300 mb-2 mt-3">
+                      <div />
+                      <div />
+                    </div>
+                    <p className="bg-polar-400 py-2 px-2 rounded-md border-l-frost-300 border-l-2 mt-8 text-snow-200">
+                      Welcome to kythi we thank you for taking an interest in
+                      our service! We are currently in beta and we are working
+                      on a lot of features and bug fixes. We will be adding more
+                      features and bug fixes in the future. We hope you enjoy
+                      your stay!
+                    </p>
+                    <div className="flex items-center justify-between mt-2 bg-polar-400 rounded-md px-2 border-l-frost-300 border-l-2">
+                      <div className="flex items-center mb-4 mt-3">
+                        <img
+                          className="w-10 h-10 rounded-full mr-2"
+                          alt="User Avatar"
+                          src={user.discord?.avatar}
+                        />
+                        <div className="flex flex-col">
+                          <span className="font-medium text-snow-300">
+                            {user.username} - Admin
+                          </span>
+                          <span className="text-sm font-medium text-snow-100">
+                            2 hours ago
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="p-6 bg-polar-200 rounded-md md:p-6 shadow-lg">
-              <div className="flex items-baseline justify-between">
-                <h4 className="text-xl font-bold lg:text-2xl text-snow-100 mt-1">
-                  Quick Links
-                </h4>
-              </div>
-              <div className="divide-y-2 divide-frost-300 mb-2 mt-3">
-                <div />
-                <div />
-              </div>
-              <Link href="/config" passHref>
-                <button className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-aurora-red-200 hover:bg-aurora-red-200 shadow-lg mt-6">
-                  Embed Customisations
+              <div className="p-6 bg-polar-200 rounded-md md:p-6 shadow-lg">
+                <div className="flex items-baseline justify-between">
+                  <h4 className="text-xl font-bold lg:text-2xl text-snow-100 mt-1">
+                    Quick Links
+                  </h4>
+                </div>
+                <div className="divide-y-2 divide-frost-300 mb-2 mt-3">
+                  <div />
+                  <div />
+                </div>
+                <Link href="/config" passHref>
+                  <button className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-aurora-red-200 hover:bg-aurora-red-200 shadow-lg mt-6">
+                    Embed Customisations
+                  </button>
+                </Link>
+                <Link href="/config" passHref>
+                  <button className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg mt-4">
+                    Config Downloads
+                  </button>
+                </Link>
+                <button
+                  onClick={() => setTestimonial(true)}
+                  className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg mt-4"
+                >
+                  Submit a Testimonal
                 </button>
-              </Link>
-              <Link href="/config" passHref>
-                <button className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg mt-4">
-                  Config Downloads
+                <button
+                  onClick={() => setSuggestion(true)}
+                  className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg mt-4"
+                >
+                  Suggest a Feature
                 </button>
-              </Link>
-              <button
-                onClick={() => setTestimonial(true)}
-                className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg mt-4"
-              >
-                Submit a Testimonal
-              </button>
-              <button
-                onClick={() => setSuggestion(true)}
-                className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg mt-4"
-              >
-                Suggest a Feature
-              </button>
-              <button
-                onClick={() => setShowModal(true)}
-                className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg mt-4"
-              >
-                Report a bug
-              </button>
+                <button
+                  onClick={() => setShowModal(true)}
+                  className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg mt-4"
+                >
+                  Report a bug
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        {Delete && (
-          <>
-            <div className="items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50">
-              <div className="mx-auto lg:w-1/3 p-4">
-                <div className="rounded-lg bg-polar-200 p-4">
-                  <div className="p-4">
-                    <div className="flex justify-between mb-2">
-                      <h1 className="font-semibold text-xl mb-2 text-white">
-                        Delete File
-                      </h1>
-                      <button
-                        onClick={() => setDelete(false)}
-                        className="bg-polar-300 w-8 hover:bg-polar-400 rounded-md cursor-pointer text-center text-white font-medium  transition duration-500"
-                      >
-                        X
-                      </button>
+          {Delete && (
+            <>
+              <div className="items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50">
+                <div className="mx-auto lg:w-1/3 p-4">
+                  <div className="rounded-lg bg-polar-200 p-4">
+                    <div className="p-4">
+                      <div className="flex justify-between mb-2">
+                        <h1 className="font-semibold text-xl mb-2 text-white">
+                          Delete File
+                        </h1>
+                        <button
+                          onClick={() => setDelete(false)}
+                          className="bg-polar-300 w-8 hover:bg-polar-400 rounded-md cursor-pointer text-center text-white font-medium  transition duration-500"
+                        >
+                          X
+                        </button>
+                      </div>
+                      <span className="text-snow-200">
+                        Are you sure you want to delete this File? This action
+                        is not reversible. This will permanently delete the File
+                        from our servers. This action is irreversible!
+                      </span>
                     </div>
-                    <span className="text-snow-200">
-                      Are you sure you want to delete this File? This action is
-                      not reversible. This will permanently delete the File from
-                      our servers. This action is irreversible!
-                    </span>
-                  </div>
-                  <div className="flex p-4">
-                    <button
-                      onClick={() => {
-                        sendToast("Successfully deleted File!", "success");
-                      }}
-                      className="bg-aurora-red-200 hover:bg-aurora-red-400 h-12 font-medium text-sm rounded-lg w-full btn border-0 capitalize cursor-pointer text-center text-white"
-                    >
-                      Delete File
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="opacity-30 fixed inset-0 bg-black" />
-          </>
-        )}
-
-        {showTestimonial && (
-          <>
-            <div className="items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50">
-              <div className="mx-auto lg:w-1/3 p-4">
-                <div className="rounded-lg bg-polar-200 p-8">
-                  <div>
-                    <div className="flex flex-row justify-between">
-                      <h1 className="text-3xl font-bold text-snow-300">
-                        Testimonial Submission
-                      </h1>
-                      <button
-                        onClick={() => setTestimonial(false)}
-                        className="bg-polar-300 normal-case hover:bg-polar-400 w-8 rounded-md cursor-pointer text-center text-white font-medium mt-1 transition duration-500"
-                      >
-                        X
-                      </button>
-                    </div>
-                    <h2 className="mt-3 font-semibold text-snow-100">
-                      Thank you for using our service! We are delighted that you
-                      want to submit a Review/Testimonial Please type it out
-                      below and we will add it to our site.
-                    </h2>
-                    <textarea
-                      id="testimonyInput"
-                      placeholder="Testimonial Description"
-                      value={testimony ?? ""}
-                      className="bg-polar-300 mt-3 h-32 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
-                    >
-                      {testimony}
-                    </textarea>
-                    <button
-                      onClick={() => {
-                        const docValue = (
-                          document.getElementById("testimonyInput") as any
-                        ).value;
-                        setTestimonialClicked(true);
-
-                        if (!docValue || docValue == "") {
-                          setTimeout(() => {
-                            setTestimonialClicked(false);
-                          }, 1875);
-                          return sendToast(
-                            "Please enter a Testimonial",
-                            "error"
-                          );
-                        }
-
-                        if (!testimony) {
-                          API.submitTestimonial(docValue)
-                            .then((data) => {
-                              sendToast(data.message, "success");
-
-                              setTimeout(() => {
-                                setTestimonialClicked(false);
-                                setTestimony(docValue);
-                              }, 1875);
-                            })
-                            .catch((err) => {
-                              sendToast(err.data.message, "error");
-
-                              setTimeout(() => {
-                                setTestimonialClicked(false);
-                              }, 1875);
-                            });
-                        } else {
-                          API.editTestimonial(docValue)
-                            .then((data) => {
-                              sendToast(data.message, "success");
-
-                              setTimeout(() => {
-                                setTestimonialClicked(false);
-                                setTestimony(docValue);
-                              }, 1875);
-                            })
-                            .catch((err) => {
-                              sendToast(err.data.message, "error");
-
-                              setTimeout(() => {
-                                setTestimonialClicked(false);
-                              }, 1875);
-                            });
-                        }
-                      }}
-                      className={`bg-polar-300 w-full btn ${
-                        testimonialClicked && "loading"
-                      } border-0 hover:bg-polar-400 h-12 rounded-lg capitalize cursor-pointer text-center text-white font-medium mt-4`}
-                    >
-                      {testimony ? "Edit Testimony" : "Submit Testimonial"}
-                    </button>
-                    {testimony && (
+                    <div className="flex p-4">
                       <button
                         onClick={() => {
-                          setTestimonialDeleteClicked(true);
-
-                          API.deleteTestimonial()
-                            .then((data) => {
-                              sendToast(data.message, "success");
-
-                              setTimeout(() => {
-                                setTestimonialDeleteClicked(false);
-                                setTestimony(null);
-                              }, 1875);
-                            })
-                            .catch((err) => {
-                              sendToast(err.data.message, "error");
-
-                              setTimeout(() => {
-                                setTestimonialDeleteClicked(false);
-                              }, 1875);
-                            });
+                          sendToast("Successfully deleted File!", "success");
                         }}
-                        className={`bg-aurora-red-400 w-full btn ${
-                          testimonialDeleteClicked && "loading"
-                        } border-0 hover:bg-aurora-red-100 capitalize cursor-pointer text-center text-white font-medium mt-4`}
+                        className="bg-aurora-red-200 hover:bg-aurora-red-400 h-12 font-medium text-sm rounded-lg w-full btn border-0 capitalize cursor-pointer text-center text-white"
                       >
-                        Delete Testimonial
+                        Delete File
                       </button>
-                    )}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="opacity-30 fixed inset-0 bg-black" />
-          </>
-        )}
+              <div className="opacity-30 fixed inset-0 bg-black" />
+            </>
+          )}
 
-        {showSuggestion && (
-          <>
-            <div className="items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50">
-              <div className="mx-auto lg:w-1/3 p-4">
-                <div className="rounded-lg bg-polar-200 p-6">
-                  <div>
-                    <div className="flex flex-row justify-between">
-                      <h1 className="text-3xl font-bold text-snow-300">
-                        Suggestion Form
-                      </h1>
-                      <button
-                        onClick={() => setSuggestion(false)}
-                        className="bg-polar-300 normal-case hover:bg-polar-400 w-8 rounded-md cursor-pointer text-center text-white font-medium transition duration-500"
+          {showTestimonial && (
+            <>
+              <div className="items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50">
+                <div className="mx-auto lg:w-1/3 p-4">
+                  <div className="rounded-lg bg-polar-200 p-8">
+                    <div>
+                      <div className="flex flex-row justify-between">
+                        <h1 className="text-3xl font-bold text-snow-300">
+                          Testimonial Submission
+                        </h1>
+                        <button
+                          onClick={() => setTestimonial(false)}
+                          className="bg-polar-300 normal-case hover:bg-polar-400 w-8 rounded-md cursor-pointer text-center text-white font-medium mt-1 transition duration-500"
+                        >
+                          X
+                        </button>
+                      </div>
+                      <h2 className="mt-3 font-semibold text-snow-100">
+                        Thank you for using our service! We are delighted that
+                        you want to submit a Review/Testimonial Please type it
+                        out below and we will add it to our site.
+                      </h2>
+                      <textarea
+                        id="testimonyInput"
+                        placeholder="Testimonial Description"
+                        className="bg-polar-300 mt-3 h-32 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
                       >
-                        X
-                      </button>
-                    </div>
-                    <h2 className="mt-3 font-semibold text-snow-100">
-                      Thank you for using our service! We are delighted that you
-                      have a suggestion to make! Please fill out the form below
-                      and we will get back to you as soon as possible!
-                    </h2>
-                    <textarea
-                      placeholder="Suggestion Description"
-                      className="bg-polar-300 mt-6 h-32 w-full caret-white rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
-                    />
-                    <button
-                      onClick={() => {
-                        sendToast("Successfully Sent Suggestion!", "success");
-                      }}
-                      className="bg-polar-300 h-12 rounded-lg w-full btn border-0 hover:bg-polar-400 normal-case cursor-pointer text-center text-white mt-3"
-                    >
-                      Submit Suggestion
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="opacity-30 fixed inset-0 bg-black" />
-          </>
-        )}
+                        {testimony}
+                      </textarea>
+                      <button
+                        onClick={() => {
+                          const docValue = (
+                            document.getElementById("testimonyInput") as any
+                          ).value;
+                          setTestimonialClicked(true);
 
-        {showModal && (
-          <>
-            <div className="items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50">
-              <div className="mx-auto lg:w-1/3 p-4">
-                <div className="rounded-lg bg-polar-200 p-4">
-                  <div className="p-4">
-                    <div className="flex justify-between">
-                      <h3 className="text-3xl font-semibold text-white">
-                        Bug Report
-                      </h3>
-                      <button
-                        onClick={() => setShowModal(false)}
-                        className="bg-polar-300 w-8 hover:bg-polar-400 rounded-md cursor-pointer text-center text-white font-medium mt-1 transition duration-500"
+                          if (!docValue || docValue == "") {
+                            setTimeout(() => {
+                              setTestimonialClicked(false);
+                            }, 1875);
+                            return sendToast(
+                              "Please enter a Testimonial",
+                              "error"
+                            );
+                          }
+
+                          if (!testimony) {
+                            API.submitTestimonial(docValue)
+                              .then((data) => {
+                                sendToast(data.message, "success");
+
+                                setTimeout(() => {
+                                  setTestimonialClicked(false);
+                                  setTestimony(docValue);
+                                }, 1875);
+                              })
+                              .catch((err) => {
+                                sendToast(err.data.message, "error");
+
+                                setTimeout(() => {
+                                  setTestimonialClicked(false);
+                                }, 1875);
+                              });
+                          } else {
+                            API.editTestimonial(docValue)
+                              .then((data) => {
+                                sendToast(data.message, "success");
+
+                                setTimeout(() => {
+                                  setTestimonialClicked(false);
+                                  setTestimony(docValue);
+                                }, 1875);
+                              })
+                              .catch((err) => {
+                                sendToast(err.data.message, "error");
+
+                                setTimeout(() => {
+                                  setTestimonialClicked(false);
+                                }, 1875);
+                              });
+                          }
+                        }}
+                        className={`bg-polar-300 w-full btn ${
+                          testimonialClicked && "loading"
+                        } border-0 hover:bg-polar-400 h-12 rounded-lg capitalize cursor-pointer text-center text-white font-medium mt-4`}
                       >
-                        X
+                        {testimony ? "Edit Testimony" : "Submit Testimonial"}
                       </button>
+                      {testimony && (
+                        <button
+                          onClick={() => {
+                            setTestimonialDeleteClicked(true);
+
+                            API.deleteTestimonial()
+                              .then((data) => {
+                                sendToast(data.message, "success");
+
+                                setTimeout(() => {
+                                  setTestimonialDeleteClicked(false);
+                                  setTestimony(null);
+                                  (
+                                    document.getElementById(
+                                      "testimonyInput"
+                                    ) as any
+                                  ).value = "";
+                                }, 1875);
+                              })
+                              .catch((err) => {
+                                sendToast(err.data.message, "error");
+
+                                setTimeout(() => {
+                                  setTestimonialDeleteClicked(false);
+                                }, 1875);
+                              });
+                          }}
+                          className={`bg-aurora-red-400 w-full btn ${
+                            testimonialDeleteClicked && "loading"
+                          } border-0 hover:bg-aurora-red-100 capitalize cursor-pointer text-center text-white font-medium mt-4`}
+                        >
+                          Delete Testimonial
+                        </button>
+                      )}
                     </div>
-                    <h2 className="mt-3 font-semibold text-snow-100">
-                      We're sorry you had a bad experience please list exactly
-                      what occured so we can fix it as soon as possible!
-                    </h2>
-                    <textarea
-                      placeholder="Bug Description"
-                      className="bg-polar-300 caret-white mt-6 h-10 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400 "
-                    />
-                    <select className="select border-0 font-medium text-sm w-full bg-polar-300 rounded mt-3 h-10 px-2 outline-none appearance-none text-white">
-                      <option disabled={false} selected={true}>
-                        How Severe is this bug?
-                      </option>
-                      <option>Minor</option>
-                      <option>Moderate</option>
-                      <option>Major</option>
-                    </select>
-                    <div className="mt-3 font-semibold text-snow-100">
-                      Before Submitting please check if there is any
-                      announcement of the error being fixed. Thanks!
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-end p-4">
-                    <button
-                      onClick={() => {
-                        sendToast("Successfully Sent Bug Report.", "success");
-                      }}
-                      className="bg-polar-300 h-12 font-medium text-sm rounded-lg w-full btn border-0 hover:bg-polar-400 capitalize cursor-pointer text-center text-white"
-                    >
-                      Submit Report
-                    </button>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="opacity-30 fixed inset-0 bg-black" />
-          </>
-        )}
-      </main>
-    </>
+              <div className="opacity-30 fixed inset-0 bg-black" />
+            </>
+          )}
+
+          {showSuggestion && (
+            <>
+              <div className="items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50">
+                <div className="mx-auto lg:w-1/3 p-4">
+                  <div className="rounded-lg bg-polar-200 p-6">
+                    <div>
+                      <div className="flex flex-row justify-between">
+                        <h1 className="text-3xl font-bold text-snow-300">
+                          Suggestion Form
+                        </h1>
+                        <button
+                          onClick={() => setSuggestion(false)}
+                          className="bg-polar-300 normal-case hover:bg-polar-400 w-8 rounded-md cursor-pointer text-center text-white font-medium transition duration-500"
+                        >
+                          X
+                        </button>
+                      </div>
+                      <h2 className="mt-3 font-semibold text-snow-100">
+                        Thank you for using our service! We are delighted that
+                        you have a suggestion to make! Please fill out the form
+                        below and we will get back to you as soon as possible!
+                      </h2>
+                      <textarea
+                        placeholder="Suggestion Description"
+                        className="bg-polar-300 mt-6 h-32 w-full caret-white rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
+                      />
+                      <button
+                        onClick={() => {
+                          sendToast("Successfully Sent Suggestion!", "success");
+                        }}
+                        className="bg-polar-300 h-12 rounded-lg w-full btn border-0 hover:bg-polar-400 normal-case cursor-pointer text-center text-white mt-3"
+                      >
+                        Submit Suggestion
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="opacity-30 fixed inset-0 bg-black" />
+            </>
+          )}
+
+          {showModal && (
+            <>
+              <div className="items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50">
+                <div className="mx-auto lg:w-1/3 p-4">
+                  <div className="rounded-lg bg-polar-200 p-4">
+                    <div className="p-4">
+                      <div className="flex justify-between">
+                        <h3 className="text-3xl font-semibold text-white">
+                          Bug Report
+                        </h3>
+                        <button
+                          onClick={() => setShowModal(false)}
+                          className="bg-polar-300 w-8 hover:bg-polar-400 rounded-md cursor-pointer text-center text-white font-medium mt-1 transition duration-500"
+                        >
+                          X
+                        </button>
+                      </div>
+                      <h2 className="mt-3 font-semibold text-snow-100">
+                        We're sorry you had a bad experience please list exactly
+                        what occured so we can fix it as soon as possible!
+                      </h2>
+                      <textarea
+                        placeholder="Bug Description"
+                        className="bg-polar-300 caret-white mt-6 h-10 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400 "
+                      />
+                      <select className="select border-0 font-medium text-sm w-full bg-polar-300 rounded mt-3 h-10 px-2 outline-none appearance-none text-white">
+                        <option disabled={false} selected={true}>
+                          How Severe is this bug?
+                        </option>
+                        <option>Minor</option>
+                        <option>Moderate</option>
+                        <option>Major</option>
+                      </select>
+                      <div className="mt-3 font-semibold text-snow-100">
+                        Before Submitting please check if there is any
+                        announcement of the error being fixed. Thanks!
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-end p-4">
+                      <button
+                        onClick={() => {
+                          sendToast("Successfully Sent Bug Report.", "success");
+                        }}
+                        className="bg-polar-300 h-12 font-medium text-sm rounded-lg w-full btn border-0 hover:bg-polar-400 capitalize cursor-pointer text-center text-white"
+                      >
+                        Submit Report
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="opacity-30 fixed inset-0 bg-black" />
+            </>
+          )}
+        </main>
+      </>
+    )
   );
 }

@@ -10,11 +10,11 @@ interface Toggle {
 const Toggle: FC<Toggle> = ({ label, checked, onChange }) => {
   return (
     <Switch.Group>
-      <Switch.Label className="mr-4">{label}</Switch.Label>
+      <Switch.Label className="mr-4 select-none">{label}</Switch.Label>
       <Switch
         checked={checked}
         onChange={onChange}
-        className={`relative bg-polar-400 inline-flex items-center h-6 rounded-full w-11`}
+        className="relative bg-polar-400 inline-flex items-center h-6 rounded-full w-11"
       >
         <span
           className={`${
