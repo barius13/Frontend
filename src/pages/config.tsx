@@ -13,7 +13,7 @@ import InputGroup from "../components/inputgroup";
 
 export default function Config() {
   const router = useRouter();
-  const { user } = useUser();
+  const { user, setUser } = useUser();
   const [Embed, setEmbed] = useState(false);
   const [userEmbeds] = useState(user?.embeds);
   const [Faketoggled, setFake] = useState(false);
@@ -274,6 +274,15 @@ export default function Config() {
                               description: currentEmbed.description,
                             })
                               .then((data) => {
+                                setUser({
+                                  ...user,
+                                  embeds: [
+                                    ...userEmbeds.filter(
+                                      (embed) => embed.id !== currentEmbed.id
+                                    ),
+                                    currentEmbed,
+                                  ],
+                                });
                                 sendToast(data.message, "success");
                               })
                               .catch((err) => {
