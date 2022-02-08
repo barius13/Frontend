@@ -3,6 +3,7 @@ import Link from "next/link";
 import { loginState } from "../typings";
 import { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";
+import Button from "../components/button";
 import { useState, useEffect } from "react";
 import { useUser } from "../components/user";
 import { sendToast } from "../utils/sendToast";
@@ -153,10 +154,9 @@ export default function Login() {
               </Link>
               <div className="mt-3">
                 <span className="block w-full rounded-md shadow-sm">
-                  <button
+                  <Button
                     id="loginButton"
-                    type="button"
-                    className="rounded-lg font-medium font-sm w-full text-sm h-9 text-white bg-frost-400 hover:bg-frost-300 shadow-lg"
+                    cname="w-full"
                     onClick={() => {
                       if (loginClicked) return;
                       setLoginClicked(true);
@@ -209,18 +209,15 @@ export default function Login() {
                       )}
                       Login
                     </div>
-                  </button>
+                  </Button>
                 </span>
                 <span className="block w-full rounded-md shadow-sm mt-3 text-white text-sm">
                   <Link
                     href="https://api.kythi.com/auth/discord/login"
                     passHref
                   >
-                    <button
-                      type="button"
-                      className="btn border-0 normal-case w-full btn-sm h-9 font-medium rounded-md transform-lowercase bg-[#5865F2] hover:bg-[#7289DA] shadow-lg transition duration-700"
-                    >
-                      <div className="flex justify-center">
+                    <Button cname="bg-[#5865F2] hover:bg-[#7289DA] w-full">
+                    <div className="flex justify-center">
                         <svg
                           className="h-6 w-6 -mt-[2px] pr-2"
                           fill="none"
@@ -234,7 +231,7 @@ export default function Login() {
                         </svg>
                         Login With Discord
                       </div>
-                    </button>
+                    </Button>
                   </Link>
                 </span>
               </div>

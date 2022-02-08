@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { useUser } from "../components/user";
+import Button from "../components/button";
 import Footer from "../components/footer";
+import { useUser } from "../components/user";
 
 export default function Page404() {
   const { user } = useUser();
@@ -18,9 +19,7 @@ export default function Page404() {
             </p>
 
             <Link href={user ? "/dashboard" : "/"} passHref>
-              <button className="btn normal-case border-0 btn-sm w-36 h-10 bg-frost-400 hover:bg-frost-300 shadow-lg mt-3">
-                {user ? "Dashboard" : "Home"}
-              </button>
+              <Button size="sm" cname="mt-4">{user ? "Dashboard" : "Home"}</Button>
             </Link>
           </div>
         </div>

@@ -4,6 +4,7 @@ import Link from "next/link";
 import Nav from "../components/navbar";
 import { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";
+import Button from "../components/button";
 import { useEffect, useState } from "react";
 import { useUser } from "../components/user";
 import StatsBox from "../components/userstats";
@@ -168,12 +169,15 @@ export default function Dashboard() {
                           </span>
                         </div>
                       </div>
-                      <button
-                        onClick={() => setDelete(true)}
-                        className="hover:text-white btn-outline btn border-0 normal-case hover:bg-aurora-red-100 w-24 h-11 rounded-md cursor-pointer text-center text-white font-medium py-2 px-4 transition duration-500"
+                      <Button
+                        size="lg"
+                        variant="danger"
+                        onClick={() => {
+                          setDelete(true);
+                        }}
                       >
                         Delete
-                      </button>
+                      </Button>
                     </div>
                   </div>
 
@@ -225,303 +229,216 @@ export default function Dashboard() {
                   <div />
                 </div>
                 <Link href="/config" passHref>
-                  <button className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-aurora-red-200 hover:bg-aurora-red-200 shadow-lg mt-6">
-                    Embed Customisations
-                  </button>
+                  <Button variant="danger" cname="w-full mt-6">
+                    Embed Customizations
+                  </Button>
                 </Link>
                 <Link href="/config" passHref>
-                  <button className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg mt-4">
-                    Config Downloads
-                  </button>
+                  <Button cname="w-full mt-4">Config Downloads</Button>
                 </Link>
-                <button
+                <Button
+                  cname="w-full mt-4"
                   onClick={() => setTestimonial(true)}
-                  className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg mt-4"
                 >
                   Submit a Testimonal
-                </button>
-                <button
-                  onClick={() => setSuggestion(true)}
-                  className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg mt-4"
-                >
+                </Button>
+                <Button cname="w-full mt-4" onClick={() => setSuggestion(true)}>
                   Suggest a Feature
-                </button>
-                <button
-                  onClick={() => setShowModal(true)}
-                  className="w-full btn btn-sm h-10 normal-case border-0 font-medium rounded-md text-white bg-frost-400 hover:bg-frost-300 shadow-lg mt-4"
-                >
+                </Button>
+                <Button cname="w-full mt-4" onClick={() => setShowModal(true)}>
                   Report a bug
-                </button>
+                </Button>
               </div>
             </div>
           </div>
-          {Delete && (
-            <>
-              <div className="items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50">
-                <div className="mx-auto lg:w-1/3 p-4">
-                  <div className="rounded-lg bg-polar-200 p-4">
-                    <div className="p-4">
-                      <div className="flex justify-between mb-2">
-                        <h1 className="font-semibold text-xl mb-2 text-white">
-                          Delete File
-                        </h1>
-                        <button
-                          onClick={() => setDelete(false)}
-                          className="bg-polar-300 w-8 hover:bg-polar-400 rounded-md cursor-pointer text-center text-white font-medium  transition duration-500"
-                        >
-                          X
-                        </button>
-                      </div>
-                      <span className="text-snow-200">
-                        Are you sure you want to delete this File? This action
-                        is not reversible. This will permanently delete the File
-                        from our servers. This action is irreversible!
-                      </span>
-                    </div>
-                    <div className="flex p-4">
-                      <button
-                        onClick={() => {
-                          sendToast("Successfully deleted File!", "success");
-                        }}
-                        className="bg-aurora-red-200 hover:bg-aurora-red-400 h-12 font-medium text-sm rounded-lg w-full btn border-0 capitalize cursor-pointer text-center text-white"
-                      >
-                        Delete File
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="opacity-30 fixed inset-0 bg-black" />
-            </>
-          )}
-
-          {showTestimonial && (
-            <>
-              <div className="items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50">
-                <div className="mx-auto lg:w-1/3 p-4">
-                  <div className="rounded-lg bg-polar-200 p-8">
-                    <div>
-                      <div className="flex flex-row justify-between">
-                        <h1 className="text-3xl font-bold text-snow-300">
-                          Testimonial Submission
-                        </h1>
-                        <button
-                          onClick={() => setTestimonial(false)}
-                          className="bg-polar-300 normal-case hover:bg-polar-400 w-8 rounded-md cursor-pointer text-center text-white font-medium mt-1 transition duration-500"
-                        >
-                          X
-                        </button>
-                      </div>
-                      <h2 className="mt-3 font-semibold text-snow-100">
-                        Thank you for using our service! We are delighted that
-                        you want to submit a Review/Testimonial Please type it
-                        out below and we will add it to our site.
-                      </h2>
-                      <textarea
-                        id="testimonyInput"
-                        placeholder="Testimonial Description"
-                        className="bg-polar-300 mt-3 h-32 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
-                      >
-                        {testimony}
-                      </textarea>
-                      <button
-                        onClick={() => {
-                          const docValue = (
-                            document.getElementById("testimonyInput") as any
-                          ).value;
-                          setTestimonialClicked(true);
-
-                          if (!docValue || docValue == "") {
-                            setTimeout(() => {
-                              setTestimonialClicked(false);
-                            }, 1875);
-                            return sendToast(
-                              "Please enter a Testimonial",
-                              "error"
-                            );
-                          }
-
-                          if (!testimony) {
-                            API.submitTestimonial(docValue)
-                              .then((data) => {
-                                sendToast(data.message, "success");
-
-                                setTimeout(() => {
-                                  setTestimonialClicked(false);
-                                  setTestimony(docValue);
-                                }, 1875);
-                              })
-                              .catch((err) => {
-                                sendToast(err.data.message, "error");
-
-                                setTimeout(() => {
-                                  setTestimonialClicked(false);
-                                }, 1875);
-                              });
-                          } else {
-                            API.editTestimonial(docValue)
-                              .then((data) => {
-                                sendToast(data.message, "success");
-
-                                setTimeout(() => {
-                                  setTestimonialClicked(false);
-                                  setTestimony(docValue);
-                                }, 1875);
-                              })
-                              .catch((err) => {
-                                sendToast(err.data.message, "error");
-
-                                setTimeout(() => {
-                                  setTestimonialClicked(false);
-                                }, 1875);
-                              });
-                          }
-                        }}
-                        className={`bg-polar-300 w-full btn ${
-                          testimonialClicked && "loading"
-                        } border-0 hover:bg-polar-400 h-12 rounded-lg capitalize cursor-pointer text-center text-white font-medium mt-4`}
-                      >
-                        {testimony ? "Edit Testimony" : "Submit Testimonial"}
-                      </button>
-                      {testimony && (
-                        <button
-                          onClick={() => {
-                            setTestimonialDeleteClicked(true);
-
-                            API.deleteTestimonial()
-                              .then((data) => {
-                                sendToast(data.message, "success");
-
-                                setTimeout(() => {
-                                  setTestimonialDeleteClicked(false);
-                                  setTestimony(null);
-                                  (
-                                    document.getElementById(
-                                      "testimonyInput"
-                                    ) as any
-                                  ).value = "";
-                                }, 1875);
-                              })
-                              .catch((err) => {
-                                sendToast(err.data.message, "error");
-
-                                setTimeout(() => {
-                                  setTestimonialDeleteClicked(false);
-                                }, 1875);
-                              });
-                          }}
-                          className={`bg-aurora-red-400 w-full btn ${
-                            testimonialDeleteClicked && "loading"
-                          } border-0 hover:bg-aurora-red-100 capitalize cursor-pointer text-center text-white font-medium mt-4`}
-                        >
-                          Delete Testimonial
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="opacity-30 fixed inset-0 bg-black" />
-            </>
-          )}
-
-          {showSuggestion && (
-            <>
-              <div className="items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50">
-                <div className="mx-auto lg:w-1/3 p-4">
-                  <div className="rounded-lg bg-polar-200 p-6">
-                    <div>
-                      <div className="flex flex-row justify-between">
-                        <h1 className="text-3xl font-bold text-snow-300">
-                          Suggestion Form
-                        </h1>
-                        <button
-                          onClick={() => setSuggestion(false)}
-                          className="bg-polar-300 normal-case hover:bg-polar-400 w-8 rounded-md cursor-pointer text-center text-white font-medium transition duration-500"
-                        >
-                          X
-                        </button>
-                      </div>
-                      <h2 className="mt-3 font-semibold text-snow-100">
-                        Thank you for using our service! We are delighted that
-                        you have a suggestion to make! Please fill out the form
-                        below and we will get back to you as soon as possible!
-                      </h2>
-                      <textarea
-                        placeholder="Suggestion Description"
-                        className="bg-polar-300 mt-6 h-32 w-full caret-white rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
-                      />
-                      <button
-                        onClick={() => {
-                          sendToast("Successfully Sent Suggestion!", "success");
-                        }}
-                        className="bg-polar-300 h-12 rounded-lg w-full btn border-0 hover:bg-polar-400 normal-case cursor-pointer text-center text-white mt-3"
-                      >
-                        Submit Suggestion
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="opacity-30 fixed inset-0 bg-black" />
-            </>
-          )}
-
-          {showModal && (
-            <>
-              <div className="items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50">
-                <div className="mx-auto lg:w-1/3 p-4">
-                  <div className="rounded-lg bg-polar-200 p-4">
-                    <div className="p-4">
-                      <div className="flex justify-between">
-                        <h3 className="text-3xl font-semibold text-white">
-                          Bug Report
-                        </h3>
-                        <button
-                          onClick={() => setShowModal(false)}
-                          className="bg-polar-300 w-8 hover:bg-polar-400 rounded-md cursor-pointer text-center text-white font-medium mt-1 transition duration-500"
-                        >
-                          X
-                        </button>
-                      </div>
-                      <h2 className="mt-3 font-semibold text-snow-100">
-                        We're sorry you had a bad experience please list exactly
-                        what occured so we can fix it as soon as possible!
-                      </h2>
-                      <textarea
-                        placeholder="Bug Description"
-                        className="bg-polar-300 caret-white mt-6 h-10 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400 "
-                      />
-                      <select className="select border-0 font-medium text-sm w-full bg-polar-300 rounded mt-3 h-10 px-2 outline-none appearance-none text-white">
-                        <option disabled={false} selected={true}>
-                          How Severe is this bug?
-                        </option>
-                        <option>Minor</option>
-                        <option>Moderate</option>
-                        <option>Major</option>
-                      </select>
-                      <div className="mt-3 font-semibold text-snow-100">
-                        Before Submitting please check if there is any
-                        announcement of the error being fixed. Thanks!
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-end p-4">
-                      <button
-                        onClick={() => {
-                          sendToast("Successfully Sent Bug Report.", "success");
-                        }}
-                        className="bg-polar-300 h-12 font-medium text-sm rounded-lg w-full btn border-0 hover:bg-polar-400 capitalize cursor-pointer text-center text-white"
-                      >
-                        Submit Report
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="opacity-30 fixed inset-0 bg-black" />
-            </>
-          )}
         </main>
+
+        {Delete && (
+          <>
+            <div className="items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50">
+              <div className="mx-auto lg:w-1/3 p-4">
+                <div className="rounded-lg bg-polar-200 p-4">
+                  <div className="p-4">
+                    <div className="flex justify-between mb-2">
+                      <h1 className="font-semibold text-xl mb-2 text-white">
+                        Delete File
+                      </h1>
+                      <Button
+                        onClick={() => setDelete(false)}
+                        cname="bg-polar-300 hover:bg-polar-400 -mt-1"
+                      >
+                        X
+                      </Button>
+                    </div>
+                    <span className="text-snow-200">
+                      Are you sure you want to delete this File? This action is
+                      not reversible. This will permanently delete the File from
+                      our servers. This action is irreversible!
+                    </span>
+                  </div>
+                  <div className="flex p-4">
+                    <Button
+                      onClick={() => {
+                        setDelete(false);
+                        sendToast("Successfully deleted File!", "success");
+                      }}
+                      variant="danger"
+                      cname="w-full -mt-2"
+                    >
+                      Delete File
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="opacity-30 fixed inset-0 bg-black" />
+          </>
+        )}
+
+        {showTestimonial && (
+          <>
+            <div className="items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50">
+              <div className="mx-auto lg:w-1/3 p-4">
+                <div className="rounded-lg bg-polar-200 p-8">
+                  <div>
+                    <div className="flex flex-row justify-between">
+                      <h1 className="text-3xl font-bold text-snow-300">
+                        Testimonial Submission
+                      </h1>
+                      <Button
+                        onClick={() => setTestimonial(false)}
+                        cname="bg-polar-300 hover:bg-polar-400 -mt-1"
+                      >
+                        X
+                      </Button>
+                    </div>
+                    <h2 className="mt-3 font-semibold text-snow-100">
+                      Thank you for using our service! Input your testimonial
+                      here and it will be sent for approval!
+                    </h2>
+                    <textarea
+                      id="testimonyInput"
+                      placeholder="Testimonial Description"
+                      value=""
+                      className="bg-polar-300 mt-3 h-32 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
+                    />
+                    <Button
+                      onClick={() => {
+                        setTestimonial(false);
+                        sendToast("Testimonial submitted!", "success");
+                      }}
+                      cname="bg-polar-300 hover:bg-polar-400 w-full mt-2 h-11"
+                    >
+                      Submit Testimonial
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="opacity-30 fixed inset-0 bg-black" />
+          </>
+        )}
+
+        {showSuggestion && (
+          <>
+            <div className="items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50">
+              <div className="mx-auto lg:w-1/3 p-4">
+                <div className="rounded-lg bg-polar-200 p-8">
+                  <div>
+                    <div className="flex flex-row justify-between">
+                      <h1 className="text-3xl font-bold text-snow-300">
+                        Suggestion Form
+                      </h1>
+                      <Button
+                        onClick={() => setSuggestion(false)}
+                        cname="bg-polar-300 hover:bg-polar-400 -mt-1"
+                      >
+                        X
+                      </Button>
+                    </div>
+                    <h2 className="mt-3 font-semibold text-snow-100">
+                      Thank you for using our service! We are delighted that you
+                      have a suggestion to make! Please fill out the form below
+                      and we will get back to you as soon as possible!
+                    </h2>
+                    <textarea
+                      value=""
+                      placeholder="Suggestion Description"
+                      className="bg-polar-300 mt-3 h-32 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
+                    />
+                    <Button
+                      onClick={() => {
+                        setSuggestion(false);
+                        sendToast("Successfully Sent Suggestion!", "success");
+                      }}
+                      cname="bg-polar-300 hover:bg-polar-400 w-full mt-2 h-11"
+                    >
+                      Submit Suggestion
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="opacity-30 fixed inset-0 bg-black" />
+          </>
+        )}
+
+        {showModal && (
+          <>
+            <div className="items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50">
+              <div className="mx-auto lg:w-1/3 p-4">
+                <div className="rounded-lg bg-polar-200 p-4">
+                  <div className="p-4">
+                    <div className="flex justify-between">
+                      <h3 className="text-3xl font-semibold text-white">
+                        Bug Report
+                      </h3>
+                      <Button
+                        onClick={() => setShowModal(false)}
+                        cname="bg-polar-300 hover:bg-polar-400 -mt-1"
+                      >
+                        X
+                      </Button>
+                    </div>
+                    <h2 className="mt-3 font-semibold text-snow-100">
+                      We're sorry you had a bad experience please list exactly
+                      what occured so we can fix it as soon as possible!
+                    </h2>
+                    <textarea
+                    value=""
+                      placeholder="Bug Description"
+                      className="bg-polar-300 caret-white mt-6 h-10 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400 "
+                    />
+                    <select className="select border-0 font-medium text-sm w-full bg-polar-300 rounded mt-3 h-10 px-2 outline-none appearance-none text-white">
+                      <option disabled={false} selected={true}>
+                        How Severe is this bug?
+                      </option>
+                      <option>Minor</option>
+                      <option>Moderate</option>
+                      <option>Major</option>
+                    </select>
+                    <div className="mt-3 font-semibold text-snow-100">
+                      Before Submitting please check if there is any
+                      announcement of the error being fixed. Thanks!
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-end p-4">
+                  <Button
+                      onClick={() => {
+                        setShowModal(false);
+                        sendToast("Successfully Sent Bug Report.", "success");
+                      }}
+                      cname="bg-polar-300 hover:bg-polar-400 w-full h-11 -mt-4"
+                    >
+                      Submit Suggestion
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="opacity-30 fixed inset-0 bg-black" />
+          </>
+        )}
       </>
     )
   );

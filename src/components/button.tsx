@@ -1,8 +1,9 @@
-import { FC } from "react";
+import { FC, MouseEventHandler } from "react";
 
 interface Props {
-  children: React.ReactNode;
+  id?: string;
   variant?:
+    | "none"
     | "default"
     | "primary"
     | "secondary"
@@ -12,23 +13,30 @@ interface Props {
     | "danger"
     | "dark";
   size?: "sm" | "md" | "lg" | "xl";
-  disabled?: boolean;
   cname?: string;
+  disabled?: boolean;
+  children: React.ReactNode;
+  buttonType?: "button" | "submit";
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
 const Button: FC<Props> = ({
+  id,
+  size = "md",
+  cname = "",
+  onClick,
   children,
   variant = "default",
-  size = "md",
   disabled = false,
-  cname = "",
-  ...rest
+  buttonType = "button",
 }) => {
   return (
     <button
+      id={id}
       className={`btn ${variant} ${size} ${disabled && "disabled"} ${cname}`}
+      type={buttonType}
       disabled={disabled}
-      {...rest}
+      onClick={onClick}
     >
       {children}
     </button>

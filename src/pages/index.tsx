@@ -23,7 +23,7 @@ export default function Index() {
             <div className="flex mb-6 space-x-3 mt-5">
               <Link href={user ? "/dashboard" : "/login"}>
                 <a>
-                  <Button variant="primary" size="sm">
+                  <Button variant="primary" size="xl">
                     {user ? "Dashboard" : "Login"}
                   </Button>
                 </a>
@@ -32,7 +32,7 @@ export default function Index() {
                 <a>
                   <Button
                     variant="primary"
-                    size="sm"
+                    size="xl"
                     cname={`${user && "invisible"}`}
                   >
                     Sign Up

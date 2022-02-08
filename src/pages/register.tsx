@@ -1,9 +1,11 @@
 import API from "../api";
 import Link from "next/link";
 import * as React from "react";
+import Button from "../components/button";
 import { Toaster } from "react-hot-toast";
 import { registerState } from "../typings";
 import { sendToast } from "../utils/sendToast";
+
 
 export default function Register() {
   const loginShow = () => setShow(!show);
@@ -47,7 +49,7 @@ export default function Register() {
                     Register to Kythi.
                   </div>
                   <Link href="/" passHref>
-                    <button className="text-white">
+                    <Button variant="none" cname="text-white">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-6 w-6"
@@ -62,7 +64,7 @@ export default function Register() {
                           d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
                         />
                       </svg>
-                    </button>
+                    </Button>
                   </Link>
                 </div>
                 <div />
@@ -120,9 +122,10 @@ export default function Register() {
                       updateRegister("password", comp.target.value)
                     }
                   />
-                  <button
+                  <Button
+                    variant="none"
                     onClick={loginShow}
-                    className="absolute inset-y-0 right-0 flex items-center pr-3"
+                    cname="absolute inset-y-0 right-0 flex items-center pr-3"
                   >
                     {show ? (
                       <svg
@@ -157,7 +160,7 @@ export default function Register() {
                         />
                       </svg>
                     )}
-                  </button>
+                  </Button>
                 </label>
               </div>
 
@@ -223,10 +226,9 @@ export default function Register() {
 
               <div className="mt-6">
                 <span className="block w-full rounded-md shadow-sm">
-                  <button
+                  <Button
                     id="submitButton"
-                    type="button"
-                    className="w-full rounded-lg font-medium text-sm h-9 text-white bg-frost-400 hover:bg-frost-300"
+                    cname="w-full -mt-1"
                     onClick={() => {
                       if (registerClicked) return;
                       setRegisterClicked(true);
@@ -273,7 +275,7 @@ export default function Register() {
                       )}
                       Register
                     </div>
-                  </button>
+                  </Button>
                 </span>
               </div>
             </div>

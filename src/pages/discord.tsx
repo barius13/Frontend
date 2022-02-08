@@ -1,8 +1,9 @@
+import API from "../api";
 import Link from "next/link";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import Button from "../components/button";
 import { useUser } from "../components/user";
-import API from "../api";
 
 export default function Discord() {
   const router = useRouter();
@@ -31,10 +32,7 @@ export default function Discord() {
 
             <span className="block w-full rounded-md shadow-sm mt-8">
               <Link href="https://api.kythi.com/discord/link" passHref>
-                <button
-                  type="button"
-                  className="btn border-0 w-full btn-sm h-9 font-medium rounded-md transform-lowercase bg-[#5865F2] hover:bg-[#7289DA] shadow-lg normal-case"
-                >
+                <Button cname="w-full">
                   <div className="flex justify-center">
                     <svg
                       className="h-6 w-6 pr-2"
@@ -47,23 +45,26 @@ export default function Discord() {
                         fill="#ffffff"
                       />
                     </svg>
-                    Link Discord
+                    <div className="mt-[2px]">Link Discord</div>
                   </div>
-                </button>
+                </Button>
               </Link>
             </span>
             <span className="block w-full rounded-md shadow-sm mt-2">
-              <Link href="https://api.kythi.com/discord/link" passHref>
-                <button
-                  type="button"
-                  className="btn border-0 w-full btn-sm h-9 font-medium rounded-md transform-lowercase bg-aurora-red-200 hover:bg-aurora-red-400 shadow-lg normal-case"
-                  onClick={() => {
-                    API.logOut()
-                      .then(() => router.push("/"))
-                      .catch(() => router.push("/"));
-                  }}
-                >
-                  <div className="flex justify-center">
+              <Button
+                variant="danger"
+                cname="w-full"
+                onClick={async () => {
+                  try {
+                    await API.logOut();
+                  } finally {
+                    // @ts-expect-error
+                    setUser(null);
+                    router.push("/");
+                  }
+                }}
+              >
+                <div className="flex justify-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6 mr-1"
@@ -78,10 +79,9 @@ export default function Discord() {
                       d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
                     />
                   </svg>
-                    Logout
-                  </div>
-                </button>
-              </Link>
+                  <div className="mt-[2px]">Logout</div>
+                </div>
+              </Button>
             </span>
           </div>
         </div>

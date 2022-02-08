@@ -3,6 +3,7 @@ import Link from "next/link";
 import { UserEmbed } from "../typings";
 import Nav from "../components/navbar";
 import { useRouter } from "next/router";
+import Button from "../components/button";
 import { Toaster } from "react-hot-toast";
 import Toggle from "../components/toggle";
 import { useEffect, useState } from "react";
@@ -63,12 +64,8 @@ export default function Config() {
                     videos aswell as upload them through the use of a keybind.
                   </div>
                   <div className="flex flex-col md:flex-col space-x-0 lg:flex-row lg:space-x-2 md:space-x-0">
-                    <button className="btn w-full border-0 btn-sm h-10 mt-2 normal-case bg-frost-400 hover:bg-frost-300 duration-300 ">
-                      ShareX
-                    </button>
-                    <button className="btn w-full border-0 btn-sm h-10 mt-2 normal-case bg-frost-400 hover:bg-frost-300 duration-300">
-                      Magic Cap
-                    </button>
+                    <Button size="xl">ShareX</Button>
+                    <Button size="xl">Magic Cap</Button>
                   </div>
                 </div>
               </div>
@@ -99,9 +96,14 @@ export default function Config() {
                   <div className="text-snow-100 mt-2">
                     Your Selected domain is: Roblox.Kythi.pics/penis
                   </div>
-                  <h1 className="mt-2 text-xl text-slate-200 font-medium">
+
+                  <h1 className="mt-3 text-xl text-slate-200 font-medium">
                     Domain Options
                   </h1>
+                  <div className="mt-1 text-snow-100">
+                    You can toggle specific domain configurations on and off
+                    here. Currently doesnt work.
+                  </div>
                   <div className="flex flex-row space-x-3 mt-2">
                     <div className="space-x-1">
                       <Toggle
@@ -117,14 +119,24 @@ export default function Config() {
                         onChange={setInvis}
                       />
                     </div>
-                    <span>Fake URL</span>
-                    <button
-                      onClick={() => setEmbed(true)}
-                      className="bg-frost-400 hover:bg-frost-300 duration-300 btn normal-case border-0 mt-3 btn-sm h-10"
-                    >
-                      Edit Embed
-                    </button>
                   </div>
+                </div>
+                <div>
+                  <h1 className="mt-3 text-xl text-slate-200 font-medium">
+                    Embed Editor
+                  </h1>
+                  <div className="mt-1 text-snow-100">
+                    The embed editor edits your embed. This should be clear
+                    enough without any more context.
+                  </div>
+                  <Button
+                    cname="mt-2"
+                    onClick={() => {
+                      setEmbed(true);
+                    }}
+                  >
+                    Edit your Embed
+                  </Button>
                 </div>
               </div>
             </div>

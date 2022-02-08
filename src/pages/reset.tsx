@@ -1,6 +1,11 @@
+import { Toaster } from "react-hot-toast";
+import Button from "../components/button";
+import { sendToast } from "../utils/sendToast";
+
 export default function PasswordReset() {
   return (
     <>
+      <Toaster />
       <div className="bg-polar-100 mx-auto sm:px-6">
         <div className="flex justify-center items-center h-screen">
           <form className="w-full max-w-md">
@@ -29,15 +34,24 @@ export default function PasswordReset() {
                   </svg>
                 </span>
                 <input
-                  className="placeholder:text-gray-400 block bg-polar-600 hover:bg-polar-400 text-white transition duration-700 delay-50 w-full h-8 focus:outline-none caret-white rounded-md py-2 pl-10 shadow-sm sm:text-sm"                  placeholder="Email Address"
+                  className="placeholder:text-gray-400 block bg-polar-600 hover:bg-polar-400 text-white transition duration-700 delay-50 w-full h-8 focus:outline-none caret-white rounded-md py-2 pl-10 shadow-sm sm:text-sm"
+                  placeholder="Email Address"
                   type="text"
                   name="email"
                 />
               </label>
               <div className="mt-4">
-                <button className="block bg-frost-400 hover:bg-frost-300 text-white transition duration-700 delay-50 w-full rounded-md py-2 shadow-sm sm:text-sm">
-                  Send reset link
-                </button>
+                <Button
+                  cname="w-full"
+                  onClick={() =>
+                    sendToast(
+                      "Successfully sent instructions on how to reset your password.",
+                      "success"
+                    )
+                  }
+                >
+                  Send Reset Link
+                </Button>
               </div>
             </div>
           </form>
