@@ -26,45 +26,45 @@
     .xl {
         @apply px-16;
     }
-    /*button colors: default, primary, info, success, warning, danger, dark */
+
     .default {
-        @apply inline-block w-36 font-medium text-sm rounded-lg h-10 bg-blue-600;
+        @apply inline-block font-medium text-sm rounded-lg h-10 bg-blue-600;
     }
     .default:hover {
         @apply bg-frost-300;
     }
     .primary {
-        @apply inline-block w-36 font-medium text-sm rounded-lg h-10 bg-blue-600;
+        @apply inline-block font-medium text-sm rounded-lg h-10 bg-blue-600;
     }
     .primary:hover {
         @apply bg-blue-700;
     }
     .secondary {
-        @apply inline-block text-sm rounded-lg h-10 font-medium border-0 w-36 bg-purple-600;
+        @apply inline-block font-medium text-sm rounded-lg h-10 bg-purple-600;
     }
     .secondary:hover {
         @apply bg-aurora-red-100;
     }
     .success {
-        @apply bg-green-500 text-white;
+        @apply inline-block font-medium text-sm rounded-lg h-10 bg-green-500 text-white;
     }
     .success:hover {
         @apply bg-green-600 text-white;
     }
     .info {
-        @apply bg-blue-500 text-white;
+        @apply inline-block font-medium text-sm rounded-lg h-10 bg-blue-500 text-white;
     }
     .info:hover {
         @apply bg-blue-600 text-white;
     }
     .warning {
-        @apply bg-yellow-400 text-white;
+        @apply inline-block font-medium text-sm rounded-lg h-10 bg-yellow-400 text-white;
     }
     .warning:hover {
         @apply bg-yellow-500 text-white;
     }
     .danger {
-        @apply bg-red-500 text-white;
+        @apply inline-block font-medium text-sm rounded-lg h-10 bg-red-500 text-white;
     }
     .danger:hover {
         @apply bg-red-600 text-white;
