@@ -47,22 +47,6 @@ const NavBar: React.FC<NavBarProps> = (props) => {
   return (
     <>
       <div className="flex items-center flex-justify mx-auto px-4 bg-polar-200 w-full h-14">
-        <label className="flex md:hidden lg:hidden btn btn-sm w-10 normal-case border-0 font-medium rounded-md text-white bg-polar-200 hover:bg-polar-200">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </label>
         <Link href="/">
           <a className="text-2xl font-bold text-white mb-2 ml-2 lg:ml-0 sm:ml-0">
             Kythi&nbsp;
@@ -159,7 +143,7 @@ const NavBar: React.FC<NavBarProps> = (props) => {
                             await API.logOut();
                           } finally {
                             // @ts-expect-error
-                            setUser(null)
+                            setUser(null);
                             router.push("/");
                           }
                         }}

@@ -5,6 +5,7 @@ import { useUser } from "../components/user";
 import FeatureBox from "../components/feature";
 import MainFeat from "../components/main_feat";
 import TestimonialBox from "../components/testimonial";
+import { Html, Clock, SwissKnife } from "../../public/svgs/paths";
 
 export default function Index() {
   const { user } = useUser();
@@ -60,14 +61,7 @@ export default function Index() {
             <FeatureBox
               title="Personalization."
               content="Kythi allows you to personalise your files with your own customised embeds, domains and many more features to choose from to allow you to truly customise."
-              icon={
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
-                />
-              }
+              icon={<SwissKnife />}
               isSvg={true}
             />
 
@@ -82,14 +76,7 @@ export default function Index() {
               }
               isSvg={true}
               svgData={{ stroke: "#BF616A" }}
-              icon={
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              }
+              icon={<Clock />}
             />
             <FeatureBox
               title="Open Source."
@@ -111,14 +98,7 @@ export default function Index() {
               }
               isSvg={true}
               svgData={{ stroke: "#BF616A" }}
-              icon={
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-                />
-              }
+              icon={<Html />}
             />
           </div>
         </div>
