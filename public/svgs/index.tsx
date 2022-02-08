@@ -15,7 +15,7 @@ import EyeHidden from "./EyeHidden";
 import Clipboard from "./Clipboard";
 import KythiWhite from "./KythiWhite";
 import CloudArrow from "./CloudArrow";
-import SwissKnife from "./Swissknife";
+import SwissKnife from "./SwissKnife";
 import DiscordWhite from "./DiscordWhite";
 import FilingCabinet from "./FilingCabinet";
 
