@@ -1,7 +1,7 @@
 import { Toaster } from "react-hot-toast";
 import Button from "../components/button";
-import { EmailAt } from "../../public/svgs";
 import { sendToast } from "../utils/sendToast";
+import { AtSymbolIcon } from "@heroicons/react/outline";
 
 export default function PasswordReset() {
   return (
@@ -19,7 +19,7 @@ export default function PasswordReset() {
               </div>
               <label className="relative block mt-5">
                 <span className="absolute inset-y-0 left-0 flex items-center pl-2">
-                  <EmailAt />
+                  <AtSymbolIcon className="w-6 h-6 text-white" />
                 </span>
                 <input
                   className="placeholder:text-gray-400 block bg-polar-600 hover:bg-polar-400 text-white transition duration-700 delay-50 w-full h-8 focus:outline-none caret-white rounded-md py-2 pl-10 shadow-sm sm:text-sm"
