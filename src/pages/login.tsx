@@ -8,12 +8,12 @@ import { useState, useEffect } from "react";
 import { useUser } from "../components/user";
 import { sendToast } from "../utils/sendToast";
 import {
-  Padlock,
-  UserIcon,
-  EyeShown,
-  EyeHidden,
-  DiscordWhite,
-} from "../../public/svgs";
+  UserCircleIcon,
+  LockClosedIcon,
+  EyeOffIcon,
+  EyeIcon,
+} from "@heroicons/react/outline";
+import { DiscordWhite } from "../../public/svgs";
 
 export default function Login() {
   const router = useRouter();
@@ -56,18 +56,16 @@ export default function Login() {
         <div className="flex justify-center items-center h-screen">
           <form className="w-full max-w-md lg:px-0 px-4">
             <div className="rounded-lg bg-polar-200 px-8 py-8">
-              <div className="divide-y-2 divide-frost-300">
-                <div className="text-white font-bold text-xl mb-2">
-                  Login to Kythi.
-                </div>
+              <div className="divide-y-2 divide-white">
+                <div className="text-white font-bold text-xl mb-2">Login</div>
                 <div />
               </div>
               <label className="relative block mt-5">
                 <span className="absolute inset-y-0 left-0 flex items-center pl-2">
-                  <UserIcon />
+                  <UserCircleIcon className="h-6 w-6 text-[#D8DEE9]" />
                 </span>
                 <input
-                  className="placeholder:text-gray-400 block bg-polar-600 hover:bg-polar-400 text-white transition duration-700 delay-50 w-full h-8 focus:outline-none caret-white rounded-md py-2 pl-10 shadow-sm sm:text-sm"
+                  className="placeholder:text-gray-400 block select-none bg-polar-600 hover:bg-polar-400 text-white transition duration-700 delay-50 w-full h-8 focus:outline-none caret-white rounded-md py-2 pl-10 shadow-sm sm:text-sm"
                   placeholder={login.username ?? "Username"}
                   type="text"
                   name="username"
@@ -80,10 +78,10 @@ export default function Login() {
               <div className="mt-4">
                 <label className="relative block">
                   <span className="absolute inset-y-0 left-0 flex items-center pl-2">
-                    <Padlock />
+                    <LockClosedIcon className="h-5 w-5 text-[#D8DEE9]" />
                   </span>
                   <input
-                    className="placeholder:text-gray-400 block bg-polar-600 hover:bg-polar-400 text-white transition duration-700 delay-50 w-full h-8 focus:outline-none caret-white rounded-md py-2 pl-10 shadow-sm sm:text-sm"
+                    className="placeholder:text-gray-400 select-none block bg-polar-600 hover:bg-polar-400 text-white transition duration-700 delay-50 w-full h-8 focus:outline-none caret-white rounded-md py-2 pl-10 shadow-sm sm:text-sm"
                     placeholder={login.password ?? "Password"}
                     type={show ? "text" : "password"}
                     name="Password"
@@ -95,7 +93,11 @@ export default function Login() {
                     onClick={loginShow}
                     className="absolute inset-y-0 right-0 flex items-center pr-3"
                   >
-                    {show ? <EyeShown /> : <EyeHidden />}
+                    {show ? (
+                      <EyeIcon className="h-5 w-5 text-[#D8DEE9]" />
+                    ) : (
+                      <EyeOffIcon className="h-5 w-5 text-[#D8DEE9]" />
+                    )}
                   </a>
                 </label>
               </div>

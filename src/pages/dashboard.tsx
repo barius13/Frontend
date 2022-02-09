@@ -9,7 +9,11 @@ import { useEffect, useState } from "react";
 import { useUser } from "../components/user";
 import StatsBox from "../components/userstats";
 import { sendToast } from "../utils/sendToast";
-import { Server, BarChart, CloudArrow } from "../../public/svgs";
+import {
+  ChartSquareBarIcon,
+  ServerIcon,
+  CloudUploadIcon,
+} from "@heroicons/react/outline";
 
 export default function Dashboard() {
   const router = useRouter();
@@ -17,7 +21,7 @@ export default function Dashboard() {
   const [testimonialContent, setTestimonialContent] = useState(
     user?.testimonial?.content
   );
-  
+
   {
     /* modals (these should be stored inside the component soon) */
   }
@@ -49,171 +53,168 @@ export default function Dashboard() {
         <Toaster />
         <Nav page={"dash"} />
 
-        <main className="px-4">
-          <div className="flex flex-col items-center justify-center p-10">
-            <div className="mr-auto">
-              <div className="text-3xl font-semibold text-white">
-                Welcome, {user.username}
-              </div>
-              <div className="text-xl text-snow-300 lg:mb-8 mb-4">
-                Member since Dec 3, 2021
-              </div>
+        <div className="flex flex-col items-center justify-center p-10 h-max bg-polar-100">
+          <div className="mr-auto">
+            <div className="text-3xl font-semibold text-white">
+              Welcome, {user.username}
             </div>
-            <div className="flex lg:flex-row flex-nowrap lg:space-x-4 lg:space-y-0 space-y-10 md:flex-col flex-col">
-              <div className="text-white flex space-y-4 flex-nowrap w-full flex-col">
-                <div className="flex w-full items-stretch lg:flex-row md:flex-col flex-col lg:space-y-0 space-y-3 lg:space-x-4">
-                  <div className="w-full">
-                    <StatsBox
-                      title="Uploads"
-                      content={user.upload.count.toString()}
-                      icon={<CloudArrow />}
-                    />
-                  </div>
-
-                  <div className="w-full">
-                    <StatsBox
-                      title="Storage"
-                      content="350mb"
-                      icon={<Server />}
-                    />
-                  </div>
-                  <div className="w-full">
-                    <StatsBox
-                      title="Latency"
-                      content={`${stats.userPing}ms`}
-                      icon={<BarChart />}
-                    />
-                  </div>
-                </div>
-                <div className="flex lg:space-y-0 lg:space-x-4 md:space-x-0 space-x-0 md:space-y-10 space-y-10 lg:flex-row w-full md:flex-col flex-col">
-                  <div className="p-6 bg-polar-200 rounded-md md:p-6 shadow-lg w-full">
-                    <div className="flex items-baseline justify-between ">
-                      <h4 className="text-xl font-bold lg:text-2xl text-snow-100 mt-1">
-                        Recently uploaded File.
-                      </h4>
-                    </div>
-                    <div className="divide-y-2 divide-frost-300 mb-2 mt-3">
-                      <div />
-                      <div />
-                    </div>
-                    <div className="w-full mt-3 hover:shadow-xl duration-700">
-                      <img
-                        src="https://nyc3.digitaloceanspaces.com/kythi.pics/dfa6659b-46f9-5521-9452-6e08f897e59e/6bIAOKVh0b.png"
-                        alt="Recently Uploaded Image"
-                      />
-                      <div className="divide-y-2 divide-aurora-red-300">
-                        <div />
-                        <div />
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-between mt-2 bg-polar-400 rounded-md px-4 border-l-frost-300 border-l-2 py-4 ">
-                      <div className="flex items-center">
-                        <img
-                          src={user.discord?.avatar as string}
-                          className="w-8 h-8 rounded-full mr-2"
-                          alt="User Avatar"
-                        />
-                        <div className="flex flex-col">
-                          <span className="text-sm font-medium text-snow-300">
-                            You, {user.username}
-                          </span>
-                          <span className="text-xs font-medium text-snow-100">
-                            2 hours ago
-                          </span>
-                        </div>
-                      </div>
-                      <Button
-                        size="lg"
-                        variant="danger"
-                        onClick={() => {
-                          setDelete(true);
-                        }}
-                      >
-                        Delete
-                      </Button>
-                    </div>
-                  </div>
-
-                  <div className="p-6 bg-polar-200 rounded-md md:p-6 shadow-lg w-full">
-                    <div className="flex items-baseline justify-between ">
-                      <h4 className="text-xl font-bold lg:text-2xl text-snow-100 mt-1">
-                        Updates, News, and Announcements.
-                      </h4>
-                    </div>
-                    <div className="divide-y-2 divide-frost-300 mb-2 mt-3">
-                      <div />
-                      <div />
-                    </div>
-                    <p className="bg-polar-400 py-2 px-2 rounded-md border-l-frost-300 border-l-2 mt-8 text-snow-200">
-                      Welcome to kythi we thank you for taking an interest in
-                      our service! We are currently in beta and we are working
-                      on a lot of features and bug fixes. We will be adding more
-                      features and bug fixes in the future. We hope you enjoy
-                      your stay!
-                    </p>
-                    <div className="flex items-center justify-between mt-2 bg-polar-400 rounded-md px-2 border-l-frost-300 border-l-2">
-                      <div className="flex items-center mb-4 mt-3">
-                        <img
-                          className="w-10 h-10 rounded-full mr-2"
-                          alt="User Avatar"
-                          src={user.discord?.avatar}
-                        />
-                        <div className="flex flex-col">
-                          <span className="font-medium text-snow-300">
-                            {user.username} - Admin
-                          </span>
-                          <span className="text-sm font-medium text-snow-100">
-                            2 hours ago
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="p-6 bg-polar-200 rounded-md md:p-6 shadow-lg">
-                <div className="flex items-baseline justify-between">
-                  <h4 className="text-xl font-bold lg:text-2xl text-snow-100 mt-1">
-                    Quick Links
-                  </h4>
-                </div>
-                <div className="divide-y-2 divide-frost-300 mb-2 mt-3">
-                  <div />
-                  <div />
-                </div>
-
-                <Button
-                  variant="danger"
-                  cname="w-full mt-6"
-                  onClick={() => router.push("/config")}
-                >
-                  Embed Customizations
-                </Button>
-
-                <Button
-                  variant="danger"
-                  cname="w-full mt-4"
-                  onClick={() => router.push("/config")}
-                >
-                  Config Downloads
-                </Button>
-
-                <Button
-                  cname="w-full mt-4"
-                  onClick={() => setTestimonial(true)}
-                >
-                  Submit a Testimonal
-                </Button>
-                <Button cname="w-full mt-4" onClick={() => setSuggestion(true)}>
-                  Suggest a Feature
-                </Button>
-                <Button cname="w-full mt-4" onClick={() => setShowModal(true)}>
-                  Report a bug
-                </Button>
-              </div>
+            <div className="text-xl text-snow-300 lg:mb-8 mb-4">
+              Member since Dec 3, 2021
             </div>
           </div>
-        </main>
+          <div className="flex lg:flex-row flex-nowrap lg:space-x-4 lg:space-y-0 space-y-10 md:flex-col flex-col">
+            <div className="text-white flex space-y-4 flex-nowrap w-full flex-col">
+              <div className="flex w-full items-stretch lg:flex-row md:flex-col flex-col lg:space-y-0 space-y-3 lg:space-x-4">
+                <div className="w-full">
+                  <StatsBox
+                    title="Uploads"
+                    content={user.upload.count.toString()}
+                    icon={
+                      <CloudUploadIcon className="h-6 w-6 text-aurora-yellow" />
+                    }
+                  />
+                </div>
+
+                <div className="w-full">
+                  <StatsBox
+                    title="Storage"
+                    content="350mb"
+                    icon={
+                      <ServerIcon className="h-6 w-6 text-aurora-red-300" />
+                    }
+                  />
+                </div>
+                <div className="w-full">
+                  <StatsBox
+                    title="Latency"
+                    content={`${stats.userPing}ms`}
+                    icon={
+                      <ChartSquareBarIcon className="h-6 w-6 text-aurora-pink" />
+                    }
+                  />
+                </div>
+              </div>
+              <div className="flex lg:space-y-0 lg:space-x-4 md:space-x-0 space-x-0 md:space-y-10 space-y-10 lg:flex-row w-full md:flex-col flex-col">
+                <div className="p-6 bg-polar-200 rounded-md md:p-6 shadow-lg w-full">
+                  <div className="flex items-baseline justify-between ">
+                    <h4 className="text-xl font-bold lg:text-2xl text-snow-100 mt-1">
+                      Recently uploaded File.
+                    </h4>
+                  </div>
+                  <div className="divide-y-2 divide-white mb-2 mt-3">
+                    <div />
+                    <div />
+                  </div>
+                  <div className="w-full mt-3 hover:shadow-xl duration-700">
+                    <img
+                      src="https://nyc3.digitaloceanspaces.com/kythi.pics/dfa6659b-46f9-5521-9452-6e08f897e59e/6bIAOKVh0b.png"
+                      alt="Recently Uploaded Image"
+                      className="rounded-lg"
+                    />
+                  </div>
+                  <div className="flex items-center justify-between mt-2 bg-polar-400 rounded-md px-4 border-l-frost-300 border-l-2 py-4 ">
+                    <div className="flex items-center">
+                      <img
+                        src={user.discord?.avatar as string}
+                        className="w-8 h-8 rounded-full mr-2"
+                        alt="User Avatar"
+                      />
+                      <div className="flex flex-col">
+                        <span className="text-sm font-medium text-snow-300">
+                          You, {user.username}
+                        </span>
+                        <span className="text-xs font-medium text-snow-100">
+                          2 hours ago
+                        </span>
+                      </div>
+                    </div>
+                    <Button
+                      variant="danger"
+                      onClick={() => {
+                        setDelete(true);
+                      }}
+                    >
+                      Delete
+                    </Button>
+                  </div>
+                </div>
+
+                <div className="p-6 bg-polar-200 rounded-md md:p-6 shadow-lg w-full">
+                  <div className="flex items-baseline justify-between ">
+                    <h4 className="text-xl font-bold lg:text-2xl text-snow-100 mt-1">
+                      Updates, News, and Announcements.
+                    </h4>
+                  </div>
+                  <div className="divide-y-2 divide-white mb-2 mt-3">
+                    <div />
+                    <div />
+                  </div>
+                  <p className="bg-polar-400 py-2 px-2 rounded-md border-l-white border-l-2 mt-8 text-snow-200">
+                    Welcome to kythi we thank you for taking an interest in our
+                    service! We are currently in beta and we are working on a
+                    lot of features and bug fixes. We will be adding more
+                    features and bug fixes in the future. We hope you enjoy your
+                    stay!
+                  </p>
+                  <div className="flex items-center justify-between mt-2 bg-polar-400 rounded-md px-2 border-l-frost-300 border-l-2">
+                    <div className="flex items-center mb-4 mt-3">
+                      <img
+                        className="w-10 h-10 rounded-full mr-2"
+                        alt="User Avatar"
+                        src={user.discord?.avatar}
+                      />
+                      <div className="flex flex-col">
+                        <span className="font-medium text-snow-300">
+                          {user.username} - Admin
+                        </span>
+                        <span className="text-sm font-medium text-snow-100">
+                          2 hours ago
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="p-6 bg-polar-200 rounded-md md:p-6 shadow-lg">
+              <div className="flex items-baseline justify-between">
+                <h4 className="text-xl font-bold lg:text-2xl text-snow-100 mt-1">
+                  Quick Links
+                </h4>
+              </div>
+              <div className="divide-y-2 divide-frost-300 mb-2 mt-3">
+                <div />
+                <div />
+              </div>
+
+              <Button
+                variant="danger"
+                cname="w-full mt-6"
+                onClick={() => router.push("/config")}
+              >
+                Embed Customizations
+              </Button>
+
+              <Button
+                variant="danger"
+                cname="w-full mt-4"
+                onClick={() => router.push("/config")}
+              >
+                Config Downloads
+              </Button>
+
+              <Button cname="w-full mt-4" onClick={() => setTestimonial(true)}>
+                Submit a Testimonal
+              </Button>
+              <Button cname="w-full mt-4" onClick={() => setSuggestion(true)}>
+                Suggest a Feature
+              </Button>
+              <Button cname="w-full mt-4" onClick={() => setShowModal(true)}>
+                Report a bug
+              </Button>
+            </div>
+          </div>
+        </div>
 
         {Delete && (
           <>
@@ -291,7 +292,11 @@ export default function Dashboard() {
                       onClick={() => {
                         API.submitTestimonial(testimonialContent)
                           .then((data) => {
-                            setUser(Object.assign(user, { testimonial: data.testimonial }));
+                            setUser(
+                              Object.assign(user, {
+                                testimonial: data.testimonial,
+                              })
+                            );
                             sendToast(data.message, "success");
                           })
                           .catch((err) => {

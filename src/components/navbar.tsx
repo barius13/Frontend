@@ -1,7 +1,8 @@
 import API from "../api";
 import Link from "next/link";
-import { Fragment } from "react";
+import Button from "./button";
 import * as React from "react";
+import { Fragment } from "react";
 import { useRouter } from "next/router";
 import { useUser } from "../components/user";
 import { sendToast } from "../utils/sendToast";
@@ -24,14 +25,16 @@ interface ButtonProps {
  */
 const NavBarButton: React.FC<ButtonProps> = (props) => {
   return (
-    <button
-      className={`ml-4 py-1.5 px-4 text-sm font-medium rounded-md text-white transition duration-300 mb-1 bg-${
-        props.isHighlighted ? "frost-400" : "polar-400"
-      } hover:bg-${props.isHighlighted ? "frost-300" : "polar-300"} `}
+    <Button
+      cname={`ml-4 py-1.5 text-sm font-medium mb-1 ${
+        props.isHighlighted ? "bg-blue-600" : "bg-polar-400"
+      } 
+      hover:${props.isHighlighted ? "bg-blue-500" : "bg-polar-500"}`}
       onClick={props.onClick}
+      variant="none"
     >
       {props.name}
-    </button>
+    </Button>
   );
 };
 
@@ -56,7 +59,7 @@ const NavBar: React.FC<NavBarProps> = (props) => {
           |
         </span>
 
-        <div className=" hidden md:flex">
+        <div className="hidden md:flex">
           <NavBarButton
             name="Dashboard"
             isHighlighted={props.page === "dash"}

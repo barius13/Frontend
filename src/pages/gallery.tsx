@@ -5,7 +5,7 @@ import { Toaster } from "react-hot-toast";
 import Button from "../components/button";
 import { useUser } from "../components/user";
 import { sendToast } from "../utils/sendToast";
-import { Trashcan, Clipboard } from "../../public/svgs";
+import { ClipboardIcon, TrashIcon } from "@heroicons/react/outline";
 
 export default function Gallery() {
   const router = useRouter();
@@ -66,7 +66,7 @@ export default function Gallery() {
                       )
                     }
                   >
-                    <Clipboard />
+                    <ClipboardIcon className="h-6 w-6" />
                   </Button>
                   <Button
                     variant="danger"
@@ -74,7 +74,7 @@ export default function Gallery() {
                       sendToast("Successfully deleted image!", "success")
                     }
                   >
-                    <Trashcan />
+                    <TrashIcon className="h-6 w-6" />
                   </Button>
                 </div>
               </div>

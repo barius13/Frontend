@@ -1,4 +1,9 @@
-import { Globe, Shield, SwissKnife, FilingCabinet } from "../../public/svgs";
+import {
+  GlobeAltIcon,
+  CollectionIcon,
+  ColorSwatchIcon,
+  ShieldExclamationIcon,
+} from "@heroicons/react/outline";
 
 const MainFeat = () => {
   return (
@@ -33,7 +38,7 @@ const MainFeat = () => {
               <div className="relative flex flex-col mt-4">
                 <div className="px-4 py-5 flex-auto">
                   <div className=" p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-polar-100">
-                    <SwissKnife />
+                    <ColorSwatchIcon className="h-6 w-6 text-blue-500" />
                   </div>
                   <h6 className="text-xl mb-1 font-semibold">Personality</h6>
                   <p className="mb-4 text-blueGray-500">
@@ -45,7 +50,7 @@ const MainFeat = () => {
               <div className="relative flex flex-col min-w-0">
                 <div className="px-4 py-5 flex-auto">
                   <div className="text-black p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-polar-100">
-                    <Shield />
+                    <ShieldExclamationIcon className="text-blue-500 h-6 w-6" />
                   </div>
                   <h6 className="text-xl mb-1 font-semibold">Secure</h6>
                   <p className="mb-4 text-blueGray-500">
@@ -59,7 +64,7 @@ const MainFeat = () => {
               <div className="relative flex flex-col min-w-0 mt-4">
                 <div className="px-4 py-5 flex-auto">
                   <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-polar-100">
-                    <FilingCabinet />
+                    <CollectionIcon className="w-6 h-6 text-blue-500" />
                   </div>
                   <h6 className="text-xl mb-1 font-semibold">
                     Unlimited Storage
@@ -73,7 +78,7 @@ const MainFeat = () => {
               <div className="relative flex flex-col min-w-0">
                 <div className="px-4 py-5 flex-auto">
                   <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-polar-100">
-                    <Globe />
+                    <GlobeAltIcon className="w-6 h-6 text-blue-500" />
                   </div>
                   <h6 className="text-xl mb-1 font-semibold">Custom Domains</h6>
                   <p className="mb-4 text-blueGray-500">

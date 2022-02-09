@@ -1,5 +1,6 @@
 import API from "../api";
 import Link from "next/link";
+import Select from "react-select";
 import { UserEmbed } from "../typings";
 import Nav from "../components/navbar";
 import { useRouter } from "next/router";
@@ -52,96 +53,94 @@ export default function Config() {
         <Toaster />
         <Nav page="config" />
 
-        <main className="py-2 px-8 pb-80 text-white">
-          <div className="text-white">
-            <div className="flex flex-col lg:flex-row md:flex-row md:space-x-4 space-y-2 md:space-y-0 lg:space-y-0 lg:space-x-4 px-10 mt-10">
-              <div className="bg-polar-200 rounded-md p-6 py-8">
-                <h1 className="text-2xl">Downloads</h1>
-                <div className="lg:w-96">
-                  <div className="mt-2 text-snow-100 mb-3">
-                    Configs are created for screenshot uploaders such as the
-                    ones listed below, it allows a user to quickly take images &
-                    videos aswell as upload them through the use of a keybind.
-                  </div>
-                  <div className="flex flex-col md:flex-col space-x-0 lg:flex-row lg:space-x-2 md:space-x-0">
-                    <Button size="xl">ShareX</Button>
-                    <Button size="xl">Magic Cap</Button>
-                  </div>
+        <div className="text-white">
+          <div className="flex flex-col lg:flex-row md:flex-row md:space-x-4 space-y-2 md:space-y-0 lg:space-y-0 lg:space-x-4 p-10">
+            <div className="bg-polar-200 rounded-md p-6 py-8">
+              <h1 className="text-2xl">Downloads</h1>
+              <div className="lg:w-96">
+                <div className="mt-2 text-snow-100 mb-3">
+                  Configs are created for screenshot uploaders such as the ones
+                  listed below, it allows a user to quickly take images & videos
+                  aswell as upload them through the use of a keybind.
                 </div>
-              </div>
-              <div className="bg-polar-200 rounded-md p-6 py-8 w-full">
-                <h1 className="text-2xl">Domains</h1>
-                <div className="lg:w-auto ">
-                  <div className="mt-2 text-snow-100">
-                    Domains are perfect for customising your screenshots as they
-                    allow you to set a custom domain for your screenshots.
-                  </div>
-                  <div className="mt-4 flex rounded-md shadow-sm">
-                    <InputGroup
-                      textOptions={{ roundedLeft: true }}
-                      keepBorder={true}
-                      text="https://"
-                      PlaceHolder="Subdomain"
-                    />
-                    <input
-                      className="px-2 bg-polar-300 focus:outline-none w-28 transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
-                      placeholder="domain"
-                    />
-                    <InputGroup
-                      inputOptions={{ roundedRight: true }}
-                      text="/"
-                      PlaceHolder="FilePath"
-                    />
-                  </div>
-                  <div className="text-snow-100 mt-2">
-                    Your Selected domain is: Roblox.Kythi.pics/penis
-                  </div>
-
-                  <h1 className="mt-3 text-xl text-slate-200 font-medium">
-                    Domain Options
-                  </h1>
-                  <div className="mt-1 text-snow-100">
-                    You can toggle specific domain configurations on and off
-                    here. Currently doesnt work.
-                  </div>
-                  <div className="flex flex-row space-x-3 mt-2">
-                    <div className="space-x-1">
-                      <Toggle
-                        label="Toggle Fake"
-                        checked={Faketoggled}
-                        onChange={setFake}
-                      />
-                    </div>
-                    <div className="space-x-1">
-                      <Toggle
-                        label="Toggle Invis"
-                        checked={invisToggled}
-                        onChange={setInvis}
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <h1 className="mt-3 text-xl text-slate-200 font-medium">
-                    Embed Editor
-                  </h1>
-                  <div className="mt-1 text-snow-100">
-                    The embed editor edits your embed. This should be clear
-                    enough without any more context.
-                  </div>
-                  <Button
-                    cname="mt-2"
-                    onClick={() => {
-                      setEmbed(true);
-                    }}
-                  >
-                    Edit your Embed
-                  </Button>
+                <div className="flex flex-col md:flex-col space-x-0 lg:flex-row lg:space-x-2 md:space-x-0 lg:space-y-0 space-y-2 md:space-y-2">
+                  <Button size="xl">ShareX</Button>
+                  <Button size="xl">Magic Cap</Button>
                 </div>
               </div>
             </div>
+            <div className="bg-polar-200 rounded-md p-6 py-8 w-full">
+              <h1 className="text-2xl">Domains</h1>
+              <div className="lg:w-auto ">
+                <div className="mt-2 text-snow-100">
+                  Domains are perfect for customising your screenshots as they
+                  allow you to set a custom domain for your screenshots.
+                </div>
+                <div className="mt-4 rounded-md shadow-sm flex flex-wrap">
+                  <InputGroup
+                    textOptions={{ roundedLeft: true }}
+                    keepBorder={true}
+                    text="https://"
+                    PlaceHolder="Subdomain"
+                  />
+                  <input
+                    className="px-2 p-2 bg-polar-300 focus:outline-none w-32 transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
+                    placeholder="domain"
+                  />
+                  <InputGroup
+                    inputOptions={{ roundedRight: true }}
+                    text="/"
+                    PlaceHolder="FilePath"
+                  />
+                </div>
+                <div className="text-snow-100 mt-2">
+                  Your Selected domain is: Roblox.Kythi.pics/penis
+                </div>
+
+                <h1 className="mt-3 text-xl text-slate-200 font-medium">
+                  Domain Options
+                </h1>
+                <div className="mt-1 text-snow-100">
+                  You can toggle specific domain configurations on and off here.
+                  Currently doesnt work.
+                </div>
+                <div className="flex flex-row space-x-3 mt-2">
+                  <div className="space-x-1">
+                    <Toggle
+                      label="Toggle Fake"
+                      checked={Faketoggled}
+                      onChange={setFake}
+                    />
+                  </div>
+                  <div className="space-x-1">
+                    <Toggle
+                      label="Toggle Invis"
+                      checked={invisToggled}
+                      onChange={setInvis}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h1 className="mt-3 text-xl text-slate-200 font-medium">
+                  Embed Editor
+                </h1>
+                <div className="mt-1 text-snow-100">
+                  The embed editor edits your embed. This should be clear enough
+                  without any more context.
+                </div>
+                <Button
+                  cname="mt-2"
+                  onClick={() => {
+                    setEmbed(true);
+                  }}
+                >
+                  Edit your Embed
+                </Button>
+              </div>
+            </div>
           </div>
-        </main>
+        </div>
 
         {Embed && (
           <>
@@ -262,9 +261,6 @@ export default function Config() {
                       </div>
                       <div className="flex flex-col">
                         <Button
-                          cname="w-full"
-                          variant="success"
-                          cooldown={1875}
                           onClick={() => {
                             API.updateEmbedSettings(currentEmbed.id, {
                               enabled: currentEmbed.enabled,
@@ -291,14 +287,12 @@ export default function Config() {
                                 sendToast(err.data.message, "error");
                               });
                           }}
+                          variant="success"
                         >
                           Save Changes
                         </Button>
                         <div className="mt-3 flex justify-center space-x-4">
                           <Button
-                            variant="danger"
-                            cname="w-1/2"
-                            cooldown={1875}
                             onClick={() => {
                               API.deleteEmbed(currentEmbed.id)
                                 .then((data) => {
@@ -315,13 +309,12 @@ export default function Config() {
                                   sendToast(err.data.message, "error");
                                 });
                             }}
+                            cname="text-sm w-56"
+                            variant="danger"
                           >
                             Delete Preset
                           </Button>
                           <Button
-                            variant="success"
-                            cname="w-1/2"
-                            cooldown={1875}
                             onClick={() => {
                               API.createEmbed()
                                 .then((data) => {
@@ -335,19 +328,22 @@ export default function Config() {
                                   sendToast(err.data.message, "error");
                                 });
                             }}
+                            cname="text-sm w-56"
+                            variant="success"
                           >
                             Create Preset
                           </Button>
                         </div>
                         <div className="btn-group flex justify-center mt-4">
-                          <button className="btn normal-case bg-polar-300 hover:bg-polar-400 transition duration-200">
+                          <Button cname="btn normal-case bg-polar-300 hover:bg-polar-400 transition duration-200">
                             {"<"}
-                          </button>
+                          </Button>
                           {userEmbeds.map((embed, index) => {
                             return (
-                              <button
+                              <Button
+                                variant="none"
                                 key={index}
-                                className={`
+                                cname={`
                                 btn normal-case ${
                                   currentEmbed.id === embed.id
                                     ? "bg-polar-400 hover:bg-polar-500"
@@ -359,12 +355,12 @@ export default function Config() {
                                 }}
                               >
                                 {index + 1}
-                              </button>
+                              </Button>
                             );
                           })}
-                          <button className="btn normal-case bg-polar-300 hover:bg-polar-400 transition duration-200">
+                          <Button cname="btn normal-case bg-polar-300 hover:bg-polar-400 transition duration-200">
                             {">"}
-                          </button>
+                          </Button>
                         </div>
                       </div>
                     </div>

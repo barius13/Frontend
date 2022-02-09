@@ -1,19 +1,17 @@
 import API from "../api";
-import Link from "next/link";
 import * as React from "react";
 import Button from "../components/button";
 import { Toaster } from "react-hot-toast";
 import { registerState } from "../typings";
 import { sendToast } from "../utils/sendToast";
 import {
-  Home,
-  Gift,
-  EmailAt,
-  Padlock,
-  EyeShown,
-  UserIcon,
-  EyeHidden,
-} from "../../public/svgs";
+  GiftIcon,
+  EyeIcon,
+  EyeOffIcon,
+  AtSymbolIcon,
+  LockClosedIcon,
+  UserCircleIcon,
+} from "@heroicons/react/outline";
 
 export default function Register() {
   const loginShow = () => setShow(!show);
@@ -53,19 +51,14 @@ export default function Register() {
               <div className="divide-y-2 divide-frost-300">
                 <div className="flex justify-between">
                   <div className="text-white font-bold text-xl mb-2">
-                    Register to Kythi.
+                    Register
                   </div>
-                  <Link href="/" passHref>
-                    <Button variant="none" cname="text-white">
-                      <Home />
-                    </Button>
-                  </Link>
                 </div>
                 <div />
               </div>
               <label className="relative block mt-5">
                 <span className="absolute inset-y-0 left-0 flex items-center pl-2">
-                  <UserIcon />
+                  <UserCircleIcon className="h-6 w-6 text-[#D8DEE9]" />
                 </span>
                 <input
                   type="text"
@@ -82,7 +75,7 @@ export default function Register() {
               <div className="mt-4">
                 <label className="relative block">
                   <span className="absolute inset-y-0 left-0 flex items-center pl-2">
-                    <Padlock />
+                    <LockClosedIcon className="h-5 w-5 text-[#D8DEE9]" />
                   </span>
                   <input
                     name="password"
@@ -99,7 +92,11 @@ export default function Register() {
                     onClick={loginShow}
                     cname="absolute inset-y-0 right-0 flex items-center pr-3"
                   >
-                    {show ? <EyeShown /> : <EyeHidden />}
+                    {show ? (
+                      <EyeIcon className="w-5 h-5 text-[#D8DEE9]" />
+                    ) : (
+                      <EyeOffIcon className="w-5 h-5 text-[#D8DEE9]" />
+                    )}
                   </Button>
                 </label>
               </div>
@@ -107,7 +104,7 @@ export default function Register() {
               <div className="mt-4">
                 <label className="relative block">
                   <span className="absolute inset-y-0 left-0 flex items-center pl-2">
-                    <EmailAt />
+                    <AtSymbolIcon className="h-5 w-5 text-[#D8DEE9]" />
                   </span>
                   <input
                     type="email"
@@ -124,7 +121,7 @@ export default function Register() {
               <div className="mt-4">
                 <label className="relative block">
                   <span className="absolute inset-y-0 left-0 flex items-center pl-2">
-<Gift />
+                    <GiftIcon className="h-5 w-5 text-[#D8DEE9]" />
                   </span>
                   <input
                     type="text"
@@ -154,7 +151,7 @@ export default function Register() {
                         });
                     }}
                   >
-                      Register
+                    Register
                   </Button>
                 </span>
               </div>

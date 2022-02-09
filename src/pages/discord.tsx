@@ -4,7 +4,8 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Button from "../components/button";
 import { useUser } from "../components/user";
-import { DoorExit, DiscordWhite } from "../../public/svgs";
+import { LogoutIcon } from "@heroicons/react/outline";
+import { DiscordWhite } from "../../public/svgs";
 
 export default function Discord() {
   const router = useRouter();
@@ -56,7 +57,7 @@ export default function Discord() {
                 }}
               >
                 <div className="flex justify-center">
-                  <DoorExit />
+                  <LogoutIcon className="h-6 w-6 text-white" />
                   <div className="mt-[2px]">Logout</div>
                 </div>
               </Button>

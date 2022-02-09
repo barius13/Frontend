@@ -2,120 +2,117 @@
 @tailwind components;
 @tailwind utilities;
 @layer base {
-  @font-face {
-    font-family: "Whitney";
-    font-style: normal;
-    font-weight: normal;
-    src: url("/fonts/whitney-medium.woff") format("woff");
-  }
+    @font-face {
+        font-family: "Whitney";
+        font-style: normal;
+        font-weight: normal;
+        src: url("/fonts/whitney-medium.woff") format("woff");
+    }
 }
 
 @layer components {
-  .btn {
-    @apply font-bold py-2 px-4 rounded shadow-lg text-white;
-  }
-  .sm {
-    @apply px-2;
-  }
-  .md {
-    @apply px-4;
-  }
-  .lg {
-    @apply px-8;
-  }
-  .xl {
-    @apply px-16;
-  }
-
-  .none {
-  }
-  .default {
-    @apply inline-block font-medium text-sm rounded-lg h-10 bg-blue-600;
-  }
-  .default:hover {
-    @apply bg-frost-300;
-  }
-  .primary {
-    @apply inline-block font-medium text-sm rounded-lg h-10 bg-blue-600;
-  }
-  .primary:hover {
-    @apply bg-blue-700;
-  }
-  .secondary {
-    @apply inline-block font-medium text-sm rounded-lg h-10 bg-purple-600;
-  }
-  .secondary:hover {
-    @apply bg-aurora-red-100;
-  }
-  .success {
-    @apply inline-block font-medium text-sm rounded-lg h-10 bg-green-500 text-white;
-  }
-  .success:hover {
-    @apply bg-green-600 text-white;
-  }
-  .info {
-    @apply inline-block font-medium text-sm rounded-lg h-10 bg-blue-500 text-white;
-  }
-  .info:hover {
-    @apply bg-blue-600 text-white;
-  }
-  .warning {
-    @apply inline-block font-medium text-sm rounded-lg h-10 bg-yellow-400 text-white;
-  }
-  .warning:hover {
-    @apply bg-yellow-500 text-white;
-  }
-  .danger {
-    @apply inline-block font-medium text-sm rounded-lg h-10 bg-red-500 text-white;
-  }
-  .danger:hover {
-    @apply bg-red-600 text-white;
-  }
-  .dark {
-    @apply bg-gray-800 text-white;
-  }
-  .dark:hover {
-    @apply bg-gray-900 text-white;
-  }
-  .disabled {
-    @apply opacity-50 cursor-not-allowed;
-  }
-  .disabled:hover {
-    @apply opacity-50 cursor-not-allowed;
-  }
+    .btn {
+        @apply font-bold rounded p-2 shadow-lg text-white;
+    }
+    .sm {
+        @apply px-2;
+    }
+    .md {
+        @apply px-4;
+    }
+    .lg {
+        @apply px-8;
+    }
+    .xl {
+        @apply px-16;
+    }
+    .none {}
+    .default {
+        @apply inline-block font-medium text-sm rounded-lg h-10 bg-blue-600;
+    }
+    .default:hover {
+        @apply bg-frost-300;
+    }
+    .primary {
+        @apply inline-block font-medium text-sm rounded-lg h-10 bg-blue-600;
+    }
+    .primary:hover {
+        @apply bg-blue-700;
+    }
+    .secondary {
+        @apply inline-block font-medium text-sm rounded-lg h-10 bg-purple-600;
+    }
+    .secondary:hover {
+        @apply bg-aurora-red-100;
+    }
+    .success {
+        @apply inline-block font-medium text-sm rounded-lg h-10 bg-[#239d56] text-white;
+    }
+    .success:hover {
+        @apply bg-[#1f8b4d] text-white;
+    }
+    .info {
+        @apply inline-block font-medium text-sm rounded-lg h-10 bg-blue-500 text-white;
+    }
+    .info:hover {
+        @apply bg-blue-600 text-white;
+    }
+    .warning {
+        @apply inline-block font-medium text-sm rounded-lg h-10 bg-yellow-400 text-white;
+    }
+    .warning:hover {
+        @apply bg-yellow-500 text-white;
+    }
+    .danger {
+        @apply inline-block font-medium text-sm rounded-lg h-10 bg-red-500 text-white;
+    }
+    .danger:hover {
+        @apply bg-red-600 text-white;
+    }
+    .dark {
+        @apply bg-gray-800 text-white;
+    }
+    .dark:hover {
+        @apply bg-gray-900 text-white;
+    }
+    .disabled {
+        @apply opacity-50 cursor-not-allowed;
+    }
+    .disabled:hover {
+        @apply opacity-50 cursor-not-allowed;
+    }
 }
 
 html,
 main,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 ::-webkit-scrollbar {
-  width: 4px;
+    width: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 20px #3b4252;
-  background: #2e3440;
+    box-shadow: inset 0 0 20px #3b4252;
+    background: #2e3440;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #5e81ac;
+    background: #5e81ac;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #81a1c1;
+    background: #81a1c1;
 }
