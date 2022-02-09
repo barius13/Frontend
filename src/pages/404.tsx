@@ -1,9 +1,10 @@
-import Link from "next/link";
+import { useRouter } from "next/router";
 import Button from "../components/button";
 import Footer from "../components/footer";
 import { useUser } from "../components/user";
 
 export default function Page404() {
+  const router = useRouter();
   const { user } = useUser();
 
   return (
@@ -18,13 +19,17 @@ export default function Page404() {
               The page you are looking for is unavailble or does not exist.
             </p>
 
-            <Link href={user ? "/dashboard" : "/"} passHref>
-              <Button size="sm" cname="mt-4">{user ? "Dashboard" : "Home"}</Button>
-            </Link>
+            <Button
+              size="lg"
+              variant="info"
+              cname="mt-4"
+              onClick={() => router.push(user ? "/dashboard" : "/")}
+            >
+              {user ? "Dashboard" : "Home"}
+            </Button>
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

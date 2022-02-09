@@ -65,10 +65,6 @@ export default class API {
     return this.request("/users/@me/testimonials", "DELETE", {});
   }
 
-  static getUserTestimony() {
-    return this.request("/users/@me/testimonials", "GET", {});
-  }
-
   static getCurrentSession() {
     return this.request("/auth/session", "GET", {});
   }

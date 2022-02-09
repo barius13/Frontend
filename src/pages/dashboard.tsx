@@ -18,10 +18,6 @@ export default function Dashboard() {
   const [showModal, setShowModal] = React.useState(false);
   const [showSuggestion, setSuggestion] = React.useState(false);
   const [showTestimonial, setTestimonial] = React.useState(false); // Testimonial modal
-  const [testimony, setTestimony] = useState<string | null>(null);
-  const [testimonialClicked, setTestimonialClicked] = useState(false);
-  const [testimonialDeleteClicked, setTestimonialDeleteClicked] =
-    useState(false);
 
   const [stats, setStats] = React.useState({
     userPing: undefined,
@@ -36,12 +32,6 @@ export default function Dashboard() {
       API.getPing().then((ping) => {
         setStats({ ...stats, userPing: ping });
       });
-
-      API.getUserTestimony()
-        .then((data) => {
-          setTestimony(data.testimony.content);
-        })
-        .catch(() => null);
     }
   }, [document, router, user]);
 
@@ -184,14 +174,23 @@ export default function Dashboard() {
                   <div />
                   <div />
                 </div>
-                <Link href="/config" passHref>
-                  <Button variant="danger" cname="w-full mt-6">
-                    Embed Customizations
-                  </Button>
-                </Link>
-                <Link href="/config" passHref>
-                  <Button cname="w-full mt-4">Config Downloads</Button>
-                </Link>
+
+                <Button
+                  variant="danger"
+                  cname="w-full mt-6"
+                  onClick={() => router.push("/config")}
+                >
+                  Embed Customizations
+                </Button>
+
+                <Button
+                  variant="danger"
+                  cname="w-full mt-4"
+                  onClick={() => router.push("/config")}
+                >
+                  Config Downloads
+                </Button>
+
                 <Button
                   cname="w-full mt-4"
                   onClick={() => setTestimonial(true)}

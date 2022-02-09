@@ -51,7 +51,7 @@ function Host({ Component, pageProps }: AppProps) {
           description: "Kythi File Host is a new service currently being made.",
         }}
       />
-      <body className="bg-polar-100">
+      <main className="bg-polar-100">
         {user === undefined ? (
           <Loading status={status} />
         ) : (
@@ -59,7 +59,7 @@ function Host({ Component, pageProps }: AppProps) {
             <Component {...pageProps} />
           </UserProvider>
         )}
-      </body>
+      </main>
     </>
   );
 }

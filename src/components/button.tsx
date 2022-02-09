@@ -1,5 +1,5 @@
 import { Spinner } from "../../public/svgs";
-import { FC, useState, MouseEventHandler } from "react";
+import { FC, useRef, useState, useEffect, MouseEventHandler } from "react";
 
 interface Props {
   id?: string;
@@ -33,7 +33,14 @@ const Button: FC<Props> = ({
   cooldown = null,
   buttonType = "button",
 }) => {
+  const mounted = useRef(false);
   const [isCooldown, setCoolDown] = useState(false);
+
+  useEffect(() => {
+    mounted.current = true;
+
+    return () => { mounted.current = false; };
+}, []);
 
   return (
     <button
@@ -46,7 +53,9 @@ const Button: FC<Props> = ({
           if (isCooldown) return;
 
           setCoolDown(true);
-          setTimeout(() => setCoolDown(false), cooldown);
+          setTimeout(() => {
+            if (mounted.current) setCoolDown(false);
+          }, cooldown);
         }
 
         if (onClick) onClick(ctx);

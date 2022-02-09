@@ -8,7 +8,6 @@ import { useState, useEffect } from "react";
 import { useUser } from "../components/user";
 import { sendToast } from "../utils/sendToast";
 import {
-  Spinner,
   Padlock,
   UserIcon,
   EyeShown,
@@ -21,7 +20,6 @@ export default function Login() {
   const { user, setUser } = useUser();
   const loginShow = () => setShow(!show);
   const [show, setShow] = useState(false);
-  const [loginClicked, setLoginClicked] = useState(false);
   const [login, setLogin] = useState<loginState>({
     username: null,
     password: null,
@@ -111,10 +109,8 @@ export default function Login() {
                   <Button
                     id="loginButton"
                     cname="w-full"
+                    cooldown={1875}
                     onClick={() => {
-                      if (loginClicked) return;
-                      setLoginClicked(true);
-
                       API.login(login)
                         .then((data) => {
                           setUser(data.user);
@@ -131,31 +127,25 @@ export default function Login() {
                         })
                         .catch((err) => {
                           sendToast(err.data.message, "error");
-
-                          setTimeout(() => {
-                            setLoginClicked(false);
-                          }, 1875);
                         });
                     }}
                   >
-                    <div className="flex justify-center">
-                      {loginClicked && <Spinner />}
-                      Login
-                    </div>
+                    Login
                   </Button>
                 </span>
                 <span className="block w-full rounded-md shadow-sm mt-3 text-white text-sm">
-                  <Link
-                    href="https://api.kythi.com/auth/discord/login"
-                    passHref
+                  <Button
+                    cname="bg-[#5865F2] hover:bg-[#7289DA] w-full"
+                    onClick={() =>
+                      (location.href =
+                        "https://api.kythi.com/auth/discord/login")
+                    }
                   >
-                    <Button cname="bg-[#5865F2] hover:bg-[#7289DA] w-full">
-                      <div className="flex justify-center">
-                        <DiscordWhite />
-                        Login With Discord
-                      </div>
-                    </Button>
-                  </Link>
+                    <div className="flex justify-center">
+                      <DiscordWhite />
+                      Login With Discord
+                    </div>
+                  </Button>
                 </span>
               </div>
             </div>

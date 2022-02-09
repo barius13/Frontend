@@ -8,7 +8,6 @@ import { sendToast } from "../utils/sendToast";
 import {
   Home,
   Gift,
-  Spinner,
   EmailAt,
   Padlock,
   EyeShown,
@@ -19,7 +18,6 @@ import {
 export default function Register() {
   const loginShow = () => setShow(!show);
   const [show, setShow] = React.useState(false);
-  const [registerClicked, setRegisterClicked] = React.useState(false);
   const [register, setRegister] = React.useState<registerState>({
     username: null,
     password: null,
@@ -145,31 +143,18 @@ export default function Register() {
                   <Button
                     id="submitButton"
                     cname="w-full -mt-1"
+                    cooldown={1875}
                     onClick={() => {
-                      if (registerClicked) return;
-                      setRegisterClicked(true);
-
                       API.register(register)
                         .then((data) => {
                           sendToast(data.message, "success");
-
-                          setTimeout(() => {
-                            setRegisterClicked(false);
-                          }, 1875);
                         })
                         .catch((err) => {
                           sendToast(err.data.message, "error");
-
-                          setTimeout(() => {
-                            setRegisterClicked(false);
-                          }, 1875);
                         });
                     }}
                   >
-                    <div className="flex justify-center">
-                      {registerClicked && <Spinner />}
                       Register
-                    </div>
                   </Button>
                 </span>
               </div>
