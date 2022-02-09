@@ -15,7 +15,7 @@ export default function Config() {
   const router = useRouter();
   const { user, setUser } = useUser();
   const [Embed, setEmbed] = useState(false);
-  const [userEmbeds] = useState(user?.embeds);
+  const [userEmbeds, setUserEmbeds] = useState(user?.embeds);
   const [Faketoggled, setFake] = useState(false);
   const [invisToggled, setInvis] = useState(false);
   const [currentEmbed, setCurrentEmbed] = useState(user?.embeds[0]);
@@ -274,15 +274,10 @@ export default function Config() {
                               description: currentEmbed.description,
                             })
                               .then((data) => {
-                                setUser({
-                                  ...user,
-                                  embeds: [
-                                    ...userEmbeds.filter(
-                                      (embed) => embed.id !== currentEmbed.id
-                                    ),
-                                    currentEmbed,
-                                  ],
-                                });
+                                const embeds = userEmbeds.map((embed) => embed.id === currentEmbed.id ? currentEmbed : embed)
+
+                                setUser(Object.assign(user, { embeds }));
+                                setUserEmbeds(embeds);
                                 sendToast(data.message, "success");
                               })
                               .catch((err) => {

@@ -5,6 +5,7 @@ export interface UserCtx {
   user: User;
 
   setUser(user: User): void;
+  setUser(cb: (user: User) => User): void;
 }
 
 export const UserProvider = ({ value, children }: ProviderProps<any>) => {
