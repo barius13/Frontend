@@ -31,15 +31,14 @@ function Host({ Component, pageProps }: AppProps) {
           }, 1000);
         });
     }
-
     if (!user) getSession();
   }, [user]);
 
   return (
     <>
       <NextSeo
-        title="Kythi File Host"
-        description="Kythi File Host is a new service currently being made."
+        title="Kythi."
+        description="Kythi.com is an image hosting service."
         additionalMetaTags={[
           {
             property: "theme-color",
@@ -47,11 +46,11 @@ function Host({ Component, pageProps }: AppProps) {
           },
         ]}
         openGraph={{
-          title: "Hosting",
-          description: "Kythi File Host is a new service currently being made.",
+          title: "Kythi.",
+          description: "Kythi.com is an image hosting service.",
         }}
       />
-      <main className="bg-polar-100">
+      <body className="bg-polar-100">
         {user === undefined ? (
           <Loading status={status} />
         ) : (
@@ -59,7 +58,7 @@ function Host({ Component, pageProps }: AppProps) {
             <Component {...pageProps} />
           </UserProvider>
         )}
-      </main>
+      </body>
     </>
   );
 }
