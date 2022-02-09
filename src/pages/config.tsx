@@ -296,13 +296,20 @@ export default function Config() {
                             onClick={() => {
                               API.deleteEmbed(currentEmbed.id)
                                 .then((data) => {
-                                  const embeds = userEmbeds.filter(
-                                    (embed) => embed.id !== currentEmbed.id
+                                  const currentIndex = userEmbeds.findIndex(
+                                    (embed) => embed.id === currentEmbed.id
                                   );
+                                  const embeds = userEmbeds.filter(
+                                    (_, i) => i !== currentIndex
+                                  );
+                                  const newIndex =
+                                    (embeds.length - 1) / 2 < currentIndex
+                                      ? embeds.length - 1
+                                      : 0;
 
                                   setUser(Object.assign(user, { embeds }));
-                                  setCurrentEmbed(embeds[0]);
                                   setUserEmbeds(embeds);
+                                  setCurrentEmbed(embeds[newIndex]);
                                   sendToast(data.message, "success");
                                 })
                                 .catch((err) => {
