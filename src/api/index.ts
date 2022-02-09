@@ -77,6 +77,10 @@ export default class API {
     return this.request("/auth/logOut", "POST", {});
   }
 
+  static createEmbed() {
+    return this.request("/users/@me/settings/embeds", "POST", {});
+  }
+
   static updateEmbedSettings(
     id: string,
     data: Omit<UserEmbed, "id" | "userId">
@@ -94,6 +98,10 @@ export default class API {
     return this.request("/users/@me/settings/embeds/" + id, "PATCH", {
       body: dataClone,
     });
+  }
+
+  static deleteEmbed(id: string) {
+    return this.request("/users/@me/settings/embeds/" + id, "DELETE", {});
   }
 
   static register(data: registerState) {

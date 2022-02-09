@@ -261,7 +261,10 @@ export default function Config() {
                         </div>
                       </div>
                       <div className="flex flex-col">
-                        <label
+                        <Button
+                          cname="w-full"
+                          variant="success"
+                          cooldown={1875}
                           onClick={() => {
                             API.updateEmbedSettings(currentEmbed.id, {
                               enabled: currentEmbed.enabled,
@@ -274,7 +277,11 @@ export default function Config() {
                               description: currentEmbed.description,
                             })
                               .then((data) => {
-                                const embeds = userEmbeds.map((embed) => embed.id === currentEmbed.id ? currentEmbed : embed)
+                                const embeds = userEmbeds.map((embed) =>
+                                  embed.id === currentEmbed.id
+                                    ? currentEmbed
+                                    : embed
+                                );
 
                                 setUser(Object.assign(user, { embeds }));
                                 setUserEmbeds(embeds);
@@ -284,33 +291,53 @@ export default function Config() {
                                 sendToast(err.data.message, "error");
                               });
                           }}
-                          className="bg-[#239d56] btn hover:bg-[#1f8b4d] capitalize cursor-pointer text-center text-white font-medium border-0"
                         >
                           Save Changes
-                        </label>
+                        </Button>
                         <div className="mt-3 flex justify-center space-x-4">
-                          <button
+                          <Button
+                            variant="danger"
+                            cname="w-1/2"
+                            cooldown={1875}
                             onClick={() => {
-                              sendToast(
-                                "Successfully deleted preset!",
-                                "success"
-                              );
+                              API.deleteEmbed(currentEmbed.id)
+                                .then((data) => {
+                                  const embeds = userEmbeds.filter(
+                                    (embed) => embed.id !== currentEmbed.id
+                                  );
+
+                                  setUser(Object.assign(user, { embeds }));
+                                  setCurrentEmbed(embeds[0]);
+                                  setUserEmbeds(embeds);
+                                  sendToast(data.message, "success");
+                                })
+                                .catch((err) => {
+                                  sendToast(err.data.message, "error");
+                                });
                             }}
-                            className="bg-aurora-red-200 text-sm hover:bg-aurora-red-400 duration-300 normal-case btn border-0 w-56"
                           >
                             Delete Preset
-                          </button>
-                          <button
+                          </Button>
+                          <Button
+                            variant="success"
+                            cname="w-1/2"
+                            cooldown={1875}
                             onClick={() => {
-                              sendToast(
-                                "Successfully created preset!",
-                                "success"
-                              );
+                              API.createEmbed()
+                                .then((data) => {
+                                  const embeds = [...userEmbeds, data.embed];
+
+                                  setUser(Object.assign(user, { embeds }));
+                                  setUserEmbeds(embeds);
+                                  sendToast(data.message, "success");
+                                })
+                                .catch((err) => {
+                                  sendToast(err.data.message, "error");
+                                });
                             }}
-                            className="bg-[#239d56] hover:bg-[#1f8b4d] duration-300 text-sm btn normal-case border-0 w-56"
                           >
                             Create Preset
-                          </button>
+                          </Button>
                         </div>
                         <div className="btn-group flex justify-center mt-4">
                           <button className="btn normal-case bg-polar-300 hover:bg-polar-400 transition duration-200">
