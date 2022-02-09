@@ -53,18 +53,6 @@ export default class API {
     });
   }
 
-  static editTestimonial(content: string) {
-    return this.request("/users/@me/testimonials", "PATCH", {
-      body: {
-        content,
-      },
-    });
-  }
-
-  static deleteTestimonial() {
-    return this.request("/users/@me/testimonials", "DELETE", {});
-  }
-
   static getCurrentSession() {
     return this.request("/auth/session", "GET", {});
   }

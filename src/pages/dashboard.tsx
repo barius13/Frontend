@@ -13,11 +13,18 @@ import { Server, BarChart, CloudArrow } from "../../public/svgs";
 
 export default function Dashboard() {
   const router = useRouter();
-  const { user } = useUser();
-  const [Delete, setDelete] = React.useState(false); // Delete Modal
+  const { user, setUser } = useUser();
+  const [testimonialContent, setTestimonialContent] = useState(
+    user?.testimonial?.content
+  );
+  
+  {
+    /* modals (these should be stored inside the component soon) */
+  }
+  const [Delete, setDelete] = React.useState(false);
   const [showModal, setShowModal] = React.useState(false);
   const [showSuggestion, setSuggestion] = React.useState(false);
-  const [showTestimonial, setTestimonial] = React.useState(false); // Testimonial modal
+  const [showTestimonial, setTestimonial] = React.useState(false);
 
   const [stats, setStats] = React.useState({
     userPing: undefined,
@@ -274,13 +281,22 @@ export default function Dashboard() {
                     <textarea
                       id="testimonyInput"
                       placeholder="Testimonial Description"
-                      value=""
-                      className="bg-polar-300 mt-3 h-32 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
+                      value={testimonialContent}
+                      onChange={(ctx) =>
+                        setTestimonialContent(ctx.target.value)
+                      }
+                      className="bg-polar-300 mt-3 h-32 w-full rounded-md p-2 hover:bg-polar-400 text-white focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
                     />
                     <Button
                       onClick={() => {
-                        setTestimonial(false);
-                        sendToast("Testimonial submitted!", "success");
+                        API.submitTestimonial(testimonialContent)
+                          .then((data) => {
+                            setUser(Object.assign(user, { testimonial: data.testimonial }));
+                            sendToast(data.message, "success");
+                          })
+                          .catch((err) => {
+                            sendToast(err.data.message, "error");
+                          });
                       }}
                       cname="bg-polar-300 hover:bg-polar-400 w-full mt-2 h-11"
                     >

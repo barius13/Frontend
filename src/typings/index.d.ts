@@ -15,6 +15,7 @@ export interface User {
   uploadKey: string | null;
   upload: UploadSettings;
   embeds: UserEmbed[];
+  testimonial: Testimonial;
 }
 
 interface Invite {
@@ -24,17 +25,26 @@ interface Invite {
   user?: User;
 }
 
+interface Testimonial {
+  id: string;
+  content: string;
+  verified: boolean;
+  messageId: string;
+  authorId: string;
+  author?: User;
+}
+
 interface UserEmbed {
-  id: string
-  enabled: boolean
-  title: string | null
-  description: string | null
-  color: string | null
-  authorText: string | null
-  authorUrl: string | null
-  siteText: string | null
-  siteUrl: string | null
-  userId: string
+  id: string;
+  enabled: boolean;
+  title: string | null;
+  description: string | null;
+  color: string | null;
+  authorText: string | null;
+  authorUrl: string | null;
+  siteText: string | null;
+  siteUrl: string | null;
+  userId: string;
 }
 
 interface UploadSettings {
