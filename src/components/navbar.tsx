@@ -29,7 +29,7 @@ const NavBarButton: React.FC<ButtonProps> = (props) => {
       cname={`ml-4 py-1.5 text-sm font-medium mb-1 ${
         props.isHighlighted ? "bg-blue-600" : "bg-polar-400"
       } 
-      hover:${props.isHighlighted ? "bg-blue-500" : "bg-polar-500"}`}
+      ${props.isHighlighted ? "hover:bg-blue-500" : "hover:bg-polar-600"}`}
       onClick={props.onClick}
       variant="none"
     >
