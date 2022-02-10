@@ -61,8 +61,10 @@ export default class API {
     return this.request("/auth/logOut", "POST", {});
   }
 
-  static createEmbed() {
-    return this.request("/users/@me/settings/embeds", "POST", {});
+  static createEmbed(embed?: Omit<UserEmbed, "id" | "userId">) {
+    return this.request("/users/@me/settings/embeds", "POST", {
+      body: embed,
+    });
   }
 
   static updateEmbedSettings(

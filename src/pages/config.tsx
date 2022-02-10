@@ -38,6 +38,34 @@ export default function Config() {
       .replaceAll(/:timestamp(-[^}]+)?:/gi, new Date().toLocaleString());
   }
 
+  function createEmbed(
+    data?: Omit<UserEmbed, "id" | "userId">,
+    currentIndex?: number
+  ) {
+    API.createEmbed(data)
+      .then((data) => {
+        setUser((user) =>
+          Object.assign(user, { embeds: [...user.embeds, data.embed] })
+        );
+        setUserEmbeds((userEmbeds) => {
+          if (currentIndex) {
+            userEmbeds.splice(currentIndex, 0, data.embed);
+            return userEmbeds;
+          }
+
+          return [...userEmbeds, data.embed];
+        });
+
+        sendToast(
+          currentIndex ? "Successfully restored embed profile." : data.message,
+          "success"
+        );
+      })
+      .catch((err) => {
+        sendToast(err.data.message, "error");
+      });
+  }
+
   useEffect(() => {
     if (!user) {
       router.push("/");
@@ -264,7 +292,7 @@ export default function Config() {
                           onClick={() => {
                             API.updateEmbedSettings(currentEmbed.id, {
                               enabled: currentEmbed.enabled,
-                              color: currentEmbed.color ?? "",
+                              color: currentEmbed.color,
                               siteText: currentEmbed.siteText,
                               siteUrl: currentEmbed.siteUrl,
                               authorText: currentEmbed.authorText,
@@ -296,6 +324,8 @@ export default function Config() {
                             onClick={() => {
                               API.deleteEmbed(currentEmbed.id)
                                 .then((data) => {
+                                  const { embed, message } = data;
+
                                   const currentIndex = userEmbeds.findIndex(
                                     (embed) => embed.id === currentEmbed.id
                                   );
@@ -310,7 +340,33 @@ export default function Config() {
                                   setUser(Object.assign(user, { embeds }));
                                   setUserEmbeds(embeds);
                                   setCurrentEmbed(embeds[newIndex]);
-                                  sendToast(data.message, "success");
+
+                                  sendToast(
+                                    <>
+                                      {message + " "}
+                                      <button
+                                        className="hover:underline text-white"
+                                        onClick={() =>
+                                          createEmbed(
+                                            {
+                                              enabled: embed.enabled,
+                                              color: embed.color,
+                                              siteText: embed.siteText,
+                                              siteUrl: embed.siteUrl,
+                                              authorText: embed.authorText,
+                                              authorUrl: embed.authorUrl,
+                                              title: embed.title,
+                                              description: embed.description,
+                                            },
+                                            currentIndex
+                                          )
+                                        }
+                                      >
+                                        Restore Embed
+                                      </button>
+                                    </>,
+                                    "success"
+                                  );
                                 })
                                 .catch((err) => {
                                   sendToast(err.data.message, "error");
@@ -322,19 +378,7 @@ export default function Config() {
                             Delete Preset
                           </Button>
                           <Button
-                            onClick={() => {
-                              API.createEmbed()
-                                .then((data) => {
-                                  const embeds = [...userEmbeds, data.embed];
-
-                                  setUser(Object.assign(user, { embeds }));
-                                  setUserEmbeds(embeds);
-                                  sendToast(data.message, "success");
-                                })
-                                .catch((err) => {
-                                  sendToast(err.data.message, "error");
-                                });
-                            }}
+                            onClick={() => createEmbed()}
                             cname="text-sm w-56"
                             variant="success"
                           >

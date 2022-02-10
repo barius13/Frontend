@@ -1,7 +1,7 @@
 import toast from "react-hot-toast";
 import { CheckmarkIcon, ErrorIcon } from "react-hot-toast";
 
-export const sendToast = (content: string, toastType: "success" | "error") =>
+export const sendToast = (content: any, toastType: "success" | "error") =>
   toast.custom(
     (t) => (
       <div
@@ -19,7 +19,7 @@ export const sendToast = (content: string, toastType: "success" | "error") =>
           <h1 className={`text-base text-gray-200 font-semibold mr-auto w-60`}>
             {toastType === "success" ? "Success" : "Error"}
           </h1>
-          <p className="text-sm text-gray-400">{content}</p>
+          <span className="text-sm text-gray-400">{content}</span>
         </div>
       </div>
     ),
