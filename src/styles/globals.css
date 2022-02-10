@@ -12,7 +12,7 @@
 
 @layer components {
     .btn {
-        @apply font-bold rounded p-2 shadow-lg text-white;
+        @apply font-medium rounded p-2 shadow-lg text-white;
     }
     .sm {
         @apply px-2;
@@ -70,10 +70,10 @@
         @apply bg-red-600 text-white;
     }
     .dark {
-        @apply bg-gray-800 text-white;
+        @apply bg-polar-300 text-white;
     }
     .dark:hover {
-        @apply bg-gray-900 text-white;
+        @apply bg-polar-400 text-white;
     }
     .disabled {
         @apply opacity-50 cursor-not-allowed;
