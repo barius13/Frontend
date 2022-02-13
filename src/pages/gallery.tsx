@@ -34,7 +34,7 @@ export default function Gallery() {
       <Nav page="gallery" />
       <div className="text-white">
         <div className="px-6">
-          <div className="flex items-center pt-4 mb-10 flex-col ">
+          <div className="flex items-center mt-3 mb-10 flex-col ">
             <span className="text-5xl font-bold text-snow-300">Gallery</span>
             <span className="text-2xl font-medium text-snow-100">
               The perfect area to view & manage your uploaded files.
