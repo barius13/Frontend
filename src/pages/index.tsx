@@ -18,13 +18,13 @@ export default function Index() {
             <h1 className="text-3xl font-bold text-white md:text-4xl lg:text-5xl md:mb-4 lg:mb-2">
               Kythi.
             </h1>
-            <p className="text-lg text-gray-200 xl:text-xl lg:mb-8 xl:mb-10">
+            <p className="text-lg text-gray-200 xl:text-xl lg:mb-8 xl:mb-4">
               Upload files seamlessly with custom links & customisable embeds.
             </p>
-            <div className="flex mb-6 space-x-3 mt-5">
+            <div className="flex mb-5 md:space-x-3 mt-5 lg:flex-row md:flex-row flex-col">
               <Link href={user ? "/dashboard" : "/login"}>
                 <a>
-                  <Button variant="primary" size="xl">
+                  <Button variant="primary" size="xl" cname="mb-2 w-full">
                     {user ? "Dashboard" : "Login"}
                   </Button>
                 </a>
@@ -34,7 +34,7 @@ export default function Index() {
                   <Button
                     variant="primary"
                     size="xl"
-                    cname={`${user && "invisible"}`}
+                    cname={`${user && "invisible"} w-full`}
                   >
                     Register
                   </Button>
