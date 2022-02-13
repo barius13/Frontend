@@ -3,12 +3,19 @@ import { Switch } from "@headlessui/react";
 
 interface Toggle {
   label: string;
+  cname?: string;
   tooltip?: string;
   checked: boolean;
   onChange: (e: boolean) => void;
 }
 
-const Toggle: FC<Toggle> = ({ label, checked, onChange, tooltip }) => {
+const Toggle: FC<Toggle> = ({
+  label,
+  checked,
+  onChange,
+  tooltip,
+  cname = "",
+}) => {
   return (
     <Switch.Group>
       <div className="flex group lg:flex-row md:flex-row flex-col">
@@ -23,14 +30,14 @@ const Toggle: FC<Toggle> = ({ label, checked, onChange, tooltip }) => {
               checked
                 ? "translate-x-6 bg-aurora-green"
                 : "translate-x-1 bg-aurora-red-300"
-            } inline-block w-4 h-4 transform transition ease-in-out duration-200 rounded-full`}
+            } inline-block w-4 h-4 transition ease-in-out duration-200 rounded-full`}
           />
         </Switch>
-        <div className="absolute hidden md:mt-8 mt-10 lg:mt-8 group-hover:flex">
-          <span className="z-10 max-w-md p-4 flex text-sm text-snow-100 font-bold rounded bg-polar-300 shadow-2xl">
-            {tooltip}
-          </span>
-        </div>
+        <span
+          className={`${cname} absolute hidden md:mt-8 mt-10 lg:mt-8 group-hover:flex z-10 max-w-md p-4  text-sm text-snow-100 font-bold rounded bg-polar-300 shadow-2xl`}
+        >
+          {tooltip}
+        </span>
       </div>
     </Switch.Group>
   );

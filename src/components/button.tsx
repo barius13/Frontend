@@ -1,4 +1,6 @@
+import { Fragment } from "react";
 import { Spinner } from "../../public/svgs";
+import { Transition } from "@headlessui/react";
 import { FC, useRef, useState, useEffect, MouseEventHandler } from "react";
 
 interface Props {
@@ -39,13 +41,17 @@ const Button: FC<Props> = ({
   useEffect(() => {
     mounted.current = true;
 
-    return () => { mounted.current = false; };
-}, []);
+    return () => {
+      mounted.current = false;
+    };
+  }, []);
 
   return (
     <button
       id={id}
-      className={`btn ${variant} ${size} ${disabled && "disabled"} ${cname}`}
+      className={`btn ${variant} ${size} ${
+        disabled && "disabled"
+      } ${cname} transform transition ease-in-out duration-300`}
       type={buttonType}
       disabled={disabled}
       onClick={(ctx) => {
