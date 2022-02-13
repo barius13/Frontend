@@ -101,11 +101,18 @@ export default function Login() {
                   </a>
                 </label>
               </div>
-              <Link href="/reset" passHref>
-                <a className="flex ml-1 mt-3 font-medium text-snow-200 hover:text-snow-100 text-sm">
-                  Forgotten your password?
-                </a>
-              </Link>
+              <div className="flex justify-between">
+                <Link href="/reset" passHref>
+                  <a className="flex ml-1 mt-3 font-medium text-snow-200 hover:text-snow-100 text-sm">
+                    Forgotten your password?
+                  </a>
+                </Link>
+                <Link href="/register" passHref>
+                  <a className="flex ml-1 mt-3 font-medium text-snow-200 hover:text-snow-100 text-sm">
+                    Don't have an account?
+                  </a>
+                </Link>
+              </div>
               <div className="mt-3">
                 <span className="block w-full rounded-md shadow-sm">
                   <Button
