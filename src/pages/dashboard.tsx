@@ -318,12 +318,36 @@ export default function Dashboard() {
                   <div />
                   <div />
                 </div>
-                <span className=" text-snow-100">File Upload.</span>
+                <span className=" text-snow-100">File Upload</span>
                 <input
                   type="file"
-                  className="block w-full text-sm text-snow-100 rounded-r bg-polar-300 file:mr-3 file:p-2 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-polar-400 file:text-aurora-yellow hover:file:bg-polar-600"
+                  className="block cursor-pointer w-full text-sm text-snow-100 rounded-r bg-polar-300 file:mr-3 file:cursor-pointer file:p-2 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-polar-400 file:text-aurora-yellow hover:file:bg-polar-600"
+                  onChange={(ctx) => {
+                    API.uploadImage(
+                      user.uploadKey as string,
+                      ctx.target.files![0]
+                    )
+                      .then((data) => {
+                        navigator.clipboard.writeText(data.imageURL);
+                        sendToast(
+                          "Successfully uploaded image, url has been copied to your clipboard.",
+                          "success"
+                        );
+                      })
+                      .catch((err) => {
+                        sendToast(
+                          <>
+                            Something went wrong. If this error persists please
+                            contact support.
+                            <br />
+                            Error Returned: {err.data.message}
+                          </>,
+                          "error"
+                        );
+                      });
+                  }}
                 />
-                <div className=" text-snow-100 mt-2 mb-1">Edit Portfolio.</div>
+                <div className=" text-snow-100 mt-2 mb-1">Edit Portfolio</div>
                 <div className="flex space-x-2">
                   <Button variant="danger" cname="w-full">
                     Privated

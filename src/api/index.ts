@@ -61,6 +61,39 @@ export default class API {
     return this.request("/auth/logOut", "POST", {});
   }
 
+  static uploadImage(key: string, data: any): Promise<any>  {
+    return new Promise((resolve, reject) => {
+      const formData = new FormData();
+      formData.append("file", data);
+
+      if (!data.type.match(/(image|video)\/(png|jpeg|gif|mp4)/i)) {
+        reject({
+          data: {
+            message: "Invalid File Type",
+          },
+        });
+      }
+
+      if (data.size > 100000000) {
+        reject({
+          data: {
+            message: "File is too big. Max file size is 100MB.",
+          },
+        });
+      }
+
+      this.request("/upload/sharex", "POST", {
+        body: formData,
+        headers: {
+          "Content-Type": "multipart/form-data",
+          authorization: key,
+        },
+      })
+        .then(resolve)
+        .catch(reject);
+    });
+  }
+
   static createEmbed(embed?: Omit<UserEmbed, "id" | "userId">) {
     return this.request("/users/@me/settings/embeds", "POST", {
       body: embed,
