@@ -17,9 +17,9 @@ export default function Config() {
   const router = useRouter();
   const { user, setUser } = useUser();
   const [Embed, setEmbed] = useState(false);
-  const [userEmbeds, setUserEmbeds] = useState(user?.embeds);
   const [Faketoggled, setFake] = useState(false);
   const [invisToggled, setInvis] = useState(false);
+  const [userEmbeds, setUserEmbeds] = useState(user?.embeds);
   const [currentEmbed, setCurrentEmbed] = useState(user?.embeds[0]);
 
   function updateEmbed(k: keyof UserEmbed, v: string | boolean | null) {
@@ -86,15 +86,15 @@ export default function Config() {
           <div className="flex flex-col lg:flex-row md:flex-row md:space-x-4 space-y-2 md:space-y-0 lg:space-y-0 lg:space-x-4 p-10">
             <div className="bg-polar-200 rounded-md p-6 py-8">
               <h1 className="text-2xl">Downloads</h1>
-              <div className="lg:w-96">
-                <div className="mt-2 text-snow-100 mb-3">
+              <div className="">
+                <div className="mt-2 text-snow-100 mb-3 ">
                   Configs are created for screenshot uploaders such as the ones
                   listed below, it allows a user to quickly take images & videos
                   aswell as upload them through the use of a keybind.
                 </div>
                 <div className="flex flex-col md:flex-col space-x-0 lg:flex-row lg:space-x-2 md:space-x-0 lg:space-y-0 space-y-2 md:space-y-2">
-                  <Button size="xl">ShareX</Button>
-                  <Button size="xl">Magic Cap</Button>
+                  <Button cname="w-full">ShareX</Button>
+                  <Button cname="w-full">Magic Cap</Button>
                 </div>
               </div>
             </div>
@@ -105,11 +105,12 @@ export default function Config() {
                   Domains are perfect for customising your screenshots as they
                   allow you to set a custom domain for your screenshots.
                 </div>
-                <div className="mt-4 rounded-md shadow-sm flex flex-wrap">
+                <div className="mt-4 flex flex-wrap">
                   <InputGroup
-                    textOptions={{ roundedLeft: true }}
+                    textCname="rounded-l"
                     keepBorder={true}
                     text="https://"
+                    show={true}
                     PlaceHolder="Subdomain"
                   />
                   <input
@@ -117,9 +118,10 @@ export default function Config() {
                     placeholder="domain"
                   />
                   <InputGroup
-                    inputOptions={{ roundedRight: true }}
                     text="/"
+                    show={true}
                     PlaceHolder="FilePath"
+                    inputCname="rounded-r"
                   />
                 </div>
                 <div className="text-snow-100 mt-2">
@@ -138,6 +140,7 @@ export default function Config() {
                     <Toggle
                       tooltip="Fake URL will allow you to use any URL or Text on the image but its obviously not the real domain, this is will most likely only work on discord."
                       label="Toggle Fake"
+                      cname=""
                       checked={Faketoggled}
                       onChange={setFake}
                     />
@@ -156,61 +159,284 @@ export default function Config() {
                 <h1 className="mt-3 text-xl text-slate-200 font-medium">
                   Embed Editor
                 </h1>
-                <div className="mt-1 text-snow-100">
+                <div className="mt-1 text-snow-100 mb-2">
                   The embed editor edits your embed. This should be clear enough
                   without any more context.
                 </div>
-                <Button
-                  cname="mt-2"
-                  onClick={() => {
-                    setEmbed(true);
-                  }}
+                <Modal
+                  text="There is many placeholders, to view them type : for
+                  options"
+                  title="Discord Editor"
+                  buttonName="Edit Embed"
                 >
-                  Edit your Embed
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
+                  <div className="mt-3 flex md:flex-row flex-col">
+                    <div className="space-y-3 mr-0 md:mr-8 lg:mr-8">
+                      <InputGroup
+                        onChange={(ctx: any) => {
+                          updateEmbed("siteUrl", ctx.target.value);
+                        }}
+                        value={
+                          currentEmbed.siteUrl &&
+                          currentEmbed.siteUrl.match(/https?:\/\//i)
+                            ? currentEmbed.siteUrl.replace(/https?:\/\//i, "")
+                            : currentEmbed.siteUrl ?? ""
+                        }
+                        text="https://"
+                        show={true}
+                        textCname="rounded-l"
+                        PlaceHolder="Sitename URL"
+                        inputCname="w-full rounded-r"
+                      />
+                      <InputGroup
+                        PlaceHolder="SiteName"
+                        value={currentEmbed.siteText ?? ""}
+                        inputCname="w-full rounded"
+                        onChange={(ctx: any) => {
+                          updateEmbed("siteText", ctx.target.value);
+                        }}
+                      />
+                      <InputGroup
+                        show={true}
+                        text="https://"
+                        textCname="rounded-l"
+                        PlaceHolder="Author URL"
+                        inputCname="w-full rounded-r"
+                        value={
+                          currentEmbed.authorUrl &&
+                          currentEmbed.authorUrl.match(/https?:\/\//i)
+                            ? currentEmbed.authorUrl.replace(/https?:\/\//i, "")
+                            : currentEmbed.authorUrl ?? ""
+                        }
+                        onChange={(ctx: any) => {
+                          updateEmbed("authorUrl", ctx.target.value);
+                        }}
+                      />
+                      <InputGroup
+                        PlaceHolder="Author"
+                        inputCname="w-full rounded"
+                        value={currentEmbed.authorText ?? ""}
+                        onChange={(ctx: any) => {
+                          updateEmbed("authorText", ctx.target.value);
+                        }}
+                      />
+                      <InputGroup
+                        value={currentEmbed.title ?? ""}
+                        onChange={(ctx: any) => {
+                          updateEmbed("title", ctx.target.value);
+                        }}
+                        PlaceHolder="Title"
+                        inputCname="rounded w-full"
+                      />
+                      <InputGroup
+                        inputCname="w-full rounded"
+                        PlaceHolder="Description"
+                        value={currentEmbed.description ?? ""}
+                        onChange={(ctx: any) => {
+                          updateEmbed("description", ctx.target.value);
+                        }}
+                      />
+                      <div className="">
+                        <Button
+                          cname="lg:w-96 w-full mt-3"
+                          onClick={() => {
+                            API.updateEmbedSettings(currentEmbed.id, {
+                              enabled: currentEmbed.enabled,
+                              color: currentEmbed.color,
+                              siteText: currentEmbed.siteText,
+                              siteUrl: currentEmbed.siteUrl,
+                              authorText: currentEmbed.authorText,
+                              authorUrl: currentEmbed.authorUrl,
+                              title: currentEmbed.title,
+                              description: currentEmbed.description,
+                            })
+                              .then((data) => {
+                                const embeds = userEmbeds.map((embed) =>
+                                  embed.id === currentEmbed.id
+                                    ? currentEmbed
+                                    : embed
+                                );
 
-        {Embed && (
-          <>
-            <div className="items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50">
-              <div className="mx-auto p-4">
-                <div className="rounded-lg bg-polar-200 p-6">
-                  <div className="flex justify-between text-white">
-                    <h1 className="font-semibold text-2xl">
-                      Discord Embed Editor
-                    </h1>
-                    <button
-                      onClick={() => setEmbed(false)}
-                      className="bg-polar-300 border-0 w-8 h-8 normal-case hover:bg-polar-400 text-sm rounded-md cursor-pointer text-center text-white font-medium mt-1 transition duration-500"
-                    >
-                      X
-                    </button>
-                  </div>
-                  <div className="divide-y-2 mt-3 divide-white">
-                    <div />
-                    <div />
-                  </div>
-                  <div className="rounded-md bg-polar-200 flex text-white">
+                                setUser(Object.assign(user, { embeds }));
+                                setUserEmbeds(embeds);
+                                sendToast(data.message, "success");
+                              })
+                              .catch((err) => {
+                                sendToast(err.data.message, "error");
+                              });
+                          }}
+                          variant="success"
+                        >
+                          Save Changes
+                        </Button>
+                        <div className="mt-3 flex justify-center space-x-4">
+                          <Button
+                            onClick={() => {
+                              API.deleteEmbed(currentEmbed.id)
+                                .then((data) => {
+                                  const { embed, message } = data;
+
+                                  const currentIndex = userEmbeds.findIndex(
+                                    (embed) => embed.id === currentEmbed.id
+                                  );
+                                  const embeds = userEmbeds.filter(
+                                    (_, i) => i !== currentIndex
+                                  );
+                                  const newIndex =
+                                    (embeds.length - 1) / 2 < currentIndex
+                                      ? embeds.length - 1
+                                      : 0;
+
+                                  setUser(Object.assign(user, { embeds }));
+                                  setUserEmbeds(embeds);
+                                  setCurrentEmbed(embeds[newIndex]);
+
+                                  sendToast(
+                                    <>
+                                      {message + " "}
+                                      <button
+                                        className="hover:underline text-white"
+                                        onClick={() =>
+                                          createEmbed(
+                                            {
+                                              enabled: embed.enabled,
+                                              color: embed.color,
+                                              siteText: embed.siteText,
+                                              siteUrl: embed.siteUrl,
+                                              authorText: embed.authorText,
+                                              authorUrl: embed.authorUrl,
+                                              title: embed.title,
+                                              description: embed.description,
+                                            },
+                                            currentIndex
+                                          )
+                                        }
+                                      >
+                                        Restore Embed
+                                      </button>
+                                    </>,
+                                    "success"
+                                  );
+                                })
+                                .catch((err) => {
+                                  sendToast(err.data.message, "error");
+                                });
+                            }}
+                            cname="text-sm w-full"
+                            variant="danger"
+                          >
+                            Delete Preset
+                          </Button>
+                          <Button
+                            onClick={() => createEmbed()}
+                            cname="text-sm w-full mb-3"
+                            variant="success"
+                          >
+                            Create Preset
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
                     <div>
-                      <div>
-                        <div className="flex flex-col mb-4 mt-2">
-                          <span className="text-snow-100">
-                            There is many placeholders, to view them type : for
-                            options
-                          </span>
+                      <div className="discord-embed shadow-md border-l-discord-light_blue border-l-4 rounded-sm bg-discord-base flex ml-auto">
+                        <div className="embed pt-2 pr-4 pb-4 pl-3 font-discord-site">
+                          <div className="embed-site mt-2 antialiased font-light text-site text-discord-site bg-discord-base font-whitney">
+                            {currentEmbed.siteUrl ? (
+                              <Link href={currentEmbed.siteUrl}>
+                                <a className="hover:underline" target="_blank">
+                                  {formatEmbedString(
+                                    currentEmbed.siteText ?? ""
+                                  )}
+                                </a>
+                              </Link>
+                            ) : (
+                              formatEmbedString(currentEmbed.siteText ?? "")
+                            )}
+                          </div>
+                          <div className="embed-author mt-2 font-bold antialiased text-author font-whitney">
+                            {currentEmbed.authorUrl ? (
+                              <Link href={currentEmbed.authorUrl}>
+                                <a className="hover:underline" target="_blank">
+                                  {formatEmbedString(
+                                    currentEmbed.authorText ?? ""
+                                  )}
+                                </a>
+                              </Link>
+                            ) : (
+                              formatEmbedString(currentEmbed.authorText ?? "")
+                            )}
+                          </div>
+                          <div className="embed-title mt-2 font-semibold subpixel-antialiased text-title font-whitney">
+                            <Link href="https://kythi.pics/ilysmbidkhttybikydlmb:(">
+                              <a
+                                target="_blank"
+                                className="text-discord-blue cursor-pointer hover:underline"
+                              >
+                                {formatEmbedString(currentEmbed.title ?? "")}
+                              </a>
+                            </Link>
+                          </div>
+                          <div className="embed-desc mt-2 font-normal subpixel-antialiased text-desc text-gray-300 max-w-sm font-whitney">
+                            {formatEmbedString(currentEmbed.description ?? "")}
+                          </div>
+                          <div className="image h-img mt-4">
+                            {/* eslint-disable-next-line */}
+                            <img
+                              className="h-img rounded-sm"
+                              src="https://www.slashgear.com/wp-content/uploads/2021/05/Discord_IAP_KeyVisuals_Header_02-1-1280x720.jpg"
+                              alt=""
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex flex-col space-y-2 mt-3">
+                        <div>
+                          <Toggle
+                            label="Toggle Embed"
+                            cname="invisible"
+                            checked={currentEmbed.enabled}
+                            onChange={(val) => {
+                              updateEmbed("enabled", val);
+                            }}
+                          />
+                        </div>
+                        <div>
+                          <Toggle
+                            label="Random Color"
+                            cname="invisible"
+                            checked={currentEmbed.color === "RANDOM"}
+                            onChange={(val) => {
+                              updateEmbed("color", val ? "RANDOM" : "#000000");
+                            }}
+                          />
+                        </div>
+                        <div
+                          className={`space-x-2 select-none ${
+                            currentEmbed.color === "RANDOM" && "hidden"
+                          }`}
+                        >
+                          <span>Embed Color </span>
+                          <input
+                            name="color"
+                            type="color"
+                            className="bg-polar-200"
+                            value={
+                              currentEmbed.color === "RANDOM"
+                                ? "#000000"
+                                : currentEmbed.color ?? ""
+                            }
+                            onChange={(ctx) => {
+                              updateEmbed("color", ctx.target.value);
+                            }}
+                          />
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </Modal>
               </div>
             </div>
-            <div className="opacity-30 fixed inset-0 bg-black" />
-          </>
-        )}
+          </div>
+        </div>
       </>
     )
   );
