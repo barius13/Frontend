@@ -432,6 +432,66 @@ export default function Config() {
                       </div>
                     </div>
                   </div>
+                  <div className="btn-group flex flex-wrap justify-center mt-4">
+                    <Button
+                      onClick={() => {
+                        {
+                          setCurrentEmbed((current) => {
+                            const embedIndex = userEmbeds.findIndex(
+                              (embed) => embed.id === current.id
+                            );
+
+                            return userEmbeds[
+                              embedIndex !== 0 ? embedIndex - 1 : 0
+                            ];
+                          });
+                        }
+                      }}
+                      cname="btn normal-case bg-polar-300 hover:bg-polar-400 transition duration-200 mr-2"
+                    >
+                      {"<"}
+                    </Button>
+                    {userEmbeds.map((embed, index) => {
+                      return (
+                        <Button
+                          variant="none"
+                          key={index}
+                          cname={`
+                                btn normal-case ${
+                                  currentEmbed.id === embed.id
+                                    ? "bg-polar-400 hover:bg-polar-500"
+                                    : "bg-polar-300 hover:bg-polar-400"
+                                }  transition duration-200 rounded-lg mr-2
+                              `}
+                          onClick={() => {
+                            setCurrentEmbed(embed);
+                          }}
+                        >
+                          {index + 1}
+                        </Button>
+                      );
+                    })}
+                    <Button
+                      cname="btn normal-case bg-polar-300 hover:bg-polar-400 transition duration-200"
+                      onClick={() => {
+                        {
+                          setCurrentEmbed((current) => {
+                            const embedIndex = userEmbeds.findIndex(
+                              (embed) => embed.id === current.id
+                            );
+
+                            return userEmbeds[
+                              embedIndex + 1 !== userEmbeds.length
+                                ? embedIndex + 1
+                                : embedIndex
+                            ];
+                          });
+                        }
+                      }}
+                    >
+                      {">"}
+                    </Button>
+                  </div>
                 </Modal>
               </div>
             </div>
