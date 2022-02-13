@@ -33,11 +33,11 @@ const Toggle: FC<Toggle> = ({
             } inline-block w-4 h-4 transition ease-in-out duration-200 rounded-full`}
           />
         </Switch>
-        <span
-          className={`${cname} absolute hidden md:mt-8 mt-10 lg:mt-8 group-hover:flex z-10 max-w-md p-4  text-sm text-snow-100 font-bold rounded bg-polar-300 shadow-2xl`}
+        <a
+          className={`${cname} absolute hidden md:mt-8 mt-10 lg:mt-8 group-hover:flex transition ease-in-out z-10 max-w-md p-4 duration-300 text-sm text-snow-100 font-bold rounded bg-polar-300 shadow-2xl`}
         >
           {tooltip}
-        </span>
+        </a>
       </div>
     </Switch.Group>
   );

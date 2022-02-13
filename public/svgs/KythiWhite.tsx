@@ -3,9 +3,7 @@ export default function KythiWhite() {
     <svg
       data-name="Layer 1"
       xmlns="http://www.w3.org/2000/svg"
-      className="animate-spin"
-      width={100}
-      height={100}
+      className="animate-spin h-12 w-12"
       viewBox="0 0 500 500"
     >
       <path

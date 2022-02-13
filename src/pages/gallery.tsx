@@ -41,7 +41,7 @@ export default function Gallery() {
             </span>
           </div>
         </div>
-        <div className="grid gap-6 lg:grid-cols-4 md:grid-cols-4 grid-cols-1 px-12 pb-10">
+        <div className="grid gap-6 lg:grid-cols-4 md:grid-cols-2 grid-cols-1 px-12 pb-10">
           {images.map((image, key) => (
             <div key={key} className="bg-polar-300 rounded pb-4">
               <img src={image} className="h-44 w-full object-cover rounded" />

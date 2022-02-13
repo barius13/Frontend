@@ -1,4 +1,5 @@
 import API from "../api";
+import Link from "next/link";
 import * as React from "react";
 import Button from "../components/button";
 import { Toaster } from "react-hot-toast";
@@ -48,7 +49,7 @@ export default function Register() {
         <div className="flex justify-center items-center h-screen">
           <form className="w-full max-w-md lg:px-0 px-4">
             <div className="rounded-lg bg-polar-200 px-8 py-8">
-              <div className="divide-y-2 divide-frost-300">
+              <div className="divide-y-2 divide-white">
                 <div className="flex justify-between">
                   <div className="text-white font-bold text-xl mb-2">
                     Register
@@ -134,8 +135,13 @@ export default function Register() {
                   />
                 </label>
               </div>
+              <Link href="/login" passHref>
+                <a className="flex ml-1 mt-2 font-medium text-snow-200 hover:text-snow-100 text-sm">
+                  have an account?
+                </a>
+              </Link>
 
-              <div className="mt-6">
+              <div className="mt-4">
                 <span className="block w-full rounded-md shadow-sm">
                   <Button
                     id="submitButton"

@@ -1,5 +1,6 @@
 import API from "../api";
 import Link from "next/link";
+import Modal from "../components/modal";
 import { loginState } from "../typings";
 import { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";
@@ -52,7 +53,7 @@ export default function Login() {
   return (
     <>
       <Toaster />
-      <div className="bg-polar-100 mx-auto sm:px-6">
+      <div className="bg-polar-100 mx-auto sm:px-6 select-none">
         <div className="flex justify-center items-center h-screen">
           <form className="w-full max-w-md lg:px-0 px-4">
             <div className="rounded-lg bg-polar-200 px-8 py-8">
@@ -102,18 +103,32 @@ export default function Login() {
                 </label>
               </div>
               <div className="flex justify-between">
-                <Link href="/reset" passHref>
-                  <a className="flex ml-1 mt-3 font-medium text-snow-200 hover:text-snow-100 text-sm">
-                    Forgotten your password?
-                  </a>
-                </Link>
+                <Modal
+                  buttonName="Forgotten Information?"
+                  title="Reset Form"
+                  text="Forgot your information? You can reset it here!"
+                  cname="p-0 bg-polar-200 ml-1 mt-[2px] font-medium shadow-none text-snow-200 hover:text-snow-100 hover:bg-polar-200"
+                >
+                  <Button
+                    variant="none"
+                    cname="w-full h-9 mt-3 rounded-lg bg-blue-500 ease-in text-sm"
+                  >
+                    Resend Verification Email
+                  </Button>
+                  <Button
+                    variant="none"
+                    cname="w-full h-9 mt-3 rounded-lg bg-green-600 text-sm"
+                  >
+                    Reset Password (via email)
+                  </Button>
+                </Modal>
                 <Link href="/register" passHref>
                   <a className="flex ml-1 mt-3 font-medium text-snow-200 hover:text-snow-100 text-sm">
                     Don't have an account?
                   </a>
                 </Link>
               </div>
-              <div className="mt-3">
+              <div className="mt-2">
                 <span className="block w-full rounded-md shadow-sm">
                   <Button
                     id="loginButton"

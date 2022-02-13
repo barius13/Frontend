@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { UserProvider } from "../components/user";
 
 function Host({ Component, pageProps }: AppProps) {
-  const [status, setStatus] = useState("Getting current user data...");
+  const [status, setStatus] = useState("Trying to fetch data...");
   const [user, setUser] = useState<User | null | undefined>(undefined);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ function Host({ Component, pageProps }: AppProps) {
       API.getCurrentSession()
         .then((data: { user: User }) => {
           setTimeout(() => {
-            setStatus("User data has successfully loaded!");
+            setStatus("User data fetched successfully! Logging in...");
             setTimeout(() => {
               setUser(data.user);
             }, 1250);
@@ -24,7 +24,7 @@ function Host({ Component, pageProps }: AppProps) {
         })
         .catch(() => {
           setTimeout(() => {
-            setStatus("Unable to acquire user data!");
+            setStatus("Unable to fetch user data!");
             setTimeout(() => {
               setUser(null);
             }, 1250);

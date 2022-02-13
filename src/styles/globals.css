@@ -28,6 +28,7 @@
     @apply px-16;
   }
   .none {
+    @apply shadow-none;
   }
   .default {
     @apply inline-block font-medium text-sm rounded-lg h-10 bg-blue-600;

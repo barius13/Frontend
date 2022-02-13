@@ -54,7 +54,7 @@ const Modal: FC<Modal> = ({
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Dialog.Overlay className="fixed inset-0 opacity-10 bg-black" />
+              <Dialog.Overlay className="fixed inset-0 opacity-30 bg-black" />
             </Transition.Child>
 
             <span

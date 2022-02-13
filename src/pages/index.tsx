@@ -36,7 +36,7 @@ export default function Index() {
                     size="xl"
                     cname={`${user && "invisible"}`}
                   >
-                    Sign Up
+                    Register
                   </Button>
                 </a>
               </Link>
@@ -106,7 +106,7 @@ export default function Index() {
       <div className="bg-polar-300">
         <div className="max-w-screen-xl px-6 pb-12 md:mt-20 mx-auto lg:px-8 xl:px-4 lg:pb-16 xl:pb-24">
           <div className="text-center md:mb-8">
-            <h2 className="mb-2 text-3xl font-bold text-white md:text-4xl lg:text-5xl md:mb-4">
+            <h2 className="mb-2 text-3xl font-bold text-white md:text-4xl lg:text-5xl md:mb-4 mt-8">
               Testimonials
             </h2>
           </div>
