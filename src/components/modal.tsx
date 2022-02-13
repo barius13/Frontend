@@ -1,16 +1,28 @@
 import { FC } from "react";
-import { Dialog, Transition } from "@headlessui/react";
+import Button from "./button";
 import { Fragment, useState } from "react";
+import { Dialog, Transition } from "@headlessui/react";
 
 interface Modal {
+  w?: string;
   text: string;
   title: string;
-  open: boolean;
-  onClose: () => void;
+  open?: boolean;
+  cname?: string;
+  buttonName?: string;
+  children?: React.ReactNode;
 }
 
-const Modal: FC<Modal> = ({}) => {
-  let [isOpen, setIsOpen] = useState(true);
+const Modal: FC<Modal> = ({
+  w = "",
+  text,
+  open = false,
+  title,
+  cname,
+  children,
+  buttonName,
+}) => {
+  let [isOpen, setIsOpen] = useState(open);
 
   function closeModal() {
     setIsOpen(false);
@@ -22,20 +34,14 @@ const Modal: FC<Modal> = ({}) => {
 
   return (
     <>
-      <div className="fixed inset-0 flex items-center justify-center">
-        <button
-          type="button"
-          onClick={openModal}
-          className="px-4 py-2 text-sm font-medium text-white bg-black rounded-md bg-opacity-20 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
-        >
-          Open dialog
-        </button>
-      </div>
+      <Button onClick={openModal} cname={cname}>
+        {buttonName}
+      </Button>
 
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog
           as="div"
-          className="fixed inset-0 z-10 overflow-y-auto"
+          className="fixed inset-0 z-10 overflow-y-auto text-white"
           onClose={closeModal}
         >
           <div className="min-h-screen px-4 text-center">
@@ -48,16 +54,16 @@ const Modal: FC<Modal> = ({}) => {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Dialog.Overlay className="fixed inset-0" />
+              <Dialog.Overlay className="fixed inset-0 opacity-10 bg-black" />
             </Transition.Child>
 
-            {/* This element is to trick the browser into centering the modal contents. */}
             <span
               className="inline-block h-screen align-middle"
               aria-hidden="true"
             >
               &#8203;
             </span>
+
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -67,29 +73,26 @@ const Modal: FC<Modal> = ({}) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
-                <Dialog.Title
-                  as="h3"
-                  className="text-lg font-medium leading-6 text-gray-900"
-                >
-                  Payment successful
-                </Dialog.Title>
-                <div className="mt-2">
-                  <p className="text-sm text-gray-500">
-                    Your payment has been successfully submitted. We’ve sent you
-                    an email with all of the details of your order.
-                  </p>
-                </div>
-
-                <div className="mt-4">
-                  <button
-                    type="button"
-                    className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+              <div
+                className={`inline-block p-6 my-8 overflow-hidden text-left align-middle max-w-4xl transition-all transform shadow-xl bg-polar-200 rounded-lg ${w}`}
+              >
+                <div className="flex justify-between">
+                  <Dialog.Title as="h3" className="text-2xl font-medium ">
+                    {title}
+                  </Dialog.Title>
+                  <Button
+                    cname="h-9 w-9 text-sm font-medium rounded-lg"
+                    variant="dark"
                     onClick={closeModal}
                   >
-                    Got it, thanks!
-                  </button>
+                    X
+                  </Button>
                 </div>
+                <div>
+                  <p className="font-medium text-snow-100">{text}</p>
+                </div>
+
+                {children}
               </div>
             </Transition.Child>
           </div>
