@@ -4,7 +4,7 @@ export default function Terms() {
   return (
     <div className="grid place-items-center md:grid-cols-1 h-screen">
       <div className="text-white bg-polar-200 lg:px-10 lg:py-10 py-4 px-4 rounded-lg w-4/5">
-        <div className="divide-y-2 divide-frost-300">
+        <div className="divide-y-2 divide-white">
           <h2 className=" font-bold text-snow-300 lg:text-4xl md:mb-6 text-center">
             Terms of Service
           </h2>
@@ -77,7 +77,8 @@ export default function Terms() {
           </li>
         </div>
         <div className="text-center font-bold">
-            The Terms of Service were last updated on the: &quot;24th December 2021&quot;
+          The Terms of Service were last updated on the: &quot;24th December
+          2021&quot;
         </div>
       </div>
     </div>
