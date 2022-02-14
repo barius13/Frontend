@@ -1,14 +1,14 @@
 import API from "../api";
 import React from "react";
 import Nav from "../components/navbar";
-import Modal from "../components/interactive/modal";
 import { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";
-import Button from "../components/interactive/button";
 import { useEffect, useState } from "react";
 import { useUser } from "../components/user";
-import StatsBox from "../components/cards/userstats";
 import { sendToast } from "../utils/sendToast";
+import Modal from "../components/interactive/modal";
+import StatsBox from "../components/cards/userstats";
+import Button from "../components/interactive/button";
 import {
   ChartSquareBarIcon,
   ServerIcon,
@@ -21,16 +21,9 @@ export default function Dashboard() {
   const [testimonialContent, setTestimonialContent] = useState(
     user?.testimonial?.content
   );
+  const [recentlyUploaded, setRecentlyUploaded] = useState("https://via.placeholder.com/300x200");
 
-  {
-    /* modals (these should be stored inside the component soon) */
-  }
-  const [Delete, setDelete] = React.useState(false);
-  const [showModal, setShowModal] = React.useState(false);
-  const [showSuggestion, setSuggestion] = React.useState(false);
-  const [showTestimonial, setTestimonial] = React.useState(false);
-
-  const [stats, setStats] = React.useState({
+  const [stats, setStats] = useState({
     userPing: undefined,
   });
 
@@ -43,6 +36,11 @@ export default function Dashboard() {
       API.getPing().then((ping) => {
         setStats({ ...stats, userPing: ping });
       });
+      API.getRecentlyUploaded()
+        .then((data) => {
+          setRecentlyUploaded(data.cdnURL);
+        })
+        .catch(() => null);
     }
   }, [document, router, user]);
 
@@ -105,12 +103,24 @@ export default function Dashboard() {
                     <div />
                     <div />
                   </div>
-                  <div className="w-full mt-3 hover:shadow-xl hover:-translate-y-1 duration-700">
-                    <img
-                      src="https://nyc3.digitaloceanspaces.com/kythi.pics/dfa6659b-46f9-5521-9452-6e08f897e59e/6bIAOKVh0b.png"
-                      alt="Recently Uploaded Image"
-                      className="rounded-lg"
-                    />
+                  <div className="mt-3 hover:shadow-xl hover:-translate-y-1 duration-700 cursor-pointer">
+                    {recentlyUploaded.endsWith("mp4") ||
+                    recentlyUploaded.endsWith("mov") ||
+                    recentlyUploaded.endsWith("webm") ? (
+                      <video
+                        src={recentlyUploaded}
+                        className="rounded-lg w-full h-60 object-cover"
+                      />
+                    ) : (
+                      <img
+                        src={recentlyUploaded}
+                        alt="Recently Uploaded Image"
+                        className="rounded-lg w-full h-60 object-cover"
+                        onClick={() => {
+                          window.open(recentlyUploaded, '_blank');
+                        }}
+                      />
+                    )}
                   </div>
                   <div className="flex items-center justify-between mt-2 bg-polar-400 rounded-md px-4 border-l-frost-300 border-l-2 py-4 ">
                     <div className="flex items-center">
@@ -139,7 +149,6 @@ export default function Dashboard() {
                       <div className="mt-6">
                         <Button
                           onClick={() => {
-                            setDelete(false);
                             sendToast("Successfully deleted File!", "success");
                           }}
                           variant="danger"
@@ -215,7 +224,6 @@ export default function Dashboard() {
                   />
                   <Button
                     onClick={() => {
-                      setSuggestion(false);
                       sendToast("Successfully Sent Suggestion!", "success");
                     }}
                     cname="bg-polar-300 hover:bg-polar-400 w-full mt-2 h-11"
@@ -252,7 +260,6 @@ export default function Dashboard() {
                   </div>
                   <Button
                     onClick={() => {
-                      setShowModal(false);
                       sendToast("Successfully Sent Bug Report.", "success");
                     }}
                     cname="bg-polar-300 hover:bg-polar-400 w-full h-11 mt-3"

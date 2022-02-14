@@ -100,6 +100,10 @@ export default class API {
     });
   }
 
+  static getRecentlyUploaded() {
+    return this.request("/users/@me/uploads/recent", "GET", {});
+  }
+
   static updateEmbedSettings(
     id: string,
     data: Omit<UserEmbed, "id" | "userId">
