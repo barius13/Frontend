@@ -3,6 +3,7 @@ import React from "react";
 import Nav from "../components/navbar";
 import { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";
+import { months } from "../utils/Constants";
 import { useEffect, useState } from "react";
 import { useUser } from "../components/user";
 import { sendToast } from "../utils/sendToast";
@@ -21,12 +22,22 @@ export default function Dashboard() {
   const [testimonialContent, setTestimonialContent] = useState(
     user?.testimonial?.content
   );
-  const [recentlyUploaded, setRecentlyUploaded] = useState("https://via.placeholder.com/300x200");
-
   const [stats, setStats] = useState({
     userPing: undefined,
   });
+  const [recentlyUploaded, setRecentlyUploaded] = useState(
+    "https://via.placeholder.com/300x200"
+  );
 
+  function getDate(date: string | number | Date) {
+    const jsDate = new Date(date);
+
+    return {
+      month: months[jsDate.getMonth() + 1 as keyof object],
+      day: jsDate.getDate(),
+      year: jsDate.getFullYear(),
+    }
+  }
   useEffect(() => {
     if (!user) {
       router.push("/");
@@ -57,7 +68,8 @@ export default function Dashboard() {
               Welcome, {user.username}
             </div>
             <div className="text-xl text-snow-300 lg:mb-8 mb-4">
-              Member since Dec 3, 2021
+              Member since {getDate(user.createdAt).month}{" "}
+              {getDate(user.createdAt).day} {getDate(user.createdAt).year}
             </div>
           </div>
           <div className="flex lg:flex-row flex-nowrap lg:space-x-4 lg:space-y-0 space-y-10 md:flex-col flex-col">
@@ -117,7 +129,7 @@ export default function Dashboard() {
                         alt="Recently Uploaded Image"
                         className="rounded-lg w-full h-60 object-cover"
                         onClick={() => {
-                          window.open(recentlyUploaded, '_blank');
+                          window.open(recentlyUploaded, "_blank");
                         }}
                       />
                     )}
