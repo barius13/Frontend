@@ -1,6 +1,6 @@
 import API from "../api";
 import Link from "next/link";
-import Button from "./button";
+import Button from "./interactive/button";
 import * as React from "react";
 import { Fragment } from "react";
 import { useRouter } from "next/router";

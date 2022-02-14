@@ -1,10 +1,10 @@
 import API from "../api";
 import Link from "next/link";
-import Modal from "../components/modal";
+import Modal from "../components/interactive/modal";
 import { loginState } from "../typings";
 import { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";
-import Button from "../components/button";
+import Button from "../components/interactive/button";
 import { useState, useEffect } from "react";
 import { useUser } from "../components/user";
 import { sendToast } from "../utils/sendToast";

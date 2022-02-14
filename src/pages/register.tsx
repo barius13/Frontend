@@ -1,7 +1,7 @@
 import API from "../api";
 import Link from "next/link";
 import * as React from "react";
-import Button from "../components/button";
+import Button from "../components/interactive/button";
 import { Toaster } from "react-hot-toast";
 import { registerState } from "../typings";
 import { sendToast } from "../utils/sendToast";

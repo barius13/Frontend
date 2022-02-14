@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import Nav from "../components/navbar";
 import { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";
-import Button from "../components/button";
+import Button from "../components/interactive/button";
 import { useUser } from "../components/user";
 import { sendToast } from "../utils/sendToast";
 import { ClipboardIcon, TrashIcon } from "@heroicons/react/outline";

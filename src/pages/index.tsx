@@ -1,10 +1,10 @@
 import Link from "next/link";
-import Button from "../components/button";
+import Button from "../components/interactive/button";
 import Footer from "../components/footer";
 import { useUser } from "../components/user";
-import FeatureBox from "../components/feature";
-import MainFeat from "../components/main_feat";
-import TestimonialBox from "../components/testimonial";
+import FeatureBox from "../components/interactive/feature";
+import MainFeat from "../components/cards/main_feat";
+import TestimonialBox from "../components/cards/testimonial";
 import { Html, Clock, SwissKnife } from "../../public/svgs/paths";
 
 export default function Index() {

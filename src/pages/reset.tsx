@@ -1,5 +1,5 @@
 import { Toaster } from "react-hot-toast";
-import Button from "../components/button";
+import Button from "../components/interactive/button";
 import { sendToast } from "../utils/sendToast";
 import { AtSymbolIcon } from "@heroicons/react/outline";
 

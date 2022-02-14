@@ -3,15 +3,15 @@ import Link from "next/link";
 import Select from "react-select";
 import { UserEmbed } from "../typings";
 import Nav from "../components/navbar";
-import Modal from "../components/modal";
+import Modal from "../components/interactive/modal";
 import { useRouter } from "next/router";
-import Button from "../components/button";
+import Button from "../components/interactive/button";
 import { Toaster } from "react-hot-toast";
-import Toggle from "../components/toggle";
+import Toggle from "../components/interactive/toggle";
 import { useEffect, useState } from "react";
 import { useUser } from "../components/user";
 import { sendToast } from "../utils/sendToast";
-import InputGroup from "../components/inputgroup";
+import InputGroup from "../components/interactive/inputgroup";
 
 export default function Config() {
   const router = useRouter();
