@@ -7,7 +7,7 @@ import { Toaster } from "react-hot-toast";
 import Button from "../components/interactive/button";
 import { useEffect, useState } from "react";
 import { useUser } from "../components/user";
-import StatsBox from "../components/userstats";
+import StatsBox from "../components/cards/userstats";
 import { sendToast } from "../utils/sendToast";
 import {
   ChartSquareBarIcon,
