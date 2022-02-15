@@ -1,6 +1,6 @@
 import { Toaster } from "react-hot-toast";
-import Button from "../components/interactive/button";
 import { sendToast } from "../utils/sendToast";
+import Button from "../components/interactive/button";
 import { AtSymbolIcon } from "@heroicons/react/outline";
 
 export default function PasswordReset() {

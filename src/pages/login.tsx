@@ -1,13 +1,13 @@
 import API from "../api";
 import Link from "next/link";
-import Modal from "../components/interactive/modal";
 import { loginState } from "../typings";
 import { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";
-import Button from "../components/interactive/button";
 import { useState, useEffect } from "react";
 import { useUser } from "../components/user";
 import { sendToast } from "../utils/sendToast";
+import Modal from "../components/interactive/modal";
+import Button from "../components/interactive/button";
 import {
   UserCircleIcon,
   LockClosedIcon,
@@ -124,13 +124,13 @@ export default function Login() {
                 </Modal>
                 <Link href="/register" passHref>
                   <a className="flex ml-1 mt-3 font-medium text-snow-200 hover:text-snow-100 text-sm">
-                    Don't have an account?
+                    Don&apos;t have an account?
                   </a>
                 </Link>
               </div>
               <div className="mt-2">
                 <span className="block w-full rounded-md shadow-sm">
-                  <Button
+                <Button
                     id="loginButton"
                     cname="w-full"
                     cooldown={1875}

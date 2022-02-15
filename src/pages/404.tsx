@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
-import Button from "../components/interactive/button";
-import Footer from "../components/footer";
 import { useUser } from "../components/user";
+import Button from "../components/interactive/button";
 
 export default function Page404() {
   const router = useRouter();

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Policy() {
   return (
     <div className="grid place-items-center md:grid-cols-1 h-screen">
@@ -33,7 +35,7 @@ export default function Policy() {
         <div className="text-snow-100 ml-8 mt-3 mb-5">
           <li>
             if you would like to request your data to be forwarded to you please
-            email us at{" "}
+            email us at&nbsp;
             <a
               href="mailto:support@kythi.com"
               className="font-medium text-snow-100 underline hover:text-snow-300"
@@ -42,13 +44,13 @@ export default function Policy() {
             </a>
           </li>
           <li>
-            if you'd like to delete your account, you can do so by going to the{" "}
-            <a
-              className=" text-frost-300 hover:text-frost-400 underline-offset-2"
-              href="/settings"
-            >
-              Settings
-            </a>{" "}
+            if you&apos;d like to delete your account, you can do so by going to
+            the&nbsp;
+            <Link href="/settings">
+              <a className=" text-frost-300 hover:text-frost-400 underline-offset-2">
+                Settings&nbsp;
+              </a>
+            </Link>
             page and clicking on the delete account button.
           </li>
         </div>

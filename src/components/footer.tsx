@@ -117,7 +117,7 @@ const Footer: FC = () => {
         <div className="flex flex-col items-center justify-between max-w-screen-xl px-6 mx-auto mt-16 space-y-4 lg:px-8 xl:px-4 md:flex-row lg:mt-20">
           <div className="space-y-4 text-sm text-center md:space-y-1 md:text-left">
             <p>
-              &copy;2021{" "}
+              &copy;2021&nbsp;
               <Link href="https://github.com/KythiX">
                 <a
                   className="text-gray-400 hover:text-gray-300"
@@ -125,7 +125,7 @@ const Footer: FC = () => {
                 >
                   Kythi
                 </a>
-              </Link>{" "}
+              </Link>&nbsp;
               | All rights reserved
             </p>
             <p>Designed and maintained by KythiX</p>

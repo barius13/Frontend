@@ -1,6 +1,4 @@
-import { Fragment } from "react";
 import { Spinner } from "../../../public/svgs";
-import { Transition } from "@headlessui/react";
 import { FC, useRef, useState, useEffect, MouseEventHandler } from "react";
 
 interface Props {

@@ -68,7 +68,7 @@ export default function Dashboard() {
               Welcome, {user.username}
             </div>
             <div className="text-xl text-snow-300 lg:mb-8 mb-4">
-              Member since {getDate(user.createdAt).month}{" "}
+              Member since {getDate(user.createdAt).month}&nbsp;
               {getDate(user.createdAt).day} {getDate(user.createdAt).year}
             </div>
           </div>
@@ -227,7 +227,7 @@ export default function Dashboard() {
                 title="Suggestion"
                 text="Thank you for using our service! We are delighted that you have a suggestion to make! Please fill out the form below and we will get back to you as soon as possible!"
               >
-                {" "}
+                &nbsp;
                 <div>
                   <textarea
                     value=""
@@ -287,7 +287,7 @@ export default function Dashboard() {
                 title="Testimonial Submission"
                 text="Thank you for using our service! Input your testimonial here and it will be sent for approval!"
               >
-                {" "}
+                &nbsp;
                 <textarea
                   id="testimonyInput"
                   placeholder="Testimonial Description"

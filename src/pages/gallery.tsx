@@ -2,9 +2,9 @@ import { useEffect } from "react";
 import Nav from "../components/navbar";
 import { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";
-import Button from "../components/interactive/button";
 import { useUser } from "../components/user";
 import { sendToast } from "../utils/sendToast";
+import Button from "../components/interactive/button";
 import { ClipboardIcon, TrashIcon } from "@heroicons/react/outline";
 
 export default function Gallery() {

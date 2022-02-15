@@ -1,9 +1,9 @@
 import Link from "next/link";
-import Button from "../components/interactive/button";
 import Footer from "../components/footer";
 import { useUser } from "../components/user";
-import FeatureBox from "../components/interactive/feature";
 import MainFeat from "../components/cards/main_feat";
+import Button from "../components/interactive/button";
+import FeatureBox from "../components/interactive/feature";
 import TestimonialBox from "../components/cards/testimonial";
 import { Html, Clock, SwissKnife } from "../../public/svgs/paths";
 
@@ -82,7 +82,7 @@ export default function Index() {
               title="Open Source."
               content={
                 <p className="mb-6 text-lg text-gray-200">
-                  You can view our code on{" "}
+                  You can view our code on&nbsp;
                   <Link href="https://github.com/KythiX" passHref>
                     <a
                       className="text-frost-300 hover:underline"
@@ -90,7 +90,7 @@ export default function Index() {
                     >
                       GitHub!
                     </a>
-                  </Link>{" "}
+                  </Link>&nbsp;
                   This gives you access to host this yourself as well as
                   ensuring you know what happens with your data & how its
                   handled.

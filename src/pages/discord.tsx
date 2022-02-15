@@ -2,10 +2,10 @@ import API from "../api";
 import Link from "next/link";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import Button from "../components/interactive/button";
 import { useUser } from "../components/user";
-import { LogoutIcon } from "@heroicons/react/outline";
 import { DiscordWhite } from "../../public/svgs";
+import Button from "../components/interactive/button";
+import { LogoutIcon } from "@heroicons/react/outline";
 
 export default function Discord() {
   const router = useRouter();

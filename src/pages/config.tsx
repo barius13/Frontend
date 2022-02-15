@@ -1,16 +1,15 @@
 import API from "../api";
 import Link from "next/link";
-import Select from "react-select";
 import { UserEmbed } from "../typings";
 import Nav from "../components/navbar";
-import Modal from "../components/interactive/modal";
 import { useRouter } from "next/router";
-import Button from "../components/interactive/button";
 import { Toaster } from "react-hot-toast";
-import Toggle from "../components/interactive/toggle";
 import { useEffect, useState } from "react";
 import { useUser } from "../components/user";
 import { sendToast } from "../utils/sendToast";
+import Modal from "../components/interactive/modal";
+import Toggle from "../components/interactive/toggle";
+import Button from "../components/interactive/button";
 import InputGroup from "../components/interactive/inputgroup";
 
 export default function Config() {

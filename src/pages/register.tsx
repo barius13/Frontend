@@ -1,10 +1,10 @@
 import API from "../api";
 import Link from "next/link";
-import * as React from "react";
-import Button from "../components/interactive/button";
+import { useState } from "react";
 import { Toaster } from "react-hot-toast";
 import { registerState } from "../typings";
 import { sendToast } from "../utils/sendToast";
+import Button from "../components/interactive/button";
 import {
   GiftIcon,
   EyeIcon,
@@ -16,8 +16,8 @@ import {
 
 export default function Register() {
   const loginShow = () => setShow(!show);
-  const [show, setShow] = React.useState(false);
-  const [register, setRegister] = React.useState<registerState>({
+  const [show, setShow] = useState(false);
+  const [register, setRegister] = useState<registerState>({
     username: null,
     password: null,
     email: null,
@@ -137,7 +137,7 @@ export default function Register() {
               </div>
               <Link href="/login" passHref>
                 <a className="flex ml-1 mt-2 font-medium text-snow-200 hover:text-snow-100 text-sm">
-                  have an account?
+                  Don&apos;t have an account?
                 </a>
               </Link>
 
