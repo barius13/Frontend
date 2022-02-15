@@ -3,7 +3,9 @@ import Link from "next/link";
 import { useState } from "react";
 import { Toaster } from "react-hot-toast";
 import { registerState } from "../typings";
+import ReCAPTCHA from "react-google-recaptcha";
 import { sendToast } from "../utils/sendToast";
+import Modal from "../components/interactive/modal";
 import Button from "../components/interactive/button";
 import {
   GiftIcon,
@@ -17,6 +19,7 @@ import {
 export default function Register() {
   const loginShow = () => setShow(!show);
   const [show, setShow] = useState(false);
+  const [captchaShow, setCaptchaShow] = useState(false);
   const [register, setRegister] = useState<registerState>({
     username: null,
     password: null,
@@ -29,18 +32,6 @@ export default function Register() {
 
     setRegister({ ...register, [k]: v });
   }
-
-  document.addEventListener(
-    "keydown",
-    (ctx) => {
-      console.log(ctx);
-
-      if (ctx.code === "Enter") {
-        document.getElementById("submitButton")?.click();
-      }
-    },
-    false
-  );
 
   return (
     <>
@@ -143,26 +134,44 @@ export default function Register() {
 
               <div className="mt-4">
                 <span className="block w-full rounded-md shadow-sm">
-                  <Button
-                    id="submitButton"
+                  <Modal
+                    title="Captcha Verification"
+                    text="Complete the captcha to finish registration!"
                     cname="w-full -mt-1"
-                    cooldown={1875}
-                    onClick={() => {
-                      API.register(register)
-                        .then((data) => {
-                          sendToast(data.message, "success");
-                        })
-                        .catch((err) => {
-                          sendToast(err.data.message, "error");
-                        });
-                    }}
+                    buttonName="Register"
+                    state={[captchaShow, setCaptchaShow]}
                   >
-                    Register
-                  </Button>
+                    <div className="flex justify-center mt-3">
+                      <ReCAPTCHA
+                        sitekey="6Lf5RnseAAAAABmOZgW-GfybGm3exHBtNStx_ioa"
+                        size="normal"
+                        theme="dark"
+                        onChange={(value) => {
+                          API.register({ ...register, reCaptchaToken: value })
+                            .then((data) => {
+                              sendToast(data.message, "success");
+                            })
+                            .catch((err) => {
+                              sendToast(err.data.message, "error");
+                            });
+
+                          setTimeout(() => {
+                            setCaptchaShow(false);
+                          }, 1250);
+                        }}
+                      />
+                    </div>
+                  </Modal>
                 </span>
               </div>
             </div>
           </form>
+          {/* quite literally only here for the badge */}
+          <ReCAPTCHA
+            sitekey="6Lf5RnseAAAAABmOZgW-GfybGm3exHBtNStx_ioa"
+            size="invisible"
+            theme="dark"
+          />
         </div>
       </div>
     </>

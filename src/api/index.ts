@@ -6,6 +6,15 @@ interface requestParams {
   headers?: AxiosRequestHeaders;
 }
 
+interface apiLogin extends loginState {
+  reCaptchaToken: string | null;
+}
+
+
+interface apiRegister extends registerState {
+  reCaptchaToken: string | null;
+}
+
 export default class API {
   private static async request(
     url: string,
@@ -127,7 +136,7 @@ export default class API {
     return this.request("/users/@me/settings/embeds/" + id, "DELETE", {});
   }
 
-  static register(data: registerState) {
+  static register(data: apiRegister) {
     const dataClone = Object.assign({}, data);
 
     for (const value of Object.keys(dataClone)) {
@@ -141,7 +150,7 @@ export default class API {
     });
   }
 
-  static login(data: loginState) {
+  static login(data: apiLogin) {
     const dataClone = Object.assign({}, data);
 
     for (const value of Object.keys(dataClone)) {

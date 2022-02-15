@@ -9,6 +9,7 @@ interface Modal {
   title: string;
   open?: boolean;
   cname?: string;
+  state?: [any, React.Dispatch<React.SetStateAction<any>>]
   buttonName?: string;
   children?: React.ReactNode;
 }
@@ -19,10 +20,16 @@ const Modal: FC<Modal> = ({
   open = false,
   title,
   cname,
+  state,
   children,
   buttonName,
 }) => {
   let [isOpen, setIsOpen] = useState(open);
+
+  if (state) {
+    isOpen = state[0];
+    setIsOpen = state[1];
+  }
 
   function closeModal() {
     setIsOpen(false);

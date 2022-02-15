@@ -3,11 +3,12 @@ import Link from "next/link";
 import { loginState } from "../typings";
 import { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";
-import { useState, useEffect } from "react";
 import { useUser } from "../components/user";
+import ReCAPTCHA from "react-google-recaptcha";
 import { sendToast } from "../utils/sendToast";
 import Modal from "../components/interactive/modal";
 import Button from "../components/interactive/button";
+import { createRef, useState, useEffect } from "react";
 import {
   UserCircleIcon,
   LockClosedIcon,
@@ -21,6 +22,7 @@ export default function Login() {
   const { user, setUser } = useUser();
   const loginShow = () => setShow(!show);
   const [show, setShow] = useState(false);
+  const reCaptchaRef = createRef<ReCAPTCHA>();
   const [login, setLogin] = useState<loginState>({
     username: null,
     password: null,
@@ -128,14 +130,25 @@ export default function Login() {
                   </a>
                 </Link>
               </div>
+              <ReCAPTCHA
+                ref={reCaptchaRef}
+                size="invisible"
+                theme="dark"
+                sitekey="6Lf5RnseAAAAABmOZgW-GfybGm3exHBtNStx_ioa"
+              />
               <div className="mt-2">
                 <span className="block w-full rounded-md shadow-sm">
-                <Button
+                  <Button
                     id="loginButton"
                     cname="w-full"
                     cooldown={1875}
-                    onClick={() => {
-                      API.login(login)
+                    onClick={async () => {
+                      {/* I doubt this is the right way to do things, but executeAsync breaks after the first captcha */}
+                      reCaptchaRef.current?.reset();
+
+                      const token = (await reCaptchaRef.current?.executeAsync()) ?? null;;
+                          
+                      API.login({ ...login, reCaptchaToken: token })
                         .then((data) => {
                           setUser(data.user);
                           sendToast(data.message, "success");

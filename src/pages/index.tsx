@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Footer from "../components/footer";
 import { useUser } from "../components/user";
+import ReCAPTCHA from "react-google-recaptcha";
 import MainFeat from "../components/cards/main_feat";
 import Button from "../components/interactive/button";
 import FeatureBox from "../components/interactive/feature";
@@ -90,8 +91,8 @@ export default function Index() {
                     >
                       GitHub!
                     </a>
-                  </Link>&nbsp;
-                  This gives you access to host this yourself as well as
+                  </Link>
+                  &nbsp; This gives you access to host this yourself as well as
                   ensuring you know what happens with your data & how its
                   handled.
                 </p>
@@ -129,6 +130,12 @@ export default function Index() {
           </div>
         </div>
       </div>
+      {/* quite literally only here for the badge */}
+      <ReCAPTCHA
+        sitekey="6Lf5RnseAAAAABmOZgW-GfybGm3exHBtNStx_ioa"
+        size="invisible"
+        theme="dark"
+      />
       <Footer />
     </main>
   );
