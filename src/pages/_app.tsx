@@ -50,7 +50,7 @@ function Host({ Component, pageProps }: AppProps) {
           description: "Kythi.com is an image hosting service.",
         }}
       />
-      <body className="bg-polar-100">
+      <div className="bg-polar-100 h-screen">
         {user === undefined ? (
           <Loading status={status} />
         ) : (
@@ -58,7 +58,7 @@ function Host({ Component, pageProps }: AppProps) {
             <Component {...pageProps} />
           </UserProvider>
         )}
-      </body>
+      </div>
     </>
   );
 }
