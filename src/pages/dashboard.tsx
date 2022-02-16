@@ -347,6 +347,7 @@ export default function Dashboard() {
                       ctx.target.files![0]
                     )
                       .then((data) => {
+                        setRecentlyUploaded(data.cdnURL);
                         navigator.clipboard.writeText(data.imageURL);
                         sendToast(
                           "Successfully uploaded image, url has been copied to your clipboard.",
