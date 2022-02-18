@@ -38,7 +38,7 @@ export default function Terms() {
           </li>
           <li>
             Attempts to disrupt the traffic of our service by any method is
-            strictly prohibited and will reuslt in account termination.
+            strictly prohibited and will result in account termination.
           </li>
           <li>
             Following the&nbsp;
