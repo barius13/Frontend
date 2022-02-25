@@ -143,10 +143,9 @@ export default function Login() {
                     cname="w-full"
                     cooldown={1875}
                     onClick={async () => {
-                      {/* I doubt this is the right way to do things, but executeAsync breaks after the first captcha */}
                       reCaptchaRef.current?.reset();
 
-                      const token = (await reCaptchaRef.current?.executeAsync()) ?? null;;
+                      const token = (await reCaptchaRef.current?.executeAsync()) ?? null;
                           
                       API.login({ ...login, reCaptchaToken: token })
                         .then((data) => {
