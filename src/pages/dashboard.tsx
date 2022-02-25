@@ -115,19 +115,20 @@ export default function Dashboard() {
                     <div />
                     <div />
                   </div>
-                  <div className="mt-3 hover:shadow-xl hover:-translate-y-1 duration-700 cursor-pointer">
+                  <div className="mt-3 duration-700 cursor-pointer">
                     {recentlyUploaded.endsWith("mp4") ||
                     recentlyUploaded.endsWith("mov") ||
                     recentlyUploaded.endsWith("webm") ? (
                       <video
                         src={recentlyUploaded}
                         className="rounded-lg w-full h-60 object-cover"
+                        controls
                       />
                     ) : (
                       <img
                         src={recentlyUploaded}
                         alt="Recently Uploaded Image"
-                        className="rounded-lg w-full h-60 object-cover"
+                        className="rounded-lg w-full h-60 object-cover hover:shadow-xl hover:-translate-y-1"
                         onClick={() => {
                           window.open(recentlyUploaded, "_blank");
                         }}
