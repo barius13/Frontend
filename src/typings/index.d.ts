@@ -14,6 +14,7 @@ export interface User {
   discord: Discord;
   uploadKey: string | null;
   upload: UploadSettings;
+  uploads: File[];
   embeds: UserEmbed[];
   testimonial: Testimonial;
 }
@@ -23,6 +24,17 @@ interface Invite {
   createdBy: string;
   createdAt: Date;
   user?: User;
+}
+
+interface File {
+  cdnName: string
+  fileName: string
+  mimeType: string
+  size: number
+  path: string
+  domain: string
+  uploadedAt: Date
+  uploaderId: string
 }
 
 interface Testimonial {

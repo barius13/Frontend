@@ -18,6 +18,12 @@ function Host({ Component, pageProps }: AppProps) {
           setTimeout(() => {
             setStatus("User data fetched successfully! Logging in...");
             setTimeout(() => {
+              data.user.uploads.sort(
+                (a, b) =>
+                  new Date(b.uploadedAt).getTime() -
+                  new Date(a.uploadedAt).getTime()
+              );
+
               setUser(data.user);
             }, 1250);
           }, 1000);
@@ -50,13 +56,13 @@ function Host({ Component, pageProps }: AppProps) {
           description: "Kythi.com is an image hosting service.",
         }}
       />
-        {user === undefined ? (
-          <Loading status={status} />
-        ) : (
-          <UserProvider value={{ user, setUser }}>
-            <Component {...pageProps} />
-          </UserProvider>
-        )}
+      {user === undefined ? (
+        <Loading status={status} />
+      ) : (
+        <UserProvider value={{ user, setUser }}>
+          <Component {...pageProps} />
+        </UserProvider>
+      )}
     </>
   );
 }
