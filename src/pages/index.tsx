@@ -1,8 +1,8 @@
 import Link from "next/link";
-import Footer from "../components/footer";
 import { useUser } from "../components/user";
 import ReCAPTCHA from "react-google-recaptcha";
 import MainFeat from "../components/cards/main_feat";
+import Footer from "../components/navigators/footer";
 import Button from "../components/interactive/button";
 import FeatureBox from "../components/interactive/feature";
 import TestimonialBox from "../components/cards/testimonial";

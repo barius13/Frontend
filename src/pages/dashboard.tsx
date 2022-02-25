@@ -1,6 +1,6 @@
 import API from "../api";
 import React from "react";
-import Nav from "../components/navbar";
+import Nav from "../components/navigators/navbar";
 import { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";
 import { months } from "../utils/Constants";
@@ -33,10 +33,10 @@ export default function Dashboard() {
     const jsDate = new Date(date);
 
     return {
-      month: months[jsDate.getMonth() + 1 as keyof object],
+      month: months[(jsDate.getMonth() + 1) as keyof object],
       day: jsDate.getDate(),
       year: jsDate.getFullYear(),
-    }
+    };
   }
   useEffect(() => {
     if (!user) {

@@ -1,10 +1,10 @@
 import React from "react";
 import { useEffect } from "react";
-import Nav from "../components/navbar";
 import { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";
 import { useUser } from "../components/user";
 import { sendToast } from "../utils/sendToast";
+import Nav from "../components/navigators/navbar";
 import Button from "../components/interactive/button";
 
 export default function Settings() {

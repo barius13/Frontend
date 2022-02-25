@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import Nav from "../components/navbar";
 import { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";
+import { useEffect, useState } from "react";
 import { useUser } from "../components/user";
 import { sendToast } from "../utils/sendToast";
+import Nav from "../components/navigators/navbar";
 import Button from "../components/interactive/button";
 import { ClipboardIcon, TrashIcon } from "@heroicons/react/outline";
 
@@ -58,11 +58,17 @@ export default function Gallery() {
         {user.uploads.length ? (
           <>
             <div className="btn-group flex flex-wrap ml-12 mb-4">
-              <Button cname="btn normal-case bg-polar-300 hover:bg-polar-400 transition duration-200 mr-2"                 onClick={() => {
-                  setCurrentPage((currentPage) =>
-                    pages.find((page) => page.page === currentPage.page - 1) ?? currentPage
+              <Button
+                cname="btn normal-case bg-polar-300 hover:bg-polar-400 transition duration-200 mr-2"
+                onClick={() => {
+                  setCurrentPage(
+                    (currentPage) =>
+                      pages.find(
+                        (page) => page.page === currentPage.page - 1
+                      ) ?? currentPage
                   );
-                }}>
+                }}
+              >
                 {"<"}
               </Button>
               {pages.map((page, index) => {
@@ -88,8 +94,11 @@ export default function Gallery() {
               <Button
                 cname="btn normal-case bg-polar-300 hover:bg-polar-400 transition duration-200"
                 onClick={() => {
-                  setCurrentPage((currentPage) =>
-                    pages.find((page) => page.page === currentPage.page + 1) ?? currentPage
+                  setCurrentPage(
+                    (currentPage) =>
+                      pages.find(
+                        (page) => page.page === currentPage.page + 1
+                      ) ?? currentPage
                   );
                 }}
               >
@@ -98,55 +107,57 @@ export default function Gallery() {
             </div>
             <div className="grid gap-6 lg:grid-cols-4 md:grid-cols-2 grid-cols-1 px-12 pb-10">
               {currentPage.imgs.map((image, key) => (
-                <div key={key} className="bg-polar-300 rounded pb-4">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={`https://s3.us-east-2.wasabisys.com/kythi/${image.uploaderId}/${image.cdnName}`}
-                    className="h-44 w-full object-cover rounded"
-                    alt="image"
-                  />
-                  <div className="divide-y-2 divide-white">
-                    <div />
-                    <div />
-                  </div>
-                  <div className="flex justify-center items-center flex-col mt-4">
-                    <span className="text-xl font-semibold">
-                      {image.cdnName}
-                    </span>
-                    <span className="font-bold">
-                      File Size -&nbsp;
-                      <span className="font-normal">
-                        {formatBytes(image.size)}
+                <>
+                  <div key={key} className="bg-polar-300 rounded pb-4">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={`https://s3.us-east-2.wasabisys.com/kythi/${image.uploaderId}/${image.cdnName}`}
+                      className="h-44 w-full object-cover rounded"
+                      alt={""}
+                    />
+                    <div className="divide-y-2 divide-white">
+                      <div />
+                      <div />
+                    </div>
+                    <div className="flex justify-center items-center flex-col mt-4">
+                      <span className="text-xl font-semibold">
+                        {image.cdnName}
                       </span>
-                    </span>
-                    <span className="font-bold">
-                      Upload Date -&nbsp;
-                      <span className="font-normal">
-                        {new Date(image.uploadedAt).toLocaleDateString()}
+                      <span className="font-bold">
+                        File Size -&nbsp;
+                        <span className="font-normal">
+                          {formatBytes(image.size)}
+                        </span>
                       </span>
-                    </span>
-                    <div className="space-x-2 mt-3">
-                      <Button
-                        onClick={() =>
-                          sendToast(
-                            "Successfully copied Image url to clipboard!",
-                            "success"
-                          )
-                        }
-                      >
-                        <ClipboardIcon className="h-6 w-6" />
-                      </Button>
-                      <Button
-                        variant="danger"
-                        onClick={() =>
-                          sendToast("Successfully deleted image!", "success")
-                        }
-                      >
-                        <TrashIcon className="h-6 w-6" />
-                      </Button>
+                      <span className="font-bold">
+                        Upload Date -&nbsp;
+                        <span className="font-normal">
+                          {new Date(image.uploadedAt).toLocaleDateString()}
+                        </span>
+                      </span>
+                      <div className="space-x-2 mt-3">
+                        <Button
+                          onClick={() =>
+                            sendToast(
+                              "Successfully copied Image url to clipboard!",
+                              "success"
+                            )
+                          }
+                        >
+                          <ClipboardIcon className="h-6 w-6" />
+                        </Button>
+                        <Button
+                          variant="danger"
+                          onClick={() =>
+                            sendToast("Successfully deleted image!", "success")
+                          }
+                        >
+                          <TrashIcon className="h-6 w-6" />
+                        </Button>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </>
               ))}
             </div>
           </>
