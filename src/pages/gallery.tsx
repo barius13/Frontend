@@ -111,12 +111,22 @@ export default function Gallery() {
               {currentPage.imgs.map((image, key) => (
                 <>
                   <div key={key} className="bg-polar-300 rounded pb-4">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={`https://s3.us-east-2.wasabisys.com/kythi/${image.uploaderId}/${image.cdnName}`}
-                      className="h-44 w-full object-cover rounded"
-                      alt={""}
-                    />
+                    {image.cdnName.endsWith("mp4") ||
+                    image.cdnName.endsWith("mov") ||
+                    image.cdnName.endsWith("webm") ? (
+                      <video
+                        src={`https://s3.us-east-2.wasabisys.com/kythi/${image.uploaderId}/${image.cdnName}`}
+                        className="rounded-lg w-full h-60 object-cover"
+                        controls
+                      />
+                    ) : (
+                      /* eslint-disable-next-line @next/next/no-img-element */
+                      <img
+                        src={`https://s3.us-east-2.wasabisys.com/kythi/${image.uploaderId}/${image.cdnName}`}
+                        alt="gallery image"
+                        className="rounded-lg w-full h-60 object-cover"
+                      />
+                    )}
                     <div className="divide-y-2 divide-white">
                       <div />
                       <div />
