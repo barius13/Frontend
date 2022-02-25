@@ -11,7 +11,9 @@ export default function Gallery() {
   const router = useRouter();
   const { user } = useUser();
   const [pages] = useState(() => {
-    const imgs = user?.uploads;
+    if (!user) return [];
+
+    const imgs = user.uploads;
     const returnPages = [];
     const pageCount = Math.ceil(imgs.length / 12);
 
