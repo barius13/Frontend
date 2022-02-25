@@ -26,7 +26,7 @@ export default function Dashboard() {
     userPing: undefined,
   });
   const [recentlyUploaded, setRecentlyUploaded] = useState(
-    "https://via.placeholder.com/300x200"
+    "https://s3.us-east-2.wasabisys.com/kythi/sys/File_Not_Found_1.png"
   );
 
   function getDate(date: string | number | Date) {
