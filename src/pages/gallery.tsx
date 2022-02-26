@@ -100,9 +100,9 @@ export default function Gallery() {
               </Button>
             </div>
             <div className="grid gap-6 lg:grid-cols-4 md:grid-cols-2 grid-cols-1 px-12 pb-10">
-              {currentPage.imgs.map((image, key) => (
+              {currentPage.imgs.map((image) => (
                 <>
-                  <div key={key} className="bg-polar-300 rounded pb-4">
+                  <div key={image.cdnName} className="bg-polar-300 rounded pb-4">
                     {image.cdnName.endsWith("mp4") ||
                     image.cdnName.endsWith("mov") ||
                     image.cdnName.endsWith("webm") ? (
@@ -136,7 +136,7 @@ export default function Gallery() {
                       <span className="font-bold">
                         Upload Date -&nbsp;
                         <span className="font-normal">
-                          {new Date(image.uploadedAt).toLocaleDateString()}
+                          {new Date(image.uploadedAt).toLocaleString()}
                         </span>
                       </span>
                       <div className="space-x-2 mt-3">
