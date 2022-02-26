@@ -21,7 +21,7 @@ export default function Dashboard() {
   const router = useRouter();
   const { user, setUser } = useUser();
   const [recentlyUploaded, setRecentlyUploaded] = useState(
-    `https://s3.us-east-2.wasabisys.com/kythi/${user.id}/${user.uploads[0]?.cdnName}` ??
+    `https://s3.us-east-2.wasabisys.com/kythi/${user?.id}/${user?.uploads[0]?.cdnName}` ??
       "https://s3.us-east-2.wasabisys.com/kythi/sys/File_Not_Found_1.png"
   );
   const [testimonialContent, setTestimonialContent] = useState(
