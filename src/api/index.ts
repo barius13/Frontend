@@ -91,7 +91,7 @@ export default class API {
         });
       }
 
-      this.request("/upload/sharex", "POST", {
+      this.request("/upload", "POST", {
         body: formData,
         headers: {
           "Content-Type": "multipart/form-data",
@@ -107,10 +107,6 @@ export default class API {
     return this.request("/users/@me/settings/embeds", "POST", {
       body: embed,
     });
-  }
-
-  static getRecentlyUploaded() {
-    return this.request("/users/@me/uploads/recent", "GET", {});
   }
 
   static updateEmbedSettings(

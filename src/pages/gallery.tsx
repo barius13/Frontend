@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";
 import { useEffect, useState } from "react";
 import { useUser } from "../components/user";
+import { formatBytes } from "../utils/Format";
 import { sendToast } from "../utils/sendToast";
 import Nav from "../components/navigators/navbar";
 import Button from "../components/interactive/button";
@@ -27,15 +28,6 @@ export default function Gallery() {
     return returnPages;
   });
   const [currentPage, setCurrentPage] = useState(pages[0]);
-
-  function formatBytes(bytes: number): string {
-    if (bytes === 0) return "0 B";
-
-    const sizes = ["B", "KB", "MB", "GB"];
-    const i = Math.floor(Math.log(bytes) / Math.log(1024));
-
-    return parseFloat((bytes / Math.pow(1024, i)).toFixed(2)) + " " + sizes[i];
-  }
 
   useEffect(() => {
     if (!user) {

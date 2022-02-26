@@ -1,12 +1,13 @@
 import API from "../api";
 import React from "react";
-import Nav from "../components/navigators/navbar";
 import { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";
 import { months } from "../utils/Constants";
 import { useEffect, useState } from "react";
 import { useUser } from "../components/user";
+import { formatBytes } from "../utils/Format";
 import { sendToast } from "../utils/sendToast";
+import Nav from "../components/navigators/navbar";
 import Modal from "../components/interactive/modal";
 import StatsBox from "../components/cards/userstats";
 import Button from "../components/interactive/button";
@@ -19,15 +20,16 @@ import {
 export default function Dashboard() {
   const router = useRouter();
   const { user, setUser } = useUser();
+  const [recentlyUploaded, setRecentlyUploaded] = useState(
+    `https://s3.us-east-2.wasabisys.com/kythi/${user.id}/${user.uploads[0]?.cdnName}` ??
+      "https://s3.us-east-2.wasabisys.com/kythi/sys/File_Not_Found_1.png"
+  );
   const [testimonialContent, setTestimonialContent] = useState(
     user?.testimonial?.content
   );
   const [stats, setStats] = useState({
     userPing: undefined,
   });
-  const [recentlyUploaded, setRecentlyUploaded] = useState(
-    "https://s3.us-east-2.wasabisys.com/kythi/sys/File_Not_Found_1.png"
-  );
 
   function getDate(date: string | number | Date) {
     const jsDate = new Date(date);
@@ -47,11 +49,6 @@ export default function Dashboard() {
       API.getPing().then((ping) => {
         setStats({ ...stats, userPing: ping });
       });
-      API.getRecentlyUploaded()
-        .then((data) => {
-          setRecentlyUploaded(data.cdnURL);
-        })
-        .catch(() => null);
     }
   }, [document, router, user]);
 
@@ -88,7 +85,7 @@ export default function Dashboard() {
                 <div className="w-full">
                   <StatsBox
                     title="Storage"
-                    content="350mb"
+                    content={`${formatBytes(user.uploads.reduce((a, b) => a + b.size, 0))}`}
                     icon={
                       <ServerIcon className="h-6 w-6 text-aurora-red-300" />
                     }
@@ -108,7 +105,7 @@ export default function Dashboard() {
                 <div className="p-6 bg-polar-200 rounded-md md:p-6 shadow-lg w-full">
                   <div className="flex items-baseline justify-between ">
                     <h4 className="text-xl font-bold lg:text-2xl text-snow-100 mt-1">
-                      Recently uploaded File.
+                      Latest Upload
                     </h4>
                   </div>
                   <div className="divide-y-2 divide-white mb-2 mt-3">
@@ -348,8 +345,18 @@ export default function Dashboard() {
                       ctx.target.files![0]
                     )
                       .then((data) => {
-                        setRecentlyUploaded(data.cdnURL);
                         navigator.clipboard.writeText(data.imageURL);
+
+                        setUser((oldUser) =>
+                          Object.assign(oldUser, {
+                            uploads: [data.file, ...oldUser.uploads],
+                          })
+                        );
+
+                        setTimeout(() => {
+                          setRecentlyUploaded(data.cdnURL);
+                        }, 1000);
+
                         sendToast(
                           "Successfully uploaded image, url has been copied to your clipboard.",
                           "success"

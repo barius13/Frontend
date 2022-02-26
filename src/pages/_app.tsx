@@ -59,9 +59,11 @@ function Host({ Component, pageProps }: AppProps) {
       {user === undefined ? (
         <Loading status={status} />
       ) : (
-        <UserProvider value={{ user, setUser }}>
-          <Component {...pageProps} />
-        </UserProvider>
+        <div className="select-none">
+          <UserProvider value={{ user, setUser }}>
+            <Component {...pageProps} />
+          </UserProvider>
+        </div>
       )}
     </>
   );

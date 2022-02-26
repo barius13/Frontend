@@ -49,7 +49,7 @@ const Modal: FC<Modal> = ({
         <Dialog
           as="div"
           className="fixed inset-0 z-10 overflow-y-auto text-white"
-          onClose={closeModal}
+          onClose={() => {}}
         >
           <div className="min-h-screen px-4 text-center">
             <Transition.Child
