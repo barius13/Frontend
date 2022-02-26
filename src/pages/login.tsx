@@ -1,6 +1,6 @@
 import API from "../api";
 import Link from "next/link";
-import { loginState } from "../typings";
+import { File, loginState } from "../typings";
 import { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";
 import { useUser } from "../components/user";
@@ -149,7 +149,15 @@ export default function Login() {
                           
                       API.login({ ...login, reCaptchaToken: token })
                         .then((data) => {
-                          setUser(data.user);
+                          setUser(
+                            Object.assign(data.user, {
+                              uploads: data.user.uploads.sort(
+                                (a: File, b: File) =>
+                                  new Date(b.uploadedAt).getTime() -
+                                  new Date(a.uploadedAt).getTime()
+                              ),
+                            })
+                          );
                           sendToast(data.message, "success");
 
                           setTimeout(() => {

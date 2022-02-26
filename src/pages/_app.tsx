@@ -1,6 +1,6 @@
 import API from "../api";
 import "../styles/globals.css";
-import { User } from "../typings";
+import { User, File } from "../typings";
 import { NextSeo } from "next-seo";
 import type { AppProps } from "next/app";
 import Loading from "../components/load";
@@ -18,13 +18,15 @@ function Host({ Component, pageProps }: AppProps) {
           setTimeout(() => {
             setStatus("User data fetched successfully! Logging in...");
             setTimeout(() => {
-              data.user.uploads.sort(
-                (a, b) =>
-                  new Date(b.uploadedAt).getTime() -
-                  new Date(a.uploadedAt).getTime()
+              setUser(
+                Object.assign(data.user, {
+                  uploads: data.user.uploads.sort(
+                    (a: File, b: File) =>
+                      new Date(b.uploadedAt).getTime() -
+                      new Date(a.uploadedAt).getTime()
+                  ),
+                })
               );
-
-              setUser(data.user);
             }, 1250);
           }, 1000);
         })
