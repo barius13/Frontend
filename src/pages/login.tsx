@@ -58,12 +58,11 @@ export default function Login() {
       <div className="bg-polar-100 mx-auto sm:px-6 select-none">
         <div className="flex justify-center items-center h-screen">
           <form className="w-full max-w-md lg:px-0 px-4">
-            <div className="rounded-lg bg-polar-200 px-8 py-8">
-              <div className="divide-y-2 divide-white">
-                <div className="text-white font-bold text-xl mb-2">Login</div>
-                <div />
+            <div className="rounded-lg bg-polar-200 p-6">
+              <div className="flex justify-between">
+                <h1 className="text-white font-bold text-xl">login</h1>
               </div>
-              <label className="relative block mt-5">
+              <label className="relative block mt-3">
                 <span className="absolute inset-y-0 left-0 flex items-center pl-2">
                   <UserCircleIcon className="h-6 w-6 text-[#D8DEE9]" />
                 </span>
@@ -140,13 +139,14 @@ export default function Login() {
                 <span className="block w-full rounded-md shadow-sm">
                   <Button
                     id="loginButton"
-                    cname="w-full"
+                    cname="w-full h-9"
                     cooldown={1875}
                     onClick={async () => {
                       reCaptchaRef.current?.reset();
 
-                      const token = (await reCaptchaRef.current?.executeAsync()) ?? null;
-                          
+                      const token =
+                        (await reCaptchaRef.current?.executeAsync()) ?? null;
+
                       API.login({ ...login, reCaptchaToken: token })
                         .then((data) => {
                           setUser(
@@ -179,7 +179,7 @@ export default function Login() {
                 </span>
                 <span className="block w-full rounded-md shadow-sm mt-3 text-white text-sm">
                   <Button
-                    cname="bg-[#5865F2] hover:bg-[#7289DA] w-full"
+                    cname="bg-[#5865F2] h-9 hover:bg-[#7289DA] w-full"
                     onClick={() =>
                       (location.href =
                         "https://api.kythi.com/auth/discord/login")

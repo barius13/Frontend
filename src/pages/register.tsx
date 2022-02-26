@@ -39,16 +39,11 @@ export default function Register() {
       <div className="bg-polar-100 mx-auto sm:px-6">
         <div className="flex justify-center items-center h-screen">
           <form className="w-full max-w-md lg:px-0 px-4">
-            <div className="rounded-lg bg-polar-200 px-8 py-8">
-              <div className="divide-y-2 divide-white">
-                <div className="flex justify-between">
-                  <div className="text-white font-bold text-xl mb-2">
-                    Register
-                  </div>
-                </div>
-                <div />
+            <div className="rounded-lg bg-polar-200 p-6">
+              <div className="flex justify-between">
+                <h1 className="text-white font-bold text-xl">Register</h1>
               </div>
-              <label className="relative block mt-5">
+              <label className="relative block mt-3">
                 <span className="absolute inset-y-0 left-0 flex items-center pl-2">
                   <UserCircleIcon className="h-6 w-6 text-[#D8DEE9]" />
                 </span>
@@ -128,7 +123,7 @@ export default function Register() {
               </div>
               <Link href="/login" passHref>
                 <a className="flex ml-1 mt-2 font-medium text-snow-200 hover:text-snow-100 text-sm">
-                  Don&apos;t have an account?
+                  Have an account?
                 </a>
               </Link>
 
@@ -137,7 +132,7 @@ export default function Register() {
                   <Modal
                     title="Captcha Verification"
                     text="Complete the captcha to finish registration!"
-                    cname="w-full -mt-1"
+                    cname="w-full -mt-1 h-9"
                     buttonName="Register"
                     state={[captchaShow, setCaptchaShow]}
                   >
