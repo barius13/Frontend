@@ -85,7 +85,7 @@ const NavBar: React.FC<NavBarProps> = (props) => {
         <div className="flex ml-auto">
           <Menu className="relative inline-block text-left" as="div">
             <div>
-              <Menu.Button className="flex shadow-lg px-4 py-2">
+              <Menu.Button className="flex bg-polar-400 rounded-lg px-3 py-1 hover:bg-polar-600 transition-all">
                 <img
                   src={user.discord?.avatar as string}
                   className="rounded-full h-8 w-8"
