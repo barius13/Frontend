@@ -15,7 +15,6 @@ import InputGroup from "../components/interactive/inputgroup";
 export default function Config() {
   const router = useRouter();
   const { user, setUser } = useUser();
-  const [Embed, setEmbed] = useState(false);
   const [Faketoggled, setFake] = useState(false);
   const [invisToggled, setInvis] = useState(false);
   const [userEmbeds, setUserEmbeds] = useState(user?.embeds);
@@ -40,7 +39,7 @@ export default function Config() {
 
   function createEmbed(
     data?: Omit<UserEmbed, "id" | "userId">,
-    currentIndex?: number
+    isRestored?: boolean
   ) {
     API.createEmbed(data)
       .then((data) => {
@@ -48,16 +47,11 @@ export default function Config() {
           Object.assign(user, { embeds: [...user.embeds, data.embed] })
         );
         setUserEmbeds((userEmbeds) => {
-          if (currentIndex) {
-            userEmbeds.splice(currentIndex, 0, data.embed);
-            return userEmbeds;
-          }
-
           return [...userEmbeds, data.embed];
         });
 
         sendToast(
-          currentIndex ? "Successfully restored embed profile." : data.message,
+          isRestored ? "Successfully restored embed profile." : data.message,
           "success"
         );
       })
@@ -308,7 +302,7 @@ export default function Config() {
                                               title: embed.title,
                                               description: embed.description,
                                             },
-                                            currentIndex
+                                            true
                                           )
                                         }
                                       >
