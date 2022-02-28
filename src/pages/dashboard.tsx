@@ -21,8 +21,9 @@ export default function Dashboard() {
   const router = useRouter();
   const { user, setUser } = useUser();
   const [recentlyUploaded, setRecentlyUploaded] = useState(
-    `https://s3.us-east-2.wasabisys.com/kythi/${user?.id}/${user?.uploads[0]?.cdnName}` ??
-      "https://s3.us-east-2.wasabisys.com/kythi/sys/File_Not_Found_1.png"
+    user?.uploads[0]
+      ? `https://s3.us-east-2.wasabisys.com/kythi/${user?.id}/${user?.uploads[0]?.cdnName}`
+      : "https://s3.us-east-2.wasabisys.com/kythi/sys/File_Not_Found_1.png"
   );
   const [testimonialContent, setTestimonialContent] = useState(
     user?.testimonial?.content
@@ -85,7 +86,9 @@ export default function Dashboard() {
                 <div className="w-full">
                   <StatsBox
                     title="Storage"
-                    content={`${formatBytes(user.uploads.reduce((a, b) => a + b.size, 0))}`}
+                    content={`${formatBytes(
+                      user.uploads.reduce((a, b) => a + b.size, 0)
+                    )}`}
                     icon={
                       <ServerIcon className="h-6 w-6 text-aurora-red-300" />
                     }
