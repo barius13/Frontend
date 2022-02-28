@@ -24,6 +24,15 @@
       "contributions": [
         "design"
       ]
+    },
+    {
+      "login": "airbound",
+      "name": "airbound",
+      "avatar_url": "https://avatars.githubusercontent.com/u/98663009?v=4",
+      "profile": "http://lean.monster",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "contributorsPerLine": 7,
