@@ -44,6 +44,17 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "Kurpp",
+      "name": "Kurp",
+      "avatar_url": "https://avatars.githubusercontent.com/u/78627265?v=4",
+      "profile": "https://github.com/Kurpp",
+      "contributions": [
+        "code",
+        "maintenance",
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
