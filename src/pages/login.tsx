@@ -60,7 +60,7 @@ export default function Login() {
           <form className="w-full max-w-md lg:px-0 px-4">
             <div className="rounded-lg bg-polar-200 p-6">
               <div className="flex justify-between">
-                <h1 className="text-white font-bold text-xl">login</h1>
+                <h1 className="text-white font-bold text-xl">Login</h1>
               </div>
               <label className="relative block mt-3">
                 <span className="absolute inset-y-0 left-0 flex items-center pl-2">
