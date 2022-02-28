@@ -1,5 +1,6 @@
 import API from "../api";
 import React from "react";
+import dayjs from "dayjs";
 import { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";
 import { months } from "../utils/Constants";
@@ -10,12 +11,15 @@ import { sendToast } from "../utils/sendToast";
 import Nav from "../components/navigators/navbar";
 import Modal from "../components/interactive/modal";
 import StatsBox from "../components/cards/userstats";
+import relativeTime from "dayjs/plugin/relativeTime";
 import Button from "../components/interactive/button";
 import {
   ChartSquareBarIcon,
   ServerIcon,
   CloudUploadIcon,
 } from "@heroicons/react/outline";
+
+dayjs.extend(relativeTime);
 
 export default function Dashboard() {
   const router = useRouter();
@@ -135,7 +139,11 @@ export default function Dashboard() {
                       />
                     )}
                   </div>
-                  <div className="flex items-center justify-between mt-2 bg-polar-400 rounded-md px-4 border-l-frost-300 border-l-2 py-4 ">
+                  <div
+                    className={`flex items-center justify-between mt-2 bg-polar-400 rounded-md px-4 border-l-frost-300 border-l-2 py-4 ${
+                      !user.uploads[0] && "invisible absolute"
+                    }`}
+                  >
                     <div className="flex items-center">
                       <img
                         src={user.discord?.avatar as string}
@@ -147,7 +155,7 @@ export default function Dashboard() {
                           You, {user.username}
                         </span>
                         <span className="text-xs font-medium text-snow-100">
-                          2 hours ago
+                          {dayjs().to(dayjs(user.uploads[0]?.uploadedAt))}
                         </span>
                       </div>
                     </div>
