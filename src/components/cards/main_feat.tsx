@@ -37,55 +37,65 @@ const MainFeat = () => {
             <div className="w-full md:w-6/12 px-4">
               <div className="relative flex flex-col mt-4">
                 <div className="px-4 py-5 flex-auto">
-                  <div className=" p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-polar-100">
+                <div className=" p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-polar-100">
                     <ColorSwatchIcon className="h-6 w-6 text-blue-500" />
                   </div>
-                  <h6 className="text-xl mb-1 font-bold">
-                    Multiple Regions
-                  </h6>
+                  <h6 className="text-xl mb-1 font-bold">Custom Domains</h6>
                   <p className="mb-4 font-light text-zinc-300">
-                    You can edit your files & share them. You can also create
-                    and personalise your experience.
+                    We have many domains to choose from. You can choose from a
+                    variety of domains to host your images on.
                   </p>
                 </div>
               </div>
               <div className="relative flex flex-col min-w-0">
                 <div className="px-4 py-5 flex-auto">
-                  <div className="text-black p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-polar-100">
-                    <ShieldExclamationIcon className="text-blue-500 h-6 w-6" />
+                <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-polar-100">
+                    <GlobeAltIcon className="w-6 h-6 text-blue-500" />
                   </div>
-                  <h6 className="text-xl mb-1 font-bold">Secure</h6>
+                  <h6 className="text-xl mb-1 font-bold">Multiple Regions</h6>
                   <p className="mb-4 font-light text-zinc-300">
-                    All passwords are hashed using argon2i, unbreakable and
-                    secure for your data.
+                    We make use of&nbsp;
+                    <a
+                      className="hover:underline"
+                      href="https://www.cloudflare.com/network/"
+                    >
+                      Cloudflare&apos;s Infrastructure
+                    </a>&nbsp;
+                    to provide fast, secure and reliable hosting.
                   </p>
+                
                 </div>
               </div>
             </div>
             <div className="w-full md:w-6/12 px-4">
               <div className="relative flex flex-col min-w-0 mt-4">
                 <div className="px-4 py-5 flex-auto">
-                  <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-polar-100">
-                    <CollectionIcon className="w-6 h-6 text-blue-500" />
+                <div className="text-black p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-polar-100">
+                    <ShieldExclamationIcon className="text-blue-500 h-6 w-6" />
                   </div>
-                  <h6 className="text-xl mb-1 font-bold">
-                    Unlimited Storage
-                  </h6>
+                  <h6 className="text-xl mb-1 font-bold">Secure</h6>
                   <p className="mb-4 font-light text-zinc-300">
-                    We don&apos;t have a limit on how many files you produce,
-                    upload as many as you want!
+                    All passwords are hashed using&nbsp;
+                    <a
+                      className="hover:underline"
+                      href="https://en.wikipedia.org/wiki/Argon2"
+                    >
+                      argon2i
+                    </a>
+                    , a modern, memory-hard, CPU-hard, and parallelizable
+                    hashing algorithm.
                   </p>
                 </div>
               </div>
               <div className="relative flex flex-col min-w-0">
                 <div className="px-4 py-5 flex-auto">
-                  <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-polar-100">
-                    <GlobeAltIcon className="w-6 h-6 text-blue-500" />
+                <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-polar-100">
+                    <CollectionIcon className="w-6 h-6 text-blue-500" />
                   </div>
-                  <h6 className="text-xl mb-1 font-bold">Custom Domains</h6>
+                  <h6 className="text-xl mb-1 font-bold">Unlimited Storage</h6>
                   <p className="mb-4 font-light text-zinc-300">
-                    We have many domains to choose from to upload your files You
-                    can also donate your own domain!
+                    We dont limit your freedom. You can upload as many images as
+                    you want.
                   </p>
                 </div>
               </div>

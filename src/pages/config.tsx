@@ -1,12 +1,12 @@
 import API from "../api";
 import Link from "next/link";
 import { UserEmbed } from "../typings";
-import Nav from "../components/navigators/navbar";
 import { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";
 import { useEffect, useState } from "react";
 import { useUser } from "../components/user";
 import { sendToast } from "../utils/sendToast";
+import Nav from "../components/navigators/navbar";
 import Modal from "../components/interactive/modal";
 import Toggle from "../components/interactive/toggle";
 import Button from "../components/interactive/button";
