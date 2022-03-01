@@ -102,7 +102,10 @@ export default function Gallery() {
             <div className="grid gap-6 lg:grid-cols-4 md:grid-cols-2 grid-cols-1 px-12 pb-10">
               {currentPage.imgs.map((image) => (
                 <>
-                  <div key={image.cdnName} className="bg-polar-300 rounded pb-4">
+                  <div
+                    key={image.cdnName}
+                    className="bg-polar-300 rounded pb-4"
+                  >
                     {image.cdnName.endsWith("mp4") ||
                     image.cdnName.endsWith("mov") ||
                     image.cdnName.endsWith("webm") ? (

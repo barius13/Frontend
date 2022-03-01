@@ -86,7 +86,7 @@ export default function Config() {
                   aswell as upload them through the use of a keybind.
                 </div>
                 <div className="flex flex-col md:flex-col space-x-0 lg:flex-row lg:space-x-2 md:space-x-0 lg:space-y-0 space-y-2 md:space-y-2">
-                  <Link href="https://api.kythi.com/users/@me/config/sharex" passHref>
+                  <Link href={`${process.env.API_URL}/users/@me/config/sharex`} passHref>
                     <Button cname="w-full">ShareX</Button>
                   </Link>
                   <Button cname="w-full" disabled>Magic Cap</Button>

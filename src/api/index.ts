@@ -23,7 +23,7 @@ export default class API {
   ): Promise<any> {
     return new Promise((resolve, reject) => {
       axios({
-        url: `https://api.kythi.com${url}`,
+        url: new URL(url, process.env.API_URL).toString(),
         method,
         headers,
         data: body,

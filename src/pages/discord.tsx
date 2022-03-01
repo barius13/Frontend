@@ -33,7 +33,7 @@ export default function Discord() {
             </p>
 
             <span className="block w-full rounded-md shadow-sm mt-8">
-              <Link href="https://api.kythi.com/discord/link" passHref>
+              <Link href={`${process.env.API_URL}/discord/link`} passHref>
                 <Button cname="w-full">
                   <div className="flex justify-center">
                     <DiscordWhite />

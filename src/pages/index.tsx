@@ -71,9 +71,8 @@ export default function Index() {
         </div>
       </div>
 
-      {/* quite literally only here for the badge */}
       <ReCAPTCHA
-        sitekey="6Lf5RnseAAAAABmOZgW-GfybGm3exHBtNStx_ioa"
+        sitekey={process.env.ReCAPTCHA_KEY!}
         size="invisible"
         theme="dark"
       />

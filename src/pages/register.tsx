@@ -138,7 +138,7 @@ export default function Register() {
                   >
                     <div className="flex justify-center mt-3">
                       <ReCAPTCHA
-                        sitekey="6Lf5RnseAAAAABmOZgW-GfybGm3exHBtNStx_ioa"
+                        sitekey={process.env.ReCAPTCHA_KEY!}
                         size="normal"
                         theme="dark"
                         onChange={(value) => {

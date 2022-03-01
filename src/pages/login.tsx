@@ -133,7 +133,7 @@ export default function Login() {
                 ref={reCaptchaRef}
                 size="invisible"
                 theme="dark"
-                sitekey="6Lf5RnseAAAAABmOZgW-GfybGm3exHBtNStx_ioa"
+                sitekey={process.env.ReCAPTCHA_KEY!}
               />
               <div className="mt-2">
                 <span className="block w-full rounded-md shadow-sm">
@@ -180,10 +180,7 @@ export default function Login() {
                 <span className="block w-full rounded-md shadow-sm mt-3 text-white text-sm">
                   <Button
                     cname="bg-[#5865F2] h-9 hover:bg-[#7289DA] w-full"
-                    onClick={() =>
-                      (location.href =
-                        "https://api.kythi.com/auth/discord/login")
-                    }
+                    onClick={() => router.push(`${process.env.API_URL}/auth/discord/login`)}
                   >
                     <div className="flex justify-center">
                       <DiscordWhite />

@@ -26,8 +26,8 @@ export default function Dashboard() {
   const { user, setUser } = useUser();
   const [recentlyUploaded, setRecentlyUploaded] = useState(
     user?.uploads[0]
-      ? `https://s3.us-east-2.wasabisys.com/kythi/${user?.id}/${user?.uploads[0]?.cdnName}`
-      : "https://s3.us-east-2.wasabisys.com/kythi/sys/File_Not_Found_1.png"
+      ? `${process.env.CDN_URL}/${process.env.CDN_BUCKET}/${user?.id}/${user?.uploads[0]?.cdnName}`
+      : `${process.env.CDN_URL}/${process.env.CDN_BUCKET}/sys/File_Not_Found_1.png`
   );
   const [testimonialContent, setTestimonialContent] = useState(
     user?.testimonial?.content
