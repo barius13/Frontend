@@ -1,44 +1,33 @@
 import API from "../api";
 import "../styles/globals.css";
-import { User, File } from "../typings";
 import { NextSeo } from "next-seo";
+import { User, File } from "../typings";
 import type { AppProps } from "next/app";
-import Loading from "../components/load";
 import { useEffect, useState } from "react";
 import { UserProvider } from "../components/user";
 
 function Host({ Component, pageProps }: AppProps) {
-  const [status, setStatus] = useState("Trying to fetch data...");
   const [user, setUser] = useState<User | null | undefined>(undefined);
 
   useEffect(() => {
     function getSession() {
       API.getCurrentSession()
         .then((data: { user: User }) => {
-          setTimeout(() => {
-            setStatus("User data fetched successfully! Logging in...");
-            setTimeout(() => {
-              setUser(
-                Object.assign(data.user, {
-                  uploads: data.user.uploads.sort(
-                    (a: File, b: File) =>
-                      new Date(b.uploadedAt).getTime() -
-                      new Date(a.uploadedAt).getTime()
-                  ),
-                })
-              );
-            }, 1250);
-          }, 1000);
+          setUser(
+            Object.assign(data.user, {
+              uploads: data.user.uploads.sort(
+                (a: File, b: File) =>
+                  new Date(b.uploadedAt).getTime() -
+                  new Date(a.uploadedAt).getTime()
+              ),
+            })
+          );
         })
         .catch(() => {
-          setTimeout(() => {
-            setStatus("Unable to fetch user data!");
-            setTimeout(() => {
-              setUser(null);
-            }, 1250);
-          }, 1000);
+          setUser(null);
         });
     }
+
     if (!user) getSession();
   }, [user]);
 
@@ -64,15 +53,12 @@ function Host({ Component, pageProps }: AppProps) {
           description: "Kythi.com is an image hosting service.",
         }}
       />
-      {user === undefined ? (
-        <Loading status={status} />
-      ) : (
-        <div className="select-none">
-          <UserProvider value={{ user, setUser }}>
-            <Component {...pageProps} />
-          </UserProvider>
-        </div>
-      )}
+
+      <div className="select-none">
+        <UserProvider value={{ user, setUser }}>
+          <Component {...pageProps} />
+        </UserProvider>
+      </div>
     </>
   );
 }

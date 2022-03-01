@@ -25,7 +25,7 @@ export default function Index() {
               <Link href={user ? "/dashboard" : "/login"}>
                 <a>
                   <Button variant="primary" size="xl" cname="mb-2 font-bold w-full">
-                    {user ? "Dashboard" : "Login"}
+                    Login
                   </Button>
                 </a>
               </Link>
@@ -34,7 +34,7 @@ export default function Index() {
                   <Button
                     variant="primary"
                     size="xl"
-                    cname={`${user && "invisible"} w-full font-bold`}
+                    cname="w-full font-bold"
                   >
                     Register
                   </Button>
