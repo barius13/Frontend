@@ -1,4 +1,5 @@
 import API from "../api";
+import Head from "next/head";
 import "../styles/globals.css";
 import { NextSeo } from "next-seo";
 import { User, File } from "../typings";
@@ -33,12 +34,6 @@ function Host({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;900&display=swap"
-          rel="stylesheet"
-        />
-      </head>
       <NextSeo
         title="Kythi."
         description="Kythi.com is an image hosting service."
