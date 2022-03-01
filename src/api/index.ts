@@ -67,11 +67,11 @@ export default class API {
   }
 
   static getCurrentSession() {
-    return this.request("/auth/session", "GET", {});
+    return this.request("/auth/session", "GET");
   }
 
   static logOut() {
-    return this.request("/auth/logOut", "POST", {});
+    return this.request("/auth/logOut", "POST");
   }
 
   static uploadImage(key: string, data: any): Promise<any>  {
@@ -133,7 +133,7 @@ export default class API {
   }
 
   static deleteEmbed(id: string) {
-    return this.request("/users/@me/settings/embeds/" + id, "DELETE", {});
+    return this.request("/users/@me/settings/embeds/" + id, "DELETE");
   }
 
   static register(data: apiRegister) {
