@@ -34,6 +34,16 @@ export default function Login() {
         decodeURIComponent((router.query.redirect as string) ?? "/dashboard")
       );
     }
+
+    document.addEventListener(
+      "keydown",
+      (ctx) => {
+        if (ctx.code === "Enter") {
+          document.getElementById("loginButton")?.click();
+        }
+      },
+      false
+    );
   }, [user, router]);
 
   function updateLogin(k: keyof loginState, v: string | boolean | null) {
@@ -41,16 +51,6 @@ export default function Login() {
 
     setLogin({ ...login, [k]: v });
   }
-
-  document.addEventListener(
-    "keydown",
-    (ctx) => {
-      if (ctx.code === "Enter") {
-        document.getElementById("loginButton")?.click();
-      }
-    },
-    false
-  );
 
   return !user ? (
     <>
@@ -180,7 +180,9 @@ export default function Login() {
                 <span className="block w-full rounded-md shadow-sm mt-3 text-white text-sm">
                   <Button
                     cname="bg-[#5865F2] h-9 hover:bg-[#7289DA] w-full"
-                    onClick={() => router.push(`${process.env.API_URL}/auth/discord/login`)}
+                    onClick={() =>
+                      router.push(`${process.env.API_URL}/auth/discord/login`)
+                    }
                   >
                     <div className="flex justify-center">
                       <DiscordWhite />
