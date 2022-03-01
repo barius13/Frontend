@@ -19,14 +19,14 @@ export default class API {
   private static async request(
     url: string,
     method: Method,
-    { body, headers }: requestParams
+    opts?: requestParams
   ): Promise<any> {
     return new Promise((resolve, reject) => {
       axios({
         url: new URL(url, process.env.API_URL).toString(),
         method,
-        headers,
-        data: body,
+        headers: opts?.headers,
+        data: opts?.body,
         withCredentials: true,
       })
         .then((data) => {
@@ -52,6 +52,10 @@ export default class API {
           reject(err);
         });
     });
+  }
+
+  static getTestimonials() {
+    return this.request("/users/testimonials", "GET")
   }
 
   static submitTestimonial(content: string) {

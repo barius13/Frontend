@@ -27,23 +27,28 @@ interface Invite {
 }
 
 interface File {
-  cdnName: string
-  fileName: string
-  mimeType: string
-  size: number
-  path: string
-  domain: string
-  uploadedAt: Date
-  uploaderId: string
+  cdnName: string;
+  fileName: string;
+  mimeType: string;
+  size: number;
+  path: string;
+  domain: string;
+  uploadedAt: Date;
+  uploaderId: string;
 }
+
+export const TestimonialStatus: {
+  PENDING: "PENDING";
+  DENIED: "DENIED";
+  ACCEPTED: "ACCEPTED";
+};
 
 interface Testimonial {
   id: string;
   content: string;
-  verified: boolean;
-  messageId: string;
+  status: TestimonialStatus;
+  messageId: string | null;
   authorId: string;
-  author?: User;
 }
 
 interface UserEmbed {
@@ -88,4 +93,12 @@ interface registerState {
   password: string | null;
   email: string | null;
   inviteCode: string | null;
+}
+
+interface userTestimonial {
+  text: string;
+  author: {
+    username: string;
+    avatarURL: string;
+  };
 }
