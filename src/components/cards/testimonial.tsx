@@ -16,12 +16,12 @@ const TestimonialBox: FC<TestimonialBox> = ({ user, content, avatar }) => {
         width="100"
         className="rounded-full mx-auto "
       />
-      <div className="flex items-baseline justify-between mb-4">
+      <div className="flex items-baseline justify-between mb-4 mt-4">
         <h4 className="text-xl font-bold lg:text-2xl text-center mx-auto mb-2">
           {user}
         </h4>
       </div>
-      <p className="mb-7 text-lg text-gray-200 text-center">“{content}”</p>
+      <p className="mb-7 text-lg text-zinc-300 font-light text-center">“{content}”</p>
     </div>
   );
 };

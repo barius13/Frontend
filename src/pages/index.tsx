@@ -24,7 +24,7 @@ export default function Index() {
             <div className="flex mb-5 md:space-x-3 mt-5 lg:flex-row md:flex-row flex-col">
               <Link href={user ? "/dashboard" : "/login"}>
                 <a>
-                  <Button variant="primary" size="xl" cname="mb-2 w-full">
+                  <Button variant="primary" size="xl" cname="mb-2 font-bold w-full">
                     {user ? "Dashboard" : "Login"}
                   </Button>
                 </a>
@@ -34,7 +34,7 @@ export default function Index() {
                   <Button
                     variant="primary"
                     size="xl"
-                    cname={`${user && "invisible"} w-full`}
+                    cname={`${user && "invisible"} w-full font-bold`}
                   >
                     Register
                   </Button>

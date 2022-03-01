@@ -22,7 +22,7 @@ const MainFeat = () => {
             </div>
             <blockquote className="p-10 mb-4">
               <h4 className="text-xl font-bold text-white">Express Yourself</h4>
-              <p className="text-md font-normal mt-2 text-white">
+              <p className="text-md font-normal mt-2 text-zinc-300">
                 Share images with custom branding and personal expression. At
                 Kythi we encourage users to express their identity online and
                 have full customisation over everything, even as little as
@@ -40,10 +40,10 @@ const MainFeat = () => {
                   <div className=" p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-polar-100">
                     <ColorSwatchIcon className="h-6 w-6 text-blue-500" />
                   </div>
-                  <h6 className="text-xl mb-1 font-semibold">
+                  <h6 className="text-xl mb-1 font-bold">
                     Multiple Regions
                   </h6>
-                  <p className="mb-4 text-blueGray-500">
+                  <p className="mb-4 font-light text-zinc-300">
                     You can edit your files & share them. You can also create
                     and personalise your experience.
                   </p>
@@ -54,8 +54,8 @@ const MainFeat = () => {
                   <div className="text-black p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-polar-100">
                     <ShieldExclamationIcon className="text-blue-500 h-6 w-6" />
                   </div>
-                  <h6 className="text-xl mb-1 font-semibold">Secure</h6>
-                  <p className="mb-4 text-blueGray-500">
+                  <h6 className="text-xl mb-1 font-bold">Secure</h6>
+                  <p className="mb-4 font-light text-zinc-300">
                     All passwords are hashed using argon2i, unbreakable and
                     secure for your data.
                   </p>
@@ -68,10 +68,10 @@ const MainFeat = () => {
                   <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-polar-100">
                     <CollectionIcon className="w-6 h-6 text-blue-500" />
                   </div>
-                  <h6 className="text-xl mb-1 font-semibold">
+                  <h6 className="text-xl mb-1 font-bold">
                     Unlimited Storage
                   </h6>
-                  <p className="mb-4 text-blueGray-500">
+                  <p className="mb-4 font-light text-zinc-300">
                     We don&apos;t have a limit on how many files you produce,
                     upload as many as you want!
                   </p>
@@ -82,8 +82,8 @@ const MainFeat = () => {
                   <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-polar-100">
                     <GlobeAltIcon className="w-6 h-6 text-blue-500" />
                   </div>
-                  <h6 className="text-xl mb-1 font-semibold">Custom Domains</h6>
-                  <p className="mb-4 text-blueGray-500">
+                  <h6 className="text-xl mb-1 font-bold">Custom Domains</h6>
+                  <p className="mb-4 font-light text-zinc-300">
                     We have many domains to choose from to upload your files You
                     can also donate your own domain!
                   </p>

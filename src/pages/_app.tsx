@@ -46,7 +46,7 @@ function Host({ Component, pageProps }: AppProps) {
     <>
       <head>
         <link
-          href="https://fonts.googleapis.com/css2?family=Nunito:wght@400&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;900&display=swap"
           rel="stylesheet"
         />
       </head>
