@@ -10,7 +10,7 @@ const MainFeat = () => {
     <div className="container max-w-screen-xl mx-auto">
       <div className="flex flex-row-reverse flex-wrap items-center">
         <div className="md:w-6/12 lg:w-4/12 px-6 md:px-4 mr-auto ml-auto">
-          <div className=" flex flex-col w-full shadow-2xl rounded-lg bg-polar-100">
+          <div className=" flex flex-col w-full shadow-lg rounded-lg bg-polar-100">
             <img
               alt="discord embed"
               src="https://cdn.discordapp.com/attachments/853691527800029205/929751884351275018/Screenshot_2022-01-09_134825.png"
@@ -40,7 +40,9 @@ const MainFeat = () => {
                   <div className=" p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-polar-100">
                     <ColorSwatchIcon className="h-6 w-6 text-blue-500" />
                   </div>
-                  <h6 className="text-xl mb-1 font-semibold">Personality</h6>
+                  <h6 className="text-xl mb-1 font-semibold">
+                    Multiple Regions
+                  </h6>
                   <p className="mb-4 text-blueGray-500">
                     You can edit your files & share them. You can also create
                     and personalise your experience.
@@ -82,7 +84,8 @@ const MainFeat = () => {
                   </div>
                   <h6 className="text-xl mb-1 font-semibold">Custom Domains</h6>
                   <p className="mb-4 text-blueGray-500">
-                    Use any custom domain for your image sharing links
+                    We have many domains to choose from to upload your files You
+                    can also donate your own domain!
                   </p>
                 </div>
               </div>

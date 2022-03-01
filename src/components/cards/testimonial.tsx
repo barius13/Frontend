@@ -14,7 +14,7 @@ const TestimonialBox: FC<TestimonialBox> = ({ user, content, avatar }) => {
         alt=""
         height="60"
         width="100"
-        className="rounded-full mx-auto my-5 border-4 border-aurora-yellow"
+        className="rounded-full mx-auto "
       />
       <div className="flex items-baseline justify-between mb-4">
         <h4 className="text-xl font-bold lg:text-2xl text-center mx-auto mb-2">
