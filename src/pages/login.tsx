@@ -52,7 +52,7 @@ export default function Login() {
     false
   );
 
-  return (
+  return !user ? (
     <>
       <Toaster />
       <div className="bg-polar-100 mx-auto sm:px-6 select-none">
@@ -194,5 +194,5 @@ export default function Login() {
         </div>
       </div>
     </>
-  );
+  ) : null;
 }

@@ -32,6 +32,8 @@ export default function Gallery() {
   useEffect(() => {
     if (!user) {
       router.push("/");
+    } else if (!user.discordId) {
+      router.push("/discord");
     }
   }, [router, user]);
 

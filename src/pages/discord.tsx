@@ -19,7 +19,7 @@ export default function Discord() {
     }
   }, [router, user]);
 
-  return (
+  return user && !user.discordId ? (
     <>
       <div className="bg-polar-100">
         <div className="flex justify-center items-center h-screen grid-rows-1 px-4">
@@ -66,5 +66,5 @@ export default function Discord() {
         </div>
       </div>
     </>
-  );
+  ) : null;
 }
