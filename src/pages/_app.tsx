@@ -44,6 +44,12 @@ function Host({ Component, pageProps }: AppProps) {
 
   return (
     <>
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Nunito:wght@400&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <NextSeo
         title="Kythi."
         description="Kythi.com is an image hosting service."
