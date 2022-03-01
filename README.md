@@ -1,7 +1,7 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
-
+[![CiCd](https://github.com/KythiX/Frontend/actions/workflows/CiCd.yaml/badge.svg)](https://github.com/KythiX/Frontend/actions/workflows/CiCd.yaml)
 ## About
 Repository for the Frontend of [Kythi](https://kythi.com) built using [NextJS](https://nextjs.org/), [React](https://reactjs.org/) & [TailwindCSS](https://tailwindcss.com/).
 
