@@ -8,7 +8,7 @@ interface TestimonialBox {
 
 const TestimonialBox: FC<TestimonialBox> = ({ user, content, avatar }) => {
   return (
-    <div className="p-6 rounded-md w-full md:p-8 lg:py-10">
+    <div className="p-6 rounded-md w-full lg:pt-20">
       <img
         src={avatar}
         alt=""
@@ -21,7 +21,7 @@ const TestimonialBox: FC<TestimonialBox> = ({ user, content, avatar }) => {
           {user}
         </h4>
       </div>
-      <p className="mb-7 text-lg text-zinc-300 font-light text-center">“{content}”</p>
+      <p className=" text-lg text-zinc-300 font-light text-center">“{content}”</p>
     </div>
   );
 };
