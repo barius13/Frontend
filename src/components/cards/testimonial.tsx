@@ -23,7 +23,7 @@ const TestimonialBox: FC<TestimonialBox> = ({ user, content, avatar }) => {
           {user}
         </h4>
       </div>
-      <p className=" text-lg text-zinc-300 font-light text-center">“{content}”</p>
+      <p className=" text-lg font-medium opacity-80 text-center">“{content}”</p>
     </div>
   );
 };

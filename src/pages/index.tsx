@@ -59,7 +59,9 @@ export default function Index() {
       </svg>
       <div className="bg-polar-200">
         <MainFeat />
-        <div className="max-w-screen-xl px-6 pb-12 md:mt-20 mx-auto lg:px-8 xl:px-4 lg:pb-16 xl:pb-24">
+        <div className="max-w-screen-xl px-6 pb-12 mt-20 md:mt-30 mx-auto lg:px-8 xl:px-4 lg:pb-16 xl:pb-24">
+
+          
           <div className="grid items-stretch content-center md:grid-cols-3 gap-3">
             {testimonials?.map((testimonial: userTestimonial, i) => (
               <TestimonialBox
@@ -71,6 +73,7 @@ export default function Index() {
             ))}
           </div>
         </div>
+        
       </div>
 
       <ReCAPTCHA
