@@ -5,7 +5,7 @@ const Footer: FC = () => {
   return (
     <>
       <svg className="bg-polar-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 40 1440 160">
-        <path fill="#141517" fill-opacity="1" d="M0,96L80,106.7C160,117,320,139,480,133.3C640,128,800,96,960,85.3C1120,75,1280,85,1360,90.7L1440,96L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
+        <path fill="#141517" fillOpacity="1" d="M0,96L80,106.7C160,117,320,139,480,133.3C640,128,800,96,960,85.3C1120,75,1280,85,1360,90.7L1440,96L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
       </svg>
       <footer className="py-7 text-gray-200 bg-polar-100 xl:pb-10">
         <div className="grid max-w-screen-xl gap-6 px-6 mx-auto lg:px-8 xl:px-4 md:grid-cols-2 lg:grid-cols-4 lg:gap-x-8">

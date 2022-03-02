@@ -1,5 +1,4 @@
 import API from "../api";
-import Head from "next/head";
 import "../styles/globals.css";
 import { NextSeo } from "next-seo";
 import { User, File } from "../typings";
