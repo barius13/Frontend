@@ -2,15 +2,12 @@ import Link from "next/link";
 
 export default function Policy() {
   return (
-    <div className="grid place-items-center md:grid-cols-1 h-screen">
-      <div className="text-white bg-polar-200 lg:px-10 lg:py-10 py-4 px-4 rounded-lg w-4/5">
-        <div className="divide-y-2 divide-white">
-          <h2 className=" font-bold text-snow-300 lg:text-4xl md:mb-6 text-center">
-            Privacy Policy
-          </h2>
-          <div className="md:mb-5 " />
-        </div>
-        <span className="font-bold text-snow-200 lg:text-xl">
+    <div className="flex flex-col place-items-center p-2">
+      <div className="text-white bg-polar-200 p-6 rounded-lg max-w-5xl w-full mt-24">
+        <h2 className="font-bold text-snow-300 text-4xl">Privacy Policy</h2>
+      </div>
+      <div className="text-white bg-polar-200 p-6 rounded-lg max-w-5xl w-full mt-3">
+        <span className="font-medium text-snow-200 lg:text-xl">
           Data We Collect
         </span>
         <div className="text-snow-100 ml-8 mt-3 mb-5">
@@ -19,7 +16,7 @@ export default function Policy() {
           <li>The person that invited you</li>
           <li>Unique verification code</li>
         </div>
-        <span className="font-bold text-snow-200 lg:text-xl">
+        <span className="font-medium text-snow-200 lg:text-xl">
           Discord Linking
         </span>
         <div className="text-snow-100 ml-8 mt-3 mb-8">
@@ -29,7 +26,7 @@ export default function Policy() {
           <li>Your Discord Avatar</li>
           <li>Your Discord Subscription status (Classic/Premium)</li>
         </div>
-        <span className="font-bold text-snow-200 lg:text-xl">
+        <span className="font-medium text-snow-200 lg:text-xl">
           Data Retention
         </span>
         <div className="text-snow-100 ml-8 mt-3 mb-5">
@@ -54,16 +51,13 @@ export default function Policy() {
             page and clicking on the delete account button.
           </li>
         </div>
-        <div className="divide-y-2 divide-white">
-          <div />
-          <div />
+      </div>
+      <div className="text-white bg-polar-200 p-6 rounded-lg max-w-5xl w-full mt-3">
+        <div className="text-center font-bold">
+          Privacy policy was last updated on the: &quot;2nd March 2022&quot;
         </div>
         <div className="text-center mt-2">
           We Reserve the right to update this privacy policy at any given time.
-        </div>
-        <div className="text-center mt-3 font-bold">
-          This privacy policy was last updated on the: &quot;13th Febuary
-          2022&quot;
         </div>
       </div>
     </div>

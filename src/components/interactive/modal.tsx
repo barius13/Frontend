@@ -9,7 +9,7 @@ interface Modal {
   title: string;
   open?: boolean;
   cname?: string;
-  state?: [any, React.Dispatch<React.SetStateAction<any>>]
+  state?: [any, React.Dispatch<React.SetStateAction<any>>];
   buttonName?: string;
   children?: React.ReactNode;
 }
@@ -81,7 +81,7 @@ const Modal: FC<Modal> = ({
               leaveTo="opacity-0 scale-95"
             >
               <div
-                className={`inline-block p-6 my-8 overflow-hidden text-left align-middle max-w-4xl transition-all transform shadow-xl bg-polar-200 rounded-lg ${w}`}
+                className={`inline-block p-6 my-8 overflow-hidden text-left align-middle max-w-2xl  transition-all transform shadow-xl bg-polar-200 rounded-lg ${w}`}
               >
                 <div className="flex justify-between">
                   <Dialog.Title as="h3" className="text-2xl font-medium ">

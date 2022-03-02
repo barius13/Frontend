@@ -2,22 +2,15 @@ import Link from "next/link";
 
 export default function Terms() {
   return (
-    <div className="grid place-items-center md:grid-cols-1 h-screen">
-      <div className="text-white bg-polar-200 lg:px-10 lg:py-10 py-4 px-4 rounded-lg w-4/5">
-        <div className="divide-y-2 divide-white">
-          <h2 className=" font-bold text-snow-300 lg:text-4xl md:mb-6 text-center">
-            Terms of Service
-          </h2>
-          <div className="md:mb-5" />
-        </div>
-        <span className="font-bold text-snow-200 lg:text-xl">
+    <div className="flex place-items-center flex-col mt-24">
+      <div className="text-white bg-polar-200 p-6 rounded-lg max-w-5xl w-full">
+        <h2 className="font-bold text-snow-300 text-4xl">Terms Of Service</h2>
+      </div>
+      <div className="text-white bg-polar-200 p-4 rounded-lg max-w-5xl w-full mt-3">
+        <span className="font-medium text-snow-200 lg:text-xl">
           When using our service you agree to the following conditions:
         </span>
         <div className="text-snow-100 ml-8 mt-3 mb-5">
-          <li>
-            We (Kythi) reserve the right to update the terms of service at any
-            time, without prior notice.
-          </li>
           <li>
             You are NOT allowed to perform a vulnerability test unless given
             explicit permissions by an
@@ -28,8 +21,14 @@ export default function Terms() {
             By using our service, you agree that your access to the service may
             be terminated for any reason at any time.
           </li>
+          <li>
+            We have the right to discontinue the product at any time for any
+            reason, without providing any notice.
+          </li>
         </div>
-        <span className="font-bold text-snow-200 lg:text-xl">Your Account</span>
+        <span className="font-medium text-snow-200 lg:text-xl">
+          Your Account
+        </span>
         <div className="text-snow-100 ml-8 mt-3 mb-8">
           <li>
             You are responsible for maintaining the confidentiality of your
@@ -58,7 +57,9 @@ export default function Terms() {
             result in account termination.
           </li>
         </div>
-        <span className="font-bold text-snow-200 lg:text-xl">Your Content</span>
+        <span className="font-medium text-snow-200 lg:text-xl">
+          Your Content
+        </span>
         <div className="text-snow-100 ml-8 mt-3 mb-8">
           <li>
             The content that you upload to Kythi is your responsibility. We
@@ -76,9 +77,13 @@ export default function Terms() {
             strictly prohibited.
           </li>
         </div>
+      </div>
+      <div className="text-white bg-polar-200 p-6 rounded-lg max-w-5xl w-full mt-3">
         <div className="text-center font-bold">
-          The Terms of Service were last updated on the: &quot;24th December
-          2021&quot;
+          Terms of Service was last updated on the: &quot;2nd March 2022&quot;
+        </div>
+        <div className="text-center mt-2">
+          We Reserve the right to update the Terms Of Service at any given time.
         </div>
       </div>
     </div>

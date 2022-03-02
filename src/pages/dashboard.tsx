@@ -111,10 +111,6 @@ export default function Dashboard() {
                     Latest Upload
                   </h4>
                 </div>
-                <div className="divide-y-2 divide-white mb-2 mt-3">
-                  <div />
-                  <div />
-                </div>
                 <div className="mt-3 duration-700 cursor-pointer">
                   {recentlyUploaded.endsWith("mp4") ||
                   recentlyUploaded.endsWith("mov") ||
@@ -128,7 +124,7 @@ export default function Dashboard() {
                     <img
                       src={recentlyUploaded}
                       alt="Recently Uploaded Image"
-                      className="rounded-lg w-full h-60 object-cover hover:shadow-xl hover:-translate-y-1"
+                      className="rounded-lg w-full h-60 object-cover hover:shadow-xl hover:-translate-y-1 duration-100"
                       onClick={() => {
                         window.open(recentlyUploaded, "_blank");
                       }}
@@ -181,14 +177,10 @@ export default function Dashboard() {
               <div className="p-6 bg-polar-200 rounded-md md:p-6 shadow-lg w-full">
                 <div className="flex items-baseline justify-between ">
                   <h4 className="text-xl font-bold lg:text-2xl text-snow-100 mt-1">
-                    Updates, News, and Announcements.
+                    Announcements{" "}
                   </h4>
                 </div>
-                <div className="divide-y-2 divide-white mb-2 mt-3">
-                  <div />
-                  <div />
-                </div>
-                <p className="bg-polar-400 py-2 px-2 rounded-md border-l-white border-l-2 mt-8 text-snow-200">
+                <p className="bg-polar-400 py-2 px-2 rounded-md border-l-white border-l-2 mt-4 text-snow-200">
                   Welcome to kythi we thank you for taking an interest in our
                   service! We are currently in beta and we are working on a lot
                   of features and bug fixes. We will be adding more features and
@@ -220,10 +212,6 @@ export default function Dashboard() {
                 Quick Links
               </h4>
             </div>
-            <div className="divide-y-2 divide-white mb-2 mt-3">
-              <div />
-              <div />
-            </div>
             <Modal
               w="lg:w-1/3"
               cname="w-full mt-4"
@@ -236,7 +224,7 @@ export default function Dashboard() {
                 <textarea
                   value=""
                   placeholder="Suggestion Description"
-                  className="bg-polar-300 mt-3 h-32 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
+                  className="bg-polar-300 -mt-3 h-24 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
                 />
                 <Button
                   onClick={() => {
@@ -260,7 +248,7 @@ export default function Dashboard() {
               <div>
                 <textarea
                   placeholder="Bug Description"
-                  className="bg-polar-300 caret-white mt-6 h-10 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400 "
+                  className="bg-polar-300 caret-white mt-3 h-10 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400 "
                 />
                 <select className=" rounded border-0 font-medium text-sm w-full bg-polar-300  mt-3 h-10 px-2 outline-none appearance-none text-white">
                   <option disabled={false} selected={true}>
@@ -285,7 +273,6 @@ export default function Dashboard() {
               </div>
             </Modal>
             <Modal
-              w="lg:1/3"
               cname="mt-4 w-full"
               buttonName="Testimonial Submission"
               title="Testimonial Submission"
@@ -297,7 +284,7 @@ export default function Dashboard() {
                 placeholder="Testimonial Description"
                 value={testimonialContent}
                 onChange={(ctx) => setTestimonialContent(ctx.target.value)}
-                className="bg-polar-300 mt-3 h-32 w-full rounded-md p-2 hover:bg-polar-400 text-white focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
+                className="bg-polar-300 h-32 caret-white -mt-3 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400 "
               />
               <Button
                 onClick={() => {
@@ -337,10 +324,6 @@ export default function Dashboard() {
 
             <div className="text-white mt-3">
               <h1 className="text-2xl font-medium text-snow-100 ">Tools</h1>
-              <div className="divide-y-2 divide-white mt-2 mb-3">
-                <div />
-                <div />
-              </div>
               <span className=" text-snow-100">File Upload</span>
               <input
                 type="file"

@@ -165,6 +165,7 @@ export default function Config() {
                 text="There is many placeholders, to view them type : for
                   options"
                 title="Discord Editor"
+                w="max-w-5xl"
                 buttonName="Edit Embed"
               >
                 <div className="mt-3 flex md:flex-row flex-col">

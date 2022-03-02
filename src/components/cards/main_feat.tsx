@@ -1,6 +1,6 @@
-import Image from "next/image"
-import Embed_Image from "../../../public/images/embed.png"
-import { Transition } from '@headlessui/react'
+import Link from "next/link";
+import Image from "next/image";
+import Embed_Image from "../../../public/images/embed.png";
 import {
   GlobeAltIcon,
   CollectionIcon,
@@ -13,10 +13,8 @@ const MainFeat = () => {
     <div className="container max-w-screen-xl mx-auto">
       <div className="flex flex-row-reverse flex-wrap items-center">
         <div className="md:w-6/12 lg:w-4/12 px-6 md:px-4 mr-auto ml-auto">
-
           <div className=" flex flex-col w-full shadow-lg rounded-lg bg-polar-100">
             <Image
-
               alt="discord embed"
               src={Embed_Image}
               className="w-full rounded-t-lg"
@@ -36,7 +34,6 @@ const MainFeat = () => {
               </p>
             </blockquote>
           </div>
-          
         </div>
 
         <div className="w-full md:w-6/12 px-4">
@@ -44,7 +41,7 @@ const MainFeat = () => {
             <div className="w-full md:w-6/12 px-4">
               <div className="relative flex flex-col mt-4">
                 <div className="px-4 py-5 flex-auto">
-                <div className=" p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-polar-100">
+                  <div className=" p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-polar-100">
                     <ColorSwatchIcon className="h-6 w-6 text-blue-500" />
                   </div>
                   <h6 className="text-xl mb-1 font-bold">Custom Domains</h6>
@@ -56,39 +53,36 @@ const MainFeat = () => {
               </div>
               <div className="relative flex flex-col min-w-0">
                 <div className="px-4 py-5 flex-auto">
-                <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-polar-100">
+                  <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-polar-100">
                     <GlobeAltIcon className="w-6 h-6 text-blue-500" />
                   </div>
                   <h6 className="text-xl mb-1 font-bold">Multiple Regions</h6>
                   <p className="mb-4 font-light opacity-80">
                     We make use of&nbsp;
-                    <a
-                      className="hover:underline opacity-60 font-medium"
-                      href="https://www.cloudflare.com/network/"
-                    >
-                      Cloudflare&apos;s Infrastructure
-                    </a>&nbsp;
-                    to provide fast, secure and reliable hosting.
+                    <Link href="https://www.cloudflare.com/network/" passHref>
+                      <span className="hover:underline opacity-60 font-medium cursor-pointer">
+                        Cloudflare&apos;s Infrastructure
+                      </span>
+                    </Link>
+                    &nbsp; to provide fast, secure and reliable hosting.
                   </p>
-                
                 </div>
               </div>
             </div>
             <div className="w-full md:w-6/12 px-4">
               <div className="relative flex flex-col min-w-0 mt-4">
                 <div className="px-4 py-5 flex-auto">
-                <div className="text-black p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-polar-100">
+                  <div className="text-black p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-polar-100">
                     <ShieldExclamationIcon className="text-blue-500" />
                   </div>
                   <h6 className="text-xl mb-1 font-bold">Secure</h6>
                   <p className="mb-4 font-light opacity-80">
                     All passwords are hashed using&nbsp;
-                    <a
-                      className="hover:underline opacity-60 font-medium"
-                      href="https://en.wikipedia.org/wiki/Argon2"
-                    >
-                      argon2i
-                    </a>
+                    <Link href="https://en.wikipedia.org/wiki/Argon2" passHref>
+                      <span className="hover:underline opacity-60 font-medium cursor-pointer">
+                        argon2i
+                      </span>
+                    </Link>
                     , a modern, memory-hard, CPU-hard, and parallelizable
                     hashing algorithm.
                   </p>
@@ -96,7 +90,7 @@ const MainFeat = () => {
               </div>
               <div className="relative flex flex-col min-w-0">
                 <div className="px-4 py-5 flex-auto">
-                <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-polar-100">
+                  <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-polar-100">
                     <CollectionIcon className="w-6 h-6 text-blue-500" />
                   </div>
                   <h6 className="text-xl mb-1 font-bold">Unlimited Storage</h6>
