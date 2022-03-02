@@ -34,7 +34,7 @@
     @apply inline-block font-medium text-sm rounded-lg h-10 bg-blue-600;
   }
   .default:hover {
-    @apply bg-frost-300;
+    @apply bg-blue-700;
   }
   .primary {
     @apply inline-block font-medium text-sm rounded-lg h-10 bg-blue-600;
