@@ -163,7 +163,7 @@ export default function Config() {
               </div>
               <Modal
                 text="There is many placeholders, to view them type : for
-                  options"
+                options"
                 title="Discord Editor"
                 w="max-w-5xl"
                 buttonName="Edit Embed"

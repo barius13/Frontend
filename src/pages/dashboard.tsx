@@ -158,6 +158,7 @@ export default function Dashboard() {
                           is not reversible. This will permanently delete the
                           File from our servers. This action is irreversible!"
                     title="Delete File"
+                    w="max-w-2xl"
                   >
                     <div className="mt-6">
                       <Button
@@ -213,7 +214,7 @@ export default function Dashboard() {
               </h4>
             </div>
             <Modal
-              w="lg:w-1/3"
+              w="max-w-2xl"
               cname="w-full mt-4"
               buttonName="Suggest a Feature"
               title="Suggestion"
@@ -238,7 +239,7 @@ export default function Dashboard() {
             </Modal>
 
             <Modal
-              w="lg:w-1/3"
+              w="max-w-2xl"
               text="We're sorry you had a bad experience please list exactly what
                 occured so we can fix it as soon as possible!"
               title="Bug Report"
@@ -274,6 +275,7 @@ export default function Dashboard() {
             </Modal>
             <Modal
               cname="mt-4 w-full"
+              w="max-w-2xl"
               buttonName="Testimonial Submission"
               title="Testimonial Submission"
               text="Thank you for using our service! Input your testimonial here and it will be sent for approval!"
