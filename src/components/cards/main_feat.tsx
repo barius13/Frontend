@@ -1,3 +1,5 @@
+import Image from "next/image"
+import Embed_Image from "../../../public/images/embed.png"
 import {
   GlobeAltIcon,
   CollectionIcon,
@@ -11,10 +13,12 @@ const MainFeat = () => {
       <div className="flex flex-row-reverse flex-wrap items-center">
         <div className="md:w-6/12 lg:w-4/12 px-6 md:px-4 mr-auto ml-auto">
           <div className=" flex flex-col w-full shadow-lg rounded-lg bg-polar-100">
-            <img
+            <Image
+
               alt="discord embed"
-              src="https://cdn.discordapp.com/attachments/853691527800029205/929751884351275018/Screenshot_2022-01-09_134825.png"
+              src={Embed_Image}
               className="w-full rounded-t-lg"
+              placeholder="blur"
             />
             <div className="divide-y-2 divide-frost-200">
               <div />

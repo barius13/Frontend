@@ -7,4 +7,7 @@ module.exports = {
     CDN_BUCKET: "kythi",
     ReCAPTCHA_KEY: "6Lf5RnseAAAAABmOZgW-GfybGm3exHBtNStx_ioa",
   },
+  images: {
+    domains: ['cdn.discordapp.com']
+  }
 };
