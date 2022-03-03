@@ -1,16 +1,16 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 export default function Terms() {
   return (
-    <div className="flex place-items-center flex-col mt-24">
-      <div className="text-white bg-polar-200 p-6 rounded-lg max-w-5xl w-full">
-        <h2 className="font-bold text-snow-300 text-4xl">Terms Of Service</h2>
+    <div className="mt-24 flex flex-col place-items-center">
+      <div className="w-full max-w-5xl rounded-lg bg-polar-200 p-6 text-white">
+        <h2 className="text-4xl font-bold text-snow-300">Terms Of Service</h2>
       </div>
-      <div className="text-white bg-polar-200 p-4 rounded-lg max-w-5xl w-full mt-3">
+      <div className="mt-3 w-full max-w-5xl rounded-lg bg-polar-200 p-4 text-white">
         <span className="font-medium text-snow-200 lg:text-xl">
           When using our service you agree to the following conditions:
         </span>
-        <div className="text-snow-100 ml-8 mt-3 mb-5">
+        <div className="ml-8 mt-3 mb-5 text-snow-100">
           <li>
             You are NOT allowed to perform a vulnerability test unless given
             explicit permissions by an
@@ -29,7 +29,7 @@ export default function Terms() {
         <span className="font-medium text-snow-200 lg:text-xl">
           Your Account
         </span>
-        <div className="text-snow-100 ml-8 mt-3 mb-8">
+        <div className="ml-8 mt-3 mb-8 text-snow-100">
           <li>
             You are responsible for maintaining the confidentiality of your
             credentials and any activity resulting from the use of them on
@@ -43,7 +43,7 @@ export default function Terms() {
             Following the&nbsp;
             <Link href="https://www.ftc.gov/enforcement/rules/rulemaking-regulatory-reform-proceedings/childrens-online-privacy-protection-rule">
               <a
-                className=" text-frost-300 hover:text-frost-400 underline underline-offset-2"
+                className=" text-frost-300 underline underline-offset-2 hover:text-frost-400"
                 target="_blank"
               >
                 Children&apos;s Online Privacy Protection Act
@@ -60,7 +60,7 @@ export default function Terms() {
         <span className="font-medium text-snow-200 lg:text-xl">
           Your Content
         </span>
-        <div className="text-snow-100 ml-8 mt-3 mb-8">
+        <div className="ml-8 mt-3 mb-8 text-snow-100">
           <li>
             The content that you upload to Kythi is your responsibility. We
             (Kythi) will not be held responsible for any content that you upload
@@ -78,11 +78,11 @@ export default function Terms() {
           </li>
         </div>
       </div>
-      <div className="text-white bg-polar-200 p-6 rounded-lg max-w-5xl w-full mt-3">
+      <div className="mt-3 w-full max-w-5xl rounded-lg bg-polar-200 p-6 text-white">
         <div className="text-center font-bold">
           Terms of Service was last updated on the: &quot;2nd March 2022&quot;
         </div>
-        <div className="text-center mt-2">
+        <div className="mt-2 text-center">
           We Reserve the right to update the Terms Of Service at any given time.
         </div>
       </div>

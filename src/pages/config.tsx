@@ -1,70 +1,70 @@
-import API from "../api";
-import Link from "next/link";
-import { UserEmbed } from "../typings";
-import { useRouter } from "next/router";
-import { Toaster } from "react-hot-toast";
-import { useEffect, useState } from "react";
-import { useUser } from "../components/user";
-import { sendToast } from "../utils/sendToast";
-import Nav from "../components/navigators/navbar";
-import Modal from "../components/interactive/modal";
-import Toggle from "../components/interactive/toggle";
-import Button from "../components/interactive/button";
-import InputGroup from "../components/interactive/inputgroup";
+import API from '../api';
+import Link from 'next/link';
+import {UserEmbed} from '../typings';
+import {useRouter} from 'next/router';
+import {Toaster} from 'react-hot-toast';
+import {useEffect, useState} from 'react';
+import {useUser} from '../components/user';
+import {sendToast} from '../utils/sendToast';
+import Nav from '../components/navigators/navbar';
+import Modal from '../components/interactive/modal';
+import Toggle from '../components/interactive/toggle';
+import Button from '../components/interactive/button';
+import InputGroup from '../components/interactive/inputgroup';
 
 export default function Config() {
   const router = useRouter();
-  const { user, setUser } = useUser();
+  const {user, setUser} = useUser();
   const [Faketoggled, setFake] = useState(false);
   const [invisToggled, setInvis] = useState(false);
   const [userEmbeds, setUserEmbeds] = useState(user?.embeds);
   const [currentEmbed, setCurrentEmbed] = useState(user?.embeds[0]);
 
   function updateEmbed(k: keyof UserEmbed, v: string | boolean | null) {
-    if (typeof v === "string" && !!!v) v = null;
+    if (typeof v === 'string' && !!!v) v = null;
 
-    setCurrentEmbed({ ...currentEmbed, [k]: v });
+    setCurrentEmbed({...currentEmbed, [k]: v});
   }
 
   function formatEmbedString(str: string) {
     return str
       .replaceAll(/:username:/gi, user.username)
-      .replaceAll(/:filename:/gi, "ilysmbidkhttybikydlmb:(.png")
+      .replaceAll(/:filename:/gi, 'ilysmbidkhttybikydlmb:(.png')
       .replaceAll(/:uploadcount:/gi, user.upload.count.toString())
-      .replaceAll(/:filesize:/gi, "420.69 KB")
+      .replaceAll(/:filesize:/gi, '420.69 KB')
       .replaceAll(/:date(-[^}]+)?:/gi, new Date().toLocaleDateString())
       .replaceAll(/:time(-[^}]+)?:/gi, new Date().toLocaleTimeString())
       .replaceAll(/:timestamp(-[^}]+)?:/gi, new Date().toLocaleString());
   }
 
   function createEmbed(
-    data?: Omit<UserEmbed, "id" | "userId">,
+    data?: Omit<UserEmbed, 'id' | 'userId'>,
     isRestored?: boolean
   ) {
     API.createEmbed(data)
       .then((data) => {
         setUser((user) =>
-          Object.assign(user, { embeds: [...user.embeds, data.embed] })
+          Object.assign(user, {embeds: [...user.embeds, data.embed]})
         );
         setUserEmbeds((userEmbeds) => {
           return [...userEmbeds, data.embed];
         });
 
         sendToast(
-          isRestored ? "Successfully restored embed profile." : data.message,
-          "success"
+          isRestored ? 'Successfully restored embed profile.' : data.message,
+          'success'
         );
       })
       .catch((err) => {
-        sendToast(err.data.message, "error");
+        sendToast(err.data.message, 'error');
       });
   }
 
   useEffect(() => {
     if (!user) {
-      router.push("/");
+      router.push('/');
     } else if (!user.discordId) {
-      router.push("/discord");
+      router.push('/discord');
     }
   }, [router, user]);
 
@@ -74,16 +74,16 @@ export default function Config() {
       <Nav page="config" />
 
       <div className="text-white">
-        <div className="flex flex-col lg:flex-row md:flex-row md:space-x-4 space-y-2 md:space-y-0 lg:space-y-0 lg:space-x-4 p-10">
-          <div className="bg-polar-200 rounded-md p-6 py-8">
+        <div className="flex flex-col space-y-2 p-10 md:flex-row md:space-x-4 md:space-y-0 lg:flex-row lg:space-y-0 lg:space-x-4">
+          <div className="rounded-md bg-polar-200 p-6 py-8">
             <h1 className="text-2xl">Downloads</h1>
             <div className="">
-              <div className="mt-2 text-snow-100 mb-3 ">
+              <div className="mt-2 mb-3 text-snow-100 ">
                 Configs are created for screenshot uploaders such as the ones
                 listed below, it allows a user to quickly take images & videos
                 aswell as upload them through the use of a keybind.
               </div>
-              <div className="flex flex-col md:flex-col space-x-0 lg:flex-row lg:space-x-2 md:space-x-0 lg:space-y-0 space-y-2 md:space-y-2">
+              <div className="flex flex-col space-x-0 space-y-2 md:flex-col md:space-x-0 md:space-y-2 lg:flex-row lg:space-x-2 lg:space-y-0">
                 <Link
                   href={`${process.env.API_URL}/users/@me/config/sharex`}
                   passHref
@@ -96,7 +96,7 @@ export default function Config() {
               </div>
             </div>
           </div>
-          <div className="bg-polar-200 rounded-md p-6 py-8 w-full">
+          <div className="w-full rounded-md bg-polar-200 p-6 py-8">
             <h1 className="text-2xl">Domains</h1>
             <div className="lg:w-auto ">
               <div className="mt-2 text-snow-100">
@@ -112,7 +112,7 @@ export default function Config() {
                   PlaceHolder="Subdomain"
                 />
                 <input
-                  className="px-2 p-2 bg-polar-300 focus:outline-none w-32 transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
+                  className="w-32 bg-polar-300 p-2 px-2 transition delay-75 duration-500 focus:bg-polar-400 focus:outline-none focus:duration-500"
                   placeholder="domain"
                 />
                 <InputGroup
@@ -122,18 +122,18 @@ export default function Config() {
                   inputCname="rounded-r"
                 />
               </div>
-              <div className="text-snow-100 mt-2">
+              <div className="mt-2 text-snow-100">
                 Your Selected domain is: Roblox.Kythi.pics/penis
               </div>
 
-              <h1 className="mt-3 text-xl text-slate-200 font-medium">
+              <h1 className="mt-3 text-xl font-medium text-slate-200">
                 Domain Options
               </h1>
               <div className="mt-1 text-snow-100">
                 You can toggle specific domain configurations on and off here.
                 Currently doesnt work.
               </div>
-              <div className="flex flex-row space-x-3 mt-2">
+              <div className="mt-2 flex flex-row space-x-3">
                 <div className="space-x-1">
                   <Toggle
                     tooltip="Fake URL will allow you to use any URL or Text on the image but its obviously not the real domain, this is will most likely only work on discord."
@@ -154,10 +154,10 @@ export default function Config() {
               </div>
             </div>
             <div>
-              <h1 className="mt-3 text-xl text-slate-200 font-medium">
+              <h1 className="mt-3 text-xl font-medium text-slate-200">
                 Embed Editor
               </h1>
-              <div className="mt-1 text-snow-100 mb-2">
+              <div className="mt-1 mb-2 text-snow-100">
                 The embed editor edits your embed. This should be clear enough
                 without any more context.
               </div>
@@ -168,17 +168,17 @@ export default function Config() {
                 w="max-w-5xl"
                 buttonName="Edit Embed"
               >
-                <div className="mt-3 flex md:flex-row flex-col">
-                  <div className="space-y-3 mr-0 md:mr-8 lg:mr-8">
+                <div className="mt-3 flex flex-col md:flex-row">
+                  <div className="mr-0 space-y-3 md:mr-8 lg:mr-8">
                     <InputGroup
                       onChange={(ctx: any) => {
-                        updateEmbed("siteUrl", ctx.target.value);
+                        updateEmbed('siteUrl', ctx.target.value);
                       }}
                       value={
                         currentEmbed.siteUrl &&
                         currentEmbed.siteUrl.match(/https?:\/\//i)
-                          ? currentEmbed.siteUrl.replace(/https?:\/\//i, "")
-                          : currentEmbed.siteUrl ?? ""
+                          ? currentEmbed.siteUrl.replace(/https?:\/\//i, '')
+                          : currentEmbed.siteUrl ?? ''
                       }
                       text="https://"
                       show={true}
@@ -188,10 +188,10 @@ export default function Config() {
                     />
                     <InputGroup
                       PlaceHolder="SiteName"
-                      value={currentEmbed.siteText ?? ""}
+                      value={currentEmbed.siteText ?? ''}
                       inputCname="w-full rounded"
                       onChange={(ctx: any) => {
-                        updateEmbed("siteText", ctx.target.value);
+                        updateEmbed('siteText', ctx.target.value);
                       }}
                     />
                     <InputGroup
@@ -203,25 +203,25 @@ export default function Config() {
                       value={
                         currentEmbed.authorUrl &&
                         currentEmbed.authorUrl.match(/https?:\/\//i)
-                          ? currentEmbed.authorUrl.replace(/https?:\/\//i, "")
-                          : currentEmbed.authorUrl ?? ""
+                          ? currentEmbed.authorUrl.replace(/https?:\/\//i, '')
+                          : currentEmbed.authorUrl ?? ''
                       }
                       onChange={(ctx: any) => {
-                        updateEmbed("authorUrl", ctx.target.value);
+                        updateEmbed('authorUrl', ctx.target.value);
                       }}
                     />
                     <InputGroup
                       PlaceHolder="Author"
                       inputCname="w-full rounded"
-                      value={currentEmbed.authorText ?? ""}
+                      value={currentEmbed.authorText ?? ''}
                       onChange={(ctx: any) => {
-                        updateEmbed("authorText", ctx.target.value);
+                        updateEmbed('authorText', ctx.target.value);
                       }}
                     />
                     <InputGroup
-                      value={currentEmbed.title ?? ""}
+                      value={currentEmbed.title ?? ''}
                       onChange={(ctx: any) => {
-                        updateEmbed("title", ctx.target.value);
+                        updateEmbed('title', ctx.target.value);
                       }}
                       PlaceHolder="Title"
                       inputCname="rounded w-full"
@@ -229,9 +229,9 @@ export default function Config() {
                     <InputGroup
                       inputCname="w-full rounded"
                       PlaceHolder="Description"
-                      value={currentEmbed.description ?? ""}
+                      value={currentEmbed.description ?? ''}
                       onChange={(ctx: any) => {
-                        updateEmbed("description", ctx.target.value);
+                        updateEmbed('description', ctx.target.value);
                       }}
                     />
                     <div className="">
@@ -255,12 +255,12 @@ export default function Config() {
                                   : embed
                               );
 
-                              setUser(Object.assign(user, { embeds }));
+                              setUser(Object.assign(user, {embeds}));
                               setUserEmbeds(embeds);
-                              sendToast(data.message, "success");
+                              sendToast(data.message, 'success');
                             })
                             .catch((err) => {
-                              sendToast(err.data.message, "error");
+                              sendToast(err.data.message, 'error');
                             });
                         }}
                         variant="success"
@@ -272,7 +272,7 @@ export default function Config() {
                           onClick={() => {
                             API.deleteEmbed(currentEmbed.id)
                               .then((data) => {
-                                const { embed, message } = data;
+                                const {embed, message} = data;
 
                                 const currentIndex = userEmbeds.findIndex(
                                   (embed) => embed.id === currentEmbed.id
@@ -285,15 +285,15 @@ export default function Config() {
                                     ? embeds.length - 1
                                     : 0;
 
-                                setUser(Object.assign(user, { embeds }));
+                                setUser(Object.assign(user, {embeds}));
                                 setUserEmbeds(embeds);
                                 setCurrentEmbed(embeds[newIndex]);
 
                                 sendToast(
                                   <>
-                                    {message + " "}
+                                    {message + ' '}
                                     <button
-                                      className="hover:underline text-white"
+                                      className="text-white hover:underline"
                                       onClick={() =>
                                         createEmbed(
                                           {
@@ -313,11 +313,11 @@ export default function Config() {
                                       Restore Embed
                                     </button>
                                   </>,
-                                  "success"
+                                  'success'
                                 );
                               })
                               .catch((err) => {
-                                sendToast(err.data.message, "error");
+                                sendToast(err.data.message, 'error');
                               });
                           }}
                           cname="text-sm w-full"
@@ -336,46 +336,46 @@ export default function Config() {
                     </div>
                   </div>
                   <div>
-                    <div className="discord-embed shadow-md border-l-discord-light_blue border-l-4 rounded-sm bg-discord-base flex ml-auto">
-                      <div className="embed pt-2 pr-4 pb-4 pl-3 font-discord-site">
-                        <div className="embed-site mt-2 antialiased font-light text-site text-discord-site bg-discord-base font-whitney">
+                    <div className="discord-embed ml-auto flex rounded-sm border-l-4 border-l-discord-light_blue bg-discord-base shadow-md">
+                      <div className="embed font-discord-site pt-2 pr-4 pb-4 pl-3">
+                        <div className="embed-site mt-2 bg-discord-base font-whitney text-site font-light text-discord-site antialiased">
                           {currentEmbed.siteUrl ? (
                             <Link href={currentEmbed.siteUrl}>
                               <a className="hover:underline" target="_blank">
-                                {formatEmbedString(currentEmbed.siteText ?? "")}
+                                {formatEmbedString(currentEmbed.siteText ?? '')}
                               </a>
                             </Link>
                           ) : (
-                            formatEmbedString(currentEmbed.siteText ?? "")
+                            formatEmbedString(currentEmbed.siteText ?? '')
                           )}
                         </div>
-                        <div className="embed-author mt-2 font-bold antialiased text-author font-whitney">
+                        <div className="embed-author mt-2 font-whitney text-author font-bold antialiased">
                           {currentEmbed.authorUrl ? (
                             <Link href={currentEmbed.authorUrl}>
                               <a className="hover:underline" target="_blank">
                                 {formatEmbedString(
-                                  currentEmbed.authorText ?? ""
+                                  currentEmbed.authorText ?? ''
                                 )}
                               </a>
                             </Link>
                           ) : (
-                            formatEmbedString(currentEmbed.authorText ?? "")
+                            formatEmbedString(currentEmbed.authorText ?? '')
                           )}
                         </div>
-                        <div className="embed-title mt-2 font-semibold subpixel-antialiased text-title font-whitney">
+                        <div className="embed-title mt-2 font-whitney text-title font-semibold subpixel-antialiased">
                           <Link href="https://kythi.pics/ilysmbidkhttybikydlmb:(">
                             <a
                               target="_blank"
-                              className="text-discord-blue cursor-pointer hover:underline"
+                              className="cursor-pointer text-discord-blue hover:underline"
                             >
-                              {formatEmbedString(currentEmbed.title ?? "")}
+                              {formatEmbedString(currentEmbed.title ?? '')}
                             </a>
                           </Link>
                         </div>
-                        <div className="embed-desc mt-2 font-normal subpixel-antialiased text-desc text-gray-300 max-w-sm font-whitney">
-                          {formatEmbedString(currentEmbed.description ?? "")}
+                        <div className="embed-desc mt-2 max-w-sm font-whitney text-desc font-normal text-gray-300 subpixel-antialiased">
+                          {formatEmbedString(currentEmbed.description ?? '')}
                         </div>
-                        <div className="image h-img mt-4">
+                        <div className="image mt-4 h-img">
                           {/* eslint-disable-next-line */}
                           <img
                             className="h-img rounded-sm"
@@ -385,14 +385,14 @@ export default function Config() {
                         </div>
                       </div>
                     </div>
-                    <div className="flex flex-col space-y-2 mt-3">
+                    <div className="mt-3 flex flex-col space-y-2">
                       <div>
                         <Toggle
                           label="Toggle Embed"
                           cname="invisible"
                           checked={currentEmbed.enabled}
                           onChange={(val) => {
-                            updateEmbed("enabled", val);
+                            updateEmbed('enabled', val);
                           }}
                         />
                       </div>
@@ -400,15 +400,15 @@ export default function Config() {
                         <Toggle
                           label="Random Color"
                           cname="invisible"
-                          checked={currentEmbed.color === "RANDOM"}
+                          checked={currentEmbed.color === 'RANDOM'}
                           onChange={(val) => {
-                            updateEmbed("color", val ? "RANDOM" : "#000000");
+                            updateEmbed('color', val ? 'RANDOM' : '#000000');
                           }}
                         />
                       </div>
                       <div
-                        className={`space-x-2 select-none ${
-                          currentEmbed.color === "RANDOM" && "hidden"
+                        className={`select-none space-x-2 ${
+                          currentEmbed.color === 'RANDOM' && 'hidden'
                         }`}
                       >
                         <span>Embed Color </span>
@@ -417,19 +417,19 @@ export default function Config() {
                           type="color"
                           className="bg-polar-200"
                           value={
-                            currentEmbed.color === "RANDOM"
-                              ? "#000000"
-                              : currentEmbed.color ?? ""
+                            currentEmbed.color === 'RANDOM'
+                              ? '#000000'
+                              : currentEmbed.color ?? ''
                           }
                           onChange={(ctx) => {
-                            updateEmbed("color", ctx.target.value);
+                            updateEmbed('color', ctx.target.value);
                           }}
                         />
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="btn-group flex flex-wrap justify-center mt-4">
+                <div className="btn-group mt-4 flex flex-wrap justify-center">
                   <Button
                     onClick={() => {
                       {
@@ -446,7 +446,7 @@ export default function Config() {
                     }}
                     cname="btn normal-case bg-polar-300 hover:bg-polar-400 transition duration-200 mr-2"
                   >
-                    {"<"}
+                    {'<'}
                   </Button>
                   {userEmbeds.map((embed, index) => {
                     return (
@@ -456,8 +456,8 @@ export default function Config() {
                         cname={`
                                 btn normal-case ${
                                   currentEmbed.id === embed.id
-                                    ? "bg-polar-400 hover:bg-polar-500"
-                                    : "bg-polar-300 hover:bg-polar-400"
+                                    ? 'bg-polar-400 hover:bg-polar-500'
+                                    : 'bg-polar-300 hover:bg-polar-400'
                                 }  transition duration-200 rounded-lg mr-2
                               `}
                         onClick={() => {
@@ -486,7 +486,7 @@ export default function Config() {
                       }
                     }}
                   >
-                    {">"}
+                    {'>'}
                   </Button>
                 </div>
               </Modal>

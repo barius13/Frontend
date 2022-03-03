@@ -1,22 +1,22 @@
-import React from "react";
-import Link from "next/link";
-import { useEffect } from "react";
-import { useRouter } from "next/router";
-import { Toaster } from "react-hot-toast";
-import { useUser } from "../components/user";
-import { sendToast } from "../utils/sendToast";
-import Nav from "../components/navigators/navbar";
-import Button from "../components/interactive/button";
+import React from 'react';
+import Link from 'next/link';
+import {useEffect} from 'react';
+import {useRouter} from 'next/router';
+import {Toaster} from 'react-hot-toast';
+import {useUser} from '../components/user';
+import {sendToast} from '../utils/sendToast';
+import Nav from '../components/navigators/navbar';
+import Button from '../components/interactive/button';
 
 export default function Settings() {
   const router = useRouter();
-  const { user } = useUser();
+  const {user} = useUser();
 
   useEffect(() => {
     if (!user) {
-      router.push("/");
+      router.push('/');
     } else if (!user.discordId) {
-      router.push("/discord");
+      router.push('/discord');
     }
   }, [router, user]);
 
@@ -25,54 +25,54 @@ export default function Settings() {
       <Toaster />
       <Nav page="" />
 
-      <div className="flex justify-center items-center p-2 flex-col">
-        <div className="text-center bg-polar-200 rounded-md p-6 mt-24 text-white max-w-xl w-full">
-          <h1 className="text-xl font-semibold text-snow-300 mt-3 flex">
+      <div className="flex flex-col items-center justify-center p-2">
+        <div className="mt-24 w-full max-w-xl rounded-md bg-polar-200 p-6 text-center text-white">
+          <h1 className="mt-3 flex text-xl font-semibold text-snow-300">
             Profile Settings
           </h1>
-          <div className="text-snow-300 flex mr-auto text-sm text-left flex-col">
+          <div className="mr-auto flex flex-col text-left text-sm text-snow-300">
             Signed in as&nbsp;
             {user.username}, {user.email}
           </div>
 
-          <div className="flex mt-3 font-semibold">Username</div>
+          <div className="mt-3 flex font-semibold">Username</div>
           <input
-            className="mt-2 placeholder:text-gray-400 block bg-polar-300 hover:bg-polar-400 caret-white text-white transition duration-700 delay-50 h-8 rounded-md py-2 pl-2 shadow-sm focus:outline-none hover:border-frost-300 hover:ring-frost-300 focus:border-frost-400 focus:ring-frost-400 focus:ring-2 hover:ring-2 sm:text-sm"
+            className="delay-50 mt-2 block h-8 rounded-md bg-polar-300 py-2 pl-2 text-white caret-white shadow-sm transition duration-700 placeholder:text-gray-400 hover:border-frost-300 hover:bg-polar-400 hover:ring-2 hover:ring-frost-300 focus:border-frost-400 focus:outline-none focus:ring-2 focus:ring-frost-400 sm:text-sm"
             placeholder={user.username}
             type="text"
           />
-          <div className="flex mt-3 font-semibold">Password</div>
+          <div className="mt-3 flex font-semibold">Password</div>
 
-          <div className="flex lg:flex-row md:flex-row flex-col lg:space-x-2 md:space-x-2 mt-2">
+          <div className="mt-2 flex flex-col md:flex-row md:space-x-2 lg:flex-row lg:space-x-2">
             <input
-              className="placeholder:text-gray-400 block bg-polar-300 hover:bg-polar-400 caret-white text-white transition duration-700 delay-50 h-8 rounded-md py-2 pl-2 shadow-sm focus:outline-none hover:border-frost-300 hover:ring-frost-300 focus:border-frost-400 focus:ring-frost-400 focus:ring-2 hover:ring-2 sm:text-sm"
-              placeholder={"Current Password"}
+              className="delay-50 block h-8 rounded-md bg-polar-300 py-2 pl-2 text-white caret-white shadow-sm transition duration-700 placeholder:text-gray-400 hover:border-frost-300 hover:bg-polar-400 hover:ring-2 hover:ring-frost-300 focus:border-frost-400 focus:outline-none focus:ring-2 focus:ring-frost-400 sm:text-sm"
+              placeholder={'Current Password'}
               type="password"
             />
             <input
-              className="placeholder:text-gray-400 md:mt-0 lg:mt-0 mt-2 block bg-polar-300 hover:bg-polar-400 caret-white text-white transition duration-700 delay-50 h-8 rounded-md py-2 pl-2 shadow-sm focus:outline-none hover:border-frost-300 hover:ring-frost-300 focus:border-frost-400 focus:ring-frost-400 focus:ring-2 hover:ring-2 sm:text-sm"
-              placeholder={"New Password"}
+              className="delay-50 mt-2 block h-8 rounded-md bg-polar-300 py-2 pl-2 text-white caret-white shadow-sm transition duration-700 placeholder:text-gray-400 hover:border-frost-300 hover:bg-polar-400 hover:ring-2 hover:ring-frost-300 focus:border-frost-400 focus:outline-none focus:ring-2 focus:ring-frost-400 sm:text-sm md:mt-0 lg:mt-0"
+              placeholder={'New Password'}
               type="password"
             />
           </div>
 
-          <div className="flex mt-3 font-semibold">Email Address</div>
+          <div className="mt-3 flex font-semibold">Email Address</div>
 
-          <div className="flex lg:flex-row md:flex-row flex-col lg:space-x-2 md:space-x-2 mt-2">
+          <div className="mt-2 flex flex-col md:flex-row md:space-x-2 lg:flex-row lg:space-x-2">
             <input
-              className="placeholder:text-gray-400 block bg-polar-300 hover:bg-polar-400 caret-white text-white transition duration-700 delay-50 h-8 rounded-md py-2 pl-2 shadow-sm focus:outline-none hover:border-frost-300 hover:ring-frost-300 focus:border-frost-400 focus:ring-frost-400 focus:ring-2 hover:ring-2 sm:text-sm"
+              className="delay-50 block h-8 rounded-md bg-polar-300 py-2 pl-2 text-white caret-white shadow-sm transition duration-700 placeholder:text-gray-400 hover:border-frost-300 hover:bg-polar-400 hover:ring-2 hover:ring-frost-300 focus:border-frost-400 focus:outline-none focus:ring-2 focus:ring-frost-400 sm:text-sm"
               placeholder={user.email}
               name="email"
             />
             <input
-              className="placeholder:text-gray-400 block lg:mt-0 mt-2 md:mt-0 bg-polar-300 hover:bg-polar-400 caret-white text-white transition duration-700 delay-50 h-8 rounded-md py-2 pl-2 shadow-sm focus:outline-none hover:border-frost-300 hover:ring-frost-300 focus:border-frost-400 focus:ring-frost-400 focus:ring-2 hover:ring-2 sm:text-sm"
-              placeholder={"New Email"}
+              className="delay-50 mt-2 block h-8 rounded-md bg-polar-300 py-2 pl-2 text-white caret-white shadow-sm transition duration-700 placeholder:text-gray-400 hover:border-frost-300 hover:bg-polar-400 hover:ring-2 hover:ring-frost-300 focus:border-frost-400 focus:outline-none focus:ring-2 focus:ring-frost-400 sm:text-sm md:mt-0 lg:mt-0"
+              placeholder={'New Email'}
               name="email"
             />
           </div>
-          <div className="flex justify-between lg:flex-row md:flex-row flex-col md:space-x-8 lg:space-x-8">
+          <div className="flex flex-col justify-between md:flex-row md:space-x-8 lg:flex-row lg:space-x-8">
             <span>
-              <span className="font-semibold flex mt-3">Delete Account</span>
+              <span className="mt-3 flex font-semibold">Delete Account</span>
               <span className="mr-auto flex">
                 Upon Deletion you wipe all of your data.
               </span>
@@ -83,8 +83,8 @@ export default function Settings() {
               size="md"
               onClick={() =>
                 sendToast(
-                  "Successfully deleted your account, logging out.",
-                  "success"
+                  'Successfully deleted your account, logging out.',
+                  'success'
                 )
               }
             >
@@ -93,7 +93,7 @@ export default function Settings() {
           </div>
           <Button
             onClick={() => {
-              sendToast("Successfully updated Account Settings.", "success");
+              sendToast('Successfully updated Account Settings.', 'success');
             }}
             variant="success"
             cname="w-full mt-2"
@@ -101,23 +101,23 @@ export default function Settings() {
             Save Changes
           </Button>
         </div>
-        <div className="text-center bg-polar-200 rounded-md lg:px-6 md:px-6 px-3 py-4 text-white max-w-xl w-full mt-3">
-          <h2 className="text-xl font-semibold text-snow-300 mt-3 flex mb-1">
+        <div className="mt-3 w-full max-w-xl rounded-md bg-polar-200 px-3 py-4 text-center text-white md:px-6 lg:px-6">
+          <h2 className="mt-3 mb-1 flex text-xl font-semibold text-snow-300">
             Two Factor Authentication
           </h2>
-          <div className="text-snow-300 flex text-sm">
+          <div className="flex text-sm text-snow-300">
             2fa is currently set as&nbsp;
             <span className="text-red-300">Disabled</span>
           </div>
-          <div className="text-snow-300 flex text-xs text-left max-w-lg mt-1">
+          <div className="mt-1 flex max-w-lg text-left text-xs text-snow-300">
             <span>
               You will be required to enter code to gain access to your account.
               This code is generated using google authenticator. If you lose
-              access to your authenticator app, you will have to contact{" "}
+              access to your authenticator app, you will have to contact{' '}
               <Link href="mailto:support@kythi.com" passHref>
                 <a
                   href="#"
-                  className="hover:text-blue-400 text-blue-300 underline underline-offset-1"
+                  className="text-blue-300 underline underline-offset-1 hover:text-blue-400"
                 >
                   <span>Support&nbsp;</span>
                 </a>
@@ -125,7 +125,7 @@ export default function Settings() {
               to reset your code.
             </span>
           </div>
-          <div className="flex justify-between flex-col text-left">
+          <div className="flex flex-col justify-between text-left">
             <Button cname="w-full h-9 mt-3" variant="primary" size="md">
               Enable 2fa
             </Button>

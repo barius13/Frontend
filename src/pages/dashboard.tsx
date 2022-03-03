@@ -1,29 +1,29 @@
-import API from "../api";
-import React from "react";
-import dayjs from "dayjs";
-import { useRouter } from "next/router";
-import { Toaster } from "react-hot-toast";
-import { months } from "../utils/Constants";
-import { useEffect, useState } from "react";
-import { useUser } from "../components/user";
-import { formatBytes } from "../utils/Format";
-import { sendToast } from "../utils/sendToast";
-import Nav from "../components/navigators/navbar";
-import Modal from "../components/interactive/modal";
-import StatsBox from "../components/cards/userstats";
-import relativeTime from "dayjs/plugin/relativeTime";
-import Button from "../components/interactive/button";
+import API from '../api';
+import React from 'react';
+import dayjs from 'dayjs';
+import {useRouter} from 'next/router';
+import {Toaster} from 'react-hot-toast';
+import {months} from '../utils/Constants';
+import {useEffect, useState} from 'react';
+import {useUser} from '../components/user';
+import {formatBytes} from '../utils/Format';
+import {sendToast} from '../utils/sendToast';
+import Nav from '../components/navigators/navbar';
+import Modal from '../components/interactive/modal';
+import StatsBox from '../components/cards/userstats';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import Button from '../components/interactive/button';
 import {
   ChartSquareBarIcon,
   ServerIcon,
   CloudUploadIcon,
-} from "@heroicons/react/outline";
+} from '@heroicons/react/outline';
 
 dayjs.extend(relativeTime);
 
 export default function Dashboard() {
   const router = useRouter();
-  const { user, setUser } = useUser();
+  const {user, setUser} = useUser();
   const [recentlyUploaded, setRecentlyUploaded] = useState(
     user?.uploads[0]
       ? `${process.env.CDN_URL}/${process.env.CDN_BUCKET}/${user?.id}/${user?.uploads[0]?.cdnName}`
@@ -47,12 +47,12 @@ export default function Dashboard() {
   }
   useEffect(() => {
     if (!user) {
-      router.push("/");
+      router.push('/');
     } else if (!user.discordId) {
-      router.push("/discord");
+      router.push('/discord');
     } else {
       API.getPing().then((ping) => {
-        setStats({ ...stats, userPing: ping });
+        setStats({...stats, userPing: ping});
       });
     }
   }, [router, user]);
@@ -60,21 +60,21 @@ export default function Dashboard() {
   return user && user.discordId ? (
     <>
       <Toaster />
-      <Nav page={"dash"} />
+      <Nav page={'dash'} />
 
-      <div className="flex flex-col items-center justify-center p-10 h-max bg-polar-100">
+      <div className="flex h-max flex-col items-center justify-center bg-polar-100 p-10">
         <div className="mr-auto">
           <div className="text-3xl font-semibold text-white">
             Welcome, {user.username}
           </div>
-          <div className="text-xl text-snow-300 lg:mb-8 mb-4">
+          <div className="mb-4 text-xl text-snow-300 lg:mb-8">
             Member since {getDate(user.createdAt).month}&nbsp;
             {getDate(user.createdAt).day} {getDate(user.createdAt).year}
           </div>
         </div>
-        <div className="flex lg:flex-row flex-nowrap lg:space-x-4 lg:space-y-0 space-y-10 md:flex-col flex-col">
-          <div className="text-white flex space-y-4 flex-nowrap w-full flex-col">
-            <div className="flex w-full items-stretch lg:flex-row md:flex-col flex-col lg:space-y-0 space-y-3 lg:space-x-4">
+        <div className="flex flex-col flex-nowrap space-y-10 md:flex-col lg:flex-row lg:space-x-4 lg:space-y-0">
+          <div className="flex w-full flex-col flex-nowrap space-y-4 text-white">
+            <div className="flex w-full flex-col items-stretch space-y-3 md:flex-col lg:flex-row lg:space-y-0 lg:space-x-4">
               <div className="w-full">
                 <StatsBox
                   title="Uploads"
@@ -104,42 +104,42 @@ export default function Dashboard() {
                 />
               </div>
             </div>
-            <div className="flex lg:space-y-0 lg:space-x-4 md:space-x-0 space-x-0 md:space-y-10 space-y-10 lg:flex-row w-full md:flex-col flex-col">
-              <div className="p-6 bg-polar-200 rounded-md md:p-6 shadow-lg w-full">
+            <div className="flex w-full flex-col space-x-0 space-y-10 md:flex-col md:space-x-0 md:space-y-10 lg:flex-row lg:space-y-0 lg:space-x-4">
+              <div className="w-full rounded-md bg-polar-200 p-6 shadow-lg md:p-6">
                 <div className="flex items-baseline justify-between ">
-                  <h4 className="text-xl font-bold lg:text-2xl text-snow-100 mt-1">
+                  <h4 className="mt-1 text-xl font-bold text-snow-100 lg:text-2xl">
                     Latest Upload
                   </h4>
                 </div>
-                <div className="mt-3 duration-700 cursor-pointer">
-                  {recentlyUploaded.endsWith("mp4") ||
-                  recentlyUploaded.endsWith("mov") ||
-                  recentlyUploaded.endsWith("webm") ? (
+                <div className="mt-3 cursor-pointer duration-700">
+                  {recentlyUploaded.endsWith('mp4') ||
+                  recentlyUploaded.endsWith('mov') ||
+                  recentlyUploaded.endsWith('webm') ? (
                     <video
                       src={recentlyUploaded}
-                      className="rounded-lg w-full h-60 object-cover"
+                      className="h-60 w-full rounded-lg object-cover"
                       controls
                     />
                   ) : (
                     <img
                       src={recentlyUploaded}
                       alt="Recently Uploaded Image"
-                      className="rounded-lg w-full h-60 object-cover hover:shadow-xl hover:-translate-y-1 duration-100"
+                      className="h-60 w-full rounded-lg object-cover duration-100 hover:-translate-y-1 hover:shadow-xl"
                       onClick={() => {
-                        window.open(recentlyUploaded, "_blank");
+                        window.open(recentlyUploaded, '_blank');
                       }}
                     />
                   )}
                 </div>
                 <div
-                  className={`flex items-center justify-between mt-2 bg-polar-400 rounded-md px-4 border-l-frost-300 border-l-2 py-4 ${
-                    !user.uploads[0] && "invisible absolute"
+                  className={`mt-2 flex items-center justify-between rounded-md border-l-2 border-l-frost-300 bg-polar-400 px-4 py-4 ${
+                    !user.uploads[0] && 'invisible absolute'
                   }`}
                 >
                   <div className="flex items-center">
                     <img
                       src={user.discord?.avatar as string}
-                      className="w-8 h-8 rounded-full mr-2"
+                      className="mr-2 h-8 w-8 rounded-full"
                       alt="User Avatar"
                     />
                     <div className="flex flex-col">
@@ -163,7 +163,7 @@ export default function Dashboard() {
                     <div className="mt-6">
                       <Button
                         onClick={() => {
-                          sendToast("Successfully deleted File!", "success");
+                          sendToast('Successfully deleted File!', 'success');
                         }}
                         variant="danger"
                         cname="w-full -mt-2"
@@ -175,22 +175,22 @@ export default function Dashboard() {
                 </div>
               </div>
 
-              <div className="p-6 bg-polar-200 rounded-md md:p-6 shadow-lg w-full">
+              <div className="w-full rounded-md bg-polar-200 p-6 shadow-lg md:p-6">
                 <div className="flex items-baseline justify-between ">
-                  <h4 className="text-xl font-bold lg:text-2xl text-snow-100 mt-1">
-                    Announcements{" "}
+                  <h4 className="mt-1 text-xl font-bold text-snow-100 lg:text-2xl">
+                    Announcements{' '}
                   </h4>
                 </div>
-                <p className="bg-polar-400 py-2 px-2 rounded-md border-l-white border-l-2 mt-4 text-snow-200">
+                <p className="mt-4 rounded-md border-l-2 border-l-white bg-polar-400 py-2 px-2 text-snow-200">
                   Welcome to kythi we thank you for taking an interest in our
                   service! We are currently in beta and we are working on a lot
                   of features and bug fixes. We will be adding more features and
                   bug fixes in the future. We hope you enjoy your stay!
                 </p>
-                <div className="flex items-center justify-between mt-2 bg-polar-400 rounded-md px-2 border-l-frost-300 border-l-2">
-                  <div className="flex items-center mb-4 mt-3">
+                <div className="mt-2 flex items-center justify-between rounded-md border-l-2 border-l-frost-300 bg-polar-400 px-2">
+                  <div className="mb-4 mt-3 flex items-center">
                     <img
-                      className="w-10 h-10 rounded-full mr-2"
+                      className="mr-2 h-10 w-10 rounded-full"
                       alt="User Avatar"
                       src={user.discord?.avatar}
                     />
@@ -207,9 +207,9 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
-          <div className="p-6 bg-polar-200 rounded-md md:p-6 shadow-lg">
+          <div className="rounded-md bg-polar-200 p-6 shadow-lg md:p-6">
             <div className="flex items-baseline justify-between">
-              <h4 className="text-xl font-medium lg:text-2xl text-snow-100 mt-1">
+              <h4 className="mt-1 text-xl font-medium text-snow-100 lg:text-2xl">
                 Quick Links
               </h4>
             </div>
@@ -225,11 +225,11 @@ export default function Dashboard() {
                 <textarea
                   value=""
                   placeholder="Suggestion Description"
-                  className="bg-polar-300 -mt-3 h-24 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400"
+                  className="-mt-3 h-24 w-full rounded-md bg-polar-300 p-2 transition delay-75 duration-500 hover:bg-polar-400 focus:bg-polar-400 focus:outline-none focus:duration-500"
                 />
                 <Button
                   onClick={() => {
-                    sendToast("Successfully Sent Suggestion!", "success");
+                    sendToast('Successfully Sent Suggestion!', 'success');
                   }}
                   cname="bg-polar-300 hover:bg-polar-400 w-full mt-2 h-11"
                 >
@@ -249,9 +249,9 @@ export default function Dashboard() {
               <div>
                 <textarea
                   placeholder="Bug Description"
-                  className="bg-polar-300 caret-white mt-3 h-10 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400 "
+                  className="mt-3 h-10 w-full rounded-md bg-polar-300 p-2 caret-white transition delay-75 duration-500 hover:bg-polar-400 focus:bg-polar-400 focus:outline-none focus:duration-500 "
                 />
-                <select className=" rounded border-0 font-medium text-sm w-full bg-polar-300  mt-3 h-10 px-2 outline-none appearance-none text-white">
+                <select className=" mt-3 h-10 w-full appearance-none rounded border-0  bg-polar-300 px-2 text-sm font-medium text-white outline-none">
                   <option disabled={false} selected={true}>
                     How Severe is this bug?
                   </option>
@@ -265,7 +265,7 @@ export default function Dashboard() {
                 </div>
                 <Button
                   onClick={() => {
-                    sendToast("Successfully Sent Bug Report.", "success");
+                    sendToast('Successfully Sent Bug Report.', 'success');
                   }}
                   cname="bg-polar-300 hover:bg-polar-400 w-full h-11 mt-3"
                 >
@@ -286,7 +286,7 @@ export default function Dashboard() {
                 placeholder="Testimonial Description"
                 value={testimonialContent}
                 onChange={(ctx) => setTestimonialContent(ctx.target.value)}
-                className="bg-polar-300 h-32 caret-white -mt-3 w-full rounded-md p-2 hover:bg-polar-400 focus:outline-none transition duration-500 delay-75 focus:duration-500 focus:bg-polar-400 "
+                className="-mt-3 h-32 w-full rounded-md bg-polar-300 p-2 caret-white transition delay-75 duration-500 hover:bg-polar-400 focus:bg-polar-400 focus:outline-none focus:duration-500 "
               />
               <Button
                 onClick={() => {
@@ -297,10 +297,10 @@ export default function Dashboard() {
                           testimonial: data.testimonial,
                         })
                       );
-                      sendToast(data.message, "success");
+                      sendToast(data.message, 'success');
                     })
                     .catch((err) => {
-                      sendToast(err.data.message, "error");
+                      sendToast(err.data.message, 'error');
                     });
                 }}
                 cname="bg-polar-300 hover:bg-polar-400 w-full mt-2 h-11"
@@ -318,18 +318,18 @@ export default function Dashboard() {
               cname="w-full mt-3 shadow-none border border-2 border-aurora-yellow ease-in duration-500 hover:bg-aurora-yellow  "
               variant="none"
               onClick={() => {
-                router.push("/config");
+                router.push('/config');
               }}
             >
               Download Config
             </Button>
 
-            <div className="text-white mt-3">
+            <div className="mt-3 text-white">
               <h1 className="text-2xl font-medium text-snow-100 ">Tools</h1>
               <span className=" text-snow-100">File Upload</span>
               <input
                 type="file"
-                className="block cursor-pointer w-full text-sm text-snow-100 rounded-r bg-polar-300 file:mr-3 file:cursor-pointer file:p-2 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-polar-400 file:text-aurora-yellow hover:file:bg-polar-600"
+                className="block w-full cursor-pointer rounded-r bg-polar-300 text-sm text-snow-100 file:mr-3 file:cursor-pointer file:rounded-lg file:border-0 file:bg-polar-400 file:p-2 file:text-sm file:font-medium file:text-aurora-yellow hover:file:bg-polar-600"
                 onChange={(ctx) => {
                   API.uploadImage(
                     user.uploadKey as string,
@@ -349,8 +349,8 @@ export default function Dashboard() {
                       }, 1000);
 
                       sendToast(
-                        "Successfully uploaded image, url has been copied to your clipboard.",
-                        "success"
+                        'Successfully uploaded image, url has been copied to your clipboard.',
+                        'success'
                       );
                     })
                     .catch((err) => {
@@ -361,12 +361,12 @@ export default function Dashboard() {
                           <br />
                           Error Returned: {err.data.message}
                         </>,
-                        "error"
+                        'error'
                       );
                     });
                 }}
               />
-              <div className=" text-snow-100 mt-2 mb-1">Edit Portfolio</div>
+              <div className=" mt-2 mb-1 text-snow-100">Edit Portfolio</div>
               <div className="flex space-x-2">
                 <Button variant="danger" cname="w-full">
                   Privated

@@ -1,16 +1,16 @@
-import { useRouter } from "next/router";
-import { Toaster } from "react-hot-toast";
-import { useEffect, useState } from "react";
-import { useUser } from "../components/user";
-import { formatBytes } from "../utils/Format";
-import { sendToast } from "../utils/sendToast";
-import Nav from "../components/navigators/navbar";
-import Button from "../components/interactive/button";
-import { ClipboardIcon, TrashIcon } from "@heroicons/react/outline";
+import {useRouter} from 'next/router';
+import {Toaster} from 'react-hot-toast';
+import {useEffect, useState} from 'react';
+import {useUser} from '../components/user';
+import {formatBytes} from '../utils/Format';
+import {sendToast} from '../utils/sendToast';
+import Nav from '../components/navigators/navbar';
+import Button from '../components/interactive/button';
+import {ClipboardIcon, TrashIcon} from '@heroicons/react/outline';
 
 export default function Gallery() {
   const router = useRouter();
-  const { user } = useUser();
+  const {user} = useUser();
   const [pages] = useState(() => {
     if (!user) return [];
 
@@ -31,9 +31,9 @@ export default function Gallery() {
 
   useEffect(() => {
     if (!user) {
-      router.push("/");
+      router.push('/');
     } else if (!user.discordId) {
-      router.push("/discord");
+      router.push('/discord');
     }
   }, [router, user]);
 
@@ -44,7 +44,7 @@ export default function Gallery() {
       <Nav page="gallery" />
       <div className="text-white">
         <div className="px-6">
-          <div className="flex md:items-center md:ml-0 ml-5 mt-3 mb-5 flex-col">
+          <div className="ml-5 mt-3 mb-5 flex flex-col md:ml-0 md:items-center">
             <span className="text-5xl font-bold text-snow-300">Gallery</span>
             <span className="text-2xl font-medium text-snow-100">
               The perfect area to view & manage your uploaded files.
@@ -53,7 +53,7 @@ export default function Gallery() {
         </div>
         {user.uploads.length ? (
           <>
-            <div className="btn-group flex flex-wrap ml-12 mb-4">
+            <div className="btn-group ml-12 mb-4 flex flex-wrap">
               <Button
                 cname="btn normal-case bg-polar-300 hover:bg-polar-400 transition duration-200 mr-2"
                 onClick={() => {
@@ -65,7 +65,7 @@ export default function Gallery() {
                   );
                 }}
               >
-                {"<"}
+                {'<'}
               </Button>
               {pages.map((page, index) => {
                 return (
@@ -75,8 +75,8 @@ export default function Gallery() {
                     cname={`
                                 btn normal-case ${
                                   currentPage.page === page.page
-                                    ? "bg-polar-400 hover:bg-polar-500"
-                                    : "bg-polar-300 hover:bg-polar-400"
+                                    ? 'bg-polar-400 hover:bg-polar-500'
+                                    : 'bg-polar-300 hover:bg-polar-400'
                                 }  transition duration-200 rounded-lg mr-2
                               `}
                     onClick={() => {
@@ -98,22 +98,22 @@ export default function Gallery() {
                   );
                 }}
               >
-                {">"}
+                {'>'}
               </Button>
             </div>
-            <div className="grid gap-6 lg:grid-cols-4 md:grid-cols-2 grid-cols-1 px-12 pb-10">
+            <div className="grid grid-cols-1 gap-6 px-12 pb-10 md:grid-cols-2 lg:grid-cols-4">
               {currentPage.imgs.map((image) => (
                 <>
                   <div
                     key={image.cdnName}
-                    className="bg-polar-300 rounded pb-4"
+                    className="rounded bg-polar-300 pb-4"
                   >
-                    {image.cdnName.endsWith("mp4") ||
-                    image.cdnName.endsWith("mov") ||
-                    image.cdnName.endsWith("webm") ? (
+                    {image.cdnName.endsWith('mp4') ||
+                    image.cdnName.endsWith('mov') ||
+                    image.cdnName.endsWith('webm') ? (
                       <video
                         src={`https://s3.us-east-2.wasabisys.com/kythi/${image.uploaderId}/${image.cdnName}`}
-                        className="rounded-lg w-full h-60 object-cover"
+                        className="h-60 w-full rounded-lg object-cover"
                         controls
                       />
                     ) : (
@@ -121,14 +121,14 @@ export default function Gallery() {
                       <img
                         src={`https://s3.us-east-2.wasabisys.com/kythi/${image.uploaderId}/${image.cdnName}`}
                         alt="gallery image"
-                        className="rounded-lg w-full h-60 object-cover"
+                        className="h-60 w-full rounded-lg object-cover"
                       />
                     )}
                     <div className="divide-y-2 divide-white">
                       <div />
                       <div />
                     </div>
-                    <div className="flex justify-center items-center flex-col mt-4">
+                    <div className="mt-4 flex flex-col items-center justify-center">
                       <span className="text-xl font-semibold">
                         {image.cdnName}
                       </span>
@@ -144,12 +144,12 @@ export default function Gallery() {
                           {new Date(image.uploadedAt).toLocaleString()}
                         </span>
                       </span>
-                      <div className="space-x-2 mt-3">
+                      <div className="mt-3 space-x-2">
                         <Button
                           onClick={() =>
                             sendToast(
-                              "Successfully copied Image url to clipboard!",
-                              "success"
+                              'Successfully copied Image url to clipboard!',
+                              'success'
                             )
                           }
                         >
@@ -158,7 +158,7 @@ export default function Gallery() {
                         <Button
                           variant="danger"
                           onClick={() =>
-                            sendToast("Successfully deleted image!", "success")
+                            sendToast('Successfully deleted image!', 'success')
                           }
                         >
                           <TrashIcon className="h-6 w-6" />
@@ -171,7 +171,7 @@ export default function Gallery() {
             </div>
           </>
         ) : (
-          <p className="text-white flex justify-center font-bold text-2xl">
+          <p className="flex justify-center text-2xl font-bold text-white">
             No files uploaded yet.
           </p>
         )}

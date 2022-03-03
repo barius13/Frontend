@@ -1,28 +1,28 @@
-import { Toaster } from "react-hot-toast";
-import { sendToast } from "../utils/sendToast";
-import Button from "../components/interactive/button";
-import { AtSymbolIcon } from "@heroicons/react/outline";
+import {Toaster} from 'react-hot-toast';
+import {sendToast} from '../utils/sendToast';
+import Button from '../components/interactive/button';
+import {AtSymbolIcon} from '@heroicons/react/outline';
 
 export default function PasswordReset() {
   return (
     <>
       <Toaster />
-      <div className="bg-polar-100 mx-auto sm:px-6">
-        <div className="flex justify-center items-center h-screen">
+      <div className="mx-auto bg-polar-100 sm:px-6">
+        <div className="flex h-screen items-center justify-center">
           <form className="w-full max-w-md">
             <div className="rounded-lg bg-polar-200 px-8 py-8">
               <div className="divide-y-2 divide-frost-300">
-                <div className="text-white font-bold text-xl mb-2">
+                <div className="mb-2 text-xl font-bold text-white">
                   Password Reset
                 </div>
                 <div />
               </div>
-              <label className="relative block mt-5">
+              <label className="relative mt-5 block">
                 <span className="absolute inset-y-0 left-0 flex items-center pl-2">
-                  <AtSymbolIcon className="w-6 h-6 text-white" />
+                  <AtSymbolIcon className="h-6 w-6 text-white" />
                 </span>
                 <input
-                  className="placeholder:text-gray-400 block bg-polar-600 hover:bg-polar-400 text-white transition duration-700 delay-50 w-full h-8 focus:outline-none caret-white rounded-md py-2 pl-10 shadow-sm sm:text-sm"
+                  className="delay-50 block h-8 w-full rounded-md bg-polar-600 py-2 pl-10 text-white caret-white shadow-sm transition duration-700 placeholder:text-gray-400 hover:bg-polar-400 focus:outline-none sm:text-sm"
                   placeholder="Email Address"
                   type="text"
                   name="email"
@@ -33,8 +33,8 @@ export default function PasswordReset() {
                   cname="w-full"
                   onClick={() =>
                     sendToast(
-                      "Successfully sent instructions on how to reset your password.",
-                      "success"
+                      'Successfully sent instructions on how to reset your password.',
+                      'success'
                     )
                   }
                 >

@@ -1,38 +1,38 @@
-import API from "../api";
-import Link from "next/link";
-import { useEffect } from "react";
-import { useRouter } from "next/router";
-import { useUser } from "../components/user";
-import { DiscordWhite } from "../../public/svgs";
-import Button from "../components/interactive/button";
-import { LogoutIcon } from "@heroicons/react/outline";
+import API from '../api';
+import Link from 'next/link';
+import {useEffect} from 'react';
+import {useRouter} from 'next/router';
+import {useUser} from '../components/user';
+import {DiscordWhite} from '../../public/svgs';
+import Button from '../components/interactive/button';
+import {LogoutIcon} from '@heroicons/react/outline';
 
 export default function Discord() {
   const router = useRouter();
-  const { user } = useUser();
+  const {user} = useUser();
 
   useEffect(() => {
     if (!user) {
-      router.push("/");
+      router.push('/');
     } else if (user.discordId) {
-      router.push("/dashboard");
+      router.push('/dashboard');
     }
   }, [router, user]);
 
   return user && !user.discordId ? (
     <>
       <div className="bg-polar-100">
-        <div className="flex justify-center items-center h-screen grid-rows-1 px-4">
-          <div className="text-center p-10 lg:w-1/3 bg-polar-200 rounded-lg shadow-2xl">
-            <h1 className="lg:text-4xl text-3xl font-bold text-snow-200">
+        <div className="flex h-screen grid-rows-1 items-center justify-center px-4">
+          <div className="rounded-lg bg-polar-200 p-10 text-center shadow-2xl lg:w-1/3">
+            <h1 className="text-3xl font-bold text-snow-200 lg:text-4xl">
               Kythi • Discord Link
             </h1>
-            <p className="text-xl text-snow-100 mt-4">
+            <p className="mt-4 text-xl text-snow-100">
               Welcome to Kythi! Thank you for signing up to our service. To use
               our service you need to link your discord
             </p>
 
-            <span className="block w-full rounded-md shadow-sm mt-8">
+            <span className="mt-8 block w-full rounded-md shadow-sm">
               <Link href={`${process.env.API_URL}/discord/link`} passHref>
                 <Button cname="w-full">
                   <div className="flex justify-center">
@@ -42,7 +42,7 @@ export default function Discord() {
                 </Button>
               </Link>
             </span>
-            <span className="block w-full rounded-md shadow-sm mt-2">
+            <span className="mt-2 block w-full rounded-md shadow-sm">
               <Button
                 variant="danger"
                 cname="w-full"
@@ -52,7 +52,7 @@ export default function Discord() {
                   } finally {
                     // @ts-expect-error
                     setUser(null);
-                    router.push("/");
+                    router.push('/');
                   }
                 }}
               >

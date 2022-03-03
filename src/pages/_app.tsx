@@ -1,18 +1,18 @@
-import API from "../api";
-import "../styles/globals.css";
-import { NextSeo } from "next-seo";
-import { User, File } from "../typings";
-import type { AppProps } from "next/app";
-import { useEffect, useState } from "react";
-import { UserProvider } from "../components/user";
+import API from '../api';
+import '../styles/globals.css';
+import {NextSeo} from 'next-seo';
+import {User, File} from '../typings';
+import type {AppProps} from 'next/app';
+import {useEffect, useState} from 'react';
+import {UserProvider} from '../components/user';
 
-function Host({ Component, pageProps }: AppProps) {
+function Host({Component, pageProps}: AppProps) {
   const [user, setUser] = useState<User | null | undefined>(undefined);
 
   useEffect(() => {
     function getSession() {
       API.getCurrentSession()
-        .then((data: { user: User }) => {
+        .then((data: {user: User}) => {
           setUser(
             Object.assign(data.user, {
               uploads: data.user.uploads.sort(
@@ -38,18 +38,18 @@ function Host({ Component, pageProps }: AppProps) {
         description="Kythi.com is an image hosting service."
         additionalMetaTags={[
           {
-            property: "theme-color",
-            content: "#5E81AC",
+            property: 'theme-color',
+            content: '#5E81AC',
           },
         ]}
         openGraph={{
-          title: "Kythi.",
-          description: "Kythi.com is an image hosting service.",
+          title: 'Kythi.',
+          description: 'Kythi.com is an image hosting service.',
         }}
       />
 
       <div className="select-none">
-        <UserProvider value={{ user, setUser }}>
+        <UserProvider value={{user, setUser}}>
           <Component {...pageProps} />
         </UserProvider>
       </div>
