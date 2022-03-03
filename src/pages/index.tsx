@@ -18,7 +18,7 @@ export default function Index() {
   }, []);
 
   return testimonials.length ? (
-    <main className="bg-polar-300 font-medium text-gray-200">
+    <main className="bg-polar-200 font-medium text-gray-200">
       <div className=" bg-polar-100 md:pt-24">
         <div className="mx-auto grid max-w-screen-xl gap-x-12 px-6 md:grid-cols-4 lg:gap-x-20 lg:px-8 xl:grid-cols-5 xl:px-4">
           <div className="order-2 col-span-2 mt-12 self-center md:order-1 md:mt-0 ">
@@ -55,7 +55,7 @@ export default function Index() {
         </div>
       </div>
       <svg
-        className="bg-polar-200 shadow-sm"
+        className="bg-polar-200"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 20 1440 160"
       >
@@ -65,7 +65,8 @@ export default function Index() {
           d="M0,96L80,106.7C160,117,320,139,480,133.3C640,128,800,96,960,85.3C1120,75,1280,85,1360,90.7L1440,96L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"
         ></path>
       </svg>
-      <div className="bg-polar-200">
+      <div className="bg-polar-200 mt-14 md:mt-0">
+        
         <MainFeat />
         <div className="md:mt-30 mx-auto mt-20 max-w-screen-xl px-6 pb-12 lg:px-8 lg:pb-16 xl:px-4 xl:pb-24">
           <div className="grid content-center items-stretch gap-3 md:grid-cols-3">
