@@ -117,14 +117,14 @@ export default function Dashboard() {
                   recentlyUploaded.endsWith('webm') ? (
                     <video
                       src={recentlyUploaded}
-                      className="h-60 w-full rounded-lg object-cover"
+                      className="flex max-h-64 w-full rounded-xl object-cover duration-100 hover:-translate-y-1 hover:shadow-xl"
                       controls
                     />
                   ) : (
                     <img
                       src={recentlyUploaded}
                       alt="Recently Uploaded Image"
-                      className="h-60 w-full rounded-lg object-cover duration-100 hover:-translate-y-1 hover:shadow-xl"
+                      className="flex max-h-64 w-full rounded-xl object-cover duration-100 hover:-translate-y-1 hover:shadow-xl"
                       onClick={() => {
                         window.open(recentlyUploaded, '_blank');
                       }}
@@ -132,7 +132,7 @@ export default function Dashboard() {
                   )}
                 </div>
                 <div
-                  className={`mt-2 flex items-center justify-between rounded-md border-l-2 border-l-frost-300 bg-polar-400 px-4 py-4 ${
+                  className={`mt-3 flex items-center justify-between rounded-md border-l-2 border-l-frost-300 bg-polar-400 px-4 py-4 ${
                     !user.uploads[0] && 'invisible absolute'
                   }`}
                 >
@@ -153,7 +153,7 @@ export default function Dashboard() {
                   </div>
                   <Modal
                     buttonName="Delete"
-                    cname="bg-polar-400 danger"
+                    cname="bg-polar-400 danger h-9 shadow-none"
                     text="Are you sure you want to delete this File? This action
                           is not reversible. This will permanently delete the
                           File from our servers. This action is irreversible!"

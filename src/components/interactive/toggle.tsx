@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { Switch } from "@headlessui/react";
+import {FC} from 'react';
+import {Switch} from '@headlessui/react';
 
 interface Toggle {
   label: string;
@@ -14,27 +14,27 @@ const Toggle: FC<Toggle> = ({
   checked,
   onChange,
   tooltip,
-  cname = "",
+  cname = '',
 }) => {
   return (
     <Switch.Group>
-      <div className="flex group lg:flex-row md:flex-row flex-col">
+      <div className="group flex flex-col md:flex-row lg:flex-row">
         <Switch.Label className="mr-2 select-none">{label}</Switch.Label>
         <Switch
           checked={checked}
           onChange={onChange}
-          className="relative bg-polar-400 inline-flex items-center h-6 rounded-full w-11"
+          className="relative inline-flex h-6 w-11 items-center rounded-full bg-polar-400"
         >
           <span
             className={`${
               checked
-                ? "translate-x-6 bg-aurora-green"
-                : "translate-x-1 bg-aurora-red-300"
-            } inline-block w-4 h-4 transition ease-in-out duration-200 rounded-full`}
+                ? 'translate-x-6 bg-aurora-green'
+                : 'translate-x-1 bg-aurora-red-300'
+            } inline-block h-4 w-4 rounded-full transition duration-200 ease-in-out`}
           />
         </Switch>
         <a
-          className={`${cname} absolute hidden md:mt-8 mt-10 lg:mt-8 group-hover:flex transition ease-in-out z-10 max-w-md p-4 duration-300 text-sm text-snow-100 font-bold rounded bg-polar-300 shadow-2xl`}
+          className={`${cname} absolute z-10 mt-10 hidden max-w-md rounded bg-polar-300 p-4 text-sm font-bold text-snow-100 shadow-2xl transition duration-300 ease-in-out group-hover:flex md:mt-8 lg:mt-8`}
         >
           {tooltip}
         </a>

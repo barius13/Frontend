@@ -16,12 +16,12 @@ export default function Gallery() {
 
     const imgs = user.uploads;
     const returnPages = [];
-    const pageCount = Math.ceil(imgs.length / 12);
+    const pageCount = Math.ceil(imgs.length / 8);
 
     for (let i = 0; i !== pageCount; i++) {
       returnPages.push({
         page: i,
-        imgs: imgs.slice(i == 1 ? 12 : i * 12, (i + 1) * 12),
+        imgs: imgs.slice(i == 1 ? 8 : i * 8, (i + 1) * 8),
       });
     }
 
@@ -44,76 +44,25 @@ export default function Gallery() {
       <Nav page="gallery" />
       <div className="text-white">
         <div className="px-6">
-          <div className="ml-5 mt-3 mb-5 flex flex-col md:ml-0 md:items-center">
+          <div className="m-6 ml-5">
             <span className="text-5xl font-bold text-snow-300">Gallery</span>
-            <span className="text-2xl font-medium text-snow-100">
-              The perfect area to view & manage your uploaded files.
-            </span>
           </div>
         </div>
         {user.uploads.length ? (
           <>
-            <div className="btn-group ml-12 mb-4 flex flex-wrap">
-              <Button
-                cname="btn normal-case bg-polar-300 hover:bg-polar-400 transition duration-200 mr-2"
-                onClick={() => {
-                  setCurrentPage(
-                    (currentPage) =>
-                      pages.find(
-                        (page) => page.page === currentPage.page - 1
-                      ) ?? currentPage
-                  );
-                }}
-              >
-                {'<'}
-              </Button>
-              {pages.map((page, index) => {
-                return (
-                  <Button
-                    variant="none"
-                    key={index}
-                    cname={`
-                                btn normal-case ${
-                                  currentPage.page === page.page
-                                    ? 'bg-polar-400 hover:bg-polar-500'
-                                    : 'bg-polar-300 hover:bg-polar-400'
-                                }  transition duration-200 rounded-lg mr-2
-                              `}
-                    onClick={() => {
-                      setCurrentPage(page);
-                    }}
-                  >
-                    {index + 1}
-                  </Button>
-                );
-              })}
-              <Button
-                cname="btn normal-case bg-polar-300 hover:bg-polar-400 transition duration-200"
-                onClick={() => {
-                  setCurrentPage(
-                    (currentPage) =>
-                      pages.find(
-                        (page) => page.page === currentPage.page + 1
-                      ) ?? currentPage
-                  );
-                }}
-              >
-                {'>'}
-              </Button>
-            </div>
-            <div className="grid grid-cols-1 gap-6 px-12 pb-10 md:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-1 gap-8 px-12 pb-10 md:grid-cols-3 lg:grid-cols-4">
               {currentPage.imgs.map((image) => (
                 <>
                   <div
                     key={image.cdnName}
-                    className="rounded bg-polar-300 pb-4"
+                    className="rounded bg-polar-300 pb-4 shadow"
                   >
                     {image.cdnName.endsWith('mp4') ||
                     image.cdnName.endsWith('mov') ||
                     image.cdnName.endsWith('webm') ? (
                       <video
                         src={`https://s3.us-east-2.wasabisys.com/kythi/${image.uploaderId}/${image.cdnName}`}
-                        className="h-60 w-full rounded-lg object-cover"
+                        className="h-52 w-full rounded-t-lg object-cover"
                         controls
                       />
                     ) : (
@@ -121,10 +70,10 @@ export default function Gallery() {
                       <img
                         src={`https://s3.us-east-2.wasabisys.com/kythi/${image.uploaderId}/${image.cdnName}`}
                         alt="gallery image"
-                        className="h-60 w-full rounded-lg object-cover"
+                        className="h-52 w-full rounded-t-lg object-cover"
                       />
                     )}
-                    <div className="divide-y-2 divide-white">
+                    <div className="divide-y-2 divide-blue-300">
                       <div />
                       <div />
                     </div>
@@ -138,7 +87,7 @@ export default function Gallery() {
                           {formatBytes(image.size)}
                         </span>
                       </span>
-                      <span className="font-bold">
+                      <span className="text-center font-bold">
                         Upload Date -&nbsp;
                         <span className="font-normal">
                           {new Date(image.uploadedAt).toLocaleString()}
@@ -168,6 +117,54 @@ export default function Gallery() {
                   </div>
                 </>
               ))}
+            </div>
+            <div className="mx-12 mb-4 flex flex-wrap items-center justify-center gap-2 rounded-lg bg-polar-200 p-2">
+              <Button
+                cname="btn normal-case bg-polar-300 hover:bg-polar-400 transition duration-200"
+                onClick={() => {
+                  setCurrentPage(
+                    (currentPage) =>
+                      pages.find(
+                        (page) => page.page === currentPage.page - 1
+                      ) ?? currentPage
+                  );
+                }}
+              >
+                {'<'}
+              </Button>
+              {pages.map((page, index) => {
+                return (
+                  <Button
+                    variant="none"
+                    key={index}
+                    cname={`
+                                btn normal-case ${
+                                  currentPage.page === page.page
+                                    ? 'bg-polar-400 hover:bg-polar-500'
+                                    : 'bg-polar-300 hover:bg-polar-400'
+                                }  transition duration-200 rounded-lg
+                              `}
+                    onClick={() => {
+                      setCurrentPage(page);
+                    }}
+                  >
+                    {index + 1}
+                  </Button>
+                );
+              })}
+              <Button
+                cname="btn normal-case bg-polar-300 hover:bg-polar-400 transition duration-200"
+                onClick={() => {
+                  setCurrentPage(
+                    (currentPage) =>
+                      pages.find(
+                        (page) => page.page === currentPage.page + 1
+                      ) ?? currentPage
+                  );
+                }}
+              >
+                {'>'}
+              </Button>
             </div>
           </>
         ) : (

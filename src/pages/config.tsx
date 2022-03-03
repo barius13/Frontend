@@ -123,21 +123,21 @@ export default function Config() {
                 />
               </div>
               <div className="mt-2 text-snow-100">
-                Your Selected domain is: Roblox.Kythi.pics/penis
+                Your Selected domain is: Kythi.pics/{user.username}/storage/
               </div>
 
               <h1 className="mt-3 text-xl font-medium text-slate-200">
-                Domain Options
+                URL Options
               </h1>
               <div className="mt-1 text-snow-100">
-                You can toggle specific domain configurations on and off here.
-                Currently doesnt work.
+                You can toggle configurable options on and off here. W.I.P. This
+                feature is still in development.
               </div>
               <div className="mt-2 flex flex-row space-x-3">
                 <div className="space-x-1">
                   <Toggle
                     tooltip="Fake URL will allow you to use any URL or Text on the image but its obviously not the real domain, this is will most likely only work on discord."
-                    label="Toggle Fake"
+                    label="Toggle Fake URL"
                     cname=""
                     checked={Faketoggled}
                     onChange={setFake}
