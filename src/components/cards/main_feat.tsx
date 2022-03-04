@@ -26,7 +26,7 @@ const MainFeat = () => {
 
             <blockquote className="p-10 mb-4">
               <h4 className="text-xl font-bold text-white">Express Yourself</h4>
-              <p className="text-md font-light mt-2 opacity-80">
+              <p className="text-md font-light mt-2 opacity-90">
                 Share images with custom branding and personal expression. At
                 Kythi we encourage users to express their identity online and
                 have full customisation over everything, even as little as
@@ -45,7 +45,7 @@ const MainFeat = () => {
                     <ColorSwatchIcon className="h-6 w-6 text-blue-500" />
                   </div>
                   <h6 className="text-xl mb-1 font-bold">Custom Domains</h6>
-                  <p className="mb-4 font-light opacity-80">
+                  <p className="mb-4 font-light opacity-90">
                     We have many domains to choose from. You can choose from a
                     variety of domains to host your images on.
                   </p>
@@ -57,7 +57,7 @@ const MainFeat = () => {
                     <GlobeAltIcon className="w-6 h-6 text-blue-500" />
                   </div>
                   <h6 className="text-xl mb-1 font-bold">Multiple Regions</h6>
-                  <p className="mb-4 font-light opacity-80">
+                  <p className="mb-4 font-light opacity-90">
                     We make use of&nbsp;
                     <Link href="https://www.cloudflare.com/network/" passHref>
                       <span className="hover:underline opacity-60 font-medium cursor-pointer">
@@ -76,7 +76,7 @@ const MainFeat = () => {
                     <ShieldExclamationIcon className="text-blue-500" />
                   </div>
                   <h6 className="text-xl mb-1 font-bold">Secure</h6>
-                  <p className="mb-4 font-light opacity-80">
+                  <p className="mb-4 font-light opacity-90">
                     All passwords are hashed using&nbsp;
                     <Link href="https://en.wikipedia.org/wiki/Argon2" passHref>
                       <span className="hover:underline opacity-60 font-medium cursor-pointer">
@@ -94,7 +94,7 @@ const MainFeat = () => {
                     <CollectionIcon className="w-6 h-6 text-blue-500" />
                   </div>
                   <h6 className="text-xl mb-1 font-bold">Unlimited Storage</h6>
-                  <p className="mb-4 font-light  opacity-70">
+                  <p className="mb-4 font-light  opacity-90">
                     We dont limit your freedom. You can upload as many images as
                     you want.
                   </p>

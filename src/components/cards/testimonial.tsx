@@ -14,7 +14,7 @@ const TestimonialBox: FC<TestimonialBox> = ({ user, content, avatar }) => {
         alt="Avatar"
         height="100"
         width="100"
-        className="rounded-full mx-auto"
+        className="rounded-full mx-auto bg-polar-200"
         layout="fixed"
         quality={20}
       />
@@ -23,7 +23,7 @@ const TestimonialBox: FC<TestimonialBox> = ({ user, content, avatar }) => {
           {user}
         </h4>
       </div>
-      <p className=" text-lg font-medium opacity-80 text-center">“{content}”</p>
+      <p className=" text-lg font-medium opacity-90 text-center">“{content}”</p>
     </div>
   );
 };
